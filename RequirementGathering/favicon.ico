@@ -1,0 +1,165 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="icon" href="ofg.gif" type="image/gif" >
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="keywords" content="favicon, free favicons, favicon generator, favicon editor, favorite icons, browser icon, online, icons">
+<meta name="description" content="Online Favicon Generator is a free tool to create favicons from an image to your website">
+<meta name="author" content="favicon">
+<meta name="copyright" content="@ 2013">
+<meta name="robots" content="index, follow">
+<meta property="og:favicon" content="favicon" />
+<meta property="og:favorite icon" content="favorite icon" />
+<title>FREE Online Favicons Generator</title>
+
+
+
+<script language="JavaScript" type="text/JavaScript">
+<!--
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+//-->
+</script>
+<link href="style.css" rel="stylesheet" type="text/css">
+<link href="css.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+a:link {
+	color: #99CC00;
+	text-decoration: none;
+}
+a:visited {
+	color: #99CC00;
+	text-decoration: none;
+}
+a:hover {
+	color: #CCFF00;
+	text-decoration: underline;
+}
+a:active {
+	color: #99CC00;
+	text-decoration: none;
+}
+a {
+	font-weight: bold;
+}
+.style1 {
+	font-size: large;
+	font-weight: bold;
+	color: #99CC00;
+}
+.style2 {font-size: 9px}
+.style3 {color: #FFFFFF}
+.style8 {color: #FFFFFF; font-weight: bold; }
+.style9 {COLOR: #666666; font-weight:bold; font-family: Tahoma;}
+.style10 {color: #333333; font-size: 9px; }
+.style11 {color: #FFFFFF; font-size: 9px; }
+-->
+</style></head>
+
+<body onLoad="MM_preloadImages('images/l1-1.jpg')">
+
+	<table width="766"  style="height:100%" border="0" cellspacing="0" cellpadding="0" align="center">
+	  <tr>
+	  	<td valign="top">
+			<table width="766"  style="height:750px" border="0" cellspacing="0" cellpadding="0" bgcolor="#ffffff">
+				<tr>
+				  <td width="766" valign="middle"><div align="center" >
+					  <p align="center"><a href="http://onlinefavicongenerator.com/" border="0"><img src="images/logo.jpg" alt="favicon icons animated images free"/></a><br><img src="images/banner.jpg" alt="favicons icons animated pictures emoticons free"><br>
+
+					  </p>
+					  </div>  </td>
+				</tr>
+				<tr>
+					<td width="766" style="height:422px" valign="top">
+						<table  width="766" style="height:422px" border="0" cellspacing="0" cellpadding="0">
+						  <tr>
+							<td width="100%" style="height:422px" valign="top">
+								<table width="100%" style="height:422px" border="0" cellspacing="0" cellpadding="0">
+								  <tr>
+									<td class="m_text" width="766" style="height:100%" bgcolor="#ffffff" valign="top"><form action='' method='post' enctype='multipart/form-data' target='_self'>
+                                      <table width="100%" border='0' align="center" cellpadding='2' cellspacing='0' summary=''>
+                                        <tr>
+                                          <td height="164"><table width="766" border='0' align="center" cellpadding='10' cellspacing='0' summary=''>
+                                              <tr>
+                                                <td colspan="2" align='left' valign='middle' width="100%">
+												    <p class="tx2">What is Favicon and why I need it.?<br><br></p>
+ 			            							<p>Favicon in short for a Favorite icon is a tiny file which contains small icon as image which has 16x16 pixels.
+ 			            							This favicon will be added to the top of all website which will be usually created by a web designer.
+ 			            							It represent a brand of a particular website.
+													<br><br> </p>
+                                        <p class="tx2">How to create using Online Favicon Generator.?<br><br></p>
+            				<p>Creating a favicon is really simple using our Online Favicon Generator.
+            				Our tool will easily create favicons in seconds and for FREE.
+            				Upload an image  and in few seconds you will get the favicon resized to your need.
+            				It supports allmost all the up to date browsers. <br><br></p>
+
+							 <p class="tx2">3 Reasons to use Favicon: <br><br></p>
+
+                             <p>1. Recognizable brand online
+                             2. Simple to create & FREE
+                             3. Give Professional look to Websites<br><br> </p>
+                                                     </td>
+                                              </tr>
+                                              <tr>
+                                                <td width="33%" align='right' valign='middle' class="tx2">
+                                                  Upload Image:
+                                               </td>
+                                                <td width="64%" valign="middle" class='nf'><input name="image" type="file" class="bodytext5" value='' size='25' />                                                </td>
+                                              </tr>
+                                              <tr>
+                                                <td width="33%" align='right' valign='middle' class='tx2'><strong>Scrolling Text (optional):</strong></td>
+                                                <td valign="middle" class='nf'><input style="width: 250px; font-size: 11px; FONT-FAMILY: Tahoma; color: #666666" type='text' name='string' size='25' maxlength='50' value='' /></td>
+                                              </tr>
+                                              <tr>
+                                                <td height="68" align='right' valign='bottom' class='style3'>&nbsp;</td>
+                                                <td class='nf'><input name='GFSubmit' type='submit' class="bodytext5" value='Create FavIcon' size='20' maxlength='20' />                                                </td>
+                                              </tr>
+                                              <tr>
+                                                <td height="40" colspan="2"  align='right' valign='bottom' class='nf'>
+												<table width="85%" border="0" align="center" cellpadding="0" cellspacing="0">
+                                                  <tr>
+                                                    <td><div align="left">
+                                                      <script type="text/javascript">
+                                                    </script></div>
+                                                    </td>
+                                                    <td><div align="right">
+                                                      <script type="text/javascript">
+                                                    </script></div>
+                                                   </td>
+                                                  </tr>
+                                                </table>
+                                                </td>
+                                              </tr>
+                                          </table></td>
+                                        </tr>
+                                      </table>
+									  <p align="left">
+									    <input type='hidden' name='go' value='1' />
+                                        <input type='hidden' name='r' value="" />
+
+									  </form>
+																		<p style="margin-left:px; margin-top:px;">
+																		  <tr><td><center><span class='tx2'>Last 10 successfully generated Online Favicons</span><br><br><img src="iconz/aa0741dd427482ea4d13374cab55dab7_extra_preview_16x16.png"> </td>
+								  </tr>
+								</table>							</td>
+							<td width="27" style="background-image: url(images/r-dr.jpg); background-repeat: repeat-y; background-position: bottom;height:100%" valign="top"><div style="margin-left:px; margin-top:px;"></div></td>
+						  </tr>
+						</table>					</td>
+				</tr>
+				<tr>
+					<td width="766" valign="top"><div align="left" class="c_text" style="margin-left:43px; margin-top:21px; margin-right:px">
+					  <div align="center" class="style10"><img src="images/favicon_av.gif"/> &nbsp;&nbsp;<a href="index.php"> Home</a> &nbsp;&nbsp;| &nbsp;&nbsp; <a href="mailto:sheiky.me@gmail.com" class="c_text"> Contact Us </a> <br><br></div>
+					</div></td>
+				</tr>
+		</table></td>
+	  </tr>
+	</table>
+</body>
+</html>
