@@ -11,11 +11,11 @@ namespace RequirementGathering.DAL
             : base("RequirementGatheringDbContext")
         { }
 
+        public DbSet<Product> Products { get; set; }
         public DbSet<Evaluation> Evaluations { get; set; }
         public DbSet<Attribute> Attributes { get; set; }
-        public DbSet<Version> Versions { get; set; }
+        public DbSet<EvaluationAttribute> EvaluationAttributes { get; set; }
         public DbSet<Rating> Ratings { get; set; }
-        public DbSet<VersionAttribute> VersionAttributes { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

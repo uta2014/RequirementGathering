@@ -163,22 +163,23 @@
     <Compile Include="Controllers\EvaluationsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\VersionsController.cs" />
     <Compile Include="DAL\RequirementGatheringInitializer.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Rating.cs" />
-    <Compile Include="Models\Version.cs" />
-    <Compile Include="Models\VersionAttribute.cs" />
+    <Compile Include="Models\Evaluation.cs" />
+    <Compile Include="Models\EvaluationAttribute.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Attribute.cs" />
-    <Compile Include="Models\Evaluation.cs" />
     <Compile Include="DAL\RequirementGatheringDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Views\Helpers\ApplicationHelpers.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -248,11 +249,6 @@
     <Content Include="Views\Evaluations\Details.cshtml" />
     <Content Include="Views\Evaluations\Edit.cshtml" />
     <Content Include="Views\Evaluations\Index.cshtml" />
-    <Content Include="Views\Versions\Create.cshtml" />
-    <Content Include="Views\Versions\Delete.cshtml" />
-    <Content Include="Views\Versions\Details.cshtml" />
-    <Content Include="Views\Versions\Edit.cshtml" />
-    <Content Include="Views\Versions\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -6,10 +6,8 @@ namespace RequirementGathering.Models
 {
     public class Evaluation
     {
-        [Key]
         public int Id { get; set; }
-        [Required]
-        public string Name { get; set; }
+        public string Version { get; set; }
         [DataType(DataType.MultilineText)]
         public string Description { get; set; }
         [Required]
@@ -20,12 +18,20 @@ namespace RequirementGathering.Models
             IsActive = true;
         }
 
-        public virtual ICollection<Version> Versions { get; set; }
+        #region Navigation Fields
+
+        public int ProductId { get; set; }
+        public virtual Product Product { get; set; }
+
+        public int EvaluationAttributeId { get; set; }
+        public virtual ICollection<EvaluationAttribute> EvaluationAttributes { get; set; }
+
+        #endregion
+
         public ICollection<Attribute> Attributes()
         {
-            return Versions.SelectMany(v => v.VersionAttributes
-                                             .Select(va => va.Attribute))
-                           .ToList();
+            return EvaluationAttributes.Select(ea => ea.Attribute)
+                                       .ToList();
         }
     }
 }

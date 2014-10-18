@@ -15,33 +15,63 @@ namespace RequirementGathering.DAL
             var store = new RoleStore<IdentityRole>(context);
             var manager = new RoleManager<IdentityRole>(store);
 
-            manager.Create(new IdentityRole { Name = "Super Administrator" });
             manager.Create(new IdentityRole { Name = "Administrator" });
+            manager.Create(new IdentityRole { Name = "Researcher" });
+            manager.Create(new IdentityRole { Name = "Evaluator" });
 
             // Seed Users
             var userStore = new UserStore<User>(context);
             var userManager = new UserManager<User>(userStore);
 
+            var adeel = new User { Email = "adeel@uta.fi", UserName = "adeel" };
+            var cong = new User { Email = "cong@uta.fi", UserName = "cong" };
+            var eija = new User { Email = "eija@uta.fi", UserName = "eija" };
+            var ghassan = new User { Email = "ghassan@uta.fi", UserName = "ghassan" };
+            var juho = new User { Email = "juho@uta.fi", UserName = "juho" };
+            var liu = new User { Email = "liu@uta.fi", UserName = "Liu" };
+            var teemu = new User { Email = "teemu@uta.fi", UserName = "teemu" };
+            var toan = new User { Email = "toan@uta.fi", UserName = "toan" };
+
             var users = new List<User>
             { 
-                new User{Email = "admin@example.com",UserName = "admin"},
-                new User{Email = "uta@example.com",UserName = "uta"}
+                adeel, cong, eija, ghassan, juho, liu, teemu, toan
             };
 
             foreach (var user in users)
             {
                 userManager.Create(user, "DefaultPasscode!!");
-                userManager.AddToRole(user.Id, user.Email == "admin@exmplae.com" ? "Super Administrator" : "Administrator");
+                userManager.AddToRole(user.Id, "Researcher");
             }
 
+            userManager.AddToRole(eija.Id, "Administrator");
+
+            context.SaveChanges();
+
+            // Seed Evaluations
+
+            var xPhone = new Product { Name = "XPhone", Description = "This is the description for xPhone" };
+            var yPhone = new Product { Name = "YPhone", Description = "This is the description for yPhone" };
+            var zPhone = new Product { Name = "ZPhone", Description = "This is the description for zPhone" };
+
+            var products = new List<Product>
+            {
+                xPhone,
+                yPhone,
+                zPhone
+            };
+
+            products.ForEach(p => context.Products.Add(p));
             context.SaveChanges();
 
             // Seed Evaluations
             var evaluations = new List<Evaluation>
             {
-                new Evaluation{Name = "XPhone"},
-                new Evaluation{Name = "YPhone"},
-                new Evaluation{Name = "ZPhone"}
+                new Evaluation{Product = xPhone, Version="1.0.0"},
+                new Evaluation{Product = yPhone, Version="1.0.0"},
+                new Evaluation{Product = zPhone, Version="1.0.0"},
+                new Evaluation{Product = xPhone, Version="2.0.0"},
+                new Evaluation{Product = yPhone, Version="1.1.0"},
+                new Evaluation{Product = zPhone, Version="1.0.1"}
             };
 
             evaluations.ForEach(r => context.Evaluations.Add(r));
@@ -65,62 +95,44 @@ namespace RequirementGathering.DAL
             attributes.ForEach(s => context.Attributes.Add(s));
             context.SaveChanges();
 
-            // Seed Versions
-            var versions = new List<Version>
-            {
-                new Version{Number = "Robust Embodiment", Evaluation = evaluations[0]},
-                new Version{Number = "Long Operational Time", Evaluation = evaluations[1]},
-                new Version{Number = "Design", Evaluation = evaluations[2]},
-                new Version{Number = "Flashlight", Evaluation = evaluations[0]},
-                new Version{Number = "Belthook", Evaluation = evaluations[1]},
-                new Version{Number = "Radio Transmitter", Evaluation = evaluations[2]},
-                new Version{Number = "Bluetooth", Evaluation = evaluations[0]},
-                new Version{Number = "WiFi", Evaluation = evaluations[1]},
-                new Version{Number = "GPS", Evaluation = evaluations[2]},
-                new Version{Number = "HQ Camera", Evaluation = evaluations[0]}
-            };
-
-            versions.ForEach(v => context.Versions.Add(v));
-            context.SaveChanges();
-
             // Seed VersionAttribute
-            var versionAttributes = new List<VersionAttribute>();
+            var evaluationAttributes = new List<EvaluationAttribute>();
             System.Random random = new System.Random();
 
             for (int i = 0; i < 100; i++)
             {
-                var versionNumber = versions[random.Next(versions.Count)].Number;
+                var evaluationVersion = evaluations[random.Next(evaluations.Count)].Version;
                 var attributeName = attributes[random.Next(attributes.Count)].Name;
 
-                versionAttributes.Add(
-                    new VersionAttribute
+                evaluationAttributes.Add(
+                    new EvaluationAttribute
                     {
-                        VersionId = context.Versions.First(r => r.Number == versionNumber).Id,
+                        EvaluationId = context.Evaluations.First(r => r.Version == evaluationVersion).Id,
                         AttributeId = context.Attributes.First(a => a.Name == attributeName).Id
                     });
             };
 
-            versionAttributes.Distinct(new DistinctVersionttributeComparer())
+            evaluationAttributes.Distinct(new DistinctVersionttributeComparer())
                              .ToList()
-                             .ForEach(s => context.VersionAttributes.Add(s));
+                             .ForEach(s => context.EvaluationAttributes.Add(s));
 
             context.SaveChanges();
 
             // Seed Ratings
             var ratings = new List<Rating>();
 
-            versionAttributes = context.VersionAttributes.ToList();
+            evaluationAttributes = context.EvaluationAttributes.ToList();
 
             for (int i = 0; i < 500; i++)
             {
-                var versionAttribute = versionAttributes[random.Next(versionAttributes.Count)];
+                var evaluationAttribute = evaluationAttributes[random.Next(evaluationAttributes.Count)];
                 var user = users[random.Next(users.Count)];
 
                 ratings.Add(
                     new Rating
                     {
                         UserId = user.Id,
-                        VersionAttributeId = versionAttribute.Id,
+                        EvaluationAttributeId = evaluationAttribute.Id,
                         Value = random.Next(1, 5)
                     });
             };
@@ -130,19 +142,19 @@ namespace RequirementGathering.DAL
         }
     }
 
-    class DistinctVersionttributeComparer : IEqualityComparer<VersionAttribute>
+    class DistinctVersionttributeComparer : IEqualityComparer<EvaluationAttribute>
     {
 
-        public bool Equals(VersionAttribute x, VersionAttribute y)
+        public bool Equals(EvaluationAttribute x, EvaluationAttribute y)
         {
             return x.AttributeId == y.AttributeId &&
-                x.VersionId == y.VersionId;
+                   x.EvaluationId == y.EvaluationId;
         }
 
-        public int GetHashCode(VersionAttribute obj)
+        public int GetHashCode(EvaluationAttribute obj)
         {
-            return obj.VersionId.GetHashCode() ^
-                obj.AttributeId.GetHashCode();
+            return obj.EvaluationId.GetHashCode() ^
+                   obj.AttributeId.GetHashCode();
         }
     }
 }

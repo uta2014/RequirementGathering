@@ -5,8 +5,7 @@
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+    padding: 20px 15px;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -23,6 +22,6 @@ textarea {
     max-width: 280px;
 }
 
-.navbar-nav.nav{
+.navbar-nav.nav {
     margin-top: 11px;
 }
