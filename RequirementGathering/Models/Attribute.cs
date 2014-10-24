@@ -11,7 +11,6 @@ namespace RequirementGathering.Models
         [Required]
         public string Name { get; set; }
 
-        [Required]
         public bool IsActive { get; set; }
 
         public Attribute()

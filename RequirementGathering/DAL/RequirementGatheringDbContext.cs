@@ -13,6 +13,7 @@ namespace RequirementGathering.DAL
 
         public DbSet<Product> Products { get; set; }
         public DbSet<Evaluation> Evaluations { get; set; }
+        public DbSet<EvaluationUser> EvaluationUsers { get; set; }
         public DbSet<Attribute> Attributes { get; set; }
         public DbSet<EvaluationAttribute> EvaluationAttributes { get; set; }
         public DbSet<Rating> Ratings { get; set; }
@@ -21,6 +22,10 @@ namespace RequirementGathering.DAL
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            modelBuilder.Entity<Rating>()
+                .HasRequired(c => c.EvaluationAttribute1)
+                .WithMany()
+                .WillCascadeOnDelete(false);
         }
 
         public static RequirementGatheringDbContext Create()

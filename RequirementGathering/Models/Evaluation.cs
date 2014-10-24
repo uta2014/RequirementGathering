@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 
 namespace RequirementGathering.Models
@@ -7,10 +8,12 @@ namespace RequirementGathering.Models
     public class Evaluation
     {
         public int Id { get; set; }
+
         public string Version { get; set; }
+
         [DataType(DataType.MultilineText)]
         public string Description { get; set; }
-        [Required]
+
         public bool IsActive { get; set; }
 
         public Evaluation()
@@ -23,8 +26,12 @@ namespace RequirementGathering.Models
         public int ProductId { get; set; }
         public virtual Product Product { get; set; }
 
-        public int EvaluationAttributeId { get; set; }
         public virtual ICollection<EvaluationAttribute> EvaluationAttributes { get; set; }
+        public virtual ICollection<EvaluationUser> EvaluationUsers { get; set; }
+
+        public string OwnerId { get; set; }
+        [ForeignKey("OwnerId")]
+        public virtual User Owner { get; set; }
 
         #endregion
 
@@ -32,6 +39,12 @@ namespace RequirementGathering.Models
         {
             return EvaluationAttributes.Select(ea => ea.Attribute)
                                        .ToList();
+        }
+
+        public ICollection<User> Users()
+        {
+            return EvaluationUsers.Select(eu => eu.User)
+                                  .ToList();
         }
     }
 }
