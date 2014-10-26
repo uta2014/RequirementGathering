@@ -63,6 +63,20 @@ namespace RequirementGathering.DAL
 
             result = context.SaveChangesAsync().Result;
 
+            var evaluators = new List<User>();
+            for (var i = 1; i <= 20; i++)
+            {
+                var e = new User { Email = "evaluator" + i + "@uta.fi", UserName = "evaluator" + i };
+                e.PasswordHash = hasher.HashPassword("DefaultPasscode123!!");
+                e.EmailConfirmed = true;
+                e.SecurityStamp = Guid.NewGuid().ToString();
+                e.Roles.Add(new IdentityUserRole { RoleId = evaluatorRole.Id, UserId = e.Id });
+                evaluators.Add(e);
+            }
+
+
+            context.SaveChanges();
+
             // Seed Evaluations
 
             var xPhone = new Product { Name = "XPhone", Description = "This is the description for xPhone", OwnerId = eija.Id };
@@ -134,6 +148,43 @@ namespace RequirementGathering.DAL
                            .ForEach(u => context.EvaluationUsers.Add(u));
 
             result = context.SaveChangesAsync().Result;
+
+            // Seed VersionAttribute
+            var evaluationAttributes = new List<EvaluationAttribute>();
+            random = new System.Random();
+
+            for (int i = 0; i < 100; i++)
+            {
+                var evaluationVersion = evaluations[random.Next(evaluations.Count - 1)].Version;
+                var attributeName = attributes[random.Next(attributes.Count - 1)].Name;
+
+                evaluationAttributes.Add(
+                    new EvaluationAttribute
+                    {
+                        EvaluationId = context.Evaluations.First(r => r.Version == evaluationVersion).Id,
+                        AttributeId = context.Attributes.First(a => a.Name == attributeName).Id
+                    });
+            };
+
+            evaluationAttributes.Distinct(new DistinctVersionAttributeComparer())
+                             .ToList()
+                             .ForEach(s => context.EvaluationAttributes.Add(s));
+
+            result = context.SaveChangesAsync().Result;
+
+
+            //Seed EvaluationInvitedUsers
+            foreach (var eva in evaluations)
+            {
+                foreach (var ivtuser in evaluators)
+                {
+                    context.EvaluationUsers.Add(
+                        new EvaluationUser { UserId = ivtuser.Id, EvaluationId = eva.Id });
+                }
+            }
+
+            context.SaveChanges();
+
 
             // Seed Ratings
             var ratings = new List<Rating>();
