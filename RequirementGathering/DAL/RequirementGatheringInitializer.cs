@@ -49,9 +49,9 @@ namespace RequirementGathering.DAL
 
             // Seed Evaluations
 
-            var xPhone = new Product { Name = "XPhone", Description = "This is the description for xPhone" };
-            var yPhone = new Product { Name = "YPhone", Description = "This is the description for yPhone" };
-            var zPhone = new Product { Name = "ZPhone", Description = "This is the description for zPhone" };
+            var xPhone = new Product { Name = "XPhone", Description = "This is the description for xPhone", Owner = eija };
+            var yPhone = new Product { Name = "YPhone", Description = "This is the description for yPhone", Owner = eija };
+            var zPhone = new Product { Name = "ZPhone", Description = "This is the description for zPhone", Owner = eija };
 
             var products = new List<Product>
             {
@@ -66,12 +66,12 @@ namespace RequirementGathering.DAL
             // Seed Evaluations
             var evaluations = new List<Evaluation>
             {
-                new Evaluation{Product = xPhone, Version="1.0.0"},
-                new Evaluation{Product = yPhone, Version="1.0.0"},
-                new Evaluation{Product = zPhone, Version="1.0.0"},
-                new Evaluation{Product = xPhone, Version="2.0.0"},
-                new Evaluation{Product = yPhone, Version="1.1.0"},
-                new Evaluation{Product = zPhone, Version="1.0.1"}
+                new Evaluation{Product = xPhone, Version = "1.0.0", Owner = eija},
+                new Evaluation{Product = yPhone, Version = "1.0.0", Owner = eija},
+                new Evaluation{Product = zPhone, Version = "1.0.0", Owner = eija},
+                new Evaluation{Product = xPhone, Version = "2.0.0", Owner = eija},
+                new Evaluation{Product = yPhone, Version = "1.1.0", Owner = eija},
+                new Evaluation{Product = zPhone, Version = "1.0.1", Owner = eija}
             };
 
             evaluations.ForEach(r => context.Evaluations.Add(r));
@@ -125,15 +125,19 @@ namespace RequirementGathering.DAL
 
             for (int i = 0; i < 500; i++)
             {
-                var evaluationAttribute = evaluationAttributes[random.Next(evaluationAttributes.Count)];
+                var attributesCount = evaluationAttributes.Count;
+                var evaluationAttribute1 = evaluationAttributes[random.Next(attributesCount)];
+                var evaluationAttribute2 = evaluationAttributes[random.Next(attributesCount)];
                 var user = users[random.Next(users.Count)];
 
                 ratings.Add(
                     new Rating
                     {
                         UserId = user.Id,
-                        EvaluationAttributeId = evaluationAttribute.Id,
-                        Value = random.Next(1, 5)
+                        EvaluationAttributeId1 = evaluationAttribute1.Id,
+                        EvaluationAttributeId2 = evaluationAttribute2.Id,
+                        Value1 = random.Next(1, 5),
+                        Value2 = random.Next(1, 5)
                     });
             };
 

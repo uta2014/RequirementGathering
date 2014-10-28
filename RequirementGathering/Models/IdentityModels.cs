@@ -1,4 +1,6 @@
-﻿using System.Security.Claims;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -16,6 +18,22 @@ namespace RequirementGathering.Models
         public string PostalCode { get; set; }
         public string Country { get; set; }
         public string StreetAddress { get; set; }
+
+        #region Navigation Fields
+
+        public virtual ICollection<Rating> Ratings { get; set; }
+        public virtual ICollection<EvaluationUser> EvaluationUsers { get; set; }
+
+        public virtual ICollection<Product> Products { get; set; }
+        public virtual ICollection<Evaluation> Evaluations { get; set; }
+
+        #endregion
+
+        public ICollection<Evaluation> InvitedEvaluations()
+        {
+            return EvaluationUsers.Select(eu => eu.Evaluation)
+                                  .ToList();
+        }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)
         {
