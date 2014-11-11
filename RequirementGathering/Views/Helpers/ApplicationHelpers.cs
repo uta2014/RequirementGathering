@@ -2,7 +2,6 @@
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
 using RequirementGathering.Extensions;
-using RequirementGathering.Models;
 
 namespace RequirementGathering.Views.Helpers
 {
@@ -35,11 +34,6 @@ namespace RequirementGathering.Views.Helpers
             }
 
             return breadcrumb.Append("</div>").ToString();
-        }
-
-        public static string GetTranslation<T>(string id, string propertyName) where T : class
-        {
-            return Resource.GetPropertyValue<T>(id, propertyName);
         }
     }
 }

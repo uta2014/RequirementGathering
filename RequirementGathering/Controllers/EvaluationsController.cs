@@ -2,29 +2,29 @@
 using System.Net;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using RequirementGathering.DAL;
 using RequirementGathering.Models;
 
 namespace RequirementGathering.Controllers
 {
-    [Authorize]
-    public class EvaluationsController : BaseController
+    public class EvaluationsController : Controller
     {
+        private RequirementGatheringDbContext db = new RequirementGatheringDbContext();
+
         // GET: Evaluations
-        [Authorize(Roles = "Researcher,Administrator,SuperAdministrator")]
         public async Task<ActionResult> Index()
         {
-            return View(await RgDbContext.Evaluations.ToListAsync());
+            return View(await db.Evaluations.ToListAsync());
         }
 
         // GET: Evaluations/Details/5
-        [Authorize(Roles = "Researcher,Administrator,SuperAdministrator")]
         public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Evaluation evaluation = await RgDbContext.Evaluations.FindAsync(id);
+            Evaluation evaluation = await db.Evaluations.FindAsync(id);
             if (evaluation == null)
             {
                 return HttpNotFound();
@@ -33,10 +33,8 @@ namespace RequirementGathering.Controllers
         }
 
         // GET: Evaluations/Create
-        [Authorize(Roles = "Researcher,Administrator,SuperAdministrator")]
         public ActionResult Create()
         {
-            ViewBag.ProductId = new SelectList(RgDbContext.Products, "Id", "Name");
             return View(new Evaluation());
         }
 
@@ -45,33 +43,30 @@ namespace RequirementGathering.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Researcher,Administrator,SuperAdministrator")]
-        public async Task<ActionResult> Create([Bind(Include = "Id,Name,Version,Description,IsActive,ProductId")] Evaluation evaluation)
+        public async Task<ActionResult> Create([Bind(Include = "Id,Name,Description,IsActive")] Evaluation evaluation)
         {
             if (ModelState.IsValid)
             {
-                RgDbContext.Evaluations.Add(evaluation);
-                await RgDbContext.SaveChangesAsync();
+                db.Evaluations.Add(evaluation);
+                await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ProductId = new SelectList(RgDbContext.Products, "Id", "Name", evaluation.ProductId);
             return View(evaluation);
         }
 
         // GET: Evaluations/Edit/5
-        [Authorize(Roles = "Researcher,Administrator,SuperAdministrator")]
         public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
+            {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-
-            Evaluation evaluation = await RgDbContext.Evaluations.FindAsync(id);
-
+            }
+            Evaluation evaluation = await db.Evaluations.FindAsync(id);
             if (evaluation == null)
+            {
                 return HttpNotFound();
-
-            ViewBag.ProductId = new SelectList(RgDbContext.Products, "Id", "Name", evaluation.ProductId);
+            }
             return View(evaluation);
         }
 
@@ -80,29 +75,25 @@ namespace RequirementGathering.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Researcher,Administrator,SuperAdministrator")]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,Name,Version,Description,IsActive,ProductId")] Evaluation evaluation)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,Name,Description,IsActive")] Evaluation evaluation)
         {
             if (ModelState.IsValid)
             {
-                RgDbContext.Entry(evaluation).State = EntityState.Modified;
-                await RgDbContext.SaveChangesAsync();
+                db.Entry(evaluation).State = EntityState.Modified;
+                await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-
-            ViewBag.ProductId = new SelectList(RgDbContext.Products, "ProductId", "Name", evaluation.ProductId);
             return View(evaluation);
         }
 
         // GET: Evaluations/Delete/5
-        [Authorize(Roles = "Researcher,Administrator,SuperAdministrator")]
         public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Evaluation evaluation = await RgDbContext.Evaluations.FindAsync(id);
+            Evaluation evaluation = await db.Evaluations.FindAsync(id);
             if (evaluation == null)
             {
                 return HttpNotFound();
@@ -113,12 +104,11 @@ namespace RequirementGathering.Controllers
         // POST: Evaluations/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Researcher,Administrator,SuperAdministrator")]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Evaluation evaluation = await RgDbContext.Evaluations.FindAsync(id);
-            RgDbContext.Evaluations.Remove(evaluation);
-            await RgDbContext.SaveChangesAsync();
+            Evaluation evaluation = await db.Evaluations.FindAsync(id);
+            db.Evaluations.Remove(evaluation);
+            await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
 
@@ -126,7 +116,7 @@ namespace RequirementGathering.Controllers
         {
             if (disposing)
             {
-                RgDbContext.Dispose();
+                db.Dispose();
             }
             base.Dispose(disposing);
         }
