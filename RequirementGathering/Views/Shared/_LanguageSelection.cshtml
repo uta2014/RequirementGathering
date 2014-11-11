@@ -1,0 +1,18 @@
+﻿@{
+    var culture = System.Threading.Thread.CurrentThread.CurrentUICulture;
+}
+@helper selected(string culture)
+{
+    @:/@culture/@ViewContext.RouteData.Values["controller"]/@ViewContext.RouteData.Values["action"]
+}
+
+<ul class="nav navbar-nav navbar-right">
+    <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">@culture.Parent.NativeName (@culture.Name) <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+            <li><a href="@selected("en-US")">English</a></li>
+            <li><a href="@selected("fi-FI")">Finnish</a></li>
+            <li><a href="@selected("nl-NL")">Dutch</a></li>
+        </ul>
+    </li>
+</ul>

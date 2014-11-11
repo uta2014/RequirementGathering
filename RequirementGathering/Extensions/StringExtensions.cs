@@ -7,7 +7,7 @@ namespace RequirementGathering.Extensions
     {
         public static string Titleize(this string text)
         {
-            return CultureInfo.CurrentCulture.TextInfo.ToTitleCase(text).ToSentenceCase();
+            return CultureInfo.CurrentCulture.TextInfo.ToTitleCase(text.ToSentenceCase());
         }
 
         public static string ToSentenceCase(this string str)
