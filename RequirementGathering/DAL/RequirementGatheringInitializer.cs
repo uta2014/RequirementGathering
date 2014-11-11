@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using RequirementGathering.Models;
+using Attribute = RequirementGathering.Models.Attribute;
 
 namespace RequirementGathering.DAL
 {
@@ -11,13 +13,20 @@ namespace RequirementGathering.DAL
     {
         protected override void Seed(RequirementGatheringDbContext context)
         {
+            int result;
+
             // Seed Roles
             var store = new RoleStore<IdentityRole>(context);
             var manager = new RoleManager<IdentityRole>(store);
+            var suRole = new IdentityRole { Name = "Super Administrator" };
+            var adminRole = new IdentityRole { Name = "Administrator" };
+            var researcherRole = new IdentityRole { Name = "Researcher" };
+            var evaluatorRole = new IdentityRole { Name = "Evaluator" };
 
-            manager.Create(new IdentityRole { Name = "Administrator" });
-            manager.Create(new IdentityRole { Name = "Researcher" });
-            manager.Create(new IdentityRole { Name = "Evaluator" });
+            context.Roles.Add(suRole);
+            context.Roles.Add(adminRole);
+            context.Roles.Add(researcherRole);
+            context.Roles.Add(evaluatorRole);
 
             // Seed Users
             var userStore = new UserStore<User>(context);
@@ -33,25 +42,35 @@ namespace RequirementGathering.DAL
             var toan = new User { Email = "toan@uta.fi", UserName = "toan" };
 
             var users = new List<User>
-            { 
+            {
                 adeel, cong, eija, ghassan, juho, liu, teemu, toan
             };
 
+            var hasher = new PasswordHasher();
+
             foreach (var user in users)
             {
-                userManager.Create(user, "DefaultPasscode!!");
-                userManager.AddToRole(user.Id, "Researcher");
+                user.PasswordHash = hasher.HashPassword("DefaultPasscode!!");
+                user.EmailConfirmed = true;
+                user.SecurityStamp = Guid.NewGuid().ToString();
+                user.Roles.Add(new IdentityUserRole { RoleId = researcherRole.Id, UserId = user.Id });
             }
 
-            userManager.AddToRole(eija.Id, "Administrator");
+            eija.Roles.Add(new IdentityUserRole { RoleId = suRole.Id, UserId = eija.Id });
+            teemu.Roles.Add(new IdentityUserRole { RoleId = adminRole.Id, UserId = teemu.Id });
 
-            context.SaveChanges();
+            foreach (var user in users)
+            {
+                context.Users.Add(user);
+            }
+
+            result = context.SaveChangesAsync().Result;
 
             // Seed Evaluations
 
-            var xPhone = new Product { Name = "XPhone", Description = "This is the description for xPhone", Owner = eija };
-            var yPhone = new Product { Name = "YPhone", Description = "This is the description for yPhone", Owner = eija };
-            var zPhone = new Product { Name = "ZPhone", Description = "This is the description for zPhone", Owner = eija };
+            var xPhone = new Product { Name = "XPhone", Description = "This is the description for xPhone", OwnerId = eija.Id };
+            var yPhone = new Product { Name = "YPhone", Description = "This is the description for yPhone", OwnerId = eija.Id };
+            var zPhone = new Product { Name = "ZPhone", Description = "This is the description for zPhone", OwnerId = eija.Id };
 
             var products = new List<Product>
             {
@@ -61,7 +80,7 @@ namespace RequirementGathering.DAL
             };
 
             products.ForEach(p => context.Products.Add(p));
-            context.SaveChanges();
+            result = context.SaveChangesAsync().Result;
 
             // Seed Evaluations
             var evaluations = new List<Evaluation>
@@ -75,7 +94,7 @@ namespace RequirementGathering.DAL
             };
 
             evaluations.ForEach(r => context.Evaluations.Add(r));
-            context.SaveChanges();
+            result = context.SaveChangesAsync().Result;
 
             // Seed attributes
             var attributes = new List<Attribute>
@@ -93,7 +112,7 @@ namespace RequirementGathering.DAL
             };
 
             attributes.ForEach(s => context.Attributes.Add(s));
-            context.SaveChanges();
+            result = context.SaveChangesAsync().Result;
 
             // Seed VersionAttribute
             var evaluationAttributes = new List<EvaluationAttribute>();
@@ -116,7 +135,7 @@ namespace RequirementGathering.DAL
                              .ToList()
                              .ForEach(s => context.EvaluationAttributes.Add(s));
 
-            context.SaveChanges();
+            result = context.SaveChangesAsync().Result;
 
             // Seed Ratings
             var ratings = new List<Rating>();
@@ -142,7 +161,9 @@ namespace RequirementGathering.DAL
             };
 
             ratings.ForEach(r => context.Ratings.Add(r));
-            context.SaveChanges();
+            result = context.SaveChangesAsync().Result;
+
+            base.Seed(context);
         }
     }
 

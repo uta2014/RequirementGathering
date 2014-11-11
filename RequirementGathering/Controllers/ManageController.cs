@@ -10,7 +10,7 @@ using RequirementGathering.Models;
 namespace RequirementGathering.Controllers
 {
     [Authorize]
-    public class ManageController : Controller
+    public class ManageController : BaseController
     {
         public ManageController()
         {

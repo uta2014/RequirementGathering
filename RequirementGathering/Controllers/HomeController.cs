@@ -2,7 +2,7 @@
 
 namespace RequirementGathering.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         public ActionResult Index()
         {
@@ -21,6 +21,14 @@ namespace RequirementGathering.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+
+        [Authorize]
+        public ActionResult Dashboard()
+        {
+            ViewBag.Message = "Your dashboard page.";
+
+            return View("Dashboard", "~/Views/Shared/_AuthorizedLayout.cshtml");
         }
     }
 }
