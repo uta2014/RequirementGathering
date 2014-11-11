@@ -2,7 +2,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
-using RequirementGathering.Attributes;
 
 namespace RequirementGathering.Models
 {
@@ -12,10 +11,8 @@ namespace RequirementGathering.Models
         public int Id { get; set; }
 
         [Required]
-        [Translatable]
         public string Name { get; set; }
 
-        [Translatable]
         [DataType(DataType.MultilineText)]
         public string Description { get; set; }
 

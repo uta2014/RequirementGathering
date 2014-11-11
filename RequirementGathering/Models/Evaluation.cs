@@ -2,7 +2,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
-using RequirementGathering.Attributes;
 
 namespace RequirementGathering.Models
 {
@@ -12,7 +11,6 @@ namespace RequirementGathering.Models
 
         public string Version { get; set; }
 
-        [Translatable]
         [DataType(DataType.MultilineText)]
         public string Description { get; set; }
 
@@ -24,7 +22,7 @@ namespace RequirementGathering.Models
         }
 
         #region Navigation Fields
-        [Required]
+
         public int ProductId { get; set; }
         public virtual Product Product { get; set; }
 

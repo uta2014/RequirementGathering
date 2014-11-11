@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -11,10 +10,6 @@ namespace RequirementGathering.Models
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class User : IdentityUser
     {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string OrganizationName { get; set; }
-        public string Designation { get; set; }
         public string CompanyName { get; set; }
         public string Street { get; set; }
         public string District { get; set; }
@@ -46,11 +41,6 @@ namespace RequirementGathering.Models
             var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
             // Add custom user claims here
             return userIdentity;
-        }
-
-        public virtual string FullName
-        {
-            get { return string.Format(CultureInfo.CurrentCulture, "{0} {1}", FirstName, LastName); }
         }
     }
 }
