@@ -34,9 +34,20 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
+<<<<<<< HEAD
                     <li class="active">
                         @Html.ActionLink("Dashboard", "Dashboard", "Home")
                     </li>
+=======
+                    @if (this.User.IsInRole("Researcher")
+                        || this.User.IsInRole("Administrator")
+                        || this.User.IsInRole("Evaluator"))
+                    {
+                        <li class="active">
+                            @Html.ActionLink("Dashboard", "Dashboard", "Home")
+                        </li>
+                    }
+>>>>>>> Changed Controllers;
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>

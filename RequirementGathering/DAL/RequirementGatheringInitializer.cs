@@ -66,10 +66,9 @@ namespace RequirementGathering.DAL
             var evaluators = new List<User>();
             for (var i = 1; i <= 20; i++)
             {
+                
                 var e = new User { Email = "evaluator" + i + "@uta.fi", UserName = "evaluator" + i };
                 e.PasswordHash = hasher.HashPassword("DefaultPasscode123!!");
-                e.EmailConfirmed = true;
-                e.SecurityStamp = Guid.NewGuid().ToString();
                 e.Roles.Add(new IdentityUserRole { RoleId = evaluatorRole.Id, UserId = e.Id });
                 evaluators.Add(e);
             }

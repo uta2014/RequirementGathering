@@ -14,6 +14,10 @@
                 @Html.ActionLink("Manage Products", "Index", "Products", null, new { @class = "list-group-item" })
                 @Html.ActionLink("Manage Evaluation", "Index", "Evaluations", null, new { @class = "list-group-item" })
             }
+            @if (new[] { "Evaluator" }.Any(role => this.User.IsInRole(role)))
+            {
+                Response.Redirect(Url.Action("EvaluatorDashboard", "Evaluations", new { @class = "list-group-item" }));
+            }
 
             @Html.ActionLink("Notifications", "Notifications", "Home", null, new { @class = "list-group-item" })
             @Html.ActionLink("Change Password", "ChangePassword", "Manage", null, new { @class = "list-group-item" })

@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 ﻿using System.Threading.Tasks;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using RequirementGathering.Models;
+=======
+﻿using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
+>>>>>>> Changed Controllers;
 
 namespace RequirementGathering.Controllers
 {
@@ -27,6 +34,7 @@ namespace RequirementGathering.Controllers
         }
 
         [Authorize]
+<<<<<<< HEAD
         public async Task<ActionResult> Dashboard()
         {
             ViewBag.Message = "Your dashboard page.";
@@ -35,6 +43,12 @@ namespace RequirementGathering.Controllers
             user.UserRoles = string.Join(", ", UserManager.GetRoles(user.Id));
 
             return View("Dashboard", "~/Views/Shared/_AuthorizedLayout.cshtml", user);
+=======
+        public ActionResult Dashboard(string userEmail)
+        {
+            ViewBag.Message = "Your dashboard page.";
+            return View("Dashboard", "~/Views/Shared/_AuthorizedLayout.cshtml");
+>>>>>>> Changed Controllers;
         }
     }
 }
