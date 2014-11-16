@@ -37,7 +37,15 @@
                     @if (this.User.IsInRole("Researcher"))
                     {
                         <li class="active">
+                            @if (this.User.IsInRole("Researcher"))
+                            {
+                                @Html.ActionLink("Dashboard","Index","Researcher")
+                            }
+                            
+                            else
+                            { 
                             @Html.ActionLink("Dashboard", "Dashboard", "Home")
+                            }
                         </li>
                     }
                     <li>@Html.ActionLink("About", "About", "Home")</li>

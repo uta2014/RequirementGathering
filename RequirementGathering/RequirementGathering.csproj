@@ -161,10 +161,12 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\EvaluationAttributesController.cs" />
     <Compile Include="Controllers\EvaluationsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\ResearcherController.cs" />
     <Compile Include="DAL\RequirementGatheringInitializer.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Global.asax.cs">
@@ -280,6 +282,12 @@
     <Content Include="Views\Products\Index.cshtml" />
     <Content Include="Views\Evaluations\_CreateOrEdit.cshtml" />
     <Content Include="Views\Products\_CreateOrEdit.cshtml" />
+    <Content Include="Views\Researcher\Index.cshtml" />
+    <Content Include="Views\EvaluationAttributes\Create.cshtml" />
+    <Content Include="Views\EvaluationAttributes\Delete.cshtml" />
+    <Content Include="Views\EvaluationAttributes\Details.cshtml" />
+    <Content Include="Views\EvaluationAttributes\Edit.cshtml" />
+    <Content Include="Views\EvaluationAttributes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

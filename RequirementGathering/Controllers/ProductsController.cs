@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using RequirementGathering.Models;
+using System.Linq;
 
 namespace RequirementGathering.Controllers
 {
@@ -12,10 +13,20 @@ namespace RequirementGathering.Controllers
     {
         // GET: Products
         [Authorize(Roles = "Researcher,Administrator,SuperAdministrator")]
-        public async Task<ActionResult> Index()
+        public async Task<ActionResult> Index(string searchString)
         {
+            var productss = from m in RgDbContext.Products select m;
+            var ky = productss.Where(m => m.Name.Equals(searchString)).FirstOrDefault();
             var products = RgDbContext.Products.Include(p => p.Owner);
-            return View(await products.ToListAsync());
+            if (searchString != "" && searchString != null)
+            {
+                products = RgDbContext.Products.Include(p => p.Owner).Where(m => m.Id.Equals(ky.Id));
+                return View(await products.ToListAsync());
+            }
+            else
+            {
+                return View(await products.ToListAsync());
+            }
         }
 
         // GET: Products/Details/5

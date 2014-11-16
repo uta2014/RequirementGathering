@@ -5,7 +5,11 @@
 }
 
 <h2>Index</h2>
-
+@using (Html.BeginForm("Index", "Products"))
+{
+    @Html.Label("Product Name :") @Html.TextBox("searchString")
+    <input type="submit" value="Search"/>
+}
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
