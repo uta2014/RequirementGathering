@@ -49,9 +49,6 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.IsActive)
                     </td>
-                    <td>
-                        @Html.ActionLink(@Resources.DetailBtn, "Details", new { id = item.Id })
-                    </td>
                     @{
                 if (item.IsActive == true)
                 {
