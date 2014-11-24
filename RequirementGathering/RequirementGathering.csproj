@@ -280,6 +280,7 @@
     <Content Include="Views\Products\Index.cshtml" />
     <Content Include="Views\Evaluations\_CreateOrEdit.cshtml" />
     <Content Include="Views\Products\_CreateOrEdit.cshtml" />
+    <Content Include="Views\Account\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

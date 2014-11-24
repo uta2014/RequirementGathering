@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
 using System.Security.Claims;
@@ -11,17 +12,34 @@ namespace RequirementGathering.Models
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class User : IdentityUser
     {
+        [DisplayName("First Name")]
         public string FirstName { get; set; }
+
+        [DisplayName("Last Name")]
         public string LastName { get; set; }
+
+        [DisplayName("Organization Name")]
         public string OrganizationName { get; set; }
+
         public string Designation { get; set; }
+
+        [DisplayName("Company Name")]
         public string CompanyName { get; set; }
+
         public string Street { get; set; }
+
         public string District { get; set; }
+
         public string City { get; set; }
+
         public string Province { get; set; }
+
+        [DisplayName("Postal Code")]
         public string PostalCode { get; set; }
+
         public string Country { get; set; }
+
+        [DisplayName("Street Address")]
         public string StreetAddress { get; set; }
 
         #region Navigation Fields
@@ -48,9 +66,13 @@ namespace RequirementGathering.Models
             return userIdentity;
         }
 
+        [DisplayName("Name")]
         public virtual string FullName
         {
             get { return string.Format(CultureInfo.CurrentCulture, "{0} {1}", FirstName, LastName); }
         }
+
+        [DisplayName("Roles")]
+        public virtual string UserRoles { get; set; }
     }
 }

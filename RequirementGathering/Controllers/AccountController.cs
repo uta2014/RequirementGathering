@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System.Data.Entity;
+using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -12,28 +14,24 @@ namespace RequirementGathering.Controllers
     [Authorize]
     public class AccountController : BaseController
     {
-        private ApplicationUserManager _userManager;
-
         public AccountController()
+        { }
+
+        // GET: Users
+        [Authorize(Roles = "Administrator,Super Administrator")]
+        public async Task<ActionResult> Index()
         {
+            var usersList = await (RgDbContext.Users as DbSet<User>).ToListAsync();
+
+            usersList.ForEach(u => u.UserRoles = string.Join(", ", UserManager.GetRoles(u.Id)));
+
+            return View(usersList);
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+            : base(userManager)
         {
-            UserManager = userManager;
             SignInManager = signInManager;
-        }
-
-        public ApplicationUserManager UserManager
-        {
-            get
-            {
-                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            }
-            private set
-            {
-                _userManager = value;
-            }
         }
 
         //
@@ -41,6 +39,9 @@ namespace RequirementGathering.Controllers
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
+            if (User.Identity.GetUserId() != null)
+                return Redirect("/" + Thread.CurrentThread.CurrentUICulture + "/Home/Dashboard");
+
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }

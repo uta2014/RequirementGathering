@@ -11,7 +11,7 @@ namespace RequirementGathering.Controllers
     public class ProductsController : BaseController
     {
         // GET: Products
-        [Authorize(Roles = "Researcher,Administrator,SuperAdministrator")]
+        [Authorize(Roles = "Researcher,Administrator,Super Administrator")]
         public async Task<ActionResult> Index()
         {
             var products = RgDbContext.Products.Include(p => p.Owner);
@@ -19,7 +19,7 @@ namespace RequirementGathering.Controllers
         }
 
         // GET: Products/Details/5
-        [Authorize(Roles = "Researcher,Administrator,SuperAdministrator")]
+        [Authorize(Roles = "Researcher,Administrator,Super Administrator")]
         public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
@@ -34,7 +34,7 @@ namespace RequirementGathering.Controllers
         }
 
         // GET: Products/Create
-        [Authorize(Roles = "Researcher,Administrator,SuperAdministrator")]
+        [Authorize(Roles = "Researcher,Administrator,Super Administrator")]
         public async Task<ActionResult> Create()
         {
             return View(new Product() { Owner = await UserManager.FindByIdAsync(User.Identity.GetUserId()) });
@@ -45,7 +45,7 @@ namespace RequirementGathering.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Researcher,Administrator,SuperAdministrator")]
+        [Authorize(Roles = "Researcher,Administrator,Super Administrator")]
         public async Task<ActionResult> Create([Bind(Include = "Id,Name,Description,IsActive")] Product product)
         {
             if (ModelState.IsValid)
@@ -60,7 +60,7 @@ namespace RequirementGathering.Controllers
         }
 
         // GET: Products/Edit/5
-        [Authorize(Roles = "Researcher,Administrator,SuperAdministrator")]
+        [Authorize(Roles = "Researcher,Administrator,Super Administrator")]
         public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
@@ -79,7 +79,7 @@ namespace RequirementGathering.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Researcher,Administrator,SuperAdministrator")]
+        [Authorize(Roles = "Researcher,Administrator,Super Administrator")]
         public async Task<ActionResult> Edit([Bind(Include = "Id,Name,Description,IsActive")] Product product)
         {
             if (ModelState.IsValid)
@@ -93,7 +93,7 @@ namespace RequirementGathering.Controllers
         }
 
         // GET: Products/Delete/5
-        [Authorize(Roles = "Researcher,Administrator,SuperAdministrator")]
+        [Authorize(Roles = "Researcher,Administrator,Super Administrator")]
         public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
@@ -110,7 +110,7 @@ namespace RequirementGathering.Controllers
         // POST: Products/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Researcher,Administrator,SuperAdministrator")]
+        [Authorize(Roles = "Researcher,Administrator,Super Administrator")]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
             Product product = await RgDbContext.Products.FindAsync(id);
