@@ -1,0 +1,47 @@
+﻿@model RegisterViewModel
+
+<div class="form-group">
+    @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Roles, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @foreach (var role in new[] { "Administrator", "Researcher" })
+        {
+            // Only the super admin can create administrators
+            // A simple administrator can only create researcher
+            if (!User.IsInRole("Super Administrator") && role == "Administrator")
+            {
+                continue;
+            }
+
+            var id = "id -" + role.ToLowerInvariant().Replace(' ', '-');
+            var selected = Model != null && Model.Roles.Contains(role) ? "checked='checked'" : "";
+
+            <label for="@id">@role</label>
+            <input type="checkbox" id="@id" name="Roles" value="@role" class="checkbox" @selected />
+            @Html.ValidationMessageFor(model => model.Roles, "", new { @class = "text-danger" })
+        }
+    </div>
+</div>

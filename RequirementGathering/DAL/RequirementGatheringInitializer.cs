@@ -50,7 +50,7 @@ namespace RequirementGathering.DAL
 
             foreach (var user in users)
             {
-                user.PasswordHash = hasher.HashPassword("DefaultPasscode!!");
+                user.PasswordHash = hasher.HashPassword("DefaultPasscode123!!");
                 user.EmailConfirmed = true;
                 user.SecurityStamp = Guid.NewGuid().ToString();
                 user.Roles.Add(new IdentityUserRole { RoleId = researcherRole.Id, UserId = user.Id });

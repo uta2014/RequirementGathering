@@ -1,5 +1,6 @@
 ﻿using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
@@ -26,6 +27,76 @@ namespace RequirementGathering.Controllers
             usersList.ForEach(u => u.UserRoles = string.Join(", ", UserManager.GetRoles(u.Id)));
 
             return View(usersList);
+        }
+
+        //
+        // GET: /Account/Edit
+        [Authorize(Roles = "Administrators,Super Administrator")]
+        public async Task<ActionResult> Edit(string id)
+        {
+            if (string.IsNullOrEmpty(id))
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            User user = await (RgDbContext.Users as DbSet<User>).FindAsync(id);
+
+            if (user == null)
+                return HttpNotFound();
+
+            RegisterViewModel model = new RegisterViewModel
+            {
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Email = user.Email,
+                Id = id,
+                Roles = UserManager.GetRoles(user.Id).ToList()
+            };
+
+            return View(model);
+        }
+
+        //
+        // POST: /Account/Edit
+        [HttpPost]
+        [Authorize(Roles = "Administrators,Super Administrator")]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Edit([Bind(Include = "Id,Email,FirstName,LastName,Roles")] RegisterViewModel model)
+        {
+            // if (ModelState.IsValid)
+
+            if (model.Roles.Contains("Super Administrator"))
+                ModelState.AddModelError("", "You cannot create a user with role: Super Administrator");
+
+            else if (model.Roles.Contains("Administrator") && !User.IsInRole("Super Administrator"))
+                ModelState.AddModelError("", "You cannot create a user with role: Administrator");
+
+            else if (model.Roles.Count == 0 || !new[] { "Administrator", "Researcher" }.Any(r => model.Roles.Any(rs => rs == r)))
+                ModelState.AddModelError("", "You need to assign at least one role");
+
+            else
+            {
+                var user = await UserManager.FindByIdAsync(model.Id);
+                user.Email = model.Email;
+                user.FirstName = model.FirstName;
+                user.LastName = model.LastName;
+
+                var result = await UserManager.UpdateAsync(user);
+
+                if (result.Succeeded)
+                {
+                    await UserManager.RemoveFromRoleAsync(user.Id, "Administrator");
+                    await UserManager.RemoveFromRoleAsync(user.Id, "Researcher");
+
+                    foreach (var role in model.Roles)
+                    {
+                        UserManager.AddToRole(user.Id, role);
+                    }
+
+                    return RedirectToAction("Index", "Account");
+                }
+                AddErrors(result);
+            }
+            // If we got this far, something failed, redisplay form
+            return View(model);
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
@@ -143,8 +214,7 @@ namespace RequirementGathering.Controllers
 
         //
         // GET: /Account/Register
-        //[Authorize(Roles="Administrators")]
-        [AllowAnonymous]
+        [Authorize(Roles = "Administrators,Super Administrator")]
         public ActionResult Register()
         {
             return View();
@@ -153,17 +223,28 @@ namespace RequirementGathering.Controllers
         //
         // POST: /Account/Register
         [HttpPost]
-        [AllowAnonymous]
+        [Authorize(Roles = "Administrators,Super Administrator")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(RegisterViewModel model)
+        public async Task<ActionResult> Register([Bind(Include = "UserName,Email,FirstName,LastName")] RegisterViewModel model)
         {
-            if (ModelState.IsValid)
+            //   if (ModelState.IsValid)
+            if (model.Roles.Contains("Super Administrator"))
+                ModelState.AddModelError("", "You cannot create a user with role: Super Administrator");
+
+            else if (model.Roles.Contains("Administrator") && !User.IsInRole("Super Administrator"))
+                ModelState.AddModelError("", "You cannot create a user with role: Administrator");
+
+            else if (model.Roles.Count == 0 || !new[] { "Administrator", "Researcher" }.Any(r => model.Roles.Any(rs => rs == r)))
+                ModelState.AddModelError("", "You need to assign at least one role");
+
+            else
             {
-                var user = new User { UserName = model.UserName, Email = model.Email };
+                var user = new User { Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, UserName = model.Email };
+                model.Password = model.ConfirmPassword = "DefaultPasscode123!!";
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                    //await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
@@ -171,7 +252,7 @@ namespace RequirementGathering.Controllers
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Account");
                 }
                 AddErrors(result);
             }

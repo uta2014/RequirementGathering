@@ -64,14 +64,19 @@ namespace RequirementGathering.Models
 
     public class RegisterViewModel
     {
-        [Required]
-        [Display(Name = "Full Name")]
-        public string UserName { get; set; }
+        public string Id { get; set; }
 
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
+
+        [Required]
+        [Display(Name = "First Name")]
+        public string FirstName { get; set; }
+
+        [Display(Name = "Last Name")]
+        public string LastName { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
@@ -83,6 +88,18 @@ namespace RequirementGathering.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        private List<string> _roles;
+        [Display(Name = "Roles")]
+        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        public List<string> Roles
+        {
+            get
+            {
+                return _roles ?? new List<string> { "Administrator", "Researcher" };
+            }
+            set { _roles = value; }
+        }
     }
 
     public class ResetPasswordViewModel
