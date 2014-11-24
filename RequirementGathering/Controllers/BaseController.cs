@@ -2,11 +2,9 @@
 using System.Threading;
 using System.Web;
 using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity.Owin;
 using RequirementGathering.DAL;
 using RequirementGathering.Helpers;
-using RequirementGathering.Models;
 
 namespace RequirementGathering.Controllers
 {
@@ -14,14 +12,31 @@ namespace RequirementGathering.Controllers
     {
         protected RequirementGatheringDbContext RgDbContext = new RequirementGatheringDbContext();
 
+        public BaseController()
+        {
+            if (HttpContext != null)
+                UserManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+        }
+
+        public BaseController(ApplicationUserManager userManager)
+        {
+            UserManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+        }
+
         /// <summary>
         /// User manager - attached to application DB context
         /// </summary>
-        protected UserManager<User> UserManager { get; set; }
-
-        public BaseController()
+        private static ApplicationUserManager _userManager;
+        public ApplicationUserManager UserManager
         {
-            this.UserManager = new UserManager<User>(new UserStore<User>(RgDbContext));
+            get
+            {
+                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+            private set
+            {
+                _userManager = value;
+            }
         }
 
         protected override IAsyncResult BeginExecuteCore(AsyncCallback callback, object state)

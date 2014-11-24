@@ -10,14 +10,14 @@ namespace RequirementGathering.Controllers
     public class EvaluationsController : BaseController
     {
         // GET: Evaluations
-        [Authorize(Roles = "Researcher,Administrator,SuperAdministrator")]
+        [Authorize(Roles = "Researcher,Administrator,Super Administrator")]
         public async Task<ActionResult> Index()
         {
             return View(await RgDbContext.Evaluations.ToListAsync());
         }
 
         // GET: Evaluations/Details/5
-        [Authorize(Roles = "Researcher,Administrator,SuperAdministrator")]
+        [Authorize(Roles = "Researcher,Administrator,Super Administrator")]
         public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,7 +33,7 @@ namespace RequirementGathering.Controllers
         }
 
         // GET: Evaluations/Create
-        [Authorize(Roles = "Researcher,Administrator,SuperAdministrator")]
+        [Authorize(Roles = "Researcher,Administrator,Super Administrator")]
         public ActionResult Create()
         {
             ViewBag.ProductId = new SelectList(RgDbContext.Products, "Id", "Name");
@@ -45,7 +45,7 @@ namespace RequirementGathering.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Researcher,Administrator,SuperAdministrator")]
+        [Authorize(Roles = "Researcher,Administrator,Super Administrator")]
         public async Task<ActionResult> Create([Bind(Include = "Id,Name,Version,Description,IsActive,ProductId")] Evaluation evaluation)
         {
             if (ModelState.IsValid)
@@ -60,7 +60,7 @@ namespace RequirementGathering.Controllers
         }
 
         // GET: Evaluations/Edit/5
-        [Authorize(Roles = "Researcher,Administrator,SuperAdministrator")]
+        [Authorize(Roles = "Researcher,Administrator,Super Administrator")]
         public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
@@ -80,7 +80,7 @@ namespace RequirementGathering.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Researcher,Administrator,SuperAdministrator")]
+        [Authorize(Roles = "Researcher,Administrator,Super Administrator")]
         public async Task<ActionResult> Edit([Bind(Include = "Id,Name,Version,Description,IsActive,ProductId")] Evaluation evaluation)
         {
             if (ModelState.IsValid)
@@ -95,7 +95,7 @@ namespace RequirementGathering.Controllers
         }
 
         // GET: Evaluations/Delete/5
-        [Authorize(Roles = "Researcher,Administrator,SuperAdministrator")]
+        [Authorize(Roles = "Researcher,Administrator,Super Administrator")]
         public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
@@ -113,7 +113,7 @@ namespace RequirementGathering.Controllers
         // POST: Evaluations/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Researcher,Administrator,SuperAdministrator")]
+        [Authorize(Roles = "Researcher,Administrator,Super Administrator")]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
             Evaluation evaluation = await RgDbContext.Evaluations.FindAsync(id);
