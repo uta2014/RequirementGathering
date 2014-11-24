@@ -32,14 +32,14 @@ namespace RequirementGathering.DAL
             var userStore = new UserStore<User>(context);
             var userManager = new UserManager<User>(userStore);
 
-            var adeel = new User { Email = "adeel@uta.fi", UserName = "adeel" };
-            var cong = new User { Email = "cong@uta.fi", UserName = "cong" };
-            var eija = new User { Email = "eija@uta.fi", UserName = "eija" };
-            var ghassan = new User { Email = "ghassan@uta.fi", UserName = "ghassan" };
-            var juho = new User { Email = "juho@uta.fi", UserName = "juho" };
-            var liu = new User { Email = "liu@uta.fi", UserName = "Liu" };
-            var teemu = new User { Email = "teemu@uta.fi", UserName = "teemu" };
-            var toan = new User { Email = "toan@uta.fi", UserName = "toan" };
+            var adeel = new User { FirstName = "Adeel", Email = "adeel@uta.fi", UserName = "adeel" };
+            var cong = new User { FirstName = "Zhang", Email = "cong@uta.fi", UserName = "cong" };
+            var eija = new User { FirstName = "Eija", Email = "eija@uta.fi", UserName = "eija" };
+            var ghassan = new User { FirstName = "Ghassan", Email = "ghassan@uta.fi", UserName = "ghassan" };
+            var juho = new User { FirstName = "Juho", Email = "juho@uta.fi", UserName = "juho" };
+            var liu = new User { FirstName = "Hui", Email = "liu@uta.fi", UserName = "Liu" };
+            var teemu = new User { FirstName = "Teemu", Email = "teemu@uta.fi", UserName = "teemu" };
+            var toan = new User { FirstName = "Toan", Email = "toan@uta.fi", UserName = "toan" };
 
             var users = new List<User>
             {
