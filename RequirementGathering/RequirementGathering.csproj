@@ -281,6 +281,8 @@
     <Content Include="Views\Evaluations\_CreateOrEdit.cshtml" />
     <Content Include="Views\Products\_CreateOrEdit.cshtml" />
     <Content Include="Views\Account\Index.cshtml" />
+    <Content Include="Views\Account\Edit.cshtml" />
+    <Content Include="Views\Account\_CreateOrEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
