@@ -114,14 +114,41 @@ namespace RequirementGathering.DAL
             attributes.ForEach(s => context.Attributes.Add(s));
             result = context.SaveChangesAsync().Result;
 
-            // Seed VersionAttribute
-            var evaluationAttributes = new List<EvaluationAttribute>();
+            // Seed EvaluationUser
+            var evaluationUsers = new List<EvaluationUser>();
             System.Random random = new System.Random();
 
             for (int i = 0; i < 100; i++)
             {
-                var evaluationVersion = evaluations[random.Next(evaluations.Count)].Version;
-                var attributeName = attributes[random.Next(attributes.Count)].Name;
+                var evaluationVersion = evaluations[random.Next(evaluations.Count - 1)].Version;
+                var userFirstName = users[random.Next(users.Count - 1)].FirstName;
+                Evaluation evaluation = context.Evaluations.First(r => r.Version == evaluationVersion);
+                User user = context.Users.First(a => a.FirstName == userFirstName);
+
+                evaluationUsers.Add(
+                    new EvaluationUser
+                    {
+                        EvaluationId = evaluation.Id,
+                        UserId = user.Id,
+                        User = user,
+                        Evaluation = evaluation
+                    });
+            };
+
+            evaluationUsers.Distinct(new DistinctVersionUserComparer())
+                           .ToList()
+                           .ForEach(u => context.EvaluationUsers.Add(u));
+
+            result = context.SaveChangesAsync().Result;
+
+            // Seed VersionAttribute
+            var evaluationAttributes = new List<EvaluationAttribute>();
+            random = new System.Random();
+
+            for (int i = 0; i < 100; i++)
+            {
+                var evaluationVersion = evaluations[random.Next(evaluations.Count - 1)].Version;
+                var attributeName = attributes[random.Next(attributes.Count - 1)].Name;
 
                 evaluationAttributes.Add(
                     new EvaluationAttribute
@@ -131,7 +158,7 @@ namespace RequirementGathering.DAL
                     });
             };
 
-            evaluationAttributes.Distinct(new DistinctVersionttributeComparer())
+            evaluationAttributes.Distinct(new DistinctVersionAttributeComparer())
                              .ToList()
                              .ForEach(s => context.EvaluationAttributes.Add(s));
 
@@ -145,9 +172,9 @@ namespace RequirementGathering.DAL
             for (int i = 0; i < 500; i++)
             {
                 var attributesCount = evaluationAttributes.Count;
-                var evaluationAttribute1 = evaluationAttributes[random.Next(attributesCount)];
-                var evaluationAttribute2 = evaluationAttributes[random.Next(attributesCount)];
-                var user = users[random.Next(users.Count)];
+                var evaluationAttribute1 = evaluationAttributes[random.Next(attributesCount - 1)];
+                var evaluationAttribute2 = evaluationAttributes[random.Next(attributesCount - 1)];
+                var user = users[random.Next(users.Count - 1)];
 
                 ratings.Add(
                     new Rating
@@ -167,7 +194,7 @@ namespace RequirementGathering.DAL
         }
     }
 
-    class DistinctVersionttributeComparer : IEqualityComparer<EvaluationAttribute>
+    class DistinctVersionAttributeComparer : IEqualityComparer<EvaluationAttribute>
     {
 
         public bool Equals(EvaluationAttribute x, EvaluationAttribute y)
@@ -180,6 +207,21 @@ namespace RequirementGathering.DAL
         {
             return obj.EvaluationId.GetHashCode() ^
                    obj.AttributeId.GetHashCode();
+        }
+    }
+
+    class DistinctVersionUserComparer : IEqualityComparer<EvaluationUser>
+    {
+
+        public bool Equals(EvaluationUser x, EvaluationUser y)
+        {
+            return x.User.Email == y.User.Email;
+        }
+
+        public int GetHashCode(EvaluationUser obj)
+        {
+            return obj.EvaluationId.GetHashCode() ^
+                   obj.User.Email.GetHashCode();
         }
     }
 }
