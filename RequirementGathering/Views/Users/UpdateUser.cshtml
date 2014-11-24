@@ -1,0 +1,34 @@
+﻿
+@{
+    Layout = null;
+}
+
+var tdset = [];
+userlist.fnClearTable(false);
+
+@{
+    foreach (var item in (ViewData["allUsers"] as IEnumerable<User>))
+    {
+        var username = item.UserName;
+        var email = item.Email;
+        var uid = item.Id;
+
+        <text>
+            var tuser = { Id: '@uid', UserName: '@username', Email: '@email' };
+            var troles = [];
+            @foreach (var roleitem in (item.Roles as IEnumerable<Microsoft.AspNet.Identity.EntityFramework.IdentityUserRole>))
+            {
+                var rolename = roleitem.Name;
+                <text>
+                    troles.push(@rolename);
+                </text>
+            }
+            tdset.push(tuser);
+            userlist.fnAddData(tuser);
+        </text>
+    }
+}
+
+userDataSet=tdset;
+updateUserPanel.close();
+selectedUsers=[];

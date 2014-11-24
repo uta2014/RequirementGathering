@@ -1,0 +1,283 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+@using Microsoft.AspNet.Identity;
+@using Microsoft.AspNet.Identity.EntityFramework;
+
+<link rel="stylesheet" type="text/css" href="~/Scripts/datatable/css/jquery.dataTables.css">
+<link rel="stylesheet" type="text/css" href="~/Scripts/remodal/jquery.remodal.css">
+<script type="text/javascript" language="javascript" src="~/Scripts/jquery-1.10.2.js"></script>
+<script type="text/javascript" language="javascript" src="~/Scripts/datatable/js/jquery.dataTables.js"></script>
+<script type="text/javascript" language="javascript" src="~/Scripts/remodal/jquery.remodal.js"></script>
+
+<style>
+
+</style>
+<script>
+
+</script>
+
+<h2>Index</h2>
+
+<p>
+
+    <input type="button" value="Create" onclick="newDialog(this.value)" />
+    <input type="button" value="Update" onclick="newDialog(this.value)" />
+    <input type="button" value="Delete" onclick="" />
+    <input type="button" value="AssignRole" onclick="newDialog(this.value)" />
+
+</p>
+
+<table id="usertable" class="display" cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th>Username</th>
+            <th>E-mail</th>
+        </tr>
+    </thead>
+
+    <tfoot>
+        <tr>
+            <th>Username</th>
+            <th>E-mail</th>
+        </tr>
+    </tfoot>
+
+    <tbody></tbody>
+</table>
+
+<div class="remodal" data-remodal-id="createUserPanel">
+    <p>Create a new user</p>
+    <p>
+        Name:&nbsp;<input type="text" value="" id="newNameInput" />
+    </p>
+    <p>
+        E-mail:&nbsp;<input type="email" value="" id="newEmailInput" />
+    </p>
+    <p>
+        Roles:&nbsp;
+        <input type="checkbox" id="adminCb" />Administrator
+        <input type="checkbox" id="researcherCb" />Researcher
+        <input type="checkbox" id="evaluatorCb" />Evaluator
+    </p>
+    <br>
+    <input type="button" value="OK" id="createNewBtn" onclick="on_click_createNewBtn()" style="width:100px;" />
+    <input type="button" value="Cancel" id="cancelNewBtn" onclick="on_click_cancelNewBtn()" style="width:100px;" />
+
+</div>
+<div class="remodal" data-remodal-id="updateUserPanel">
+    <p>Update user info</p>
+    <p>
+        Name:&nbsp;<input type="text" value="" id="updateNameInput" />
+    </p>
+    <p>
+        E-mail:&nbsp;<input type="email" value="" id="updateEmailInput" />
+    </p>
+    <br>
+    <input type="button" value="OK" id="confirmUpdateBtn" onclick="on_click_confirmUpdateBtn()" style="width:100px;" />
+    <input type="button" value="Cancel" id="cancelUpdateBtn" onclick="on_click_cancelNewBtn()" style="width:100px;" />
+</div>
+
+
+<script>
+
+    var userDataSet = [];
+    @{
+        var userManager=ViewData["userManager"] as UserManager<User>;
+        foreach (var item in (ViewData["allUsers"] as IEnumerable<User>))
+        {
+            var username = item.UserName;
+            var email = item.Email;
+            var uid=item.Id;
+            //var roles=userManager.GetRoles(uid);
+    <text>
+    var tuser = { Id: '@uid', UserName: '@username', Email: '@email' };
+    
+            
+
+    userDataSet.push(tuser);
+    </text>
+        }
+    }
+
+
+    var selectedUsers = [];
+
+    var userlist = $('#usertable').dataTable({
+        "data": userDataSet,
+        "columns": [
+            { "data": "UserName" },
+            { "data": "Email" }
+        ]
+    });
+
+    userlist.on('click', 'tr', function () {
+
+        var data = userlist.fnGetData(this);
+
+        var index = $.inArray(data, selectedUsers);
+
+        if (index === -1) {
+            selectedUsers.push(data);
+        } else {
+            selectedUsers.splice(index, 1);
+        }
+
+        $(this).toggleClass('selected');
+    });
+
+
+
+    var createUserPanel = $('[data-remodal-id=createUserPanel]').remodal();
+    var updateUserPanel = $('[data-remodal-id=updateUserPanel]').remodal();
+
+
+    function newDialog(btnValue) {
+        if (btnValue == 'Create') {
+            newNameInput.value = "";
+            newEmailInput.value = "";
+            adminCb.checked = false;
+            researcherCb.checked = false;
+            evaluatorCb.checked = false;
+
+            createUserPanel.open();
+        }
+
+        if (btnValue == 'Update') {
+
+            if (selectedUsers.length != 1) {
+                alert('Please select ONE user');
+                return;
+            }
+
+            var tu = selectedUsers[0];
+
+            updateNameInput.value = tu.UserName;
+            updateEmailInput.value = tu.Email;
+
+            updateUserPanel.open();
+        }
+
+        if (btnValue == 'AssignRole') {
+
+        }
+    }
+
+    function on_click_confirmUpdateBtn() {
+
+        var tu = selectedUsers[0];
+        var oldname = tu.UserName;
+        var oldemail = tu.Email;
+        var oldid = tu.Id;
+
+        var updatename = $('#updateNameInput')[0].value;
+        var updateemail = $('#updateEmailInput')[0].value;
+
+        if (!validateStr(updatename)) {
+            alert('Please input name');
+            return;
+        }
+
+        if (!validateStr(updateemail)) {
+            alert('Please input Email');
+            return;
+        }
+
+
+        var params = new Object();
+        params["oldid"] = oldid;
+        params["oldname"] = oldname;
+        params["oldemail"] = oldemail;
+        params["name"] = updatename;
+        params["email"] = updateemail;
+
+        $.ajax({
+            type: "POST",
+            url: "Users/UpdateUser",
+            data: params,
+            error: onAjaxError,
+            success: onAjaxSuccess,
+            dataType: "text"
+        });
+    }
+
+    function on_click_createNewBtn() {
+        var newname = $('#newNameInput')[0].value;
+        var newemail = $('#newEmailInput')[0].value;
+        var isAdmin = $('#adminCb')[0].checked;
+        var isResearcher = $('#researcherCb')[0].checked;
+        var isEvaluator = $('#evaluatorCb')[0].checked;
+
+        if (!validateStr(newname)) {
+            alert('Please input name');
+            return;
+        }
+
+        if (!validateStr(newemail)) {
+            alert('Please input Email');
+            return;
+        }
+
+        var roles = [];
+        var rolestr = '';
+        if (isAdmin) {
+            roles.push('Administrator');
+        }
+        if (isResearcher) {
+            roles.push('Researcher');
+        }
+        if (isEvaluator) {
+            roles.push('Evaluator');
+        }
+        rolestr = roles.join(',');
+
+        if (!validateStr(rolestr)) {
+            alert('Please select ONE role at least.');
+            return;
+        }
+
+        var params = new Object();
+        params["name"] = newname;
+        params["email"] = newemail;
+        params["rolestr"] = rolestr;
+
+        $.ajax({
+            type: "POST",
+            url: "Users/CreateUser",
+            data: params,
+            error: onAjaxError,
+            success: onAjaxSuccess,
+            dataType: "text"
+        });
+    }
+
+    function onAjaxSuccess(result) {
+        eval(result);
+    }
+
+    function onAjaxError(XMLHttpRequest, textStatus, errorThrown) {
+
+        alert('status=' + textStatus + 'error=' + errorThrown);
+
+    }
+
+    function on_click_cancelNewBtn() {
+        createUserPanel.close();
+    }
+
+    function validateStr(str) {
+        if (str == undefined || str == null || str == "") {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+</script>
+
+
+
+
+
+
+
