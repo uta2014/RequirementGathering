@@ -180,9 +180,15 @@ namespace RequirementGathering.Controllers
 
             if (user != null)
             {
-                if (RgDbContext.EvaluationUsers.Any(eu => eu.UserId == user.Id && eu.EvaluationId == evaluation.Id && !eu.IsActive))
+                EvaluationUser evaluationUser = RgDbContext.EvaluationUsers.FirstOrDefault(eu => eu.UserId == user.Id && eu.EvaluationId == evaluation.Id);
+
+                if (evaluationUser != null)
                 {
-                    ModelState.AddModelError("", "User has already taken this evaluation");
+                    if (!evaluationUser.IsActive)
+                        ModelState.AddModelError("", "User has already taken this evaluation");
+                    else
+                        ModelState.AddModelError("", "User was invited previously to this evaluation");
+
                     return View();
                 }
 
