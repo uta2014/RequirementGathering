@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net.Mail;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
@@ -15,8 +16,13 @@ namespace RequirementGathering
     {
         public Task SendAsync(IdentityMessage message)
         {
-            // Plug in your email service here to send an email.
-            return Task.FromResult(0);
+            MailMessage email = new MailMessage("Requirement Gathering Tool Admin <admin@uta.fi>", message.Destination);
+            email.Subject = message.Subject;
+            email.Body = message.Body;
+            email.IsBodyHtml = true;
+
+            return new SmtpClient { DeliveryMethod = SmtpDeliveryMethod.PickupDirectoryFromIis }
+                      .SendMailAsync(email);
         }
     }
 

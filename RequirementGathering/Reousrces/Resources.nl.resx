@@ -145,6 +145,18 @@
     <value>Webtool voor het verzamelen van eisen van de klant</value>
     <comment>MainPage</comment>
   </data>
+  <data name="InvitationEmailBodyExisting" xml:space="preserve">
+    <value>U bent uitgenodigd voor evaluatie. Gelieve meld u aan bij {0}/{1}/Account/Login met uw e-mailadres en wachtwoord.&lt;br/&gt;&lt;br/&gt;{2}</value>
+    <comment>Evaluation</comment>
+  </data>
+  <data name="InvitationEmailBodyNew" xml:space="preserve">
+    <value>U bent uitgenodigd voor evaluatie. Gelieve aanmelden bij {0}/{1}/Account/Login met uw e-mailadres en wachtwoord: &lt;b&gt;{2}&lt;/b&gt;.&lt;br/&gt;&lt;br/&gt;{3}</value>
+    <comment>Evaluation</comment>
+  </data>
+  <data name="InvitationEmailSubject" xml:space="preserve">
+    <value>Uitnodiging voor evaluatie: {0} {1}</value>
+    <comment>Evaluation</comment>
+  </data>
   <data name="LastNameLong" xml:space="preserve">
     <value>Achternaam moet minder dan 50 tekens.</value>
     <comment>Validation</comment>

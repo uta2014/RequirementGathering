@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using RequirementGathering.Helpers;
 using RequirementGathering.Models;
 
 namespace RequirementGathering.Controllers
@@ -31,7 +32,7 @@ namespace RequirementGathering.Controllers
 
         //
         // GET: /Account/Edit
-        [Authorize(Roles = "Administrators,Super Administrator")]
+        [Authorize(Roles = "Administrator,Super Administrator")]
         public async Task<ActionResult> Edit(string id)
         {
             if (string.IsNullOrEmpty(id))
@@ -40,7 +41,7 @@ namespace RequirementGathering.Controllers
             User user = await (RgDbContext.Users as DbSet<User>).FindAsync(id);
 
             if (user == null)
-                return HttpNotFound();
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
             RegisterViewModel model = new RegisterViewModel
             {
@@ -57,11 +58,16 @@ namespace RequirementGathering.Controllers
         //
         // POST: /Account/Edit
         [HttpPost]
-        [Authorize(Roles = "Administrators,Super Administrator")]
+        [Authorize(Roles = "Administrator,Super Administrator")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit([Bind(Include = "Id,Email,FirstName,LastName,Roles")] RegisterViewModel model)
         {
             // if (ModelState.IsValid)
+
+            ModelState["Password"].Errors.Clear();
+            ModelState["Roles"].Errors.Clear();
+
+            var allowedRoles = new[] { "Administrator", "Researcher" };
 
             if (model.Roles.Contains("Super Administrator"))
                 ModelState.AddModelError("", "You cannot create a user with role: Super Administrator");
@@ -69,7 +75,7 @@ namespace RequirementGathering.Controllers
             else if (model.Roles.Contains("Administrator") && !User.IsInRole("Super Administrator"))
                 ModelState.AddModelError("", "You cannot create a user with role: Administrator");
 
-            else if (model.Roles.Count == 0 || !new[] { "Administrator", "Researcher" }.Any(r => model.Roles.Any(rs => rs == r)))
+            else if (model.Roles.Count == 0 || !allowedRoles.Any(r => model.Roles.Any(rs => rs == r)))
                 ModelState.AddModelError("", "You need to assign at least one role");
 
             else
@@ -88,6 +94,9 @@ namespace RequirementGathering.Controllers
 
                     foreach (var role in model.Roles)
                     {
+                        if (!allowedRoles.Any(r => r == role))
+                            continue;
+
                         UserManager.AddToRole(user.Id, role);
                     }
 
@@ -214,7 +223,7 @@ namespace RequirementGathering.Controllers
 
         //
         // GET: /Account/Register
-        [Authorize(Roles = "Administrators,Super Administrator")]
+        [Authorize(Roles = "Administrator,Super Administrator")]
         public ActionResult Register()
         {
             return View();
@@ -223,10 +232,15 @@ namespace RequirementGathering.Controllers
         //
         // POST: /Account/Register
         [HttpPost]
-        [Authorize(Roles = "Administrators,Super Administrator")]
+        [Authorize(Roles = "Administrator,Super Administrator")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register([Bind(Include = "UserName,Email,FirstName,LastName")] RegisterViewModel model)
+        public async Task<ActionResult> Register([Bind(Include = "UserName,Email,FirstName,LastName,Roles")] RegisterViewModel model)
         {
+            ModelState["Password"].Errors.Clear();
+            ModelState["Roles"].Errors.Clear();
+
+            var allowedRoles = new[] { "Administrator", "Researcher" };
+
             //   if (ModelState.IsValid)
             if (model.Roles.Contains("Super Administrator"))
                 ModelState.AddModelError("", "You cannot create a user with role: Super Administrator");
@@ -234,16 +248,24 @@ namespace RequirementGathering.Controllers
             else if (model.Roles.Contains("Administrator") && !User.IsInRole("Super Administrator"))
                 ModelState.AddModelError("", "You cannot create a user with role: Administrator");
 
-            else if (model.Roles.Count == 0 || !new[] { "Administrator", "Researcher" }.Any(r => model.Roles.Any(rs => rs == r)))
+            else if (model.Roles.Count == 0 || !allowedRoles.Any(r => model.Roles.Any(rs => rs == r)))
                 ModelState.AddModelError("", "You need to assign at least one role");
 
             else
             {
                 var user = new User { Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, UserName = model.Email };
-                model.Password = model.ConfirmPassword = "DefaultPasscode123!!";
+                model.Password = model.ConfirmPassword = PasswordHelper.GeneratePassword();
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    foreach (var role in model.Roles)
+                    {
+                        if (!allowedRoles.Any(r => r == role))
+                            continue;
+
+                        UserManager.AddToRole(user.Id, role);
+                    }
+
                     //await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
@@ -522,7 +544,7 @@ namespace RequirementGathering.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Dashboard", "Home");
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult

@@ -145,6 +145,18 @@
     <value>Web-työkalu asiakkaiden tarpeiden</value>
     <comment>MainPage</comment>
   </data>
+  <data name="InvitationEmailBodyExisting" xml:space="preserve">
+    <value>Olet tervetullut arvioitavaksi. Kirjaudu {0}/{1}/Account/Login sähköpostiosoite ja salasana.&lt;br/&gt;&lt;br/&gt;{2}</value>
+    <comment>Evaluation</comment>
+  </data>
+  <data name="InvitationEmailBodyNew" xml:space="preserve">
+    <value>Olet tervetullut arvioitavaksi. Kirjaudu sisään {0}/{1}/Account/Login sähköpostiosoite ja salasana: &lt;b&gt;(2)&lt;/b&gt;.&lt;br/&gt;&lt;br/&gt;{3}</value>
+    <comment>Evaluation</comment>
+  </data>
+  <data name="InvitationEmailSubject" xml:space="preserve">
+    <value>Kutsu arviointia varten: {0} {1}</value>
+    <comment>Evaluation</comment>
+  </data>
   <data name="LastNameLong" xml:space="preserve">
     <value>Sukunimi on oltava alle 50 merkkiä.</value>
     <comment>Validation</comment>

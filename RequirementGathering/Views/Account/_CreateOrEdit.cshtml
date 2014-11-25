@@ -41,6 +41,7 @@
 
             <label for="@id">@role</label>
             <input type="checkbox" id="@id" name="Roles" value="@role" class="checkbox" @selected />
+            <input type="hidden" value="false" name="Roles" />
             @Html.ValidationMessageFor(model => model.Roles, "", new { @class = "text-danger" })
         }
     </div>

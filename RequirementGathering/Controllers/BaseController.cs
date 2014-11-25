@@ -20,7 +20,7 @@ namespace RequirementGathering.Controllers
 
         public BaseController(ApplicationUserManager userManager)
         {
-            UserManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            UserManager = userManager;
         }
 
         /// <summary>
@@ -35,7 +35,8 @@ namespace RequirementGathering.Controllers
             }
             private set
             {
-                _userManager = value;
+                if (_userManager == null)
+                    _userManager = value;
             }
         }
 

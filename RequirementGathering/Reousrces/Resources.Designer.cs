@@ -124,6 +124,33 @@ namespace RequirementGathering.Reousrces {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You are invited for evaluation. Please login to {0}/{1}/Account/Login with your email address and password.&lt;br/&gt;&lt;br/&gt;{2}.
+        /// </summary>
+        public static string InvitationEmailBodyExisting {
+            get {
+                return ResourceManager.GetString("InvitationEmailBodyExisting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You are invited for evaluation. Please login to {0}/{1}/Account/Login with your email address and password: &lt;b&gt;{2}&lt;/b&gt;.&lt;br/&gt;&lt;br/&gt;{3}.
+        /// </summary>
+        public static string InvitationEmailBodyNew {
+            get {
+                return ResourceManager.GetString("InvitationEmailBodyNew", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invitation for Evaluation: {0} {1}.
+        /// </summary>
+        public static string InvitationEmailSubject {
+            get {
+                return ResourceManager.GetString("InvitationEmailSubject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Last name must be less than 50 characters..
         /// </summary>
         public static string LastNameLong {

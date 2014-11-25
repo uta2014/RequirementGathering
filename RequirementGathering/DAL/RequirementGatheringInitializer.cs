@@ -29,9 +29,6 @@ namespace RequirementGathering.DAL
             context.Roles.Add(evaluatorRole);
 
             // Seed Users
-            var userStore = new UserStore<User>(context);
-            var userManager = new UserManager<User>(userStore);
-
             var adeel = new User { FirstName = "Adeel", Email = "adeel@uta.fi", UserName = "adeel" };
             var cong = new User { FirstName = "Zhang", Email = "cong@uta.fi", UserName = "cong" };
             var eija = new User { FirstName = "Eija", Email = "eija@uta.fi", UserName = "eija" };

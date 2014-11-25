@@ -145,6 +145,18 @@
     <value>Web tool for gathering customer requirements</value>
     <comment>MainPage</comment>
   </data>
+  <data name="InvitationEmailBodyExisting" xml:space="preserve">
+    <value>You are invited for evaluation. Please login to {0}/{1}/Account/Login with your email address and password.&lt;br/&gt;&lt;br/&gt;{2}</value>
+    <comment>Evaluation</comment>
+  </data>
+  <data name="InvitationEmailBodyNew" xml:space="preserve">
+    <value>You are invited for evaluation. Please login to {0}/{1}/Account/Login with your email address and password: &lt;b&gt;{2}&lt;/b&gt;.&lt;br/&gt;&lt;br/&gt;{3}</value>
+    <comment>Evaluation</comment>
+  </data>
+  <data name="InvitationEmailSubject" xml:space="preserve">
+    <value>Invitation for Evaluation: {0} {1}</value>
+    <comment>Evaluation</comment>
+  </data>
   <data name="LastNameLong" xml:space="preserve">
     <value>Last name must be less than 50 characters.</value>
     <comment>Validation</comment>
