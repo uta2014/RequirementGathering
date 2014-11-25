@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data.Entity;
 using System.Globalization;
+using System.Linq;
 using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
@@ -179,6 +180,15 @@ namespace RequirementGathering.Controllers
 
             if (user != null)
             {
+                if (RgDbContext.EvaluationUsers.Any(eu => eu.UserId == user.Id && eu.EvaluationId == evaluation.Id && !eu.IsActive))
+                {
+                    ModelState.AddModelError("", "User has already taken this evaluation");
+                    return View();
+                }
+
+                RgDbContext.EvaluationUsers.Add(new EvaluationUser { UserId = user.Id, EvaluationId = evaluation.Id });
+                await RgDbContext.SaveChangesAsync();
+
                 await UserManager.SendEmailAsync(
                       user.Id,
                       string.Format(CultureInfo.CurrentCulture, Resources.InvitationEmailSubject, evaluation.Product.Name, evaluation.Version),
@@ -193,6 +203,9 @@ namespace RequirementGathering.Controllers
 
                 if (result.Succeeded)
                 {
+                    RgDbContext.EvaluationUsers.Add(new EvaluationUser { UserId = user.Id, EvaluationId = evaluation.Id });
+                    await RgDbContext.SaveChangesAsync();
+
                     await UserManager.SendEmailAsync(
                       user.Id,
                       string.Format(CultureInfo.CurrentCulture, Resources.InvitationEmailSubject, evaluation.Product.Name, evaluation.Version),
