@@ -37,10 +37,17 @@
                     @if (this.User.IsInRole("Researcher"))
                     {
                         <li class="active">
+                            @Html.ActionLink("Dashboard", "Index", "Researcher")
+                        </li>
+                    }
+
+                    else
+                    {
+                        <li class="active">
                             @Html.ActionLink("Dashboard", "Dashboard", "Home")
                         </li>
                     }
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
+<li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
