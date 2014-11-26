@@ -1,0 +1,84 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AuthorizedLayout.cshtml";
+}
+<center>
+    <h1>Researcher Dashboard</h1>
+    <h2>
+        @Html.Label("Welcome," +this.User.Identity.Name.ToUpper(), new  {@class = "label-success"})
+</h2>
+
+<h3>
+    <table>
+        <tbody>
+            <tr>
+                <td>
+                    <label>
+                        Full name :
+                    </label>
+                </td>
+                <td>
+                    <label class="label label-info">@ViewBag.Fullname</label>
+</td>
+</tr>
+<tr>
+    <td>
+        <label>
+            Address :
+
+        </label>
+    </td>
+    <td>
+        <label class="label label-info">@ViewBag.StreetAddress</label>
+</td>
+</tr>
+<tr>
+    <td>
+        <label>
+            Country :
+
+        </label>
+    </td>
+    <td>
+        <label class="label label-info">@ViewBag.Country</label>
+</td>
+</tr>
+<tr>
+    <td>
+        <label>
+            Email :
+
+        </label>
+    </td>
+    <td>
+        <label class="label label-info">@ViewBag.Email</label>
+</td>
+</tr>
+<tr>
+    <td>
+        <label>
+            Phone Number
+
+            :
+        </label>
+    </td>
+    <td>
+        <label class="label label-info">@ViewBag.PhoneNumber</label>
+</td>
+</tr>
+<tr>
+    <td>
+        <label>
+            Role :
+
+        </label>
+    </td>
+    <td>
+        <label class="label label-info">@ViewBag.Roles</label>
+</td>
+</tr>
+</tbody>
+
+</table>
+</h3>
+</center>
