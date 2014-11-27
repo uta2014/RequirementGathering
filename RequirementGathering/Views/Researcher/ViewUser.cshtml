@@ -20,19 +20,24 @@
 <h2>View User Evaluation </h2>
 
 <p>
-    @Html.ActionLink("Invite Evaluator","Index","Evaluations")
+    @Html.ActionLink("Invite Evaluator", "Index", "Evaluations")
 </p>
 
 @using (Html.BeginForm("ViewUser", "Researcher"))
-{<table><tbody>
+{<table>
+        <tbody>
             <tr>
-                <td> @Html.Label("Version: ")</td><td>@Html.DropDownList("EvaluationVersion", null, htmlAttributes: new {@style="width:150px" })</td>
+                <td> @Html.Label("Version: ")</td>
+                <td>@Html.DropDownList("EvaluationVersion", null, htmlAttributes: new { @style = "width:150px" })</td>
                 <td align="right" style="width:100%"><h4>Total number of Evaluator is : @ViewBag.numUser (@ViewBag.numUserActive Actived)</h4></td>
             </tr>
             <tr>
-                <td>@Html.Label("First Name: ")</td><td>  @Html.TextBox("Username")</td>
-                <td ><input type="submit" value="Search" class="btn btn-primary"></td>
-</tr></tbody></table>
+                <td>@Html.Label("First Name: ")</td>
+                <td>@Html.TextBox("Username")</td>
+                <td><input type="submit" value="Search" class="btn btn-primary"></td>
+            </tr>
+        </tbody>
+    </table>
 }
 
 <table class="table">
@@ -65,7 +70,7 @@
     </tr>
 
     @foreach (var item in Model)
-{
+    {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Evaluation.Version)
@@ -91,8 +96,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.IsActive)
             </td>
-
         </tr>
-}
+    }
 
 </table>

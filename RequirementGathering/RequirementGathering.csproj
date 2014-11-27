@@ -287,7 +287,6 @@
     <Content Include="Views\Account\_CreateOrEdit.cshtml" />
     <Content Include="Views\Evaluations\SendInvitation.cshtml" />
     <Content Include="Views\Researcher\Index.cshtml" />
-    <Content Include="Views\Researcher\ViewAttribute.cshtml" />
     <Content Include="Views\Researcher\ViewUser.cshtml" />
   </ItemGroup>
   <ItemGroup>

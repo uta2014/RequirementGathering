@@ -15,7 +15,7 @@ namespace RequirementGathering.Controllers
     public class ResearcherController : BaseController
     {
         // GET: Researcher
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
             var client = from m in RgDbContext.Users select m;
             var clients = client.Where(s => s.UserName.Equals(this.User.Identity.Name.ToString())).FirstOrDefault();
@@ -33,29 +33,7 @@ namespace RequirementGathering.Controllers
             return View();
 
         }
-        public async Task<ActionResult> ViewAttribute(string searchString)
-        {
-            var evaluations = from m in RgDbContext.Evaluations select m;
-            var evaluation = evaluations.Where(m => m.Version.Equals(searchString)).FirstOrDefault();
-            var evaluationAttributes = RgDbContext.EvaluationAttributes.Include(e => e.Attribute).Include(e => e.Evaluation);
-            var arrayeva = evaluations.Where(m => m.IsActive.Equals(true)).ToArray();
-            List<SelectListItem> dropdownItems = new List<SelectListItem>();
-            for (int i = 0; i < arrayeva.Length; i++)
-            {
-                dropdownItems.AddRange(new[]{
-                            new SelectListItem() { Text = arrayeva[i].Version, Value = arrayeva[i].Version }});
-            }
-            ViewData.Add("DropDownItems", dropdownItems);
-            if (searchString != "" && searchString != null)
-            {
-                evaluationAttributes = RgDbContext.EvaluationAttributes.Include(e => e.Attribute).Include(e => e.Evaluation).Where(s => s.Evaluation.Version.Equals(evaluation.Version));
-                return View(await evaluationAttributes.ToListAsync());
-            }
-            else
-            {
-                return View(await evaluationAttributes.ToListAsync());
-            }
-        }
+        
         public async Task<ActionResult> ViewUser(string EvaluationVersion, string Username)
         {
             ViewBag.EvaluationVersion = new SelectList(RgDbContext.Evaluations, "Id", "Version");
