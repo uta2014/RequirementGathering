@@ -129,6 +129,15 @@
     <value>Sinulla on vähintään kaksi määritettä luoda arvioinnin.</value>
     <comment>Validation</comment>
   </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>Vaihda salasana</value>
+    <comment>ChangePassword</comment>
+  </data>
+  <data name="DetailBtn" xml:space="preserve">
+    <value>Yksityiskohta</value>
+    <comment>DetailBtn</comment>
+>>>>>>> Changed Controllers;
+  </data>
   <data name="EmailInvalid" xml:space="preserve">
     <value>Sähköposti ei kelpaa.</value>
     <comment>Validation</comment>
@@ -164,5 +173,17 @@
   <data name="LastNameLong" xml:space="preserve">
     <value>Sukunimi on oltava alle 50 merkkiä.</value>
     <comment>Validation</comment>
+  </data>
+  <data name="Notifications" xml:space="preserve">
+    <value>ilmoitukset</value>
+    <comment>Notifications</comment>
+  </data>
+  <data name="RatingBtn" xml:space="preserve">
+    <value>Arvostele~!</value>
+    <comment>EvaluatorView</comment>
+  </data>
+  <data name="SeeRatingBtn" xml:space="preserve">
+    <value>Katso Rating</value>
+    <comment>SeeRatingBtn</comment>
   </data>
 </root>

@@ -6,9 +6,58 @@
 
 <h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Register")
+
+<p style="width:100%;">
+    <span style='float:left;'>
+        @Html.ActionLink("Create New", "Register")
+    </span>
+    <span style='float:right;'>
+        @{
+            string roleTag = ViewData["roleTag"] as string;
+        }
+        Show:&nbsp;
+
+        @if (roleTag == null || roleTag.Equals("All"))
+        {
+            @Html.ActionLink("All", "Index", new { roleTag = "All" }, new { style = "font-weight:bold;" })
+        }
+        else
+        {
+            @Html.ActionLink("All", "Index", new { roleTag = "All" })
+        }
+        &nbsp;
+        @if (roleTag != null && roleTag.Equals("Administrator"))
+        {
+            @Html.ActionLink("Administrator", "Index", new { roleTag = "Administrator"}, new { style = "font-weight:bold;" })
+        }
+        else
+        {
+            @Html.ActionLink("Administrator", "Index", new { roleTag = "Administrator" })
+        }
+        &nbsp;
+        @if (roleTag != null && roleTag.Equals("Researcher"))
+        {
+            @Html.ActionLink("Researcher", "Index", new { roleTag = "Researcher" }, new { style = "font-weight:bold;" })
+        }
+        else
+        {
+            @Html.ActionLink("Researcher", "Index", new { roleTag = "Researcher" })
+        }
+        &nbsp;
+        @if (roleTag != null && roleTag.Equals("Evaluator"))
+        {
+            @Html.ActionLink("Evaluator", "Index", new { roleTag = "Evaluator" },new { style = "font-weight:bold;" })
+        }
+        else
+        {
+            @Html.ActionLink("Evaluator", "Index", new { roleTag = "Evaluator" })
+        }
+        
+    </span>
 </p>
+
+
+
 <table class="table">
     <tr>
         <th>

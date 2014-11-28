@@ -289,5 +289,27 @@ namespace RequirementGathering.Controllers
             return RedirectToAction("Index", "Evaluations");
         }
 
+
+        // GET: EvaluatorDashboard: show the list of all Evaluations related to the evaluator
+        [Authorize(Roles = "Evaluator")]
+        public async Task<ActionResult> EvaluatorDashboard()
+        {
+            return View(await RgDbContext.Evaluations.ToListAsync());
+        }
+
+        //Evaluator do the rating 
+        [Authorize(Roles = "Evaluator")]
+        public async Task<ActionResult> RatingEvaluation()
+        {
+            return View(await RgDbContext.Evaluations.ToListAsync());
+        }
+
+        //Evaluator do the rating 
+        public async Task<ActionResult> SeeRating()
+        {
+            return View(await RgDbContext.Evaluations.ToListAsync());
+        }
+
+
     }
 }
