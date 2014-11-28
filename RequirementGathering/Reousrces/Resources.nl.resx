@@ -125,11 +125,10 @@
     <value>Leeftijd is vereist.</value>
     <comment>Validation</comment>
   </data>
-<<<<<<< HEAD
   <data name="AttributesCountValidation" xml:space="preserve">
     <value>U moet ten minste twee kenmerken maken een evaluatie.</value>
     <comment>Validation</comment>
-=======
+  </data>
   <data name="ChangePassword" xml:space="preserve">
     <value>Wachtwoord wijzigen</value>
     <comment>ChangePassword</comment>
@@ -137,7 +136,6 @@
   <data name="DetailBtn" xml:space="preserve">
     <value>Details</value>
     <comment>DetailBtn</comment>
->>>>>>> Changed Controllers;
   </data>
   <data name="EmailInvalid" xml:space="preserve">
     <value>E-mail is niet geldig.</value>

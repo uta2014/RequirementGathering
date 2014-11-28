@@ -79,13 +79,15 @@ namespace RequirementGathering.Reousrces {
         }
         
         /// <summary>
-<<<<<<< HEAD
         ///   Looks up a localized string similar to You must at least have two attributes to create an evaluation..
         /// </summary>
         public static string AttributesCountValidation {
             get {
                 return ResourceManager.GetString("AttributesCountValidation", resourceCulture);
-=======
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Change Password.
         /// </summary>
         public static string ChangePassword {
@@ -100,7 +102,6 @@ namespace RequirementGathering.Reousrces {
         public static string DetailBtn {
             get {
                 return ResourceManager.GetString("DetailBtn", resourceCulture);
->>>>>>> Changed Controllers;
             }
         }
         

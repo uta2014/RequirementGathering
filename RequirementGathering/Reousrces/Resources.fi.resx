@@ -125,11 +125,10 @@
     <value>Ikä on pakollinen.</value>
     <comment>Validation</comment>
   </data>
-<<<<<<< HEAD
   <data name="AttributesCountValidation" xml:space="preserve">
     <value>Sinulla on vähintään kaksi määritettä luoda arvioinnin.</value>
     <comment>Validation</comment>
-=======
+  </data>
   <data name="ChangePassword" xml:space="preserve">
     <value>Vaihda salasana</value>
     <comment>ChangePassword</comment>

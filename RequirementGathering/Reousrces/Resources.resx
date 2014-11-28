@@ -125,11 +125,10 @@
     <value>Age is required.</value>
     <comment>Validation</comment>
   </data>
-<<<<<<< HEAD
   <data name="AttributesCountValidation" xml:space="preserve">
     <value>You must at least have two attributes to create an evaluation.</value>
     <comment>Validation</comment>
-=======
+  </data>
   <data name="ChangePassword" xml:space="preserve">
     <value>Change Password</value>
     <comment>ChangePassword</comment>
@@ -137,7 +136,6 @@
   <data name="DetailBtn" xml:space="preserve">
     <value>Details</value>
     <comment>DetailBtn</comment>
->>>>>>> Changed Controllers;
   </data>
   <data name="EmailInvalid" xml:space="preserve">
     <value>Email is not valid.</value>
