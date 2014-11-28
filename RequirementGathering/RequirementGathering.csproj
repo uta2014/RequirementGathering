@@ -165,7 +165,6 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
-    <Compile Include="Controllers\ResearcherController.cs" />
     <Compile Include="DAL\RequirementGatheringInitializer.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Global.asax.cs">
@@ -287,8 +286,6 @@
     <Content Include="Views\Account\Edit.cshtml" />
     <Content Include="Views\Account\_CreateOrEdit.cshtml" />
     <Content Include="Views\Evaluations\SendInvitation.cshtml" />
-    <Content Include="Views\Researcher\Index.cshtml" />
-    <Content Include="Views\Researcher\ViewUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
