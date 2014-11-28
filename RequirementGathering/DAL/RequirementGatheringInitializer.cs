@@ -94,26 +94,23 @@ namespace RequirementGathering.DAL
             result = context.SaveChangesAsync().Result;
 
             // Seed attributes
-            var attributes = new List<Attribute>
+            var names = new List<string> { "Robust Embodiment","Long Operational Time","Design",
+                                           "Flashlight", "Belthook", "Radio Transmitter",
+                                           "Bluetooth", "WiFi", "GPS", "HQ Camera"};
+
+            var attributes = new List<Attribute>();
+            System.Random random = new System.Random();
+
+            for (int i = 0; i < 100; i++)
             {
-                new Attribute{Name = "Robust Embodiment"},
-                new Attribute{Name = "Long Operational Time"},
-                new Attribute{Name = "Design"},
-                new Attribute{Name = "Flashlight"},
-                new Attribute{Name = "Belthook"},
-                new Attribute{Name = "Radio Transmitter"},
-                new Attribute{Name = "Bluetooth"},
-                new Attribute{Name = "WiFi"},
-                new Attribute{Name = "GPS"},
-                new Attribute{Name = "HQ Camera"}
-            };
+                attributes.Add(new Attribute { Name = names[random.Next(names.Count - 1)], Evaluation = evaluations[random.Next(evaluations.Count - 1)] });
+            }
 
             attributes.ForEach(s => context.Attributes.Add(s));
             result = context.SaveChangesAsync().Result;
 
             // Seed EvaluationUser
             var evaluationUsers = new List<EvaluationUser>();
-            System.Random random = new System.Random();
 
             for (int i = 0; i < 100; i++)
             {
@@ -138,47 +135,24 @@ namespace RequirementGathering.DAL
 
             result = context.SaveChangesAsync().Result;
 
-            // Seed VersionAttribute
-            var evaluationAttributes = new List<EvaluationAttribute>();
-            random = new System.Random();
-
-            for (int i = 0; i < 100; i++)
-            {
-                var evaluationVersion = evaluations[random.Next(evaluations.Count - 1)].Version;
-                var attributeName = attributes[random.Next(attributes.Count - 1)].Name;
-
-                evaluationAttributes.Add(
-                    new EvaluationAttribute
-                    {
-                        EvaluationId = context.Evaluations.First(r => r.Version == evaluationVersion).Id,
-                        AttributeId = context.Attributes.First(a => a.Name == attributeName).Id
-                    });
-            };
-
-            evaluationAttributes.Distinct(new DistinctVersionAttributeComparer())
-                             .ToList()
-                             .ForEach(s => context.EvaluationAttributes.Add(s));
-
-            result = context.SaveChangesAsync().Result;
-
             // Seed Ratings
             var ratings = new List<Rating>();
 
-            evaluationAttributes = context.EvaluationAttributes.ToList();
+            attributes = context.Attributes.ToList();
 
             for (int i = 0; i < 500; i++)
             {
-                var attributesCount = evaluationAttributes.Count;
-                var evaluationAttribute1 = evaluationAttributes[random.Next(attributesCount - 1)];
-                var evaluationAttribute2 = evaluationAttributes[random.Next(attributesCount - 1)];
+                var attributesCount = attributes.Count;
+                var attribute1 = attributes[random.Next(attributesCount - 1)];
+                var attribute2 = attributes[random.Next(attributesCount - 1)];
                 var user = users[random.Next(users.Count - 1)];
 
                 ratings.Add(
                     new Rating
                     {
                         UserId = user.Id,
-                        EvaluationAttributeId1 = evaluationAttribute1.Id,
-                        EvaluationAttributeId2 = evaluationAttribute2.Id,
+                        AttributeId1 = attribute1.Id,
+                        AttributeId2 = attribute2.Id,
                         Value1 = random.Next(1, 5),
                         Value2 = random.Next(1, 5)
                     });
@@ -188,22 +162,6 @@ namespace RequirementGathering.DAL
             result = context.SaveChangesAsync().Result;
 
             base.Seed(context);
-        }
-    }
-
-    class DistinctVersionAttributeComparer : IEqualityComparer<EvaluationAttribute>
-    {
-
-        public bool Equals(EvaluationAttribute x, EvaluationAttribute y)
-        {
-            return x.AttributeId == y.AttributeId &&
-                   x.EvaluationId == y.EvaluationId;
-        }
-
-        public int GetHashCode(EvaluationAttribute obj)
-        {
-            return obj.EvaluationId.GetHashCode() ^
-                   obj.AttributeId.GetHashCode();
         }
     }
 

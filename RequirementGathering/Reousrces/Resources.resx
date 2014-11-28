@@ -125,6 +125,10 @@
     <value>Age is required.</value>
     <comment>Validation</comment>
   </data>
+  <data name="AttributesCountValidation" xml:space="preserve">
+    <value>You must at least have two attributes to create an evaluation.</value>
+    <comment>Validation</comment>
+  </data>
   <data name="EmailInvalid" xml:space="preserve">
     <value>Email is not valid.</value>
     <comment>Validation</comment>

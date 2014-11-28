@@ -6,7 +6,7 @@
 
 <h2>Edit</h2>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "Evaluations", FormMethod.Post, new { @class = "evaluation-form" }))
 {
     @Html.AntiForgeryToken()
 
@@ -20,7 +20,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Save" class="evaluation-submit btn btn-default" />
             </div>
         </div>
     </div>
@@ -32,4 +32,5 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/app")
 }

@@ -25,7 +25,6 @@ namespace RequirementGathering.DAL
         public DbSet<Evaluation> Evaluations { get; set; }
         public DbSet<EvaluationUser> EvaluationUsers { get; set; }
         public DbSet<Models.Attribute> Attributes { get; set; }
-        public DbSet<EvaluationAttribute> EvaluationAttributes { get; set; }
         public DbSet<Rating> Ratings { get; set; }
         public DbSet<Resource> Resources { get; set; }
 
@@ -161,7 +160,7 @@ namespace RequirementGathering.DAL
                         .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
             modelBuilder.Entity<Rating>()
-                        .HasRequired(c => c.EvaluationAttribute1)
+                        .HasRequired(c => c.Attribute1)
                         .WithMany()
                         .WillCascadeOnDelete(false);
         }

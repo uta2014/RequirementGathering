@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Globalization;
 using System.Linq;
@@ -10,6 +11,7 @@ using Microsoft.AspNet.Identity;
 using RequirementGathering.Helpers;
 using RequirementGathering.Models;
 using RequirementGathering.Reousrces;
+using Attribute = RequirementGathering.Models.Attribute;
 
 namespace RequirementGathering.Controllers
 {
@@ -31,11 +33,14 @@ namespace RequirementGathering.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Evaluation evaluation = await RgDbContext.Evaluations.FindAsync(id);
+
             if (evaluation == null)
             {
                 return HttpNotFound();
             }
+
             return View(evaluation);
         }
 
@@ -43,8 +48,9 @@ namespace RequirementGathering.Controllers
         [Authorize(Roles = "Researcher,Administrator,Super Administrator")]
         public ActionResult Create()
         {
+            ViewBag.EvaluationIsFreezed = false;
             ViewBag.ProductId = new SelectList(RgDbContext.Products, "Id", "Name");
-            return View(new Evaluation());
+            return View(new Evaluation() { Attributes = new List<Attribute> { new Attribute() } });
         }
 
         // POST: Evaluations/Create
@@ -53,8 +59,13 @@ namespace RequirementGathering.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Researcher,Administrator,Super Administrator")]
-        public async Task<ActionResult> Create([Bind(Include = "Id,Name,Version,Description,IsActive,ProductId")] Evaluation evaluation)
+        public async Task<ActionResult> Create(Evaluation evaluation)
         {
+            if (evaluation.Attributes == null || evaluation.Attributes.Count < 2)
+            {
+                ModelState.AddModelError("Attributes", Resources.AttributesCountValidation);
+            }
+
             if (ModelState.IsValid)
             {
                 RgDbContext.Evaluations.Add(evaluation);
@@ -62,6 +73,12 @@ namespace RequirementGathering.Controllers
                 return RedirectToAction("Index");
             }
 
+            if (evaluation.Attributes == null || !evaluation.Attributes.Any())
+            {
+                evaluation.Attributes = new List<Attribute> { new Attribute() };
+            }
+
+            ViewBag.EvaluationIsFreezed = evaluation.EvaluationUsers != null && evaluation.EvaluationUsers.Any();
             ViewBag.ProductId = new SelectList(RgDbContext.Products, "Id", "Name", evaluation.ProductId);
             return View(evaluation);
         }
@@ -71,13 +88,23 @@ namespace RequirementGathering.Controllers
         public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
+            {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
 
             Evaluation evaluation = await RgDbContext.Evaluations.FindAsync(id);
 
             if (evaluation == null)
+            {
                 return HttpNotFound();
+            }
 
+            if (evaluation.Attributes == null || !evaluation.Attributes.Any())
+            {
+                evaluation.Attributes = new List<Attribute> { new Attribute() };
+            }
+
+            ViewBag.EvaluationIsFreezed = evaluation.EvaluationUsers != null && evaluation.EvaluationUsers.Any();
             ViewBag.ProductId = new SelectList(RgDbContext.Products, "Id", "Name", evaluation.ProductId);
             return View(evaluation);
         }
@@ -88,16 +115,49 @@ namespace RequirementGathering.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Researcher,Administrator,Super Administrator")]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,Name,Version,Description,IsActive,ProductId")] Evaluation evaluation)
+        public async Task<ActionResult> Edit(Evaluation evaluation)
         {
+            if (evaluation.Attributes == null || evaluation.Attributes.Count < 2)
+            {
+                ModelState.AddModelError("Attributes", Resources.AttributesCountValidation);
+            }
+
             if (ModelState.IsValid)
             {
+                if (evaluation.EvaluationUsers == null || !evaluation.EvaluationUsers.Any())
+                {
+                    var attributes = RgDbContext.Attributes.Where(a => a.EvaluationId == evaluation.Id);
+
+                    if (attributes.Any())
+                    {
+                        RgDbContext.Attributes.RemoveRange(attributes);
+                    }
+
+                    foreach (var attribute in evaluation.Attributes.Where(a => !string.IsNullOrEmpty(a.Name)))
+                    {
+                        RgDbContext.Attributes.Add(new Attribute { Name = attribute.Name, EvaluationId = evaluation.Id });
+                    }
+
+                    evaluation.Attributes.Clear();
+                }
+                else // Safety
+                {
+                    evaluation.Attributes = null;
+                }
+
                 RgDbContext.Entry(evaluation).State = EntityState.Modified;
                 await RgDbContext.SaveChangesAsync();
+
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ProductId = new SelectList(RgDbContext.Products, "ProductId", "Name", evaluation.ProductId);
+            if (evaluation.Attributes == null || !evaluation.Attributes.Any())
+            {
+                evaluation.Attributes = new List<Attribute> { new Attribute() };
+            }
+
+            ViewBag.EvaluationIsFreezed = evaluation.EvaluationUsers != null && evaluation.EvaluationUsers.Any();
+            ViewBag.ProductId = new SelectList(RgDbContext.Products, "Id", "Name", evaluation.ProductId);
             return View(evaluation);
         }
 

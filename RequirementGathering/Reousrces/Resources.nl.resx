@@ -125,6 +125,10 @@
     <value>Leeftijd is vereist.</value>
     <comment>Validation</comment>
   </data>
+  <data name="AttributesCountValidation" xml:space="preserve">
+    <value>U moet ten minste twee kenmerken maken een evaluatie.</value>
+    <comment>Validation</comment>
+  </data>
   <data name="EmailInvalid" xml:space="preserve">
     <value>E-mail is niet geldig.</value>
     <comment>Validation</comment>

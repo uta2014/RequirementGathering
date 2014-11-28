@@ -79,6 +79,15 @@ namespace RequirementGathering.Reousrces {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You must at least have two attributes to create an evaluation..
+        /// </summary>
+        public static string AttributesCountValidation {
+            get {
+                return ResourceManager.GetString("AttributesCountValidation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Email is not valid..
         /// </summary>
         public static string EmailInvalid {

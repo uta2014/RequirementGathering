@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
+using RequirementGathering.Attributes;
 
 namespace RequirementGathering.Models
 {
@@ -8,25 +8,16 @@ namespace RequirementGathering.Models
     {
         public int Id { get; set; }
 
-        [Required]
+        [Translatable]
         public string Name { get; set; }
 
-        public bool IsActive { get; set; }
-
-        public Attribute()
-        {
-            IsActive = true;
-        }
-
         #region Navigation Fields
-        public int EvaluationAttributeId { get; set; }
-        public virtual ICollection<EvaluationAttribute> EvaluationAttributes { get; set; }
-        #endregion
 
-        public ICollection<Evaluation> Evaluation()
-        {
-            return EvaluationAttributes.Select(ea => ea.Evaluation)
-                                       .ToList();
-        }
+        [Required]
+        public int EvaluationId { get; set; }
+        public virtual Evaluation Evaluation { get; set; }
+        public virtual ICollection<Rating> Ratings { get; set; }
+
+        #endregion
     }
 }

@@ -36,3 +36,17 @@
         @Html.ValidationMessageFor(model => model.ProductId, "", new { @class = "text-danger" })
     </div>
 </div>
+
+<hr />
+
+<h4>Manage Attributes</h4>
+<hr />
+
+@Html.ValidationMessageFor(ea => ea.Attributes, "", new { @class = "text-danger" })
+<br /><br />
+
+<div class="row">
+    <div class="col-lg-12 col-md-12">
+        @Html.EditorFor(model => model.Attributes)
+    </div>
+</div>

@@ -173,12 +173,11 @@
     <Compile Include="Helpers\CultureHelper.cs" />
     <Compile Include="Helpers\PasswordHelper.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Evaluation.cs" />
     <Compile Include="Models\EvaluationUser.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Resource.cs" />
     <Compile Include="Models\Rating.cs" />
-    <Compile Include="Models\Evaluation.cs" />
-    <Compile Include="Models\EvaluationAttribute.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Attribute.cs" />
@@ -202,6 +201,7 @@
     </Compile>
     <Compile Include="Startup.cs" />
     <Compile Include="Views\Helpers\ApplicationHelpers.cs" />
+    <None Include="Views\Evaluations\EditorTemplates\Attribute.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -212,6 +212,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="images\icon.png" />
+    <Content Include="Scripts\evaluation.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />

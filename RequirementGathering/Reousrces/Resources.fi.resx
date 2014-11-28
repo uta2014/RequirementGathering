@@ -125,6 +125,10 @@
     <value>Ikä on pakollinen.</value>
     <comment>Validation</comment>
   </data>
+  <data name="AttributesCountValidation" xml:space="preserve">
+    <value>Sinulla on vähintään kaksi määritettä luoda arvioinnin.</value>
+    <comment>Validation</comment>
+  </data>
   <data name="EmailInvalid" xml:space="preserve">
     <value>Sähköposti ei kelpaa.</value>
     <comment>Validation</comment>
