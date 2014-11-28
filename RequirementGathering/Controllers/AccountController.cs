@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using RequirementGathering.Helpers;
 using RequirementGathering.Models;
+using System.Collections;
 
 namespace RequirementGathering.Controllers
 {
@@ -21,11 +22,31 @@ namespace RequirementGathering.Controllers
 
         // GET: Users
         [Authorize(Roles = "Administrator,Super Administrator")]
-        public async Task<ActionResult> Index()
+        public async Task<ActionResult> Index(string roleTag)
         {
             var usersList = await (RgDbContext.Users as DbSet<User>).ToListAsync();
 
             usersList.ForEach(u => u.UserRoles = string.Join(", ", UserManager.GetRoles(u.Id)));
+
+
+            if (roleTag != null && !roleTag.Equals("") && !roleTag.Equals("All"))
+            {
+                var itemsToRemove = new ArrayList();  // should use generic List if you can
+
+                foreach (User item in usersList)
+                {
+                    if (!item.UserRoles.Contains(roleTag))
+                    {
+                        itemsToRemove.Add(item);
+                    }
+                }
+
+                foreach (User item in itemsToRemove) {
+                    usersList.Remove(item);
+                }
+
+                ViewData["roleTag"] = roleTag;
+            }
 
             return View(usersList);
         }
