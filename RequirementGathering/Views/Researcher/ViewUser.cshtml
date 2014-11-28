@@ -1,0 +1,102 @@
+﻿@model IEnumerable<RequirementGathering.Models.EvaluationUser>
+
+@{
+    ViewBag.Title = "View User";
+    Layout = "~/Views/Shared/_AuthorizedLayout.cshtml";
+}
+<head>
+    <title></title>
+    <script type="text/javascript">
+        window.onload = function Add() {
+            var select = document.getElementById("EvaluationVersion")
+            var option = document.createElement('option')
+            option.text = option.value = "All"
+            select.appendChild(option)
+            option.selected = true
+        }
+    </script>
+</head>
+
+<h2>View User Evaluation </h2>
+
+<p>
+    @Html.ActionLink("Invite Evaluator", "Index", "Evaluations")
+</p>
+
+@using (Html.BeginForm("ViewUser", "Researcher"))
+{<table>
+        <tbody>
+            <tr>
+                <td> @Html.Label("Version: ")</td>
+                <td>@Html.DropDownList("EvaluationVersion", null, htmlAttributes: new { @style = "width:150px" })</td>
+                <td align="right" style="width:100%"><h4>Total number of Evaluator is : @ViewBag.numUser (@ViewBag.numUserActive Actived)</h4></td>
+            </tr>
+            <tr>
+                <td>@Html.Label("First Name: ")</td>
+                <td>@Html.TextBox("Username")</td>
+                <td><input type="submit" value="Search" class="btn btn-primary"></td>
+            </tr>
+        </tbody>
+    </table>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Evaluation.Version)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User.CompanyName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User.Country)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User.Email)
+        </th>
+        <th>
+            @Html.Label("Phone Number")
+        </th>
+        <th>
+            @Html.Label("Actived")
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Evaluation.Version)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.CompanyName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.Country)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.PhoneNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsActive)
+            </td>
+        </tr>
+    }
+
+</table>
