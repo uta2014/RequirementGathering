@@ -1,0 +1,14 @@
+init:
+- git config --global core.autocrlf input
+
+before_build:
+  - nuget restore
+
+build:
+  project: RequirementGathering.sln
+  verbosity: detailed
+
+configuration:
+  - Release
+
+platform: Any CPU
