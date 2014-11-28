@@ -1,6 +1,77 @@
-﻿@{
+﻿@model User
+
+@{
     ViewBag.Title = "Dashboard";
 }
 
 <h2>Dashboard</h2>
-The time is @System.DateTime.Now.ToLocalTime()
+
+<h4>
+    @Html.Label("Welcome " + Model.FullName.ToUpper())
+</h4>
+
+<div class="row">
+    <div class="col col-lg-2">
+        <label>
+            Full name:
+        </label>
+    </div>
+    <div class="col col-lg-3">
+        @Model.FullName
+    </div>
+</div>
+
+<div class="row">
+    <div class="col col-lg-2">
+        <label>
+            Address:
+        </label>
+    </div>
+    <div class="col col-lg-3">
+        @Model.StreetAddress
+    </div>
+</div>
+
+<div class="row">
+    <div class="col col-lg-2">
+        <label>
+            Country:
+        </label>
+    </div>
+    <div class="col col-lg-3">
+        @Model.Country
+    </div>
+</div>
+
+<div class="row">
+    <div class="col col-lg-2">
+        <label>
+            Email:
+        </label>
+    </div>
+    <div class="col col-lg-3">
+        @Model.Email
+    </div>
+</div>
+
+<div class="row">
+    <div class="col col-lg-2">
+        <label>
+            Phone Number:
+        </label>
+    </div>
+    <div class="col col-lg-3">
+        @Model.PhoneNumber
+    </div>
+</div>
+
+<div class="row">
+    <div class="col col-lg-2">
+        <label>
+            Role:
+        </label>
+    </div>
+    <div class="col col-lg-3">
+        @Model.UserRoles
+    </div>
+</div>

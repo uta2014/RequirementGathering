@@ -12,8 +12,7 @@ namespace RequirementGathering.Controllers
     public class ManageController : BaseController
     {
         public ManageController()
-        {
-        }
+        { }
 
         public ManageController(ApplicationUserManager userManager)
             : base(userManager)

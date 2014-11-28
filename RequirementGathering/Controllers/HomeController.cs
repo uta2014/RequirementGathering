@@ -1,4 +1,7 @@
-﻿using System.Web.Mvc;
+﻿using System.Threading.Tasks;
+using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
+using RequirementGathering.Models;
 
 namespace RequirementGathering.Controllers
 {
@@ -24,11 +27,14 @@ namespace RequirementGathering.Controllers
         }
 
         [Authorize]
-        public ActionResult Dashboard()
+        public async Task<ActionResult> Dashboard()
         {
             ViewBag.Message = "Your dashboard page.";
 
-            return View("Dashboard", "~/Views/Shared/_AuthorizedLayout.cshtml");
+            var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+            user.UserRoles = string.Join(", ", UserManager.GetRoles(user.Id));
+
+            return View("Dashboard", "~/Views/Shared/_AuthorizedLayout.cshtml", user);
         }
     }
 }

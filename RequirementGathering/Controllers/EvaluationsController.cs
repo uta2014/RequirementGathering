@@ -46,11 +46,11 @@ namespace RequirementGathering.Controllers
 
         // GET: Evaluations/Create
         [Authorize(Roles = "Researcher,Administrator,Super Administrator")]
-        public ActionResult Create()
+        public async Task<ActionResult> Create()
         {
             ViewBag.EvaluationIsFreezed = false;
             ViewBag.ProductId = new SelectList(RgDbContext.Products, "Id", "Name");
-            return View(new Evaluation() { Attributes = new List<Attribute> { new Attribute() } });
+            return View(new Evaluation() { Owner = await UserManager.FindByIdAsync(User.Identity.GetUserId()), Attributes = new List<Attribute> { new Attribute() } });
         }
 
         // POST: Evaluations/Create
@@ -138,6 +138,7 @@ namespace RequirementGathering.Controllers
                         RgDbContext.Attributes.Add(new Attribute { Name = attribute.Name, EvaluationId = evaluation.Id });
                     }
 
+                    evaluation.Owner = await UserManager.FindByIdAsync(User.Identity.GetUserId());
                     evaluation.Attributes.Clear();
                 }
                 else // Safety
