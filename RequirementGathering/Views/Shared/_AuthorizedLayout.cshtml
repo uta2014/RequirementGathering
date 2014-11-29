@@ -5,11 +5,11 @@
 <div class="row">
     <div class="col-md-3">
         <ul class="list-group">
-            @if (new[] { "Super Administrator", "Administrator"}.Any(role => this.User.IsInRole(role)))
+            @if (new[] { "Super Administrator", "Administrator"}.Any(role => User.IsInRole(role)))
             {
                 @Html.ActionLink("Manage Users", "Index", "Account", null, new { @class = "list-group-item" })
             }
-            @if (new[] { "Super Administrator", "Administrator", "Researcher" }.Any(role => this.User.IsInRole(role)))
+            @if (new[] { "Super Administrator", "Administrator", "Researcher" }.Any(role => User.IsInRole(role)))
             {
                 @Html.ActionLink("Manage Products", "Index", "Products", null, new { @class = "list-group-item" })
                 @Html.ActionLink("Manage Evaluation", "Index", "Evaluations", null, new { @class = "list-group-item" })

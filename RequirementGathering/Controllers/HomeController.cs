@@ -1,7 +1,6 @@
 ﻿using System.Threading.Tasks;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
-using RequirementGathering.Models;
 
 namespace RequirementGathering.Controllers
 {
@@ -31,7 +30,7 @@ namespace RequirementGathering.Controllers
         {
             ViewBag.Message = "Your dashboard page.";
 
-            var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+            var user = await GetCurrentUser();
             user.UserRoles = string.Join(", ", UserManager.GetRoles(user.Id));
 
             return View("Dashboard", "~/Views/Shared/_AuthorizedLayout.cshtml", user);

@@ -50,7 +50,7 @@ namespace RequirementGathering.Controllers
         {
             ViewBag.EvaluationIsFreezed = false;
             ViewBag.ProductId = new SelectList(RgDbContext.Products, "Id", "Name");
-            return View(new Evaluation() { Owner = await UserManager.FindByIdAsync(User.Identity.GetUserId()), Attributes = new List<Attribute> { new Attribute() } });
+            return View(new Evaluation() { Owner = await GetCurrentUser(), Attributes = new List<Attribute> { new Attribute() } });
         }
 
         // POST: Evaluations/Create
@@ -138,7 +138,7 @@ namespace RequirementGathering.Controllers
                         RgDbContext.Attributes.Add(new Attribute { Name = attribute.Name, EvaluationId = evaluation.Id });
                     }
 
-                    evaluation.Owner = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+                    evaluation.Owner = await GetCurrentUser();
                     evaluation.Attributes.Clear();
                 }
                 else // Safety

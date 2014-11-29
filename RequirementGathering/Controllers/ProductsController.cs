@@ -2,7 +2,6 @@
 using System.Net;
 using System.Threading.Tasks;
 using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
 using RequirementGathering.Models;
 
 namespace RequirementGathering.Controllers
@@ -37,7 +36,7 @@ namespace RequirementGathering.Controllers
         [Authorize(Roles = "Researcher,Administrator,Super Administrator")]
         public async Task<ActionResult> Create()
         {
-            return View(new Product() { Owner = await UserManager.FindByIdAsync(User.Identity.GetUserId()) });
+            return View(new Product() { Owner = await GetCurrentUser() });
         }
 
         // POST: Products/Create

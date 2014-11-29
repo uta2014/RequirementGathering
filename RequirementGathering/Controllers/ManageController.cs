@@ -61,7 +61,7 @@ namespace RequirementGathering.Controllers
             var result = await UserManager.RemoveLoginAsync(User.Identity.GetUserId(), new UserLoginInfo(loginProvider, providerKey));
             if (result.Succeeded)
             {
-                var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+                var user = await GetCurrentUser();
                 if (user != null)
                 {
                     await SignInAsync(user, isPersistent: false);
@@ -112,7 +112,7 @@ namespace RequirementGathering.Controllers
         public async Task<ActionResult> EnableTwoFactorAuthentication()
         {
             await UserManager.SetTwoFactorEnabledAsync(User.Identity.GetUserId(), true);
-            var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+            var user = await GetCurrentUser();
             if (user != null)
             {
                 await SignInAsync(user, isPersistent: false);
@@ -126,7 +126,7 @@ namespace RequirementGathering.Controllers
         public async Task<ActionResult> DisableTwoFactorAuthentication()
         {
             await UserManager.SetTwoFactorEnabledAsync(User.Identity.GetUserId(), false);
-            var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+            var user = await GetCurrentUser();
             if (user != null)
             {
                 await SignInAsync(user, isPersistent: false);
@@ -156,7 +156,7 @@ namespace RequirementGathering.Controllers
             var result = await UserManager.ChangePhoneNumberAsync(User.Identity.GetUserId(), model.PhoneNumber, model.Code);
             if (result.Succeeded)
             {
-                var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+                var user = await GetCurrentUser();
                 if (user != null)
                 {
                     await SignInAsync(user, isPersistent: false);
@@ -177,7 +177,7 @@ namespace RequirementGathering.Controllers
             {
                 return RedirectToAction("Index", new { Message = ManageMessageId.Error });
             }
-            var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+            var user = await GetCurrentUser();
             if (user != null)
             {
                 await SignInAsync(user, isPersistent: false);
@@ -205,7 +205,7 @@ namespace RequirementGathering.Controllers
             var result = await UserManager.ChangePasswordAsync(User.Identity.GetUserId(), model.OldPassword, model.NewPassword);
             if (result.Succeeded)
             {
-                var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+                var user = await GetCurrentUser();
                 if (user != null)
                 {
                     await SignInAsync(user, isPersistent: false);
@@ -234,7 +234,7 @@ namespace RequirementGathering.Controllers
                 var result = await UserManager.AddPasswordAsync(User.Identity.GetUserId(), model.NewPassword);
                 if (result.Succeeded)
                 {
-                    var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+                    var user = await GetCurrentUser();
                     if (user != null)
                     {
                         await SignInAsync(user, isPersistent: false);
@@ -256,7 +256,7 @@ namespace RequirementGathering.Controllers
                 message == ManageMessageId.RemoveLoginSuccess ? "The external login was removed."
                 : message == ManageMessageId.Error ? "An error has occurred."
                 : "";
-            var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+            var user = await GetCurrentUser();
             if (user == null)
             {
                 return View("Error");

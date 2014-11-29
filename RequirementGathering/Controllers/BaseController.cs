@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using RequirementGathering.DAL;
 using RequirementGathering.Helpers;
+using RequirementGathering.Models;
 
 namespace RequirementGathering.Controllers
 {
@@ -21,6 +24,11 @@ namespace RequirementGathering.Controllers
         public BaseController(ApplicationUserManager userManager)
         {
             UserManager = userManager;
+        }
+
+        protected async Task<User> GetCurrentUser()
+        {
+            return await UserManager.FindByIdAsync(User.Identity.GetUserId());
         }
 
         /// <summary>
