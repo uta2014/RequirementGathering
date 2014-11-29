@@ -11,7 +11,8 @@ namespace RequirementGathering.Views.Helpers
         public static string BuildBreadcrumbNavigation(this HtmlHelper helper)
         {
             if (helper.ViewContext.RouteData.Values["controller"].ToString() == "Home" ||
-                helper.ViewContext.RouteData.Values["controller"].ToString() == "Account")
+               (helper.ViewContext.RouteData.Values["controller"].ToString() == "Account" &&
+                helper.ViewContext.RouteData.Values["action"].ToString() == "Login"))
             {
                 return string.Empty;
             }

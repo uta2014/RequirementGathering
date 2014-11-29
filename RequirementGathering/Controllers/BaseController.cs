@@ -8,6 +8,7 @@ using Microsoft.AspNet.Identity.Owin;
 using RequirementGathering.DAL;
 using RequirementGathering.Helpers;
 using RequirementGathering.Models;
+using RequirementGathering.Reousrces;
 
 namespace RequirementGathering.Controllers
 {
@@ -18,7 +19,9 @@ namespace RequirementGathering.Controllers
         public BaseController()
         {
             if (HttpContext != null)
+            {
                 UserManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
         }
 
         public BaseController(ApplicationUserManager userManager)
@@ -44,12 +47,16 @@ namespace RequirementGathering.Controllers
             private set
             {
                 if (_userManager == null)
+                {
                     _userManager = value;
+                }
             }
         }
 
         protected override IAsyncResult BeginExecuteCore(AsyncCallback callback, object state)
         {
+            SetStatusMessage();
+
             string cultureName = null;
 
             // Attempt to read the culture cookie from Request
@@ -68,6 +75,56 @@ namespace RequirementGathering.Controllers
             Thread.CurrentThread.CurrentUICulture = Thread.CurrentThread.CurrentCulture;
 
             return base.BeginExecuteCore(callback, state);
+        }
+
+        private void SetStatusMessage()
+        {
+            string param;
+
+            try
+            {
+                param = Request.Params["Message"];
+
+                if (param == null)
+                {
+                    return;
+                }
+            }
+            catch (HttpException)
+            {
+                return;
+            }
+
+            FlashMessageId message;
+
+            Enum.TryParse<FlashMessageId>(param, out message);
+
+            ViewBag.StatusMessage =
+                      message == FlashMessageId.ChangePassword ? Resources.ChangePassword
+                    : message == FlashMessageId.UpdateProfile ? Resources.UpdateProfile
+                    : message == FlashMessageId.CreateUser ? Resources.CreateUser
+                    : message == FlashMessageId.UpdateUser ? Resources.UpdateUser
+                    : message == FlashMessageId.CreateEvaluation ? Resources.CreateEvaluation
+                    : message == FlashMessageId.UpdateEvaluation ? Resources.UpdateEvaluation
+                    : message == FlashMessageId.CreateProduct ? Resources.CreateProduct
+                    : message == FlashMessageId.UpdateProduct ? Resources.UpdateProduct
+                    : message == FlashMessageId.AddRating ? Resources.AddRating
+                    : message == FlashMessageId.InvitationSent ? Resources.InvitationSent
+                    : "";
+        }
+
+        public enum FlashMessageId
+        {
+            ChangePassword,
+            CreateUser,
+            UpdateUser,
+            CreateEvaluation,
+            UpdateEvaluation,
+            CreateProduct,
+            UpdateProduct,
+            UpdateProfile,
+            AddRating,
+            InvitationSent
         }
     }
 }

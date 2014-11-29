@@ -22,12 +22,16 @@ namespace RequirementGathering.Controllers
         public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
+            {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
 
             Product product = await RgDbContext.Products.FindAsync(id);
 
             if (product == null)
+            {
                 return HttpNotFound();
+            }
 
             return View(product);
         }
@@ -51,7 +55,7 @@ namespace RequirementGathering.Controllers
             {
                 RgDbContext.Products.Add(product);
                 await RgDbContext.SaveChangesAsync();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new { Message = FlashMessageId.CreateProduct });
             }
 
 
@@ -63,12 +67,16 @@ namespace RequirementGathering.Controllers
         public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
+            {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
 
             Product product = await RgDbContext.Products.FindAsync(id);
 
             if (product == null)
+            {
                 return HttpNotFound();
+            }
 
             return View(product);
         }
@@ -85,38 +93,38 @@ namespace RequirementGathering.Controllers
             {
                 RgDbContext.Entry(product).State = EntityState.Modified;
                 await RgDbContext.SaveChangesAsync();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new { Message = FlashMessageId.UpdateProduct });
             }
 
             return View(product);
         }
 
         // GET: Products/Delete/5
-        [Authorize(Roles = "Researcher,Administrator,Super Administrator")]
-        public async Task<ActionResult> Delete(int? id)
-        {
-            if (id == null)
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //[Authorize(Roles = "Researcher,Administrator,Super Administrator")]
+        //public async Task<ActionResult> Delete(int? id)
+        //{
+        //    if (id == null)
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
-            Product product = await RgDbContext.Products.FindAsync(id);
+        //    Product product = await RgDbContext.Products.FindAsync(id);
 
-            if (product == null)
-                return HttpNotFound();
+        //    if (product == null)
+        //        return HttpNotFound();
 
-            return View(product);
-        }
+        //    return View(product);
+        //}
 
         // POST: Products/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Researcher,Administrator,Super Administrator")]
-        public async Task<ActionResult> DeleteConfirmed(int id)
-        {
-            Product product = await RgDbContext.Products.FindAsync(id);
-            RgDbContext.Products.Remove(product);
-            await RgDbContext.SaveChangesAsync();
-            return RedirectToAction("Index");
-        }
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //[Authorize(Roles = "Researcher,Administrator,Super Administrator")]
+        //public async Task<ActionResult> DeleteConfirmed(int id)
+        //{
+        //    Product product = await RgDbContext.Products.FindAsync(id);
+        //    RgDbContext.Products.Remove(product);
+        //    await RgDbContext.SaveChangesAsync();
+        //    return RedirectToAction("Index");
+        //}
 
         protected override void Dispose(bool disposing)
         {

@@ -1,4 +1,14 @@
 ﻿$(function() {
+    $(document).on('click', '.image-wrapper #changeImage', function() {
+        $('.image-wrapper').hide();
+        $('.image-wrapper').next().removeClass('hidden');
+        $('#fileRemoved').val('yes');
+    });
+
+    $(document).on('change', '#productVersionImage', function() {
+        $("#upload-file-info").html($(this).val());
+    });
+
     $(document).on('click', '.add.btn', function() {
         var parent = $(this).closest('.form-group');
         var count = parent.siblings().length;
@@ -37,7 +47,8 @@
 
     $('.evaluation-form').submit(function() {
         $('[name="Attributes[].Name"]').each(function(i) {
-            $(this).attr('name', 'Attributes[' + i + '].Name')
+            $(this).attr('name', 'Attributes[' + i + '].Name');
+            $(this).removeAttr('disabled');
         });
     });
 });

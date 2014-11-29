@@ -117,37 +117,109 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AgeRange" xml:space="preserve">
-    <value>Moet liggen tussen 10 en 30.</value>
-    <comment>Validation</comment>
+  <data name="AddRating" xml:space="preserve">
+    <value>Ratings met succes is ingediend.</value>
+    <comment>Flash Message</comment>
   </data>
-  <data name="AgeRequired" xml:space="preserve">
-    <value>Leeftijd is vereist.</value>
-    <comment>Validation</comment>
+  <data name="AgeDisplay" xml:space="preserve">
+    <value>Leeftijd</value>
+    <comment>Display Name</comment>
   </data>
   <data name="AttributesCountValidation" xml:space="preserve">
     <value>U moet ten minste twee kenmerken maken een evaluatie.</value>
     <comment>Validation</comment>
   </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>Uw wachtwoord is gewijzigd.</value>
+    <comment>Flash Message</comment>
+  </data>
+  <data name="CityDisplay" xml:space="preserve">
+    <value>Stad</value>
+    <comment>Display Name</comment>
+  </data>
+  <data name="CompanyNameDisplay" xml:space="preserve">
+    <value>Bedrijfsnaam</value>
+    <comment>Display Name</comment>
+  </data>
+  <data name="ConfirmPasswordDisplay" xml:space="preserve">
+    <value>Bevestig Wachtwoord</value>
+    <comment>Display Name</comment>
+  </data>
+  <data name="CountryDisplay" xml:space="preserve">
+    <value>Land</value>
+    <comment>Display Name</comment>
+  </data>
+  <data name="CreateEvaluation" xml:space="preserve">
+    <value>Evaluatie gemaakt.</value>
+    <comment>Flash Message</comment>
+  </data>
+  <data name="CreateProduct" xml:space="preserve">
+    <value>Product succesvol aangemaakt.</value>
+    <comment>Flash Message</comment>
+  </data>
+  <data name="CreateUser" xml:space="preserve">
+    <value>Gebruiker met succes gemaakt.</value>
+    <comment>Flash Message</comment>
+  </data>
+  <data name="DescriptionDisplay" xml:space="preserve">
+    <value>Beschrijving</value>
+    <comment>Display Name</comment>
+  </data>
+  <data name="DesignationDisplay" xml:space="preserve">
+    <value>Aanwijzing</value>
+    <comment>Display Name</comment>
+  </data>
+  <data name="DistrictDisplay" xml:space="preserve">
+    <value>District</value>
+    <comment>Display Name</comment>
+  </data>
+  <data name="EmailAlreadyTaken" xml:space="preserve">
+    <value>E-mailadres wordt al gebruikt.</value>
+    <comment>Validation</comment>
+  </data>
+  <data name="EmailDisplay" xml:space="preserve">
+    <value>Email</value>
+    <comment>Display Name</comment>
+  </data>
   <data name="EmailInvalid" xml:space="preserve">
     <value>E-mail is niet geldig.</value>
     <comment>Validation</comment>
   </data>
-  <data name="EmailRequired" xml:space="preserve">
-    <value>E-mailadres is vereist.</value>
+  <data name="FieldLengthMax" xml:space="preserve">
+    <value>{0} kan niet langer zijn dan {1} letters.</value>
     <comment>Validation</comment>
   </data>
-  <data name="FirstNameLong" xml:space="preserve">
-    <value>Eerste naam mag niet minder dan 50 tekens.</value>
+  <data name="FieldLengthMin" xml:space="preserve">
+    <value>{0} moet ten minste {1} tekens lang.</value>
     <comment>Validation</comment>
   </data>
-  <data name="FirstNameRequired" xml:space="preserve">
-    <value>Voornaam is vereist.</value>
+  <data name="FieldRangeMinMax" xml:space="preserve">
+    <value>De {0} moet ten minste {2} en hoogstens {1}.</value>
     <comment>Validation</comment>
+  </data>
+  <data name="FieldRequired" xml:space="preserve">
+    <value>{0} is vereist.</value>
+    <comment>Validation</comment>
+  </data>
+  <data name="FirstNameDisplay" xml:space="preserve">
+    <value>Voornaam</value>
+    <comment>Display Name</comment>
   </data>
   <data name="Headline" xml:space="preserve">
     <value>Webtool voor het verzamelen van eisen van de klant</value>
-    <comment>MainPage</comment>
+    <comment>Main Page</comment>
+  </data>
+  <data name="ImageUploadFailed" xml:space="preserve">
+    <value>Fout uploaden spiegelbeeld vijl.</value>
+    <comment>Validation</comment>
+  </data>
+  <data name="ImageUploadFormat" xml:space="preserve">
+    <value>Ongeldige beeldformaat.</value>
+    <comment>Vaidation</comment>
+  </data>
+  <data name="InvalidRoleAssignment" xml:space="preserve">
+    <value>U kunt geen een gebruiker maken met rol: {0}.</value>
+    <comment>Validation</comment>
   </data>
   <data name="InvitationEmailBodyExisting" xml:space="preserve">
     <value>U bent uitgenodigd voor evaluatie. Gelieve meld u aan bij {0}/{1}/Account/Login met uw e-mailadres en wachtwoord.&lt;br/&gt;&lt;br/&gt;{2}</value>
@@ -161,8 +233,76 @@
     <value>Uitnodiging voor evaluatie: {0} {1}</value>
     <comment>Evaluation</comment>
   </data>
-  <data name="LastNameLong" xml:space="preserve">
-    <value>Achternaam moet minder dan 50 tekens.</value>
+  <data name="InvitationSent" xml:space="preserve">
+    <value>Uitnodiging verzonden.</value>
+    <comment>Flash Message</comment>
+  </data>
+  <data name="IsActiveDisplay" xml:space="preserve">
+    <value>Is Actief</value>
+    <comment>Display Name</comment>
+  </data>
+  <data name="LastNameDisplay" xml:space="preserve">
+    <value>Achternaam</value>
+    <comment>Display Name</comment>
+  </data>
+  <data name="MinRoleAssignment" xml:space="preserve">
+    <value>U moet ten minste één rol toewijzen.</value>
     <comment>Validation</comment>
+  </data>
+  <data name="NameDisplay" xml:space="preserve">
+    <value>Naam</value>
+    <comment>Display Name</comment>
+  </data>
+  <data name="OrganizationNameDisplay" xml:space="preserve">
+    <value>Organisatie</value>
+    <comment>Display Name</comment>
+  </data>
+  <data name="PasswordDisplay" xml:space="preserve">
+    <value>Wachtwoord</value>
+    <comment>Display Name</comment>
+  </data>
+  <data name="PhoneNumberDisplay" xml:space="preserve">
+    <value>Telefoon of Mobiel nummer</value>
+    <comment>Display</comment>
+  </data>
+  <data name="PostalCodeDisplay" xml:space="preserve">
+    <value>Postcode</value>
+    <comment>Display Name</comment>
+  </data>
+  <data name="ProvinceDisplay" xml:space="preserve">
+    <value>Provincie</value>
+    <comment>Display Name</comment>
+  </data>
+  <data name="RememberDisplay" xml:space="preserve">
+    <value>Mij onthouden?</value>
+    <comment>Display Name</comment>
+  </data>
+  <data name="RolesDisplay" xml:space="preserve">
+    <value>Rollen</value>
+    <comment>Display Name</comment>
+  </data>
+  <data name="StreetDisplay" xml:space="preserve">
+    <value>Straat</value>
+    <comment>Display Name</comment>
+  </data>
+  <data name="UpdateEvaluation" xml:space="preserve">
+    <value>Evaluatie, bijgewerkt.</value>
+    <comment>Flash Message</comment>
+  </data>
+  <data name="UpdateProduct" xml:space="preserve">
+    <value>Product bijgewerkt.</value>
+    <comment>Flash Message</comment>
+  </data>
+  <data name="UpdateProfile" xml:space="preserve">
+    <value>Uw profiel is bijgewerkt.</value>
+    <comment>Flash Message</comment>
+  </data>
+  <data name="UpdateUser" xml:space="preserve">
+    <value>Gebruiker bijgewerkt.</value>
+    <comment>Flash Message</comment>
+  </data>
+  <data name="VersionDisplay" xml:space="preserve">
+    <value>Versie</value>
+    <comment>Display Name</comment>
   </data>
 </root>

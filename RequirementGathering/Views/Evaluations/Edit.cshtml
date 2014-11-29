@@ -6,7 +6,7 @@
 
 <h2>Edit</h2>
 
-@using (Html.BeginForm("Edit", "Evaluations", FormMethod.Post, new { @class = "evaluation-form" }))
+@using (Html.BeginForm("Edit", "Evaluations", FormMethod.Post, new { @class = "evaluation-form", enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 

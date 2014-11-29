@@ -32,7 +32,7 @@
         var product = Resource.GetPropertyValue<Evaluation>(item.Id.ToString(), "Product.Name");
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Version)
+                @Html.DisplayFor(_ => item.Version)
             </td>
             <td>
                 @description

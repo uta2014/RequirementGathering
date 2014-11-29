@@ -117,37 +117,109 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AgeRange" xml:space="preserve">
-    <value>Must be between 10 and 30.</value>
-    <comment>Validation</comment>
+  <data name="AddRating" xml:space="preserve">
+    <value>Ratings successfully submitted.</value>
+    <comment>Flash Message</comment>
   </data>
-  <data name="AgeRequired" xml:space="preserve">
-    <value>Age is required.</value>
-    <comment>Validation</comment>
+  <data name="AgeDisplay" xml:space="preserve">
+    <value>Age</value>
+    <comment>Display Name</comment>
   </data>
   <data name="AttributesCountValidation" xml:space="preserve">
     <value>You must at least have two attributes to create an evaluation.</value>
     <comment>Validation</comment>
   </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>Your password has been changed.</value>
+    <comment>Flash Message</comment>
+  </data>
+  <data name="CityDisplay" xml:space="preserve">
+    <value>City</value>
+    <comment>Display Name</comment>
+  </data>
+  <data name="CompanyNameDisplay" xml:space="preserve">
+    <value>Company Name</value>
+    <comment>Display Name</comment>
+  </data>
+  <data name="ConfirmPasswordDisplay" xml:space="preserve">
+    <value>Confirm Password</value>
+    <comment>Display Name</comment>
+  </data>
+  <data name="CountryDisplay" xml:space="preserve">
+    <value>Country</value>
+    <comment>Display Name</comment>
+  </data>
+  <data name="CreateEvaluation" xml:space="preserve">
+    <value>Evaluation created successfully.</value>
+    <comment>Flash Message</comment>
+  </data>
+  <data name="CreateProduct" xml:space="preserve">
+    <value>Product created successfully.</value>
+    <comment>Flash Message</comment>
+  </data>
+  <data name="CreateUser" xml:space="preserve">
+    <value>User created successfully.</value>
+    <comment>Flash Message</comment>
+  </data>
+  <data name="DescriptionDisplay" xml:space="preserve">
+    <value>Description</value>
+    <comment>Display Name</comment>
+  </data>
+  <data name="DesignationDisplay" xml:space="preserve">
+    <value>Designation</value>
+    <comment>Display Name</comment>
+  </data>
+  <data name="DistrictDisplay" xml:space="preserve">
+    <value>District</value>
+    <comment>Display Name</comment>
+  </data>
+  <data name="EmailAlreadyTaken" xml:space="preserve">
+    <value>Email address is already taken.</value>
+    <comment>Validation</comment>
+  </data>
+  <data name="EmailDisplay" xml:space="preserve">
+    <value>Email</value>
+    <comment>Display Name</comment>
+  </data>
   <data name="EmailInvalid" xml:space="preserve">
     <value>Email is not valid.</value>
     <comment>Validation</comment>
   </data>
-  <data name="EmailRequired" xml:space="preserve">
-    <value>Email is required.</value>
+  <data name="FieldLengthMax" xml:space="preserve">
+    <value>{0} can not be longer than {1} characters.</value>
     <comment>Validation</comment>
   </data>
-  <data name="FirstNameLong" xml:space="preserve">
-    <value>First name must be less than 50 characters.</value>
+  <data name="FieldLengthMin" xml:space="preserve">
+    <value>{0} must be at least {1} characters long.</value>
     <comment>Validation</comment>
   </data>
-  <data name="FirstNameRequired" xml:space="preserve">
-    <value>First name is required.</value>
+  <data name="FieldRangeMinMax" xml:space="preserve">
+    <value>The {0} must be at least {2} and at most {1}.</value>
     <comment>Validation</comment>
+  </data>
+  <data name="FieldRequired" xml:space="preserve">
+    <value>{0} is required.</value>
+    <comment>Validation</comment>
+  </data>
+  <data name="FirstNameDisplay" xml:space="preserve">
+    <value>First Name</value>
+    <comment>Display Name</comment>
   </data>
   <data name="Headline" xml:space="preserve">
     <value>Web tool for gathering customer requirements</value>
-    <comment>MainPage</comment>
+    <comment>Main Page</comment>
+  </data>
+  <data name="ImageUploadFailed" xml:space="preserve">
+    <value>Error uploading image file.</value>
+    <comment>Validation</comment>
+  </data>
+  <data name="ImageUploadFormat" xml:space="preserve">
+    <value>Invalid image format.</value>
+    <comment>Vaidation</comment>
+  </data>
+  <data name="InvalidRoleAssignment" xml:space="preserve">
+    <value>You cannot create a user with role: {0}.</value>
+    <comment>Validation</comment>
   </data>
   <data name="InvitationEmailBodyExisting" xml:space="preserve">
     <value>You are invited for evaluation. Please login to {0}/{1}/Account/Login with your email address and password.&lt;br/&gt;&lt;br/&gt;{2}</value>
@@ -161,8 +233,76 @@
     <value>Invitation for Evaluation: {0} {1}</value>
     <comment>Evaluation</comment>
   </data>
-  <data name="LastNameLong" xml:space="preserve">
-    <value>Last name must be less than 50 characters.</value>
+  <data name="InvitationSent" xml:space="preserve">
+    <value>Invitation sent successfully.</value>
+    <comment>Flash Message</comment>
+  </data>
+  <data name="IsActiveDisplay" xml:space="preserve">
+    <value>Is Active</value>
+    <comment>Display Name</comment>
+  </data>
+  <data name="LastNameDisplay" xml:space="preserve">
+    <value>Last Name</value>
+    <comment>Display Name</comment>
+  </data>
+  <data name="MinRoleAssignment" xml:space="preserve">
+    <value>You need to assign at least one role.</value>
     <comment>Validation</comment>
+  </data>
+  <data name="NameDisplay" xml:space="preserve">
+    <value>Name</value>
+    <comment>Display Name</comment>
+  </data>
+  <data name="OrganizationNameDisplay" xml:space="preserve">
+    <value>Organization</value>
+    <comment>Display Name</comment>
+  </data>
+  <data name="PasswordDisplay" xml:space="preserve">
+    <value>Password</value>
+    <comment>Display Name</comment>
+  </data>
+  <data name="PhoneNumberDisplay" xml:space="preserve">
+    <value>Phone or Mobile number</value>
+    <comment>Display</comment>
+  </data>
+  <data name="PostalCodeDisplay" xml:space="preserve">
+    <value>Postal Code</value>
+    <comment>Display Name</comment>
+  </data>
+  <data name="ProvinceDisplay" xml:space="preserve">
+    <value>Province</value>
+    <comment>Display Name</comment>
+  </data>
+  <data name="RememberDisplay" xml:space="preserve">
+    <value>Remember Me?</value>
+    <comment>Display Name</comment>
+  </data>
+  <data name="RolesDisplay" xml:space="preserve">
+    <value>Roles</value>
+    <comment>Display Name</comment>
+  </data>
+  <data name="StreetDisplay" xml:space="preserve">
+    <value>Street</value>
+    <comment>Display Name</comment>
+  </data>
+  <data name="UpdateEvaluation" xml:space="preserve">
+    <value>Evaluation updated successfully.</value>
+    <comment>Flash Message</comment>
+  </data>
+  <data name="UpdateProduct" xml:space="preserve">
+    <value>Product updated successfully.</value>
+    <comment>Flash Message</comment>
+  </data>
+  <data name="UpdateProfile" xml:space="preserve">
+    <value>Your profile has been updated.</value>
+    <comment>Flash Message</comment>
+  </data>
+  <data name="UpdateUser" xml:space="preserve">
+    <value>User updated successfully.</value>
+    <comment>Flash Message</comment>
+  </data>
+  <data name="VersionDisplay" xml:space="preserve">
+    <value>Version</value>
+    <comment>Display Name</comment>
   </data>
 </root>

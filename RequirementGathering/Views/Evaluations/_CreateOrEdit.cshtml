@@ -37,6 +37,30 @@
     </div>
 </div>
 
+<div class="form-group">
+    <label class="control-label col-md-2" for="ProductVersionImage">Product Image for this Version</label>
+    <div class="col-md-10">
+        @if (!string.IsNullOrEmpty(Model.ImageUrl))
+        {
+            <div class="image-wrapper">
+                <button type="button" id="changeImage" class="btn-link btn">Change Image</button><br />
+                <img src="@Model.ImageUrl" id="imageFile" name="ImageFile" />
+                <input type="hidden" value="no" id="fileRemoved" name="FileRemoved" />
+            </div>
+        }
+        <div class="@(string.IsNullOrEmpty(Model.ImageUrl) ? "" : "hidden")">
+            <a class='btn btn-primary' href='javascript:;'>
+                Choose File...
+                <input name="ProductVersionImage" id="productVersionImage" type="file" size="40">
+            </a>
+            &nbsp;
+            <span class='label label-info' id="upload-file-info"></span>
+        </div>
+        <span class="field-validation-valid text-danger" data-valmsg-replace="true" data-valmsg-for="ProductVersionImage"></span>
+        <input type="hidden" name="ImageUrl" value="@Model.ImageUrl" />
+    </div>
+</div>
+
 <hr />
 
 <h4>Manage Attributes</h4>
@@ -47,6 +71,13 @@
 
 <div class="row">
     <div class="col-lg-12 col-md-12">
-        @Html.EditorFor(model => model.Attributes)
+        @if (!Model.Attributes.Any())
+        {
+            @Html.Partial("_AttributeRow", Model.Attributes.First())
+        }
+        else
+        {
+            @Html.EditorFor(model => model.Attributes)
+        }
     </div>
 </div>
