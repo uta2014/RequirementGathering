@@ -3,7 +3,7 @@
 }
 @helper selected(string culture)
 {
-    @:/@culture/@ViewContext.RouteData.Values["controller"]/@ViewContext.RouteData.Values["action"]
+    @:/@culture/@ViewContext.RouteData.Values["controller"]/@ViewContext.RouteData.Values["action"]/@ViewContext.RouteData.Values["id"]
 }
 
 <ul class="nav navbar-nav navbar-right">

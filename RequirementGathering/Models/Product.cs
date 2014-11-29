@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using RequirementGathering.Attributes;
+using RequirementGathering.Reousrces;
 
 namespace RequirementGathering.Models
 {
@@ -11,7 +12,8 @@ namespace RequirementGathering.Models
         [Key]
         public int Id { get; set; }
 
-        [Required]
+        [Required(ErrorMessageResourceType = typeof(Resources), ErrorMessageResourceName = "FieldRequired")]
+        [Display(Name = "NameDisplay", ResourceType = typeof(Resources))]
         [Translatable]
         public string Name { get; set; }
 

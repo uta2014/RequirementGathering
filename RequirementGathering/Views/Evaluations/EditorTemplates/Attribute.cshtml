@@ -1,27 +1,3 @@
 ﻿@model RequirementGathering.Models.Attribute
 
-<div class="form-group">
-    @Html.LabelFor(model => model.Name, " ", htmlAttributes: new { @class = "control-label col-md-2" })
-    <div class="col-md-3">
-        @if (ViewBag.EvaluationIsFreezed)
-        {
-            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @Name = "Attributes[].Name", @class = "form-control", @disabled = "disabled" } })
-        }
-        else
-        {
-            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @Name = "Attributes[].Name", @class = "form-control" } })
-        }
-        @Html.ValidationMessageFor(model => model, "", new { @class = "text-danger" })
-    </div>
-    @if (!ViewBag.EvaluationIsFreezed)
-    {
-        <div class="col-md-2">
-            <button type="button" class="add btn btn-primary">
-                <i class="glyphicon-plus glyphicon"></i>
-            </button>
-            <button type="button" class="remove btn btn-primary">
-                <i class="glyphicon-minus glyphicon"></i>
-            </button>
-        </div>
-    }
-</div>
+@Html.Partial("~/Views/Evaluations/_AttributeRow.cshtml", Model)

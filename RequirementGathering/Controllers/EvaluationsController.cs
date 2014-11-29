@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using RequirementGathering.Helpers;
@@ -66,11 +68,14 @@ namespace RequirementGathering.Controllers
                 ModelState.AddModelError("Attributes", Resources.AttributesCountValidation);
             }
 
+            evaluation.ImageUrl = UploadImage();
+
             if (ModelState.IsValid)
             {
                 RgDbContext.Evaluations.Add(evaluation);
                 await RgDbContext.SaveChangesAsync();
-                return RedirectToAction("Index");
+
+                return RedirectToAction("Index", new { Message = FlashMessageId.CreateEvaluation });
             }
 
             if (evaluation.Attributes == null || !evaluation.Attributes.Any())
@@ -78,7 +83,7 @@ namespace RequirementGathering.Controllers
                 evaluation.Attributes = new List<Attribute> { new Attribute() };
             }
 
-            ViewBag.EvaluationIsFreezed = evaluation.EvaluationUsers != null && evaluation.EvaluationUsers.Any();
+            ViewBag.EvaluationIsFreezed = !CanUpdateAttributes(evaluation);
             ViewBag.ProductId = new SelectList(RgDbContext.Products, "Id", "Name", evaluation.ProductId);
             return View(evaluation);
         }
@@ -104,7 +109,7 @@ namespace RequirementGathering.Controllers
                 evaluation.Attributes = new List<Attribute> { new Attribute() };
             }
 
-            ViewBag.EvaluationIsFreezed = evaluation.EvaluationUsers != null && evaluation.EvaluationUsers.Any();
+            ViewBag.EvaluationIsFreezed = !CanUpdateAttributes(evaluation);
             ViewBag.ProductId = new SelectList(RgDbContext.Products, "Id", "Name", evaluation.ProductId);
             return View(evaluation);
         }
@@ -122,9 +127,24 @@ namespace RequirementGathering.Controllers
                 ModelState.AddModelError("Attributes", Resources.AttributesCountValidation);
             }
 
+            if (Request.Params["FileRemoved"] == "yes")
+            {
+                var filePath = Path.GetFullPath(Request.PhysicalApplicationPath + evaluation.ImageUrl);
+
+                if (HasValidImageExtension(filePath) && System.IO.File.Exists(filePath))
+                {
+                    System.IO.File.Delete(filePath);
+                }
+            }
+
+            if (Request.Params["FileRemoved"] != "no")
+            {
+                evaluation.ImageUrl = UploadImage();
+            }
+
             if (ModelState.IsValid)
             {
-                if (evaluation.EvaluationUsers == null || !evaluation.EvaluationUsers.Any())
+                if (CanUpdateAttributes(evaluation))
                 {
                     var attributes = RgDbContext.Attributes.Where(a => a.EvaluationId == evaluation.Id);
 
@@ -138,7 +158,8 @@ namespace RequirementGathering.Controllers
                         RgDbContext.Attributes.Add(new Attribute { Name = attribute.Name, EvaluationId = evaluation.Id });
                     }
 
-                    evaluation.Owner = await GetCurrentUser();
+                    var currentUser = await GetCurrentUser();
+                    evaluation.OwnerId = currentUser.Id;
                     evaluation.Attributes.Clear();
                 }
                 else // Safety
@@ -149,7 +170,7 @@ namespace RequirementGathering.Controllers
                 RgDbContext.Entry(evaluation).State = EntityState.Modified;
                 await RgDbContext.SaveChangesAsync();
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new { Message = FlashMessageId.UpdateEvaluation });
             }
 
             if (evaluation.Attributes == null || !evaluation.Attributes.Any())
@@ -157,9 +178,22 @@ namespace RequirementGathering.Controllers
                 evaluation.Attributes = new List<Attribute> { new Attribute() };
             }
 
-            ViewBag.EvaluationIsFreezed = evaluation.EvaluationUsers != null && evaluation.EvaluationUsers.Any();
+            ViewBag.EvaluationIsFreezed = !CanUpdateAttributes(evaluation);
             ViewBag.ProductId = new SelectList(RgDbContext.Products, "Id", "Name", evaluation.ProductId);
             return View(evaluation);
+        }
+
+        [Authorize]
+        public async Task<ActionResult> MyEvaluations()
+        {
+            var currentUser = await GetCurrentUser();
+            return View(currentUser.Evaluations);
+        }
+
+        [Authorize]
+        public ActionResult Reports()
+        {
+            return View();
         }
 
         // GET: Evaluations/Delete/5
@@ -286,8 +320,62 @@ namespace RequirementGathering.Controllers
                 }
             }
 
-            return RedirectToAction("Index", "Evaluations");
+            return RedirectToAction("Index", "Evaluations", new { Message = FlashMessageId.ChangePassword });
         }
+
+        #region Helpers
+        private string UploadImage()
+        {
+            if (Request.Files.Count == 0 || !ModelState.IsValid)
+            {
+                return string.Empty;
+            }
+
+            HttpPostedFileBase upload = Request.Files[0];
+
+            if (upload.ContentLength == 0)
+            {
+                return string.Empty;
+            }
+
+            string siteRootRelativeUrlToImagesDir = "~/images/products/";
+            string pathToSave = Server.MapPath(siteRootRelativeUrlToImagesDir);
+            string filename = Path.GetFileName(upload.FileName);
+
+            if (!HasValidImageExtension(filename))
+            {
+                ModelState.AddModelError("", Resources.ImageUploadFormat);
+                return string.Empty;
+            }
+
+            var fileNameWithoutExtension = Path.GetFileNameWithoutExtension(filename);
+            var pathFormat = pathToSave + "{0}" + Path.GetExtension(filename);
+            var destination = Path.Combine(pathToSave, filename);
+            Random rand = new Random();
+
+            // Make sure it doesn't overwrites the existing file
+            while (System.IO.File.Exists(destination))
+            {
+                destination = string.Format(CultureInfo.CurrentCulture, pathFormat, fileNameWithoutExtension + rand.Next());
+            }
+
+            upload.SaveAs(destination);
+
+            return Url.Content(siteRootRelativeUrlToImagesDir + Path.GetFileName(destination));
+        }
+
+        private bool HasValidImageExtension(string filename)
+        {
+            return new[] { ".gif", ".jpg", ".jpeg", ".png" }.Any(f => f.Equals(Path.GetExtension(filename), StringComparison.InvariantCultureIgnoreCase));
+        }
+
+        private bool CanUpdateAttributes(Evaluation evaluation)
+        {
+            return (evaluation.EvaluationUsers == null ||
+                   !evaluation.EvaluationUsers.Any()) &&
+                   !RgDbContext.Attributes.Any(a => a.EvaluationId == evaluation.Id && a.Ratings.Any());
+        }
+        #endregion
 
     }
 }

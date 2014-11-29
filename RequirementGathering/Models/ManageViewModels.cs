@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
+using RequirementGathering.Reousrces;
 
 namespace RequirementGathering.Models
 {
@@ -27,7 +28,7 @@ namespace RequirementGathering.Models
 
     public class SetPasswordViewModel
     {
-        [Required]
+        [Required(ErrorMessageResourceType = typeof(Resources), ErrorMessageResourceName = "FieldRequired")]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "New password")]
@@ -41,12 +42,12 @@ namespace RequirementGathering.Models
 
     public class ChangePasswordViewModel
     {
-        [Required]
+        [Required(ErrorMessageResourceType = typeof(Resources), ErrorMessageResourceName = "FieldRequired")]
         [DataType(DataType.Password)]
         [Display(Name = "Current password")]
         public string OldPassword { get; set; }
 
-        [Required]
+        [Required(ErrorMessageResourceType = typeof(Resources), ErrorMessageResourceName = "FieldRequired")]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "New password")]
@@ -60,7 +61,7 @@ namespace RequirementGathering.Models
 
     public class AddPhoneNumberViewModel
     {
-        [Required]
+        [Required(ErrorMessageResourceType = typeof(Resources), ErrorMessageResourceName = "FieldRequired")]
         [Phone]
         [Display(Name = "Phone Number")]
         public string Number { get; set; }
@@ -68,11 +69,11 @@ namespace RequirementGathering.Models
 
     public class VerifyPhoneNumberViewModel
     {
-        [Required]
+        [Required(ErrorMessageResourceType = typeof(Resources), ErrorMessageResourceName = "FieldRequired")]
         [Display(Name = "Code")]
         public string Code { get; set; }
 
-        [Required]
+        [Required(ErrorMessageResourceType = typeof(Resources), ErrorMessageResourceName = "FieldRequired")]
         [Phone]
         [Display(Name = "Phone Number")]
         public string PhoneNumber { get; set; }

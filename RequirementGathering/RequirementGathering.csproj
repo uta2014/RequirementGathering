@@ -201,7 +201,11 @@
     </Compile>
     <Compile Include="Startup.cs" />
     <Compile Include="Views\Helpers\ApplicationHelpers.cs" />
+    <Content Include="Views\Manage\EditProfile.cshtml" />
     <None Include="Views\Evaluations\EditorTemplates\Attribute.cshtml" />
+    <Content Include="Views\Evaluations\MyEvaluations.cshtml" />
+    <Content Include="Views\Evaluations\Reports.cshtml" />
+    <Content Include="Views\Evaluations\_AttributeRow.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -259,12 +263,7 @@
     <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
     <Content Include="Views\Account\SendCode.cshtml" />
     <Content Include="Views\Account\VerifyCode.cshtml" />
-    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
     <Content Include="Views\Manage\ChangePassword.cshtml" />
-    <Content Include="Views\Manage\Index.cshtml" />
-    <Content Include="Views\Manage\ManageLogins.cshtml" />
-    <Content Include="Views\Manage\SetPassword.cshtml" />
-    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Evaluations\Create.cshtml" />
@@ -289,6 +288,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="images\products\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

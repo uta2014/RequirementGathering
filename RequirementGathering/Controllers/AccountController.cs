@@ -1,4 +1,7 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Threading;
@@ -10,6 +13,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using RequirementGathering.Helpers;
 using RequirementGathering.Models;
+using RequirementGathering.Reousrces;
 
 namespace RequirementGathering.Controllers
 {
@@ -70,14 +74,17 @@ namespace RequirementGathering.Controllers
             var allowedRoles = new[] { "Administrator", "Researcher" };
 
             if (model.Roles.Contains("Super Administrator"))
-                ModelState.AddModelError("", "You cannot create a user with role: Super Administrator");
-
+            {
+                ModelState.AddModelError("", string.Format(CultureInfo.CurrentCulture, Resources.InvalidRoleAssignment, "Super Administrator"));
+            }
             else if (model.Roles.Contains("Administrator") && !User.IsInRole("Super Administrator"))
-                ModelState.AddModelError("", "You cannot create a user with role: Administrator");
-
+            {
+                ModelState.AddModelError("", string.Format(CultureInfo.CurrentCulture, Resources.InvalidRoleAssignment, "Administrator"));
+            }
             else if (model.Roles.Count == 0 || !allowedRoles.Any(r => model.Roles.Any(rs => rs == r)))
-                ModelState.AddModelError("", "You need to assign at least one role");
-
+            {
+                ModelState.AddModelError("", Resources.MinRoleAssignment);
+            }
             else
             {
                 var user = await UserManager.FindByIdAsync(model.Id);
@@ -100,8 +107,9 @@ namespace RequirementGathering.Controllers
                         UserManager.AddToRole(user.Id, role);
                     }
 
-                    return RedirectToAction("Index", "Account");
+                    return RedirectToAction("Index", "Account", new { Message = FlashMessageId.UpdateUser });
                 }
+
                 AddErrors(result);
             }
             // If we got this far, something failed, redisplay form
@@ -241,20 +249,24 @@ namespace RequirementGathering.Controllers
 
             var allowedRoles = new[] { "Administrator", "Researcher" };
 
-            //   if (ModelState.IsValid)
             if (model.Roles.Contains("Super Administrator"))
-                ModelState.AddModelError("", "You cannot create a user with role: Super Administrator");
-
+            {
+                ModelState.AddModelError("", string.Format(CultureInfo.CurrentCulture, Resources.InvalidRoleAssignment, "Super Administrator"));
+            }
             else if (model.Roles.Contains("Administrator") && !User.IsInRole("Super Administrator"))
-                ModelState.AddModelError("", "You cannot create a user with role: Administrator");
-
+            {
+                ModelState.AddModelError("", string.Format(CultureInfo.CurrentCulture, Resources.InvalidRoleAssignment, "Administrator"));
+            }
             else if (model.Roles.Count == 0 || !allowedRoles.Any(r => model.Roles.Any(rs => rs == r)))
-                ModelState.AddModelError("", "You need to assign at least one role");
-
+            {
+                ModelState.AddModelError("", Resources.MinRoleAssignment);
+            }
             else
             {
                 var user = new User { Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, UserName = model.Email };
                 model.Password = model.ConfirmPassword = PasswordHelper.GeneratePassword();
+
+                IdentityResult resultIdentity = GetIdentityResult(await UserManager.UserValidator.ValidateAsync(user));
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -274,9 +286,10 @@ namespace RequirementGathering.Controllers
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    return RedirectToAction("Index", "Account");
+                    return RedirectToAction("Index", "Account", new { Message = FlashMessageId.CreateUser });
                 }
-                AddErrors(result);
+                //.Errors.Where(e=>!e.StartsWith("Name", StringComparison.InvariantCulture))
+                AddErrors(resultIdentity);
             }
 
             // If we got this far, something failed, redisplay form
@@ -519,6 +532,7 @@ namespace RequirementGathering.Controllers
         }
 
         #region Helpers
+
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";
 
@@ -575,6 +589,33 @@ namespace RequirementGathering.Controllers
                 context.HttpContext.GetOwinContext().Authentication.Challenge(properties, LoginProvider);
             }
         }
+
+        private IdentityResult GetIdentityResult(IdentityResult result)
+        {
+            List<string> errors = new List<string>();
+
+            if (!result.Errors.Any())
+            {
+                return IdentityResult.Success;
+            }
+
+            foreach (var error in result.Errors)
+            {
+                if (!error.EndsWith("already taken.", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    errors.Add(error);
+                    continue;
+                }
+
+                if (error.StartsWith("Email", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    errors.Add(Resources.EmailAlreadyTaken);
+                }
+            }
+
+            return IdentityResult.Failed(errors.ToArray());
+        }
+
         #endregion
     }
 }

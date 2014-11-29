@@ -49,6 +49,11 @@
         <!-- #region Breadcrumb -->
         @Html.Raw(Html.BuildBreadcrumbNavigation())
         <!-- #endregion -->
+        <!-- #region Flash Messages -->
+        <div id="flashNotification">
+            <p class="text-success">@ViewBag.StatusMessage</p>
+        </div>
+        <!-- #endregion -->
         @RenderBody()
         <hr />
         <footer>

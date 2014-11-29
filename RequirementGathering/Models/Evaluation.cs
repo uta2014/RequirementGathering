@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using RequirementGathering.Attributes;
+using RequirementGathering.Reousrces;
 
 namespace RequirementGathering.Models
 {
@@ -10,13 +11,18 @@ namespace RequirementGathering.Models
     {
         public int Id { get; set; }
 
-        [Required]
+        [Display(Name = "VersionDisplay", ResourceType = typeof(Resources))]
+        [Required(ErrorMessageResourceType = typeof(Resources), ErrorMessageResourceName = "FieldRequired")]
         public string Version { get; set; }
 
+        [Display(Name = "DescriptionDisplay", ResourceType = typeof(Resources))]
         [Translatable]
         [DataType(DataType.MultilineText)]
         public string Description { get; set; }
 
+        public string ImageUrl { get; set; }
+
+        [Display(Name = "IsActiveDisplay", ResourceType = typeof(Resources))]
         public bool IsActive { get; set; }
 
         public Evaluation()
@@ -26,7 +32,7 @@ namespace RequirementGathering.Models
 
         #region Navigation Fields
 
-        [Required]
+        [Required(ErrorMessageResourceType = typeof(Resources), ErrorMessageResourceName = "FieldRequired")]
         public int ProductId { get; set; }
         public virtual Product Product { get; set; }
 

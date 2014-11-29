@@ -27,13 +27,13 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.FullName)
+                @Html.DisplayFor(_ => item.FullName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.OrganizationName)
+                @Html.DisplayFor(_ => item.OrganizationName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.UserRoles)
+                @Html.DisplayFor(_ => item.UserRoles)
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.Id })

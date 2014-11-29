@@ -117,37 +117,109 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AgeRange" xml:space="preserve">
-    <value>On oltava välillä 10 ja 30.</value>
-    <comment>Validation</comment>
+  <data name="AddRating" xml:space="preserve">
+    <value>Lähetettyjen luokitusten onnistuneesti.</value>
+    <comment>Flash Message</comment>
   </data>
-  <data name="AgeRequired" xml:space="preserve">
-    <value>Ikä on pakollinen.</value>
-    <comment>Validation</comment>
+  <data name="AgeDisplay" xml:space="preserve">
+    <value>Ikä</value>
+    <comment>Display Name</comment>
   </data>
   <data name="AttributesCountValidation" xml:space="preserve">
     <value>Sinulla on vähintään kaksi määritettä luoda arvioinnin.</value>
     <comment>Validation</comment>
   </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>Salasanasi on muutettu.</value>
+    <comment>Flash Message</comment>
+  </data>
+  <data name="CityDisplay" xml:space="preserve">
+    <value>Kaupunki</value>
+    <comment>Display Name</comment>
+  </data>
+  <data name="CompanyNameDisplay" xml:space="preserve">
+    <value>Yrityksen Nimi</value>
+    <comment>Display Name</comment>
+  </data>
+  <data name="ConfirmPasswordDisplay" xml:space="preserve">
+    <value>Vahvista salasana</value>
+    <comment>Display Name</comment>
+  </data>
+  <data name="CountryDisplay" xml:space="preserve">
+    <value>Maan</value>
+    <comment>Display Name</comment>
+  </data>
+  <data name="CreateEvaluation" xml:space="preserve">
+    <value>Arviointi luonti onnistui.</value>
+    <comment>Flash Message</comment>
+  </data>
+  <data name="CreateProduct" xml:space="preserve">
+    <value>Tuotteen luonti onnistui.</value>
+    <comment>Flash Message</comment>
+  </data>
+  <data name="CreateUser" xml:space="preserve">
+    <value>Käyttäjän luominen onnistui.</value>
+    <comment>Flash Message</comment>
+  </data>
+  <data name="DescriptionDisplay" xml:space="preserve">
+    <value>Kuvaus</value>
+    <comment>Display Name</comment>
+  </data>
+  <data name="DesignationDisplay" xml:space="preserve">
+    <value>Nimeäminen</value>
+    <comment>Display Name</comment>
+  </data>
+  <data name="DistrictDisplay" xml:space="preserve">
+    <value>Alueella</value>
+    <comment>Display Name</comment>
+  </data>
+  <data name="EmailAlreadyTaken" xml:space="preserve">
+    <value>Sähköpostiosoite on jo käytössä.</value>
+    <comment>Validation</comment>
+  </data>
+  <data name="EmailDisplay" xml:space="preserve">
+    <value>Sähköposti</value>
+    <comment>Display Name</comment>
+  </data>
   <data name="EmailInvalid" xml:space="preserve">
     <value>Sähköposti ei kelpaa.</value>
     <comment>Validation</comment>
   </data>
-  <data name="EmailRequired" xml:space="preserve">
-    <value>Sähköposti on tarvittaessa.</value>
+  <data name="FieldLengthMax" xml:space="preserve">
+    <value>{0} ei voi olla enintään {1} merkkiä.</value>
     <comment>Validation</comment>
   </data>
-  <data name="FirstNameLong" xml:space="preserve">
-    <value>Etunimi on oltava alle 50 merkkiä.</value>
+  <data name="FieldLengthMin" xml:space="preserve">
+    <value>{0} on oltava vähintään {1} merkkiä.</value>
     <comment>Validation</comment>
   </data>
-  <data name="FirstNameRequired" xml:space="preserve">
-    <value>Etunimi on pakollinen.</value>
+  <data name="FieldRangeMinMax" xml:space="preserve">
+    <value>{0} on oltava vähintään (2) ja enintään {1}.</value>
     <comment>Validation</comment>
+  </data>
+  <data name="FieldRequired" xml:space="preserve">
+    <value>{0} on pakollinen.</value>
+    <comment>Validation</comment>
+  </data>
+  <data name="FirstNameDisplay" xml:space="preserve">
+    <value>Etunimi</value>
+    <comment>Display Name</comment>
   </data>
   <data name="Headline" xml:space="preserve">
     <value>Web-työkalu asiakkaiden tarpeiden</value>
-    <comment>MainPage</comment>
+    <comment>Main Page</comment>
+  </data>
+  <data name="ImageUploadFailed" xml:space="preserve">
+    <value>Virhe lataaminen kuvatiedosto.</value>
+    <comment>Validation</comment>
+  </data>
+  <data name="ImageUploadFormat" xml:space="preserve">
+    <value>Virheellinen kuvamuoto.</value>
+    <comment>Vaidation</comment>
+  </data>
+  <data name="InvalidRoleAssignment" xml:space="preserve">
+    <value>Et voi luoda käyttäjän roolin: {0}.</value>
+    <comment>Validation</comment>
   </data>
   <data name="InvitationEmailBodyExisting" xml:space="preserve">
     <value>Olet tervetullut arvioitavaksi. Kirjaudu {0}/{1}/Account/Login sähköpostiosoite ja salasana.&lt;br/&gt;&lt;br/&gt;{2}</value>
@@ -161,8 +233,76 @@
     <value>Kutsu arviointia varten: {0} {1}</value>
     <comment>Evaluation</comment>
   </data>
-  <data name="LastNameLong" xml:space="preserve">
-    <value>Sukunimi on oltava alle 50 merkkiä.</value>
+  <data name="InvitationSent" xml:space="preserve">
+    <value>Kutsu lähetetty onnistuneesti.</value>
+    <comment>Flash Message</comment>
+  </data>
+  <data name="IsActiveDisplay" xml:space="preserve">
+    <value>On Aktiivinen</value>
+    <comment>Display Name</comment>
+  </data>
+  <data name="LastNameDisplay" xml:space="preserve">
+    <value>Sukunimi</value>
+    <comment>Display Name</comment>
+  </data>
+  <data name="MinRoleAssignment" xml:space="preserve">
+    <value>Sinun täytyy määrittää vähintään yksi rooli.</value>
     <comment>Validation</comment>
+  </data>
+  <data name="NameDisplay" xml:space="preserve">
+    <value>Nimi</value>
+    <comment>Display Name</comment>
+  </data>
+  <data name="OrganizationNameDisplay" xml:space="preserve">
+    <value>Organisaatio</value>
+    <comment>Display Name</comment>
+  </data>
+  <data name="PasswordDisplay" xml:space="preserve">
+    <value>Salasana</value>
+    <comment>Display Name</comment>
+  </data>
+  <data name="PhoneNumberDisplay" xml:space="preserve">
+    <value>Puhelin tai Mobile numero</value>
+    <comment>Display</comment>
+  </data>
+  <data name="PostalCodeDisplay" xml:space="preserve">
+    <value>Postinumero</value>
+    <comment>Display Name</comment>
+  </data>
+  <data name="ProvinceDisplay" xml:space="preserve">
+    <value>Maakunta</value>
+    <comment>Display Name</comment>
+  </data>
+  <data name="RememberDisplay" xml:space="preserve">
+    <value>Muista minut?</value>
+    <comment>Display Name</comment>
+  </data>
+  <data name="RolesDisplay" xml:space="preserve">
+    <value>Roolit</value>
+    <comment>Display Name</comment>
+  </data>
+  <data name="StreetDisplay" xml:space="preserve">
+    <value>Katu</value>
+    <comment>Display Name</comment>
+  </data>
+  <data name="UpdateEvaluation" xml:space="preserve">
+    <value>Arviointi päivitettiin onnistuneesti.</value>
+    <comment>Flash Message</comment>
+  </data>
+  <data name="UpdateProduct" xml:space="preserve">
+    <value>Tuote päivitetty.</value>
+    <comment>Flash Message</comment>
+  </data>
+  <data name="UpdateProfile" xml:space="preserve">
+    <value>Profiilisi on päivitetty.</value>
+    <comment>Flash Message</comment>
+  </data>
+  <data name="UpdateUser" xml:space="preserve">
+    <value>Käyttäjä päivitettiin onnistuneesti.</value>
+    <comment>Flash Message</comment>
+  </data>
+  <data name="VersionDisplay" xml:space="preserve">
+    <value>Versio</value>
+    <comment>Display Name</comment>
   </data>
 </root>

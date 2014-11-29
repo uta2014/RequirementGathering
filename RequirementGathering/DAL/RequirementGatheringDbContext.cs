@@ -41,7 +41,7 @@ namespace RequirementGathering.DAL
                                                            | EntityState.Modified)
                .ToList();
 
-            // First handle the delition case,
+            // First handle the deletion case,
             // before making changes to entry state
             bool changed = UpdateResources(objectDeletedStateEntryList);
 

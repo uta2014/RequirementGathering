@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using RequirementGathering.Reousrces;
 
 namespace RequirementGathering.Models
 {
@@ -8,11 +9,11 @@ namespace RequirementGathering.Models
     {
         public int Id { get; set; }
 
-        [Range(1, 5)]
+        [Range(1, 5, ErrorMessageResourceType = typeof(Resources), ErrorMessageResourceName = "FieldRangeMinMax")]
         [DefaultValue(1)]
         public int Value1 { get; set; }
 
-        [Range(1, 5)]
+        [Range(1, 5, ErrorMessageResourceType = typeof(Resources), ErrorMessageResourceName = "FieldRangeMinMax")]
         [DefaultValue(1)]
         public int Value2 { get; set; }
 

@@ -61,20 +61,20 @@ namespace RequirementGathering.Reousrces {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Must be between 10 and 30..
+        ///   Looks up a localized string similar to Ratings successfully submitted..
         /// </summary>
-        public static string AgeRange {
+        public static string AddRating {
             get {
-                return ResourceManager.GetString("AgeRange", resourceCulture);
+                return ResourceManager.GetString("AddRating", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Age is required..
+        ///   Looks up a localized string similar to Age.
         /// </summary>
-        public static string AgeRequired {
+        public static string AgeDisplay {
             get {
-                return ResourceManager.GetString("AgeRequired", resourceCulture);
+                return ResourceManager.GetString("AgeDisplay", resourceCulture);
             }
         }
         
@@ -88,6 +88,123 @@ namespace RequirementGathering.Reousrces {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Your password has been changed..
+        /// </summary>
+        public static string ChangePassword {
+            get {
+                return ResourceManager.GetString("ChangePassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to City.
+        /// </summary>
+        public static string CityDisplay {
+            get {
+                return ResourceManager.GetString("CityDisplay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Company Name.
+        /// </summary>
+        public static string CompanyNameDisplay {
+            get {
+                return ResourceManager.GetString("CompanyNameDisplay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirm Password.
+        /// </summary>
+        public static string ConfirmPasswordDisplay {
+            get {
+                return ResourceManager.GetString("ConfirmPasswordDisplay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Country.
+        /// </summary>
+        public static string CountryDisplay {
+            get {
+                return ResourceManager.GetString("CountryDisplay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Evaluation created successfully..
+        /// </summary>
+        public static string CreateEvaluation {
+            get {
+                return ResourceManager.GetString("CreateEvaluation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Product created successfully..
+        /// </summary>
+        public static string CreateProduct {
+            get {
+                return ResourceManager.GetString("CreateProduct", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User created successfully..
+        /// </summary>
+        public static string CreateUser {
+            get {
+                return ResourceManager.GetString("CreateUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Description.
+        /// </summary>
+        public static string DescriptionDisplay {
+            get {
+                return ResourceManager.GetString("DescriptionDisplay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Designation.
+        /// </summary>
+        public static string DesignationDisplay {
+            get {
+                return ResourceManager.GetString("DesignationDisplay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to District.
+        /// </summary>
+        public static string DistrictDisplay {
+            get {
+                return ResourceManager.GetString("DistrictDisplay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email address is already taken..
+        /// </summary>
+        public static string EmailAlreadyTaken {
+            get {
+                return ResourceManager.GetString("EmailAlreadyTaken", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email.
+        /// </summary>
+        public static string EmailDisplay {
+            get {
+                return ResourceManager.GetString("EmailDisplay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Email is not valid..
         /// </summary>
         public static string EmailInvalid {
@@ -97,29 +214,47 @@ namespace RequirementGathering.Reousrces {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Email is required..
+        ///   Looks up a localized string similar to {0} can not be longer than {1} characters..
         /// </summary>
-        public static string EmailRequired {
+        public static string FieldLengthMax {
             get {
-                return ResourceManager.GetString("EmailRequired", resourceCulture);
+                return ResourceManager.GetString("FieldLengthMax", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to First name must be less than 50 characters..
+        ///   Looks up a localized string similar to {0} must be at least {1} characters long..
         /// </summary>
-        public static string FirstNameLong {
+        public static string FieldLengthMin {
             get {
-                return ResourceManager.GetString("FirstNameLong", resourceCulture);
+                return ResourceManager.GetString("FieldLengthMin", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to First name is required..
+        ///   Looks up a localized string similar to The {0} must be at least {2} and at most {1}..
         /// </summary>
-        public static string FirstNameRequired {
+        public static string FieldRangeMinMax {
             get {
-                return ResourceManager.GetString("FirstNameRequired", resourceCulture);
+                return ResourceManager.GetString("FieldRangeMinMax", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} is required..
+        /// </summary>
+        public static string FieldRequired {
+            get {
+                return ResourceManager.GetString("FieldRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to First Name.
+        /// </summary>
+        public static string FirstNameDisplay {
+            get {
+                return ResourceManager.GetString("FirstNameDisplay", resourceCulture);
             }
         }
         
@@ -129,6 +264,33 @@ namespace RequirementGathering.Reousrces {
         public static string Headline {
             get {
                 return ResourceManager.GetString("Headline", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error uploading image file..
+        /// </summary>
+        public static string ImageUploadFailed {
+            get {
+                return ResourceManager.GetString("ImageUploadFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid image format..
+        /// </summary>
+        public static string ImageUploadFormat {
+            get {
+                return ResourceManager.GetString("ImageUploadFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You cannot create a user with role: {0}..
+        /// </summary>
+        public static string InvalidRoleAssignment {
+            get {
+                return ResourceManager.GetString("InvalidRoleAssignment", resourceCulture);
             }
         }
         
@@ -160,11 +322,164 @@ namespace RequirementGathering.Reousrces {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Last name must be less than 50 characters..
+        ///   Looks up a localized string similar to Invitation sent successfully..
         /// </summary>
-        public static string LastNameLong {
+        public static string InvitationSent {
             get {
-                return ResourceManager.GetString("LastNameLong", resourceCulture);
+                return ResourceManager.GetString("InvitationSent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Is Active.
+        /// </summary>
+        public static string IsActiveDisplay {
+            get {
+                return ResourceManager.GetString("IsActiveDisplay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last Name.
+        /// </summary>
+        public static string LastNameDisplay {
+            get {
+                return ResourceManager.GetString("LastNameDisplay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You need to assign at least one role..
+        /// </summary>
+        public static string MinRoleAssignment {
+            get {
+                return ResourceManager.GetString("MinRoleAssignment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        public static string NameDisplay {
+            get {
+                return ResourceManager.GetString("NameDisplay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Organization.
+        /// </summary>
+        public static string OrganizationNameDisplay {
+            get {
+                return ResourceManager.GetString("OrganizationNameDisplay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password.
+        /// </summary>
+        public static string PasswordDisplay {
+            get {
+                return ResourceManager.GetString("PasswordDisplay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Phone or Mobile number.
+        /// </summary>
+        public static string PhoneNumberDisplay {
+            get {
+                return ResourceManager.GetString("PhoneNumberDisplay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Postal Code.
+        /// </summary>
+        public static string PostalCodeDisplay {
+            get {
+                return ResourceManager.GetString("PostalCodeDisplay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Province.
+        /// </summary>
+        public static string ProvinceDisplay {
+            get {
+                return ResourceManager.GetString("ProvinceDisplay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remember Me?.
+        /// </summary>
+        public static string RememberDisplay {
+            get {
+                return ResourceManager.GetString("RememberDisplay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Roles.
+        /// </summary>
+        public static string RolesDisplay {
+            get {
+                return ResourceManager.GetString("RolesDisplay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Street.
+        /// </summary>
+        public static string StreetDisplay {
+            get {
+                return ResourceManager.GetString("StreetDisplay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Evaluation updated successfully..
+        /// </summary>
+        public static string UpdateEvaluation {
+            get {
+                return ResourceManager.GetString("UpdateEvaluation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Product updated successfully..
+        /// </summary>
+        public static string UpdateProduct {
+            get {
+                return ResourceManager.GetString("UpdateProduct", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your profile has been updated..
+        /// </summary>
+        public static string UpdateProfile {
+            get {
+                return ResourceManager.GetString("UpdateProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User updated successfully..
+        /// </summary>
+        public static string UpdateUser {
+            get {
+                return ResourceManager.GetString("UpdateUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Version.
+        /// </summary>
+        public static string VersionDisplay {
+            get {
+                return ResourceManager.GetString("VersionDisplay", resourceCulture);
             }
         }
     }
