@@ -389,6 +389,10 @@
     <value>Gebruiker bijgewerkt.</value>
     <comment>Flash Message</comment>
   </data>
+  <data name="VersionConflict" xml:space="preserve">
+    <value>Versie voor dit product bestaat.</value>
+    <comment>Validation</comment>
+  </data>
   <data name="VersionDisplay" xml:space="preserve">
     <value>Versie</value>
     <comment>Display Name</comment>

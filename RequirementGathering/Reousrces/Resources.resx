@@ -389,6 +389,10 @@
     <value>User updated successfully.</value>
     <comment>Flash Message</comment>
   </data>
+  <data name="VersionConflict" xml:space="preserve">
+    <value>Version for this product exists.</value>
+    <comment>Validation</comment>
+  </data>
   <data name="VersionDisplay" xml:space="preserve">
     <value>Version</value>
     <comment>Display Name</comment>

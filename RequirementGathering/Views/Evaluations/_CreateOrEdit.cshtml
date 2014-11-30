@@ -1,6 +1,6 @@
 ﻿@model Evaluation
 @{
-    var descriptionValue = Resource.GetPropertyValue<Evaluation>(Model.Id.ToString(), "Description");
+    var descriptionValue = Resource.GetPropertyValue<Evaluation>(Model.Id, "Description");
 }
 
 <div class="form-group">

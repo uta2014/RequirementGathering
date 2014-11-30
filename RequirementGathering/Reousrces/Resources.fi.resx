@@ -389,6 +389,10 @@
     <value>Käyttäjä päivitettiin onnistuneesti.</value>
     <comment>Flash Message</comment>
   </data>
+  <data name="VersionConflict" xml:space="preserve">
+    <value>Versio tämän tuotteen olemassa.</value>
+    <comment>Validation</comment>
+  </data>
   <data name="VersionDisplay" xml:space="preserve">
     <value>Versio</value>
     <comment>Display Name</comment>

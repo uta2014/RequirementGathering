@@ -20,11 +20,17 @@ namespace RequirementGathering.Models
 
         #region Helpers
         // Probably using reflection not the best approach.
+        public static string GetPropertyValue<T>(int id, string propertyName) where T : class
+        {
+            return GetPropertyValue<T>(id.ToString(), propertyName, Thread.CurrentThread.CurrentUICulture.Name);
+        }
+
         public static string GetPropertyValue<T>(string id, string propertyName) where T : class
         {
             return GetPropertyValue<T>(id, propertyName, Thread.CurrentThread.CurrentUICulture.Name);
         }
-        public static string GetPropertyValue<T>(string id, string propertyName, string culture) where T : class
+
+        private static string GetPropertyValue<T>(string id, string propertyName, string culture) where T : class
         {
             Type entityType = typeof(T);
             string[] segments = propertyName.Split('.');
