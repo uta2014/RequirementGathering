@@ -50,7 +50,7 @@
         {
             foreach (var attribute in Model.Attributes)
             {
-                var attributeName = Resource.GetPropertyValue<RequirementGathering.Models.Attribute>(attribute.Id.ToString(), "Name");
+                var attributeName = Resource.GetPropertyValue<RequirementGathering.Models.Attribute>(attribute.Id, "Name");
 
                 <li class="badge text-center">
                     <span class="glyphicon-tag glyphicon"></span>

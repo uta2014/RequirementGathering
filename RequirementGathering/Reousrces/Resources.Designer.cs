@@ -673,6 +673,15 @@ namespace RequirementGathering.Reousrces {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Version for this product exists..
+        /// </summary>
+        public static string VersionConflict {
+            get {
+                return ResourceManager.GetString("VersionConflict", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Version.
         /// </summary>
         public static string VersionDisplay {

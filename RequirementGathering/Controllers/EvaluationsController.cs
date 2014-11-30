@@ -68,6 +68,13 @@ namespace RequirementGathering.Controllers
                 ModelState.AddModelError("Attributes", Resources.AttributesCountValidation);
             }
 
+            if (await RgDbContext.Evaluations.AnyAsync(e =>
+                e.ProductId == evaluation.ProductId &&
+                e.Version.Equals(evaluation.Version, StringComparison.InvariantCultureIgnoreCase)))
+            {
+                ModelState.AddModelError("", Resources.VersionConflict);
+            }
+
             evaluation.ImageUrl = UploadImage();
 
             if (ModelState.IsValid)
@@ -125,6 +132,14 @@ namespace RequirementGathering.Controllers
             if (evaluation.Attributes == null || evaluation.Attributes.Count < 2)
             {
                 ModelState.AddModelError("Attributes", Resources.AttributesCountValidation);
+            }
+
+            if (await RgDbContext.Evaluations.AnyAsync(e =>
+                e.Id != evaluation.Id &&
+                e.ProductId == evaluation.ProductId &&
+                e.Version.Equals(evaluation.Version, StringComparison.InvariantCultureIgnoreCase)))
+            {
+                ModelState.AddModelError("", Resources.VersionConflict);
             }
 
             if (Request.Params["FileRemoved"] == "yes")
