@@ -7,18 +7,18 @@ namespace RequirementGathering.Helpers
 {
     public class AttributesIgnoreCaseComparer : IEqualityComparer<Attribute>
     {
-        public CaseInsensitiveComparer myComparer;
+        private CaseInsensitiveComparer _caseInsesitiveComparer;
 
         public AttributesIgnoreCaseComparer(CultureInfo myCulture)
         {
-            myComparer = new CaseInsensitiveComparer(myCulture);
+            _caseInsesitiveComparer = new CaseInsensitiveComparer(myCulture);
         }
 
         #region IEqualityComparer<Attribute> Members
 
         public bool Equals(Attribute x, Attribute y)
         {
-            if (myComparer.Compare(x.Name, y.Name) == 0)
+            if (_caseInsesitiveComparer.Compare(x.Name, y.Name) == 0)
             {
                 return true;
             }
