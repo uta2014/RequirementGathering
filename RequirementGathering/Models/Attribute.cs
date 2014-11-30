@@ -7,7 +7,7 @@ namespace RequirementGathering.Models
 {
     public class Attribute
     {
-        public int Id { get; set; }
+        public int? Id { get; set; }
 
         [Display(Name = "NameDisplay", ResourceType = typeof(Resources))]
         [Translatable]

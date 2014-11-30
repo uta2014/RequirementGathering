@@ -1,17 +1,22 @@
 ﻿@model RequirementGathering.Models.Attribute
 
+@{
+    var attributeValue = Resource.GetPropertyValue<RequirementGathering.Models.Attribute>(Model.Id.Value, "Name");
+}
+
 <div class="form-group">
     @Html.LabelFor(model => model.Name, " ", htmlAttributes: new { @class = "control-label col-md-2" })
     <div class="col-md-3">
         @if (ViewBag.EvaluationIsFreezed)
         {
-            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @Name = "Attributes[].Name", @class = "form-control", @disabled = "disabled" } })
+            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @Name = "Attributes[].Name", @class = "form-control", @disabled = "disabled", @Value = attributeValue } })
         }
         else
         {
-            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @Name = "Attributes[].Name", @class = "form-control" } })
+            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @Name = "Attributes[].Name", @class = "form-control", @Value = attributeValue } })
         }
         @Html.ValidationMessageFor(model => model, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id, new { @Name = "Attributes[].Id" })
     </div>
     @if (!ViewBag.EvaluationIsFreezed)
     {

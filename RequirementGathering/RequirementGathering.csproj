@@ -170,6 +170,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\AttributesIgnoreCaseComparer.cs" />
     <Compile Include="Helpers\CultureHelper.cs" />
     <Compile Include="Helpers\PasswordHelper.cs" />
     <Compile Include="Models\AccountViewModels.cs" />

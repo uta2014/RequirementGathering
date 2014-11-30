@@ -129,9 +129,19 @@ namespace RequirementGathering.Controllers
         [Authorize(Roles = "Researcher,Administrator,Super Administrator")]
         public async Task<ActionResult> Edit(Evaluation evaluation)
         {
-            if (evaluation.Attributes == null || evaluation.Attributes.Count < 2)
+            if (evaluation.Attributes == null)
             {
                 ModelState.AddModelError("Attributes", Resources.AttributesCountValidation);
+            }
+            else
+            {
+                evaluation.Attributes = evaluation.Attributes.Where(a => !string.IsNullOrEmpty(a.Name))
+                                       .Distinct(new AttributesIgnoreCaseComparer(CultureInfo.CurrentCulture)).ToList();
+
+                if (evaluation.Attributes.Count < 2)
+                {
+                    ModelState.AddModelError("Attributes", Resources.AttributesCountValidation);
+                }
             }
 
             if (await RgDbContext.Evaluations.AnyAsync(e =>
@@ -161,14 +171,22 @@ namespace RequirementGathering.Controllers
             {
                 if (CanUpdateAttributes(evaluation))
                 {
-                    var attributes = RgDbContext.Attributes.Where(a => a.EvaluationId == evaluation.Id);
+                    var updatedAttributes = evaluation.Attributes.Where(a => a.Id != null);
+                    var toBeDeletedAttributes = RgDbContext.Set<Attribute>().AsNoTracking().Where(a => a.EvaluationId == evaluation.Id).ToList();
+                    toBeDeletedAttributes = toBeDeletedAttributes.Where(a => !updatedAttributes.Any(ua => ua.Id == a.Id)).ToList();
 
-                    if (attributes.Any())
+                    foreach (var attribute in toBeDeletedAttributes)
                     {
-                        RgDbContext.Attributes.RemoveRange(attributes);
+                        RgDbContext.Entry(attribute).State = EntityState.Deleted;
                     }
 
-                    foreach (var attribute in evaluation.Attributes.Where(a => !string.IsNullOrEmpty(a.Name)))
+                    foreach (var attribute in updatedAttributes)
+                    {
+                        attribute.EvaluationId = evaluation.Id;
+                        RgDbContext.Entry(attribute).State = EntityState.Modified;
+                    }
+
+                    foreach (var attribute in evaluation.Attributes.Where(a => a.Id == null))
                     {
                         RgDbContext.Attributes.Add(new Attribute { Name = attribute.Name, EvaluationId = evaluation.Id });
                     }

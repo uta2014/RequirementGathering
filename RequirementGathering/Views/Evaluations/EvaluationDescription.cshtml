@@ -1,7 +1,10 @@
 ﻿@model Evaluation
 
 @{
-    ViewBag.Title = @Resources.EvaluationDescription;
+    ViewBag.Title = Resources.EvaluationDescription;
+    var evaluationDescriptionValue = Resource.GetPropertyValue<Evaluation>(Model.Id, "Description");
+    var productDescriptionValue = Resource.GetPropertyValue<Product>(Model.Product.Id, "Description");
+    var productNameValue = Resource.GetPropertyValue<Product>(Model.Product.Id, "Product.Name");
 }
 
 <h2>@ViewBag.Title</h2>
@@ -10,10 +13,10 @@
 
 <h3>@Resources.Evaluation</h3>
 
-<h5>@Model.Product.Name - @Model.Version</h5>
+<h5>@productNameValue - @Model.Version</h5>
 
 <p>
-    @Model.Description
+    @evaluationDescriptionValue
 </p>
 
 @if (!string.IsNullOrEmpty(Model.ImageUrl))
@@ -26,7 +29,7 @@
 <h3>@Resources.ProductDescription</h3>
 
 <p>
-    @Model.Product.Description
+    @productDescriptionValue
 </p>
 
 
