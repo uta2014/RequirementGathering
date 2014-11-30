@@ -206,6 +206,7 @@
     <Content Include="Views\Evaluations\MyEvaluations.cshtml" />
     <Content Include="Views\Evaluations\Reports.cshtml" />
     <Content Include="Views\Evaluations\_AttributeRow.cshtml" />
+    <Content Include="Views\Evaluations\EvaluationDescription.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -299,6 +300,7 @@
     <EmbeddedResource Include="Reousrces\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

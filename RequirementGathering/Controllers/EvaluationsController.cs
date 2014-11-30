@@ -202,7 +202,28 @@ namespace RequirementGathering.Controllers
         public async Task<ActionResult> MyEvaluations()
         {
             var currentUser = await GetCurrentUser();
-            return View(currentUser.Evaluations);
+            return View(currentUser.InvitedEvaluations());
+        }
+
+        [Authorize]
+        public async Task<ActionResult> EvaluationDescription(int? id)
+        {
+            var currentUser = await GetCurrentUser();
+
+            if (id == null ||
+               !await RgDbContext.EvaluationUsers.AnyAsync(eu => eu.EvaluationId == id && eu.UserId == currentUser.Id))
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var evaluation = await RgDbContext.Evaluations.FindAsync(id);
+
+            if (evaluation == null)
+            {
+                return RedirectToAction("MyEvaluations", "Evaluations");
+            }
+
+            return View(evaluation);
         }
 
         [Authorize]

@@ -137,13 +137,25 @@
     <value>You must at least have two attributes to create an evaluation.</value>
     <comment>Validation</comment>
   </data>
+  <data name="BackToList" xml:space="preserve">
+    <value>Back to List</value>
+    <comment>CRUD View</comment>
+  </data>
   <data name="ChangePassword" xml:space="preserve">
     <value>Your password has been changed.</value>
     <comment>Flash Message</comment>
   </data>
+  <data name="ChangePasswordForm" xml:space="preserve">
+    <value>Change password form</value>
+    <comment>Change Password View</comment>
+  </data>
   <data name="ChangePasswordText" xml:space="preserve">
     <value>Change Password</value>
     <comment>Action Name</comment>
+  </data>
+  <data name="ChooseFile" xml:space="preserve">
+    <value>Choose File</value>
+    <comment>File Picker Button View</comment>
   </data>
   <data name="CityDisplay" xml:space="preserve">
     <value>City</value>
@@ -161,6 +173,10 @@
     <value>Contact</value>
     <comment>Action Name</comment>
   </data>
+  <data name="Copyright" xml:space="preserve">
+    <value>University of Tampere</value>
+    <comment>Footer View</comment>
+  </data>
   <data name="CountryDisplay" xml:space="preserve">
     <value>Country</value>
     <comment>Display Name</comment>
@@ -172,6 +188,10 @@
   <data name="CreateEvaluation" xml:space="preserve">
     <value>Evaluation created successfully.</value>
     <comment>Flash Message</comment>
+  </data>
+  <data name="CreateNew" xml:space="preserve">
+    <value>Create New</value>
+    <comment>CRUD View</comment>
   </data>
   <data name="CreateProduct" xml:space="preserve">
     <value>Product created successfully.</value>
@@ -209,6 +229,10 @@
     <value>Edit Profile</value>
     <comment>Action Name</comment>
   </data>
+  <data name="EditProfileForm" xml:space="preserve">
+    <value>Edit your profile</value>
+    <comment>Edit Profile View</comment>
+  </data>
   <data name="EmailAlreadyTaken" xml:space="preserve">
     <value>Email address is already taken.</value>
     <comment>Validation</comment>
@@ -221,8 +245,20 @@
     <value>Email is not valid.</value>
     <comment>Validation</comment>
   </data>
+  <data name="EmailLink" xml:space="preserve">
+    <value>Email Link</value>
+    <comment>Forgot Password View</comment>
+  </data>
   <data name="Evaluation" xml:space="preserve">
     <value>Evaluation</value>
+    <comment>View</comment>
+  </data>
+  <data name="EvaluationDescription" xml:space="preserve">
+    <value>Evaluation Description</value>
+    <comment>Evaluation Description View</comment>
+  </data>
+  <data name="Evaluations" xml:space="preserve">
+    <value>Evaluations</value>
     <comment>Controller Name</comment>
   </data>
   <data name="FieldLengthMax" xml:space="preserve">
@@ -245,13 +281,25 @@
     <value>First Name</value>
     <comment>Display Name</comment>
   </data>
+  <data name="ForgotEmailMessage" xml:space="preserve">
+    <value>Enter your email.</value>
+    <comment>Forgot Password View</comment>
+  </data>
   <data name="ForgotPassword" xml:space="preserve">
-    <value>Forgot your password?</value>
+    <value>Forgot Password</value>
     <comment>Action Name</comment>
+  </data>
+  <data name="ForgotPasswordText" xml:space="preserve">
+    <value>Forgot your password?</value>
+    <comment>View</comment>
   </data>
   <data name="Headline" xml:space="preserve">
     <value>Web tool for gathering customer requirements</value>
     <comment>Main Page</comment>
+  </data>
+  <data name="Hello" xml:space="preserve">
+    <value>Hello</value>
+    <comment>Header View</comment>
   </data>
   <data name="Home" xml:space="preserve">
     <value>Home</value>
@@ -297,13 +345,37 @@
     <value>Last Name</value>
     <comment>Display Name</comment>
   </data>
+  <data name="Launch" xml:space="preserve">
+    <value>Launch</value>
+    <comment>Evaluation Description View</comment>
+  </data>
   <data name="LogIn" xml:space="preserve">
     <value>Log In</value>
     <comment>Action Name</comment>
   </data>
+  <data name="LoginMessage" xml:space="preserve">
+    <value>Use your email address and password to log in.</value>
+    <comment>Login View</comment>
+  </data>
+  <data name="LogOff" xml:space="preserve">
+    <value>Log off</value>
+    <comment>Login Partial View</comment>
+  </data>
   <data name="Manage" xml:space="preserve">
     <value>Manage</value>
     <comment>Controller Name</comment>
+  </data>
+  <data name="ManageEvaluations" xml:space="preserve">
+    <value>Manage Evaluations</value>
+    <comment>Authorized Layout Partial View</comment>
+  </data>
+  <data name="ManageProducts" xml:space="preserve">
+    <value>Manage Products</value>
+    <comment>Authorized Layout Partial View</comment>
+  </data>
+  <data name="ManageUsers" xml:space="preserve">
+    <value>Manage Users</value>
+    <comment>Authorized Layout Partial View</comment>
   </data>
   <data name="MinRoleAssignment" xml:space="preserve">
     <value>You need to assign at least one role.</value>
@@ -325,6 +397,10 @@
     <value>There are no attributes assigned to this evaluation.</value>
     <comment>Evaluation Details View</comment>
   </data>
+  <data name="NoImageMessage" xml:space="preserve">
+    <value>No image available for this product version.</value>
+    <comment>Evaluation Details</comment>
+  </data>
   <data name="OrganizationNameDisplay" xml:space="preserve">
     <value>Organization</value>
     <comment>Display Name</comment>
@@ -341,16 +417,32 @@
     <value>Postal Code</value>
     <comment>Display Name</comment>
   </data>
+  <data name="ProceedToDetails" xml:space="preserve">
+    <value>Proceed to details</value>
+    <comment>My Evaluations View</comment>
+  </data>
   <data name="Product" xml:space="preserve">
     <value>Product</value>
+    <comment>View</comment>
+  </data>
+  <data name="ProductDescription" xml:space="preserve">
+    <value>Product Description</value>
+    <comment>Evaluation Description View</comment>
+  </data>
+  <data name="ProductName" xml:space="preserve">
+    <value>Product Name</value>
+    <comment>Evaluation Description View</comment>
+  </data>
+  <data name="Products" xml:space="preserve">
+    <value>Products</value>
     <comment>Controller Name</comment>
   </data>
   <data name="ProvinceDisplay" xml:space="preserve">
     <value>Province</value>
     <comment>Display Name</comment>
   </data>
-  <data name="Rating" xml:space="preserve">
-    <value>Rating</value>
+  <data name="Ratings" xml:space="preserve">
+    <value>Ratings</value>
     <comment>Controller Name</comment>
   </data>
   <data name="RememberDisplay" xml:space="preserve">
@@ -364,6 +456,10 @@
   <data name="RolesDisplay" xml:space="preserve">
     <value>Roles</value>
     <comment>Display Name</comment>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
+    <comment>Save Button View</comment>
   </data>
   <data name="SendInvitation" xml:space="preserve">
     <value>Send Invitation</value>
@@ -389,6 +485,10 @@
     <value>User updated successfully.</value>
     <comment>Flash Message</comment>
   </data>
+  <data name="User" xml:space="preserve">
+    <value>User</value>
+    <comment>View</comment>
+  </data>
   <data name="VersionConflict" xml:space="preserve">
     <value>Version for this product exists.</value>
     <comment>Validation</comment>
@@ -396,6 +496,10 @@
   <data name="VersionDisplay" xml:space="preserve">
     <value>Version</value>
     <comment>Display Name</comment>
+  </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>Welcome</value>
+    <comment>Dashboad View</comment>
   </data>
   <data name="Yes" xml:space="preserve">
     <value>Yes</value>

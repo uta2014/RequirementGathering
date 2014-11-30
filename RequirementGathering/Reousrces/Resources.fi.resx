@@ -137,13 +137,25 @@
     <value>Sinulla on vähintään kaksi määritettä luoda arvioinnin.</value>
     <comment>Validation</comment>
   </data>
+  <data name="BackToList" xml:space="preserve">
+    <value>Palaa luetteloon</value>
+    <comment>CRUD View</comment>
+  </data>
   <data name="ChangePassword" xml:space="preserve">
     <value>Salasanasi on muutettu.</value>
     <comment>Flash Message</comment>
   </data>
+  <data name="ChangePasswordForm" xml:space="preserve">
+    <value>Vaihda salasana lomake</value>
+    <comment>Change Password View</comment>
+  </data>
   <data name="ChangePasswordText" xml:space="preserve">
     <value>Vaihda Salasana</value>
     <comment>Action Name</comment>
+  </data>
+  <data name="ChooseFile" xml:space="preserve">
+    <value>Valitse tiedosto</value>
+    <comment>File Picker Button View</comment>
   </data>
   <data name="CityDisplay" xml:space="preserve">
     <value>Kaupunki</value>
@@ -161,6 +173,10 @@
     <value>Yhteystiedot</value>
     <comment>Action Name</comment>
   </data>
+  <data name="Copyright" xml:space="preserve">
+    <value>Tampereen Yliopisto</value>
+    <comment>Footer View</comment>
+  </data>
   <data name="CountryDisplay" xml:space="preserve">
     <value>Maan</value>
     <comment>Display Name</comment>
@@ -172,6 +188,10 @@
   <data name="CreateEvaluation" xml:space="preserve">
     <value>Arviointi luonti onnistui.</value>
     <comment>Flash Message</comment>
+  </data>
+  <data name="CreateNew" xml:space="preserve">
+    <value>Luo uusi</value>
+    <comment>CRUD View</comment>
   </data>
   <data name="CreateProduct" xml:space="preserve">
     <value>Tuotteen luonti onnistui.</value>
@@ -209,6 +229,10 @@
     <value>Muokkaa Profiilia</value>
     <comment>Action Name</comment>
   </data>
+  <data name="EditProfileForm" xml:space="preserve">
+    <value>Muokkaa profiilia</value>
+    <comment>Edit Profile View</comment>
+  </data>
   <data name="EmailAlreadyTaken" xml:space="preserve">
     <value>Sähköpostiosoite on jo käytössä.</value>
     <comment>Validation</comment>
@@ -222,7 +246,15 @@
     <comment>Validation</comment>
   </data>
   <data name="Evaluation" xml:space="preserve">
-    <value>Arviointi</value>
+    <value>Arvioinnit</value>
+    <comment>View</comment>
+  </data>
+  <data name="EvaluationDescription" xml:space="preserve">
+    <value>Arvioinnin Kuvaus</value>
+    <comment>Evaluation Description View</comment>
+  </data>
+  <data name="Evaluations" xml:space="preserve">
+    <value>Arvioinnit</value>
     <comment>Controller Name</comment>
   </data>
   <data name="FieldLengthMax" xml:space="preserve">
@@ -245,13 +277,17 @@
     <value>Etunimi</value>
     <comment>Display Name</comment>
   </data>
-  <data name="ForgotPassword" xml:space="preserve">
+  <data name="ForgotPasswordText" xml:space="preserve">
     <value>Unohtuiko salasana?</value>
-    <comment>Action Name</comment>
+    <comment>View</comment>
   </data>
   <data name="Headline" xml:space="preserve">
     <value>Web-työkalu asiakkaiden tarpeiden</value>
     <comment>Main Page</comment>
+  </data>
+  <data name="Hello" xml:space="preserve">
+    <value>Moi</value>
+    <comment>Header View</comment>
   </data>
   <data name="Home" xml:space="preserve">
     <value>Etusivu</value>
@@ -301,9 +337,29 @@
     <value>Kirjaudu</value>
     <comment>Action Name</comment>
   </data>
+  <data name="LoginMessage" xml:space="preserve">
+    <value>Käytä sähköpostiosoitetta ja salasanaa kirjautumiseen.</value>
+    <comment>Login View</comment>
+  </data>
+  <data name="LogOff" xml:space="preserve">
+    <value>Kirjaudu ulos</value>
+    <comment>Login Partial View</comment>
+  </data>
   <data name="Manage" xml:space="preserve">
     <value>Hallinta</value>
     <comment>Controller Name</comment>
+  </data>
+  <data name="ManageEvaluations" xml:space="preserve">
+    <value>Hallitse Arvioinnit</value>
+    <comment>Authorized Layout Partial View</comment>
+  </data>
+  <data name="ManageProducts" xml:space="preserve">
+    <value>Hallitse Tuotteet</value>
+    <comment>Authorized Layout Partial View</comment>
+  </data>
+  <data name="ManageUsers" xml:space="preserve">
+    <value>Käyttäjien hallinta</value>
+    <comment>Authorized Layout Partial View</comment>
   </data>
   <data name="MinRoleAssignment" xml:space="preserve">
     <value>Sinun täytyy määrittää vähintään yksi rooli.</value>
@@ -325,6 +381,10 @@
     <value>Tällä hetkellä arvioinnissa ei määritteet.</value>
     <comment>Evaluation Details View</comment>
   </data>
+  <data name="NoImageMessage" xml:space="preserve">
+    <value>Kuvaa ei ole saatavilla tämän tuotteen versio.</value>
+    <comment>Evaluation Details</comment>
+  </data>
   <data name="OrganizationNameDisplay" xml:space="preserve">
     <value>Organisaatio</value>
     <comment>Display Name</comment>
@@ -341,16 +401,28 @@
     <value>Postinumero</value>
     <comment>Display Name</comment>
   </data>
+  <data name="ProceedToDetails" xml:space="preserve">
+    <value>Siirry tiedot</value>
+    <comment>My Evaluations View</comment>
+  </data>
   <data name="Product" xml:space="preserve">
-    <value>Tuotteen</value>
+    <value>Produkt</value>
+    <comment>View</comment>
+  </data>
+  <data name="ProductName" xml:space="preserve">
+    <value>Tuotteen nimi</value>
+    <comment>Evaluation Description View</comment>
+  </data>
+  <data name="Products" xml:space="preserve">
+    <value>Arvioinnit</value>
     <comment>Controller Name</comment>
   </data>
   <data name="ProvinceDisplay" xml:space="preserve">
     <value>Maakunta</value>
     <comment>Display Name</comment>
   </data>
-  <data name="Rating" xml:space="preserve">
-    <value>Luokitus</value>
+  <data name="Ratings" xml:space="preserve">
+    <value>Luokitukset</value>
     <comment>Controller Name</comment>
   </data>
   <data name="RememberDisplay" xml:space="preserve">
@@ -364,6 +436,10 @@
   <data name="RolesDisplay" xml:space="preserve">
     <value>Roolit</value>
     <comment>Display Name</comment>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Tallenna</value>
+    <comment>Save Button View</comment>
   </data>
   <data name="SendInvitation" xml:space="preserve">
     <value>Lähetä Kutsu</value>
@@ -389,6 +465,10 @@
     <value>Käyttäjä päivitettiin onnistuneesti.</value>
     <comment>Flash Message</comment>
   </data>
+  <data name="User" xml:space="preserve">
+    <value>Käyttäjä</value>
+    <comment>View</comment>
+  </data>
   <data name="VersionConflict" xml:space="preserve">
     <value>Versio tämän tuotteen olemassa.</value>
     <comment>Validation</comment>
@@ -397,8 +477,32 @@
     <value>Versio</value>
     <comment>Display Name</comment>
   </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>Tervetuloa</value>
+    <comment>Dashboard View</comment>
+  </data>
   <data name="Yes" xml:space="preserve">
     <value>Kyllä</value>
     <comment>Views</comment>
+  </data>
+  <data name="EmailLink" xml:space="preserve">
+    <value>Sähköposti Linkkiä</value>
+    <comment>Forgot Password View</comment>
+  </data>
+  <data name="ForgotEmailMessage" xml:space="preserve">
+    <value>Kirjoita sähköpostiosoitteesi.</value>
+    <comment>Forgot Password View</comment>
+  </data>
+  <data name="ForgotPassword" xml:space="preserve">
+    <value>Unohtunut Salasana</value>
+    <comment>Action Name</comment>
+  </data>
+  <data name="Launch" xml:space="preserve">
+    <value>Käynnistää</value>
+    <comment>Evaluation Description View</comment>
+  </data>
+  <data name="ProductDescription" xml:space="preserve">
+    <value>Tuotteen Kuvaus</value>
+    <comment>Evaluation Description View</comment>
   </data>
 </root>

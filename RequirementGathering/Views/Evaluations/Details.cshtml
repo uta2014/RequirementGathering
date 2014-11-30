@@ -27,6 +27,14 @@
         </dd>
 
         <dt>
+            @Resources.ProductName
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Product.Name)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.IsActive)
         </dt>
 
@@ -40,8 +48,13 @@
                 <img src="@Model.ImageUrl" class="img-thumbnail" alt="Evaluation Image" />
             </dd>
         }
+        else
+        {
+            <dd>@Resources.NoImageMessage</dd>
+        }
 
     </dl>
+
     <br /><br />
     <h4>Attributes</h4>
     <hr />
@@ -68,6 +81,6 @@
 
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink(Resources.Edit, "Edit", new { id = Model.Id }) |
+    @Html.ActionLink(Resources.BackToList, "Index")
 </p>

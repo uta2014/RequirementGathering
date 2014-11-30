@@ -1,0 +1,38 @@
+﻿@model Evaluation
+
+@{
+    ViewBag.Title = @Resources.EvaluationDescription;
+}
+
+<h2>@ViewBag.Title</h2>
+
+<hr />
+
+<h3>@Resources.Evaluation</h3>
+
+<h5>@Model.Product.Name - @Model.Version</h5>
+
+<p>
+    @Model.Description
+</p>
+
+@if (!string.IsNullOrEmpty(Model.ImageUrl))
+{
+    <img src="@Model.ImageUrl" alt="Product Image" class="img-responsive" />
+}
+
+<hr />
+
+<h3>@Resources.ProductDescription</h3>
+
+<p>
+    @Model.Product.Description
+</p>
+
+
+<h1 class="text-center launch-btn">
+    <span>
+        <span class="glyphicon glyphicon-flag"></span>
+        <span>@Resources.Launch</span>
+    </span>
+</h1>
