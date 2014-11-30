@@ -117,6 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="About" xml:space="preserve">
+    <value>Over</value>
+    <comment>Action Name</comment>
+  </data>
+  <data name="Account" xml:space="preserve">
+    <value>Rekening</value>
+    <comment>Controller Name</comment>
+  </data>
   <data name="AddRating" xml:space="preserve">
     <value>Ratings met succes is ingediend.</value>
     <comment>Flash Message</comment>
@@ -133,6 +141,10 @@
     <value>Uw wachtwoord is gewijzigd.</value>
     <comment>Flash Message</comment>
   </data>
+  <data name="ChangePasswordText" xml:space="preserve">
+    <value>Wachtwoord Wijzigen</value>
+    <comment>Action Name</comment>
+  </data>
   <data name="CityDisplay" xml:space="preserve">
     <value>Stad</value>
     <comment>Display Name</comment>
@@ -145,9 +157,17 @@
     <value>Bevestig Wachtwoord</value>
     <comment>Display Name</comment>
   </data>
+  <data name="Contact" xml:space="preserve">
+    <value>Contact</value>
+    <comment>Action Name</comment>
+  </data>
   <data name="CountryDisplay" xml:space="preserve">
     <value>Land</value>
     <comment>Display Name</comment>
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value>Maken</value>
+    <comment>Action Name</comment>
   </data>
   <data name="CreateEvaluation" xml:space="preserve">
     <value>Evaluatie gemaakt.</value>
@@ -161,6 +181,10 @@
     <value>Gebruiker met succes gemaakt.</value>
     <comment>Flash Message</comment>
   </data>
+  <data name="Dashboard" xml:space="preserve">
+    <value>Dashboard</value>
+    <comment>Action Name</comment>
+  </data>
   <data name="DescriptionDisplay" xml:space="preserve">
     <value>Beschrijving</value>
     <comment>Display Name</comment>
@@ -169,9 +193,21 @@
     <value>Aanwijzing</value>
     <comment>Display Name</comment>
   </data>
+  <data name="Details" xml:space="preserve">
+    <value>Details</value>
+    <comment>Action Name</comment>
+  </data>
   <data name="DistrictDisplay" xml:space="preserve">
     <value>District</value>
     <comment>Display Name</comment>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Bewerken</value>
+    <comment>Action Name</comment>
+  </data>
+  <data name="EditProfile" xml:space="preserve">
+    <value>Profiel Bewerken</value>
+    <comment>Action Name</comment>
   </data>
   <data name="EmailAlreadyTaken" xml:space="preserve">
     <value>E-mailadres wordt al gebruikt.</value>
@@ -184,6 +220,10 @@
   <data name="EmailInvalid" xml:space="preserve">
     <value>E-mail is niet geldig.</value>
     <comment>Validation</comment>
+  </data>
+  <data name="Evaluation" xml:space="preserve">
+    <value>Evaluatie</value>
+    <comment>Controller Name</comment>
   </data>
   <data name="FieldLengthMax" xml:space="preserve">
     <value>{0} kan niet langer zijn dan {1} letters.</value>
@@ -205,9 +245,17 @@
     <value>Voornaam</value>
     <comment>Display Name</comment>
   </data>
+  <data name="ForgotPassword" xml:space="preserve">
+    <value>Wachtwoord vergeten?</value>
+    <comment>Action Name</comment>
+  </data>
   <data name="Headline" xml:space="preserve">
     <value>Webtool voor het verzamelen van eisen van de klant</value>
     <comment>Main Page</comment>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Huis</value>
+    <comment>Controller Name</comment>
   </data>
   <data name="ImageUploadFailed" xml:space="preserve">
     <value>Fout uploaden spiegelbeeld vijl.</value>
@@ -216,6 +264,10 @@
   <data name="ImageUploadFormat" xml:space="preserve">
     <value>Ongeldige beeldformaat.</value>
     <comment>Vaidation</comment>
+  </data>
+  <data name="Index" xml:space="preserve">
+    <value>Indexeren</value>
+    <comment>Action Name</comment>
   </data>
   <data name="InvalidRoleAssignment" xml:space="preserve">
     <value>U kunt geen een gebruiker maken met rol: {0}.</value>
@@ -245,13 +297,33 @@
     <value>Achternaam</value>
     <comment>Display Name</comment>
   </data>
+  <data name="LogIn" xml:space="preserve">
+    <value>Inloggen</value>
+    <comment>Action Name</comment>
+  </data>
+  <data name="Manage" xml:space="preserve">
+    <value>Beheren</value>
+    <comment>Controller Name</comment>
+  </data>
   <data name="MinRoleAssignment" xml:space="preserve">
     <value>U moet ten minste één rol toewijzen.</value>
     <comment>Validation</comment>
   </data>
+  <data name="MyEvaluations" xml:space="preserve">
+    <value>Mijn Evaluaties</value>
+    <comment>Action Name</comment>
+  </data>
   <data name="NameDisplay" xml:space="preserve">
     <value>Naam</value>
     <comment>Display Name</comment>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>Geen</value>
+    <comment>Views</comment>
+  </data>
+  <data name="NoAttributesAvailable" xml:space="preserve">
+    <value>Er zijn geen kenmerken die zijn toegewezen aan deze evaluatie.</value>
+    <comment>Evaluation Details View</comment>
   </data>
   <data name="OrganizationNameDisplay" xml:space="preserve">
     <value>Organisatie</value>
@@ -269,17 +341,33 @@
     <value>Postcode</value>
     <comment>Display Name</comment>
   </data>
+  <data name="Product" xml:space="preserve">
+    <value>Produkt</value>
+    <comment>Controller Name</comment>
+  </data>
   <data name="ProvinceDisplay" xml:space="preserve">
     <value>Provincie</value>
     <comment>Display Name</comment>
+  </data>
+  <data name="Rating" xml:space="preserve">
+    <value>Waardering</value>
+    <comment>Controller Name</comment>
   </data>
   <data name="RememberDisplay" xml:space="preserve">
     <value>Mij onthouden?</value>
     <comment>Display Name</comment>
   </data>
+  <data name="Reports" xml:space="preserve">
+    <value>Rapporten</value>
+    <comment>Action Name</comment>
+  </data>
   <data name="RolesDisplay" xml:space="preserve">
     <value>Rollen</value>
     <comment>Display Name</comment>
+  </data>
+  <data name="SendInvitation" xml:space="preserve">
+    <value>Uitnodiging Verzenden</value>
+    <comment>Action Name</comment>
   </data>
   <data name="StreetDisplay" xml:space="preserve">
     <value>Straat</value>
@@ -304,5 +392,9 @@
   <data name="VersionDisplay" xml:space="preserve">
     <value>Versie</value>
     <comment>Display Name</comment>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Ja</value>
+    <comment>Views</comment>
   </data>
 </root>

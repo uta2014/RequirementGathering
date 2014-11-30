@@ -1,17 +1,17 @@
 ﻿@model Evaluation
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = @Resources.Edit;
 }
 
-<h2>Edit</h2>
+<h2>@ViewBag.Title</h2>
 
 @using (Html.BeginForm("Edit", "Evaluations", FormMethod.Post, new { @class = "evaluation-form", enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Evaluation</h4>
+        <h4>@Resources.Evaluation</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id)

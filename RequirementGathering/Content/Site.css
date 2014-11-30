@@ -44,3 +44,9 @@ textarea {
 #flashNotification {
     margin-top: 20px;
 }
+
+.badge.text-center {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    padding: 7px;
+    margin: 7px;
+}

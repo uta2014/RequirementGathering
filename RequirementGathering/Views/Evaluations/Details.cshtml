@@ -1,13 +1,13 @@
 ﻿@model Evaluation
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = Resources.Details;
 }
 
-<h2>Details</h2>
+<h2>@ViewBag.Title</h2>
 
 <div>
-    <h4>Evaluation</h4>
+    <h4>@Resources.Evaluation</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -31,10 +31,41 @@
         </dt>
 
         <dd>
-            @(Model.IsActive ? "Yes" : "No")
+            @(Model.IsActive ? Resources.Yes : Resources.No)
         </dd>
 
+        @if (!string.IsNullOrEmpty(Model.ImageUrl))
+        {
+            <dd>
+                <img src="@Model.ImageUrl" class="img-thumbnail" alt="Evaluation Image" />
+            </dd>
+        }
+
     </dl>
+    <br /><br />
+    <h4>Attributes</h4>
+    <hr />
+    <ul class="dl-horizontal">
+        @if (Model.Attributes.Any())
+        {
+            foreach (var attribute in Model.Attributes)
+            {
+                var attributeName = Resource.GetPropertyValue<RequirementGathering.Models.Attribute>(attribute.Id.ToString(), "Name");
+
+                <li class="badge text-center">
+                    <span class="glyphicon-tag glyphicon"></span>
+                    @attributeName
+                </li>
+            }
+        }
+        else
+        {
+            <li class="text-danger">
+                @Resources.NoAttributesAvailable
+            </li>
+        }
+    </ul>
+
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |

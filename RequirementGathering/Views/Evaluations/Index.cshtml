@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<Evaluation>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = Resources.Index;
 }
 
-<h2>Index</h2>
+<h2>@ViewBag.Title</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -41,7 +41,7 @@
                 @product
             </td>
             <td>
-                @(item.IsActive ? "Yes" : "No")
+                @(item.IsActive ? Resources.Yes : Resources.No)
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |

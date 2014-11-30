@@ -117,6 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="About" xml:space="preserve">
+    <value>Tietoja</value>
+    <comment>Action Name</comment>
+  </data>
+  <data name="Account" xml:space="preserve">
+    <value>Huomioon</value>
+    <comment>Controller Name</comment>
+  </data>
   <data name="AddRating" xml:space="preserve">
     <value>Lähetettyjen luokitusten onnistuneesti.</value>
     <comment>Flash Message</comment>
@@ -133,6 +141,10 @@
     <value>Salasanasi on muutettu.</value>
     <comment>Flash Message</comment>
   </data>
+  <data name="ChangePasswordText" xml:space="preserve">
+    <value>Vaihda Salasana</value>
+    <comment>Action Name</comment>
+  </data>
   <data name="CityDisplay" xml:space="preserve">
     <value>Kaupunki</value>
     <comment>Display Name</comment>
@@ -145,9 +157,17 @@
     <value>Vahvista salasana</value>
     <comment>Display Name</comment>
   </data>
+  <data name="Contact" xml:space="preserve">
+    <value>Yhteystiedot</value>
+    <comment>Action Name</comment>
+  </data>
   <data name="CountryDisplay" xml:space="preserve">
     <value>Maan</value>
     <comment>Display Name</comment>
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value>Luo</value>
+    <comment>Action Name</comment>
   </data>
   <data name="CreateEvaluation" xml:space="preserve">
     <value>Arviointi luonti onnistui.</value>
@@ -161,6 +181,10 @@
     <value>Käyttäjän luominen onnistui.</value>
     <comment>Flash Message</comment>
   </data>
+  <data name="Dashboard" xml:space="preserve">
+    <value>Kojelauta</value>
+    <comment>Action Name</comment>
+  </data>
   <data name="DescriptionDisplay" xml:space="preserve">
     <value>Kuvaus</value>
     <comment>Display Name</comment>
@@ -169,9 +193,21 @@
     <value>Nimeäminen</value>
     <comment>Display Name</comment>
   </data>
+  <data name="Details" xml:space="preserve">
+    <value>Tiedot</value>
+    <comment>Action Name</comment>
+  </data>
   <data name="DistrictDisplay" xml:space="preserve">
     <value>Alueella</value>
     <comment>Display Name</comment>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Muokkaa</value>
+    <comment>Action Name</comment>
+  </data>
+  <data name="EditProfile" xml:space="preserve">
+    <value>Muokkaa Profiilia</value>
+    <comment>Action Name</comment>
   </data>
   <data name="EmailAlreadyTaken" xml:space="preserve">
     <value>Sähköpostiosoite on jo käytössä.</value>
@@ -184,6 +220,10 @@
   <data name="EmailInvalid" xml:space="preserve">
     <value>Sähköposti ei kelpaa.</value>
     <comment>Validation</comment>
+  </data>
+  <data name="Evaluation" xml:space="preserve">
+    <value>Arviointi</value>
+    <comment>Controller Name</comment>
   </data>
   <data name="FieldLengthMax" xml:space="preserve">
     <value>{0} ei voi olla enintään {1} merkkiä.</value>
@@ -205,9 +245,17 @@
     <value>Etunimi</value>
     <comment>Display Name</comment>
   </data>
+  <data name="ForgotPassword" xml:space="preserve">
+    <value>Unohtuiko salasana?</value>
+    <comment>Action Name</comment>
+  </data>
   <data name="Headline" xml:space="preserve">
     <value>Web-työkalu asiakkaiden tarpeiden</value>
     <comment>Main Page</comment>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Etusivu</value>
+    <comment>Controller Name</comment>
   </data>
   <data name="ImageUploadFailed" xml:space="preserve">
     <value>Virhe lataaminen kuvatiedosto.</value>
@@ -216,6 +264,10 @@
   <data name="ImageUploadFormat" xml:space="preserve">
     <value>Virheellinen kuvamuoto.</value>
     <comment>Vaidation</comment>
+  </data>
+  <data name="Index" xml:space="preserve">
+    <value>Indeksi</value>
+    <comment>Action Name</comment>
   </data>
   <data name="InvalidRoleAssignment" xml:space="preserve">
     <value>Et voi luoda käyttäjän roolin: {0}.</value>
@@ -245,13 +297,33 @@
     <value>Sukunimi</value>
     <comment>Display Name</comment>
   </data>
+  <data name="LogIn" xml:space="preserve">
+    <value>Kirjaudu</value>
+    <comment>Action Name</comment>
+  </data>
+  <data name="Manage" xml:space="preserve">
+    <value>Hallinta</value>
+    <comment>Controller Name</comment>
+  </data>
   <data name="MinRoleAssignment" xml:space="preserve">
     <value>Sinun täytyy määrittää vähintään yksi rooli.</value>
     <comment>Validation</comment>
   </data>
+  <data name="MyEvaluations" xml:space="preserve">
+    <value>Omat Arvioinnit</value>
+    <comment>Action Name</comment>
+  </data>
   <data name="NameDisplay" xml:space="preserve">
     <value>Nimi</value>
     <comment>Display Name</comment>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>Ei</value>
+    <comment>Views</comment>
+  </data>
+  <data name="NoAttributesAvailable" xml:space="preserve">
+    <value>Tällä hetkellä arvioinnissa ei määritteet.</value>
+    <comment>Evaluation Details View</comment>
   </data>
   <data name="OrganizationNameDisplay" xml:space="preserve">
     <value>Organisaatio</value>
@@ -269,17 +341,33 @@
     <value>Postinumero</value>
     <comment>Display Name</comment>
   </data>
+  <data name="Product" xml:space="preserve">
+    <value>Tuotteen</value>
+    <comment>Controller Name</comment>
+  </data>
   <data name="ProvinceDisplay" xml:space="preserve">
     <value>Maakunta</value>
     <comment>Display Name</comment>
+  </data>
+  <data name="Rating" xml:space="preserve">
+    <value>Luokitus</value>
+    <comment>Controller Name</comment>
   </data>
   <data name="RememberDisplay" xml:space="preserve">
     <value>Muista minut?</value>
     <comment>Display Name</comment>
   </data>
+  <data name="Reports" xml:space="preserve">
+    <value>Raportit</value>
+    <comment>Action Name</comment>
+  </data>
   <data name="RolesDisplay" xml:space="preserve">
     <value>Roolit</value>
     <comment>Display Name</comment>
+  </data>
+  <data name="SendInvitation" xml:space="preserve">
+    <value>Lähetä Kutsu</value>
+    <comment>Action Name</comment>
   </data>
   <data name="StreetDisplay" xml:space="preserve">
     <value>Katu</value>
@@ -304,5 +392,9 @@
   <data name="VersionDisplay" xml:space="preserve">
     <value>Versio</value>
     <comment>Display Name</comment>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Kyllä</value>
+    <comment>Views</comment>
   </data>
 </root>
