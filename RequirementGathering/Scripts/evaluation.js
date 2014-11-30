@@ -46,9 +46,12 @@
     });
 
     $('.evaluation-form').submit(function() {
-        $('[name="Attributes[].Name"]').each(function(i) {
+        $('[type="text"][name="Attributes[].Name"]').each(function(i) {
             $(this).attr('name', 'Attributes[' + i + '].Name');
             $(this).removeAttr('disabled');
+        });
+        $('[type="hidden"][name="Attributes[].Id"]').each(function(i) {
+            $(this).attr('name', 'Attributes[' + i + '].Id');
         });
     });
 });

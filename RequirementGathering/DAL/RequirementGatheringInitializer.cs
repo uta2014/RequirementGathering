@@ -151,8 +151,8 @@ namespace RequirementGathering.DAL
                     new Rating
                     {
                         UserId = user.Id,
-                        AttributeId1 = attribute1.Id,
-                        AttributeId2 = attribute2.Id,
+                        AttributeId1 = attribute1.Id.Value,
+                        AttributeId2 = attribute2.Id.Value,
                         Value1 = random.Next(1, 5),
                         Value2 = random.Next(1, 5)
                     });

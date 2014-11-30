@@ -1,10 +1,12 @@
 ﻿@model Evaluation
 
 @{
-    ViewBag.Title = "Send Invitation";
+    ViewBag.Title = Resources.SendInvitation;
+    var descriptionValue = Resource.GetPropertyValue<Evaluation>(Model.Id, "Description");
+    var productNameValue = Resource.GetPropertyValue<Product>(Model.Product.Id, "Product.Name");
 }
 
-<h2>Send Invitation</h2>
+<h2>@ViewBag.Title</h2>
 
 <div>
     <h4>Evaluation</h4>
@@ -19,11 +21,19 @@
         </dd>
 
         <dt>
+            @Resources.ProductName
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(_ => productNameValue)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.Description)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Description)
+            @Html.DisplayFor(_ => descriptionValue)
         </dd>
 
         <dt>

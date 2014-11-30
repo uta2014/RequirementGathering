@@ -2,6 +2,8 @@
 
 @{
     ViewBag.Title = Resources.Details;
+    var descriptionValue = Resource.GetPropertyValue<Evaluation>(Model.Id, "Description");
+    var productNameValue = Resource.GetPropertyValue<Product>(Model.Product.Id, "Product.Name");
 }
 
 <h2>@ViewBag.Title</h2>
@@ -23,7 +25,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Description)
+            @Html.DisplayFor(_ => descriptionValue)
         </dd>
 
         <dt>
@@ -31,7 +33,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Product.Name)
+            @Html.DisplayFor(_ => productNameValue)
         </dd>
 
         <dt>
@@ -63,7 +65,7 @@
         {
             foreach (var attribute in Model.Attributes)
             {
-                var attributeName = Resource.GetPropertyValue<RequirementGathering.Models.Attribute>(attribute.Id, "Name");
+                var attributeName = Resource.GetPropertyValue<RequirementGathering.Models.Attribute>(attribute.Id.Value, "Name");
 
                 <li class="badge text-center">
                     <span class="glyphicon-tag glyphicon"></span>
