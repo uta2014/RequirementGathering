@@ -7,7 +7,7 @@
 <h2>@ViewBag.Title</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink(Resources.CreateNew, "Create")
 </p>
 <table class="table">
     <tr>
@@ -45,9 +45,9 @@
                 @(item.IsActive ? Resources.Yes : Resources.No)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                @Html.ActionLink("Send Invitation", "SendInvitation", new { id = item.Id })
+                @Html.ActionLink(Resources.Edit, "Edit", new { id = item.Id }) |
+                @Html.ActionLink(Resources.Details, "Details", new { id = item.Id }) |
+                @Html.ActionLink(Resources.SendInvitation, "SendInvitation", new { id = item.Id })
             </td>
         </tr>
     }

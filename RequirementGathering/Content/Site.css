@@ -50,3 +50,26 @@ textarea {
     padding: 7px;
     margin: 7px;
 }
+
+h1.launch-btn {
+    color: #428bca;
+    text-transform: uppercase;
+}
+
+    h1.launch-btn > span {
+        border: 1px solid #ddd;
+        cursor: pointer;
+        padding: 7px;
+    }
+
+        h1.launch-btn > span > span {
+            padding: 0 3px;
+        }
+
+.my-evaluation-list .my-evaluation-list-item:last-of-type {
+    border-bottom: none;
+}
+
+.my-evaluation-list .my-evaluation-list-item {
+    border-bottom: 1px solid #ddd;
+}

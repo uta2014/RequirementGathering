@@ -50,7 +50,7 @@
         }
         <div class="@(string.IsNullOrEmpty(Model.ImageUrl) ? "" : "hidden")">
             <a class='btn btn-primary' href='javascript:;'>
-                Choose File...
+                @Resources.ChooseFile...
                 <input name="ProductVersionImage" id="productVersionImage" type="file" size="40">
             </a>
             &nbsp;

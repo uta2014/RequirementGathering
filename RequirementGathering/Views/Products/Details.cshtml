@@ -7,7 +7,7 @@
 <h2>@ViewBag.Title</h2>
 
 <div>
-    <h4>Product</h4>
+    <h4>@Resources.Product</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -45,6 +45,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink(@Resources.Edit, "Edit", new { id = Model.Id }) |
+    @Html.ActionLink(Resources.BackToList, "Index")
 </p>

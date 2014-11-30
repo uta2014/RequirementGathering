@@ -7,7 +7,7 @@
 <h2>@ViewBag.Title</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Register")
+    @Html.ActionLink(Resources.CreateNew, "Register")
 </p>
 <table class="table">
     <tr>
@@ -36,7 +36,7 @@
                 @Html.DisplayFor(_ => item.UserRoles)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                @Html.ActionLink(Resources.Edit, "Edit", new { id = item.Id })
             </td>
         </tr>
     }

@@ -7,18 +7,18 @@
         <ul class="list-group">
             @if (new[] { "Super Administrator", "Administrator" }.Any(role => User.IsInRole(role)))
             {
-                @Html.ActionLink("Manage Users", "Index", "Account", null, new { @class = "list-group-item" })
+                @Html.ActionLink(Resources.ManageUsers, "Index", "Account", null, new { @class = "list-group-item" })
             }
             @if (new[] { "Super Administrator", "Administrator", "Researcher" }.Any(role => User.IsInRole(role)))
             {
-                @Html.ActionLink("Manage Products", "Index", "Products", null, new { @class = "list-group-item" })
-                @Html.ActionLink("Manage Evaluation", "Index", "Evaluations", null, new { @class = "list-group-item" })
-                @Html.ActionLink("Reports", "Reports", "Evaluations", null, new { @class = "list-group-item" })
+                @Html.ActionLink(Resources.ManageProducts, "Index", "Products", null, new { @class = "list-group-item" })
+                @Html.ActionLink(Resources.ManageEvaluations, "Index", "Evaluations", null, new { @class = "list-group-item" })
+                @Html.ActionLink(Resources.Reports, "Reports", "Evaluations", null, new { @class = "list-group-item" })
             }
 
-            @Html.ActionLink("My Evaluations", "MyEvaluations", "Evaluations", null, new { @class = "list-group-item" })
-            @Html.ActionLink("Edit Profile", "EditProfile", "Manage", null, new { @class = "list-group-item" })
-            @Html.ActionLink("Change Password", "ChangePassword", "Manage", null, new { @class = "list-group-item" })
+            @Html.ActionLink(Resources.MyEvaluations, "MyEvaluations", "Evaluations", null, new { @class = "list-group-item" })
+            @Html.ActionLink(Resources.EditProfile, "EditProfile", "Manage", null, new { @class = "list-group-item" })
+            @Html.ActionLink(Resources.ChangePasswordText, "ChangePassword", "Manage", null, new { @class = "list-group-item" })
         </ul>
     </div>
     <div class="col-md-9">

@@ -137,13 +137,25 @@
     <value>U moet ten minste twee kenmerken maken een evaluatie.</value>
     <comment>Validation</comment>
   </data>
+  <data name="BackToList" xml:space="preserve">
+    <value>Terug naar lijst</value>
+    <comment>CRUD View</comment>
+  </data>
   <data name="ChangePassword" xml:space="preserve">
     <value>Uw wachtwoord is gewijzigd.</value>
     <comment>Flash Message</comment>
   </data>
+  <data name="ChangePasswordForm" xml:space="preserve">
+    <value>Wachtwoord wijzigen vorm</value>
+    <comment>Change Password View</comment>
+  </data>
   <data name="ChangePasswordText" xml:space="preserve">
     <value>Wachtwoord Wijzigen</value>
     <comment>Action Name</comment>
+  </data>
+  <data name="ChooseFile" xml:space="preserve">
+    <value>Kies bestand</value>
+    <comment>File Picker Button View</comment>
   </data>
   <data name="CityDisplay" xml:space="preserve">
     <value>Stad</value>
@@ -161,6 +173,10 @@
     <value>Contact</value>
     <comment>Action Name</comment>
   </data>
+  <data name="Copyright" xml:space="preserve">
+    <value>Universiteit van Tampere</value>
+    <comment>Footer View</comment>
+  </data>
   <data name="CountryDisplay" xml:space="preserve">
     <value>Land</value>
     <comment>Display Name</comment>
@@ -172,6 +188,10 @@
   <data name="CreateEvaluation" xml:space="preserve">
     <value>Evaluatie gemaakt.</value>
     <comment>Flash Message</comment>
+  </data>
+  <data name="CreateNew" xml:space="preserve">
+    <value>Nieuwe maken</value>
+    <comment>CRUD View</comment>
   </data>
   <data name="CreateProduct" xml:space="preserve">
     <value>Product succesvol aangemaakt.</value>
@@ -209,6 +229,10 @@
     <value>Profiel Bewerken</value>
     <comment>Action Name</comment>
   </data>
+  <data name="EditProfileForm" xml:space="preserve">
+    <value>Uw profiel bewerken</value>
+    <comment>Edit Profile View</comment>
+  </data>
   <data name="EmailAlreadyTaken" xml:space="preserve">
     <value>E-mailadres wordt al gebruikt.</value>
     <comment>Validation</comment>
@@ -223,6 +247,14 @@
   </data>
   <data name="Evaluation" xml:space="preserve">
     <value>Evaluatie</value>
+    <comment>View</comment>
+  </data>
+  <data name="EvaluationDescription" xml:space="preserve">
+    <value>Evaluatie Beschrijving</value>
+    <comment>Evaluation Description View</comment>
+  </data>
+  <data name="Evaluations" xml:space="preserve">
+    <value>Evaluaties</value>
     <comment>Controller Name</comment>
   </data>
   <data name="FieldLengthMax" xml:space="preserve">
@@ -245,13 +277,17 @@
     <value>Voornaam</value>
     <comment>Display Name</comment>
   </data>
-  <data name="ForgotPassword" xml:space="preserve">
+  <data name="ForgotPasswordText" xml:space="preserve">
     <value>Wachtwoord vergeten?</value>
-    <comment>Action Name</comment>
+    <comment>View</comment>
   </data>
   <data name="Headline" xml:space="preserve">
     <value>Webtool voor het verzamelen van eisen van de klant</value>
     <comment>Main Page</comment>
+  </data>
+  <data name="Hello" xml:space="preserve">
+    <value>Hallo</value>
+    <comment>Header View</comment>
   </data>
   <data name="Home" xml:space="preserve">
     <value>Huis</value>
@@ -301,9 +337,29 @@
     <value>Inloggen</value>
     <comment>Action Name</comment>
   </data>
+  <data name="LoginMessage" xml:space="preserve">
+    <value>Gebruik uw e-mailadres en wachtwoord in om in te loggen.</value>
+    <comment>Login View</comment>
+  </data>
+  <data name="LogOff" xml:space="preserve">
+    <value>Afmelden</value>
+    <comment>Login Partial View</comment>
+  </data>
   <data name="Manage" xml:space="preserve">
     <value>Beheren</value>
     <comment>Controller Name</comment>
+  </data>
+  <data name="ManageEvaluations" xml:space="preserve">
+    <value>Beheren van evaluaties</value>
+    <comment>Authorized Layout Partial View</comment>
+  </data>
+  <data name="ManageProducts" xml:space="preserve">
+    <value>Beheren van producten</value>
+    <comment>Authorized Layout Partial View</comment>
+  </data>
+  <data name="ManageUsers" xml:space="preserve">
+    <value>Gebruikers beheren</value>
+    <comment>Authorized Layout Partial View</comment>
   </data>
   <data name="MinRoleAssignment" xml:space="preserve">
     <value>U moet ten minste één rol toewijzen.</value>
@@ -325,6 +381,10 @@
     <value>Er zijn geen kenmerken die zijn toegewezen aan deze evaluatie.</value>
     <comment>Evaluation Details View</comment>
   </data>
+  <data name="NoImageMessage" xml:space="preserve">
+    <value>Geen afbeelding beschikbaar voor deze versie van het product.</value>
+    <comment>Evaluation Details</comment>
+  </data>
   <data name="OrganizationNameDisplay" xml:space="preserve">
     <value>Organisatie</value>
     <comment>Display Name</comment>
@@ -341,16 +401,28 @@
     <value>Postcode</value>
     <comment>Display Name</comment>
   </data>
+  <data name="ProceedToDetails" xml:space="preserve">
+    <value>Ga naar details</value>
+    <comment>My Evaluations View</comment>
+  </data>
   <data name="Product" xml:space="preserve">
     <value>Produkt</value>
+    <comment>View</comment>
+  </data>
+  <data name="ProductName" xml:space="preserve">
+    <value>Productnaam</value>
+    <comment>Evaluation Description View</comment>
+  </data>
+  <data name="Products" xml:space="preserve">
+    <value>Producten</value>
     <comment>Controller Name</comment>
   </data>
   <data name="ProvinceDisplay" xml:space="preserve">
     <value>Provincie</value>
     <comment>Display Name</comment>
   </data>
-  <data name="Rating" xml:space="preserve">
-    <value>Waardering</value>
+  <data name="Ratings" xml:space="preserve">
+    <value>Waarderingen</value>
     <comment>Controller Name</comment>
   </data>
   <data name="RememberDisplay" xml:space="preserve">
@@ -364,6 +436,10 @@
   <data name="RolesDisplay" xml:space="preserve">
     <value>Rollen</value>
     <comment>Display Name</comment>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Opslaan</value>
+    <comment>Save Button View</comment>
   </data>
   <data name="SendInvitation" xml:space="preserve">
     <value>Uitnodiging Verzenden</value>
@@ -389,6 +465,10 @@
     <value>Gebruiker bijgewerkt.</value>
     <comment>Flash Message</comment>
   </data>
+  <data name="User" xml:space="preserve">
+    <value>Gebruiker</value>
+    <comment>View</comment>
+  </data>
   <data name="VersionConflict" xml:space="preserve">
     <value>Versie voor dit product bestaat.</value>
     <comment>Validation</comment>
@@ -397,8 +477,32 @@
     <value>Versie</value>
     <comment>Display Name</comment>
   </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>Welkom</value>
+    <comment>Dashboard View</comment>
+  </data>
   <data name="Yes" xml:space="preserve">
     <value>Ja</value>
     <comment>Views</comment>
+  </data>
+  <data name="EmailLink" xml:space="preserve">
+    <value>E-mailkoppeling</value>
+    <comment>Forgot Password View</comment>
+  </data>
+  <data name="ForgotEmailMessage" xml:space="preserve">
+    <value>Voer uw e-mailadres.</value>
+    <comment>Forgot Password View</comment>
+  </data>
+  <data name="ForgotPassword" xml:space="preserve">
+    <value>Wachtwoord Vergeten</value>
+    <comment>Action Name</comment>
+  </data>
+  <data name="Launch" xml:space="preserve">
+    <value>Lancering</value>
+    <comment>Evaluation Description View</comment>
+  </data>
+  <data name="ProductDescription" xml:space="preserve">
+    <value>Beschrijving van het Product</value>
+    <comment>Evaluation Description View</comment>
   </data>
 </root>

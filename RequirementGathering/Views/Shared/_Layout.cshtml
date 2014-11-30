@@ -33,12 +33,13 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li class="active">
-                        @Html.ActionLink("Dashboard", "Dashboard", "Home")
-                    </li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink(Resources.Home, "Index", "Home")</li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li class="active">@Html.ActionLink(Resources.Dashboard, "Dashboard", "Home")</li>
+                    }
+                    <li>@Html.ActionLink(Resources.About, "About", "Home")</li>
+                    <li>@Html.ActionLink(Resources.Contact, "Contact", "Home")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
                 @Html.Partial("_LanguageSelection")
@@ -57,7 +58,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - Tampereen Yliopisto</p>
+            <p>&copy; @DateTime.Now.Year - @Resources.Copyright</p>
         </footer>
     </div>
 
