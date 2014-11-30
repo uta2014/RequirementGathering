@@ -1,10 +1,10 @@
 ﻿@model User
 
 @{
-    ViewBag.Title = "Dashboard";
+    ViewBag.Title = Resources.Dashboard;
 }
 
-<h2>Dashboard</h2>
+<h2>@ViewBag.Title</h2>
 
 <h4>
     @Html.Label("Welcome " + Model.FullName.ToUpper())
