@@ -448,6 +448,24 @@ namespace RequirementGathering.Reousrces {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Forgot Password Confirmation.
+        /// </summary>
+        public static string ForgotPasswordConfirmation {
+            get {
+                return ResourceManager.GetString("ForgotPasswordConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please check your email to reset your password..
+        /// </summary>
+        public static string ForgotPasswordConfirmationMessage {
+            get {
+                return ResourceManager.GetString("ForgotPasswordConfirmationMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Forgot your password?.
         /// </summary>
         public static string ForgotPasswordText {
@@ -687,6 +705,15 @@ namespace RequirementGathering.Reousrces {
         public static string NoAttributesAvailable {
             get {
                 return ResourceManager.GetString("NoAttributesAvailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There are no pending evaluations. Good work! :).
+        /// </summary>
+        public static string NoEvaluationsAvailable {
+            get {
+                return ResourceManager.GetString("NoEvaluationsAvailable", resourceCulture);
             }
         }
         

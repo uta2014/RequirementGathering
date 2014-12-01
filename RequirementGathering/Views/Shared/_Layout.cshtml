@@ -51,8 +51,11 @@
         @Html.Raw(Html.BuildBreadcrumbNavigation())
         <!-- #endregion -->
         <!-- #region Flash Messages -->
-        <div id="flashNotification">
-            <p class="text-success">@ViewBag.StatusMessage</p>
+        <div id="flashNotification" class="@(string.IsNullOrEmpty(ViewBag.StatusMessage)? "hidden":string.Empty)">
+            <p class="text-success">
+                <span class="glyphicon glyphicon-saved"></span>
+                @ViewBag.StatusMessage
+            </p>
         </div>
         <!-- #endregion -->
         @RenderBody()

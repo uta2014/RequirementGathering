@@ -505,4 +505,16 @@
     <value>Tuotteen Kuvaus</value>
     <comment>Evaluation Description View</comment>
   </data>
+  <data name="ForgotPasswordConfirmation" xml:space="preserve">
+    <value>Unohdin Salasanan Vahvistus</value>
+    <comment>Forgot Password Confirmation View</comment>
+  </data>
+  <data name="ForgotPasswordConfirmationMessage" xml:space="preserve">
+    <value>Tarkista sähköpostisi salasanan.</value>
+    <comment>Forgot Password Confirmation View</comment>
+  </data>
+  <data name="NoEvaluationsAvailable" xml:space="preserve">
+    <value>Eivät ole vireillä arvioinnit. Hyvää työtä! :)</value>
+    <comment>Views</comment>
+  </data>
 </root>

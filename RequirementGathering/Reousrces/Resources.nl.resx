@@ -505,4 +505,16 @@
     <value>Beschrijving van het Product</value>
     <comment>Evaluation Description View</comment>
   </data>
+  <data name="ForgotPasswordConfirmation" xml:space="preserve">
+    <value>Vergat Wachtwoord Bevestiging</value>
+    <comment>Forgot Password Confirmation View</comment>
+  </data>
+  <data name="ForgotPasswordConfirmationMessage" xml:space="preserve">
+    <value>Controleer uw e-mail om uw wachtwoord te resetten.</value>
+    <comment>Forgot Password Confirmation View</comment>
+  </data>
+  <data name="NoEvaluationsAvailable" xml:space="preserve">
+    <value>Er zijn geen wachtende evaluaties. Het goede werk! :)</value>
+    <comment>Views</comment>
+  </data>
 </root>

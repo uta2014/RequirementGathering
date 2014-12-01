@@ -505,4 +505,16 @@
     <value>Yes</value>
     <comment>Views</comment>
   </data>
+  <data name="ForgotPasswordConfirmation" xml:space="preserve">
+    <value>Forgot Password Confirmation</value>
+    <comment>Forgot Password Confirmation View</comment>
+  </data>
+  <data name="ForgotPasswordConfirmationMessage" xml:space="preserve">
+    <value>Please check your email to reset your password.</value>
+    <comment>Forgot Password Confirmation View</comment>
+  </data>
+  <data name="NoEvaluationsAvailable" xml:space="preserve">
+    <value>There are no pending evaluations. Good work! :)</value>
+    <comment>Views</comment>
+  </data>
 </root>

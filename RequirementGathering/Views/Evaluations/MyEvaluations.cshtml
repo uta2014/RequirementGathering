@@ -17,22 +17,33 @@
 </div>
 
 <div class="my-evaluation-list">
-    @foreach (var evaluation in Model)
+    @if (!Model.Any())
     {
-        var productName = Resource.GetPropertyValue<Evaluation>(evaluation.Product.Id, "Product.Name");
-
         <div class="row my-evaluation-list-item">
-            <div class="col col-sm-3">
-                @Html.DisplayFor(_ => productName)
-            </div>
-
-            <div class="col col-sm-3">
-                @Html.DisplayFor(_ => evaluation.Version)
-            </div>
-
-            <div class="col col-sm-3">
-                @Html.ActionLink(Resources.ProceedToDetails, "EvaluationDescription", new { id = evaluation.Id }, new { htmlAttributes = new { @class = "btn btn-link" } })
+            <div class="col col-sm-6">
+                @Resources.NoEvaluationsAvailable
             </div>
         </div>
+    }
+    else
+    {
+        foreach (var evaluation in Model)
+        {
+            var productName = Resource.GetPropertyValue<Evaluation>(evaluation.Product.Id, "Product.Name");
+
+            <div class="row my-evaluation-list-item">
+                <div class="col col-sm-3">
+                    @Html.DisplayFor(_ => productName)
+                </div>
+
+                <div class="col col-sm-3">
+                    @Html.DisplayFor(_ => evaluation.Version)
+                </div>
+
+                <div class="col col-sm-3">
+                    @Html.ActionLink(Resources.ProceedToDetails, "EvaluationDescription", new { id = evaluation.Id }, new { htmlAttributes = new { @class = "btn btn-link" } })
+                </div>
+            </div>
+        }
     }
 </div>

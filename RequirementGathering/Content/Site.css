@@ -73,3 +73,7 @@ h1.launch-btn {
 .my-evaluation-list .my-evaluation-list-item {
     border-bottom: 1px solid #ddd;
 }
+
+#flashNotification > p {
+    font-size: 1.4em;
+}

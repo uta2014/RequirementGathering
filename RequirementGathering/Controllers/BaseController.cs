@@ -55,8 +55,6 @@ namespace RequirementGathering.Controllers
 
         protected override IAsyncResult BeginExecuteCore(AsyncCallback callback, object state)
         {
-            SetStatusMessage();
-
             string cultureName = null;
 
             // Attempt to read the culture cookie from Request
@@ -73,6 +71,8 @@ namespace RequirementGathering.Controllers
             // Modify current thread's cultures            
             Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(cultureName);
             Thread.CurrentThread.CurrentUICulture = Thread.CurrentThread.CurrentCulture;
+
+            SetStatusMessage();
 
             return base.BeginExecuteCore(callback, state);
         }
