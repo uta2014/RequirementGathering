@@ -1,7 +1,7 @@
 ﻿@model RequirementGathering.Models.Attribute
 
 @{
-    var attributeValue = Resource.GetPropertyValue<RequirementGathering.Models.Attribute>(Model.Id.Value, "Name");
+    var attributeValue = !Model.Id.HasValue ? string.Empty : Resource.GetPropertyValue<RequirementGathering.Models.Attribute>(Model.Id.Value, "Name");
 }
 
 <div class="form-group">
