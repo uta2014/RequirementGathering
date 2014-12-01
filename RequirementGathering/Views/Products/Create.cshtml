@@ -26,5 +26,7 @@
 }
 
 <div>
-    @Html.ActionLink(Resources.BackToList, "Index")
+    <a href="/@ViewBag.CurrentCulture/Products">
+        <span class="glyphicon glyphicon-hand-left"></span> @Resources.BackToList
+    </a>
 </div>

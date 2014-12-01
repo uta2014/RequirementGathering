@@ -55,16 +55,34 @@ namespace RequirementGathering.Controllers
 
         protected override IAsyncResult BeginExecuteCore(AsyncCallback callback, object state)
         {
-            string cultureName = null;
+            SetCulture();
+            SetStatusMessage();
 
-            // Attempt to read the culture cookie from Request
-            HttpCookie cultureCookie = Request.Cookies["_culture"];
-            if (cultureCookie != null)
-                cultureName = cultureCookie.Value;
-            else
-                cultureName = Request.UserLanguages != null && Request.UserLanguages.Length > 0 ?
-                        Request.UserLanguages[0] :  // obtain it from HTTP header AcceptLanguages
-                        null;
+            return base.BeginExecuteCore(callback, state);
+        }
+
+        private void SetCulture()
+        {
+            // First attempt to read culture from Routes
+            string cultureName = RouteData.Values["culture"].ToString();
+
+            if (string.IsNullOrEmpty(cultureName))
+            {
+                // Second attempt to read the culture cookie from Request
+                HttpCookie cultureCookie = Request.Cookies["_culture"];
+
+                if (cultureCookie != null)
+                {
+                    cultureName = cultureCookie.Value;
+                }
+                else // Fallback to first avaialbe (default) culture
+                {
+                    cultureName = Request.UserLanguages != null && Request.UserLanguages.Length > 0 ?
+                                  Request.UserLanguages[0] :  // obtain it from HTTP header AcceptLanguages
+                                  null;
+                }
+            }
+
             // Validate culture name
             cultureName = CultureHelper.GetImplementedCulture(cultureName); // This is safe
 
@@ -72,12 +90,11 @@ namespace RequirementGathering.Controllers
             Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(cultureName);
             Thread.CurrentThread.CurrentUICulture = Thread.CurrentThread.CurrentCulture;
 
-            SetStatusMessage();
-
-            return base.BeginExecuteCore(callback, state);
+            // No need to fetch Thred.CurrentThread.CurrentUICulture in Views, instead use this:
+            ViewBag.CurrentCulture = Thread.CurrentThread.CurrentCulture;
         }
 
-        private void SetStatusMessage()
+        public void SetStatusMessage()
         {
             string param;
 

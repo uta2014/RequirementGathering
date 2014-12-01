@@ -1,22 +1,31 @@
 ﻿@using Microsoft.AspNet.Identity
+
 @if (Request.IsAuthenticated)
 {
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
         @Html.AntiForgeryToken()
 
-        <ul class="nav navbar-nav navbar-right">
-            <li>
-                @Html.ActionLink(Resources.Hello + " " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
-            </li>
-            <li><a href="javascript:document.getElementById('logoutForm').submit()">@Resources.LogOff</a></li>
-        </ul>
+    <ul class="nav navbar-nav navbar-right">
+        <li>
+            @Html.ActionLink(Resources.Hello + " " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+        </li>
+        <li>
+            <a href="javascript:document.getElementById('logoutForm').submit()">
+                <span class="glyphicon glyphicon-log-out"></span> @Resources.LogOff
+            </a>
+        </li>
+    </ul>
     }
 }
 else
 {
     <ul class="nav navbar-nav navbar-right">
         <li>@*@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })*@</li>
-        <li>@Html.ActionLink(Resources.LogIn, "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+        <li>
+            <a id="loginLink" href="/@ViewBag.CurrentCulture/Account/Login">
+                <span class="glyphicon glyphicon-log-in"></span> @Resources.LogIn
+            </a>
+        </li>
     </ul>
 }

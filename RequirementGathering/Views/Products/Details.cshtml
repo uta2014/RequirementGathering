@@ -39,12 +39,16 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.IsActive)
+            @(Model.IsActive ? Resources.Yes : Resources.No)
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink(@Resources.Edit, "Edit", new { id = Model.Id }) |
-    @Html.ActionLink(Resources.BackToList, "Index")
+    <a href="/@ViewBag.CurrentCulture/Products">
+        <span class="glyphicon glyphicon-hand-left"></span> @Resources.BackToList
+    </a> |
+    <a href="/@ViewBag.CurrentCulture/Products/Edit/@Model.Id">
+        <span class="glyphicon glyphicon-edit"></span> @Resources.Edit
+    </a>
 </p>

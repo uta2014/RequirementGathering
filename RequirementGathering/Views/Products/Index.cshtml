@@ -21,6 +21,7 @@
             @Html.DisplayNameFor(model => model.IsActive)
         </th>
         <th></th>
+        <th></th>
     </tr>
 
     @foreach (var item in Model)
@@ -38,8 +39,14 @@
                 @(item.IsActive ? Resources.Yes : Resources.No)
             </td>
             <td>
-                @Html.ActionLink(Resources.Edit, "Edit", new { id = item.Id }) |
-                @Html.ActionLink(Resources.Details, "Details", new { id = item.Id })
+                <a href="/@ViewBag.CurrentCulture/Products/Edit/@item.Id">
+                    <span class="glyphicon glyphicon-edit"></span> @Resources.Edit
+                </a>
+            </td>
+            <td>
+                <a href="/@ViewBag.CurrentCulture/Products/Details/@item.Id">
+                    <span class="glyphicon glyphicon-indent-left"></span> @Resources.Details
+                </a>
             </td>
         </tr>
     }
