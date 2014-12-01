@@ -12,7 +12,7 @@
         </li>
         <li>
             <a href="javascript:document.getElementById('logoutForm').submit()">
-                <span class="glyphicon glyphicon-log-out"></span> @Resources.LogOff
+                <span class="glyphicon glyphicon-log-out"></span>&nbsp;@Resources.LogOff
             </a>
         </li>
     </ul>
@@ -24,7 +24,7 @@ else
         <li>@*@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })*@</li>
         <li>
             <a id="loginLink" href="/@ViewBag.CurrentCulture/Account/Login">
-                <span class="glyphicon glyphicon-log-in"></span> @Resources.LogIn
+                <span class="glyphicon glyphicon-log-in"></span>&nbsp;@Resources.LogIn
             </a>
         </li>
     </ul>

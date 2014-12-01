@@ -41,7 +41,9 @@
                 </div>
 
                 <div class="col col-sm-3">
-                    @Html.ActionLink(Resources.ProceedToDetails, "EvaluationDescription", new { id = evaluation.Id }, new { htmlAttributes = new { @class = "btn btn-link" } })
+                    <a href="/@ViewBag.CurrentCulture/Evaluations/EvaluationDescription/@evaluation.Id">
+                        <span class="glyphicon glyphicon-hand-up"></span>&nbsp;@Resources.ProceedToDetails
+                    </a>
                 </div>
             </div>
         }
