@@ -521,4 +521,24 @@
     <value>Kenmerken</value>
     <comment>Views</comment>
   </data>
+  <data name="ChangePasswordDisplay" xml:space="preserve">
+    <value>Wachtwoord Wijzigen</value>
+    <comment>Change Password View</comment>
+  </data>
+  <data name="ChangePasswordValidation" xml:space="preserve">
+    <value>Het nieuwe wacthwoord en de bevestiging wachtwoord komen niet overeen.</value>
+    <comment>Validation</comment>
+  </data>
+  <data name="ConfirmNewPassword" xml:space="preserve">
+    <value>Bevestig het Nieuwe Wachtwoord</value>
+    <comment>Change Password View</comment>
+  </data>
+  <data name="CurrentPassword" xml:space="preserve">
+    <value>Huidige Wachtwoord</value>
+    <comment>Change Password View</comment>
+  </data>
+  <data name="NewPassword" xml:space="preserve">
+    <value>Nieuw Wachtwoord</value>
+    <comment>Change Password View</comment>
+  </data>
 </root>

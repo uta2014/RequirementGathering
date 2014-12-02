@@ -133,6 +133,15 @@ namespace RequirementGathering.Reousrces {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Change password.
+        /// </summary>
+        public static string ChangePasswordDisplay {
+            get {
+                return ResourceManager.GetString("ChangePasswordDisplay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Change password form.
         /// </summary>
         public static string ChangePasswordForm {
@@ -147,6 +156,15 @@ namespace RequirementGathering.Reousrces {
         public static string ChangePasswordText {
             get {
                 return ResourceManager.GetString("ChangePasswordText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The new password and confirmation password do not match..
+        /// </summary>
+        public static string ChangePasswordValidation {
+            get {
+                return ResourceManager.GetString("ChangePasswordValidation", resourceCulture);
             }
         }
         
@@ -174,6 +192,15 @@ namespace RequirementGathering.Reousrces {
         public static string CompanyNameDisplay {
             get {
                 return ResourceManager.GetString("CompanyNameDisplay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirm New Password.
+        /// </summary>
+        public static string ConfirmNewPassword {
+            get {
+                return ResourceManager.GetString("ConfirmNewPassword", resourceCulture);
             }
         }
         
@@ -255,6 +282,15 @@ namespace RequirementGathering.Reousrces {
         public static string CreateUser {
             get {
                 return ResourceManager.GetString("CreateUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Current Password.
+        /// </summary>
+        public static string CurrentPassword {
+            get {
+                return ResourceManager.GetString("CurrentPassword", resourceCulture);
             }
         }
         
@@ -696,6 +732,15 @@ namespace RequirementGathering.Reousrces {
         public static string NameDisplay {
             get {
                 return ResourceManager.GetString("NameDisplay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Password.
+        /// </summary>
+        public static string NewPassword {
+            get {
+                return ResourceManager.GetString("NewPassword", resourceCulture);
             }
         }
         

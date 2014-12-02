@@ -521,4 +521,24 @@
     <value>Määritteet</value>
     <comment>Views</comment>
   </data>
+  <data name="ChangePasswordDisplay" xml:space="preserve">
+    <value>Vaihda Salasana</value>
+    <comment>Change Password View</comment>
+  </data>
+  <data name="ChangePasswordValidation" xml:space="preserve">
+    <value>Uusi salasana ja salasanan vahvistus eivät täsmää.</value>
+    <comment>Validation</comment>
+  </data>
+  <data name="ConfirmNewPassword" xml:space="preserve">
+    <value>Vahvista Uusi Salasana</value>
+    <comment>Change Password View</comment>
+  </data>
+  <data name="CurrentPassword" xml:space="preserve">
+    <value>Nykyinen Salasana</value>
+    <comment>Change Password View</comment>
+  </data>
+  <data name="NewPassword" xml:space="preserve">
+    <value>Uusi Salasana</value>
+    <comment>Change Password View</comment>
+  </data>
 </root>
