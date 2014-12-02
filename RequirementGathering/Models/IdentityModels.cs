@@ -76,6 +76,7 @@ namespace RequirementGathering.Models
         public ICollection<Evaluation> InvitedEvaluations()
         {
             return EvaluationUsers.Select(eu => eu.Evaluation)
+                                  .Where(eu => eu.IsActive)
                                   .ToList();
         }
 

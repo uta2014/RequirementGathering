@@ -51,7 +51,7 @@ namespace RequirementGathering.Controllers
         public async Task<ActionResult> Create()
         {
             ViewBag.EvaluationIsFreezed = false;
-            ViewBag.ProductId = new SelectList(RgDbContext.Products, "Id", "CulturedName");
+            ViewBag.ProductId = new SelectList(RgDbContext.Products.Where(p => p.IsActive), "Id", "CulturedName");
             return View(new Evaluation() { Owner = await GetCurrentUser(), Attributes = new List<Attribute> { new Attribute() } });
         }
 
@@ -94,7 +94,7 @@ namespace RequirementGathering.Controllers
             }
 
             ViewBag.EvaluationIsFreezed = !CanUpdateAttributes(evaluation);
-            ViewBag.ProductId = new SelectList(RgDbContext.Products, "Id", "CulturedName", evaluation.ProductId);
+            ViewBag.ProductId = new SelectList(RgDbContext.Products.Where(p => p.IsActive), "Id", "CulturedName", evaluation.ProductId);
             return View(evaluation);
         }
 
@@ -120,7 +120,7 @@ namespace RequirementGathering.Controllers
             }
 
             ViewBag.EvaluationIsFreezed = !CanUpdateAttributes(evaluation);
-            ViewBag.ProductId = new SelectList(RgDbContext.Products, "Id", "CulturedName", evaluation.ProductId);
+            ViewBag.ProductId = new SelectList(RgDbContext.Products.Where(p => p.IsActive), "Id", "CulturedName", evaluation.ProductId);
             return View(evaluation);
         }
 
@@ -215,7 +215,7 @@ namespace RequirementGathering.Controllers
             }
 
             ViewBag.EvaluationIsFreezed = !CanUpdateAttributes(evaluation);
-            ViewBag.ProductId = new SelectList(RgDbContext.Products, "Id", "CulturedName", evaluation.ProductId);
+            ViewBag.ProductId = new SelectList(RgDbContext.Products.Where(p => p.IsActive), "Id", "CulturedName", evaluation.ProductId);
             return View(evaluation);
         }
 
@@ -232,7 +232,9 @@ namespace RequirementGathering.Controllers
             var currentUser = await GetCurrentUser();
 
             if (id == null ||
-               !await RgDbContext.EvaluationUsers.AnyAsync(eu => eu.EvaluationId == id && eu.UserId == currentUser.Id))
+               !await RgDbContext.EvaluationUsers.AnyAsync(eu => eu.EvaluationId == id &&
+                                                                 eu.UserId == currentUser.Id &&
+                                                                 eu.Evaluation.IsActive))
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
