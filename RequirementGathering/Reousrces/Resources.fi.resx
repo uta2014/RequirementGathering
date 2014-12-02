@@ -517,4 +517,8 @@
     <value>Eivät ole vireillä arvioinnit. Hyvää työtä! :)</value>
     <comment>Views</comment>
   </data>
+  <data name="Attributes" xml:space="preserve">
+    <value>Määritteet</value>
+    <comment>Views</comment>
+  </data>
 </root>

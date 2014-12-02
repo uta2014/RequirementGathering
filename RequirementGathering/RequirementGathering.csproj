@@ -203,7 +203,6 @@
     <Compile Include="Startup.cs" />
     <Compile Include="Views\Helpers\ApplicationHelpers.cs" />
     <Content Include="Views\Manage\EditProfile.cshtml" />
-    <None Include="Properties\PublishProfiles\Release to hosting.pubxml" />
     <None Include="Views\Evaluations\EditorTemplates\Attribute.cshtml" />
     <Content Include="Views\Evaluations\MyEvaluations.cshtml" />
     <Content Include="Views\Evaluations\Reports.cshtml" />
@@ -282,6 +281,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="images\products\" />
+    <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

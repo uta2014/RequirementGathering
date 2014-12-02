@@ -517,4 +517,8 @@
     <value>There are no pending evaluations. Good work! :)</value>
     <comment>Views</comment>
   </data>
+  <data name="Attributes" xml:space="preserve">
+    <value>Attributes</value>
+    <comment>Views</comment>
+  </data>
 </root>

@@ -51,7 +51,7 @@ namespace RequirementGathering.Controllers
         public async Task<ActionResult> Create()
         {
             ViewBag.EvaluationIsFreezed = false;
-            ViewBag.ProductId = new SelectList(RgDbContext.Products, "Id", "Name");
+            ViewBag.ProductId = new SelectList(RgDbContext.Products, "Id", "CulturedName");
             return View(new Evaluation() { Owner = await GetCurrentUser(), Attributes = new List<Attribute> { new Attribute() } });
         }
 
@@ -63,6 +63,9 @@ namespace RequirementGathering.Controllers
         [Authorize(Roles = "Researcher,Administrator,Super Administrator")]
         public async Task<ActionResult> Create(Evaluation evaluation)
         {
+            evaluation.Attributes = evaluation.Attributes.Where(a => !string.IsNullOrEmpty(a.Name))
+                                      .Distinct(new AttributesIgnoreCaseComparer(CultureInfo.CurrentCulture)).ToList();
+
             if (evaluation.Attributes == null || evaluation.Attributes.Count < 2)
             {
                 ModelState.AddModelError("Attributes", Resources.AttributesCountValidation);
@@ -91,7 +94,7 @@ namespace RequirementGathering.Controllers
             }
 
             ViewBag.EvaluationIsFreezed = !CanUpdateAttributes(evaluation);
-            ViewBag.ProductId = new SelectList(RgDbContext.Products, "Id", "Name", evaluation.ProductId);
+            ViewBag.ProductId = new SelectList(RgDbContext.Products, "Id", "CulturedName", evaluation.ProductId);
             return View(evaluation);
         }
 
@@ -117,7 +120,7 @@ namespace RequirementGathering.Controllers
             }
 
             ViewBag.EvaluationIsFreezed = !CanUpdateAttributes(evaluation);
-            ViewBag.ProductId = new SelectList(RgDbContext.Products, "Id", "Name", evaluation.ProductId);
+            ViewBag.ProductId = new SelectList(RgDbContext.Products, "Id", "CulturedName", evaluation.ProductId);
             return View(evaluation);
         }
 
@@ -212,7 +215,7 @@ namespace RequirementGathering.Controllers
             }
 
             ViewBag.EvaluationIsFreezed = !CanUpdateAttributes(evaluation);
-            ViewBag.ProductId = new SelectList(RgDbContext.Products, "Id", "Name", evaluation.ProductId);
+            ViewBag.ProductId = new SelectList(RgDbContext.Products, "Id", "CulturedName", evaluation.ProductId);
             return View(evaluation);
         }
 

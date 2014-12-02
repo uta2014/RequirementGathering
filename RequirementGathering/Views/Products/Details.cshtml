@@ -2,6 +2,8 @@
 
 @{
     ViewBag.Title = Resources.Details;
+    var description = Resource.GetPropertyValue<Product>(Model.Id, "Description");
+    var name = Resource.GetPropertyValue<Product>(Model.Id, "Name");
 }
 
 <h2>@ViewBag.Title</h2>
@@ -23,7 +25,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Name)
+            @name
         </dd>
 
         <dt>
@@ -31,7 +33,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Description)
+            @description
         </dd>
 
         <dt>

@@ -18,7 +18,7 @@ namespace RequirementGathering.Helpers
 
         public bool Equals(Attribute x, Attribute y)
         {
-            if (_caseInsesitiveComparer.Compare(x.Name, y.Name) == 0)
+            if (_caseInsesitiveComparer.Compare(x.Name.Trim(), y.Name.Trim()) == 0)
             {
                 return true;
             }
@@ -30,7 +30,7 @@ namespace RequirementGathering.Helpers
 
         public int GetHashCode(Attribute obj)
         {
-            return obj.Name.ToLower().GetHashCode();
+            return obj.Name.Trim().ToLower().GetHashCode();
         }
 
         #endregion

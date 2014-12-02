@@ -517,4 +517,8 @@
     <value>Er zijn geen wachtende evaluaties. Het goede werk! :)</value>
     <comment>Views</comment>
   </data>
+  <data name="Attributes" xml:space="preserve">
+    <value>Kenmerken</value>
+    <comment>Views</comment>
+  </data>
 </root>

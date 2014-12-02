@@ -1,7 +1,7 @@
 ﻿@model Product
 @{
-    Model.Description = Resource.GetPropertyValue<Product>(Model.Id.ToString(), "Description");
-    Model.Name = Resource.GetPropertyValue<Product>(Model.Id.ToString(), "Name");
+    Model.Description = Resource.GetPropertyValue<Product>(Model.Id, "Description");
+    Model.Name = Resource.GetPropertyValue<Product>(Model.Id, "Name");
 }
 
 

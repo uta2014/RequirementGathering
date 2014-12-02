@@ -21,6 +21,8 @@ namespace RequirementGathering.Models
         [DataType(DataType.MultilineText)]
         public string Description { get; set; }
 
+        public virtual string CulturedName { get { return Resource.GetPropertyValue<Product>(Id, "Name"); } }
+
         public bool IsActive { get; set; }
 
         public Product()

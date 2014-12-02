@@ -9,7 +9,7 @@
 <h2>@ViewBag.Title</h2>
 
 <div>
-    <h4>Evaluation</h4>
+    <h4>@Resources.Evaluation</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -51,21 +51,21 @@
 {
     @Html.AntiForgeryToken()
     <div class="form-horizontal">
-        <h4>User</h4>
+        <h4>@Resources.User</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id)
 
         <div class="form-group">
-            <label class="col-md-2 control-label" for="firstName">First Name</label>
+            <label class="col-md-2 control-label" for="firstName">@Resources.FirstNameDisplay</label>
             <div class="col-md-10">
-                <input name="firstName" class="form-control" id="firstName" type="text" value="" data-val-required="The First Name field is required." data-val="true">
+                <input name="firstName" class="form-control" id="firstName" type="text" value="" data-val-required="@string.Format(ViewBag.CurrentCulture, Resources.FieldRequired, Resources.FirstNameDisplay)" data-val="true">
                 <span class="field-validation-valid text-danger" data-valmsg-replace="true" data-valmsg-for="firstName"></span>
             </div>
         </div>
 
         <div class="form-group">
-            <label class="col-md-2 control-label" for="lastName">Last Name</label>
+            <label class="col-md-2 control-label" for="lastName">@Resources.LastNameDisplay</label>
             <div class="col-md-10">
                 <input name="lastName" class="form-control" id="lastName" type="text" value="">
                 <span class="field-validation-valid text-danger" data-valmsg-replace="true" data-valmsg-for="lastName"></span>
@@ -73,15 +73,15 @@
         </div>
 
         <div class="form-group">
-            <label class="col-md-2 control-label" for="email">Email</label>
+            <label class="col-md-2 control-label" for="email">@Resources.EmailDisplay</label>
             <div class="col-md-10">
-                <input name="email" class="form-control" id="email" type="email" value="" data-val-required="The Email field is required." data-val-email="The Email field is not a valid e-mail address." data-val="true">
+                <input name="email" class="form-control" id="email" type="email" value="" data-val-required="@string.Format(ViewBag.CurrentCulture, Resources.FieldRequired, Resources.EmailDisplay)" data-val-email="@Resources.EmailInvalid" data-val="true">
                 <span class="field-validation-valid text-danger" data-valmsg-replace="true" data-valmsg-for="email"></span>
             </div>
         </div>
 
         <div class="form-group">
-            <label class="col-md-2 control-label" for="description">Description</label>
+            <label class="col-md-2 control-label" for="description">@Resources.DescriptionDisplay</label>
             <div class="col-md-10">
                 <textarea name="Description" class="form-control text-box multi-line" id="Description" value=""></textarea>
                 <span class="field-validation-valid text-danger" data-valmsg-replace="true" data-valmsg-for="description"></span>
