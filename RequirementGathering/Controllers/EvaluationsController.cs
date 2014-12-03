@@ -319,7 +319,7 @@ namespace RequirementGathering.Controllers
             if (Id == null)
             {
                 ModelState.AddModelError("", "Evalution Id cannot be null");
-                return View();
+                return RedirectToAction("Dashboard", "Home");
             }
 
             Evaluation evaluation = await RgDbContext.Evaluations.FindAsync(Id);
@@ -327,7 +327,7 @@ namespace RequirementGathering.Controllers
             if (evaluation == null)
             {
                 ModelState.AddModelError("", "Evaluation not found");
-                return View();
+                return RedirectToAction("Dashboard", "Home");
             }
 
             User user = await UserManager.FindByEmailAsync(email);
@@ -343,7 +343,7 @@ namespace RequirementGathering.Controllers
                     else
                         ModelState.AddModelError("", "User was invited previously to this evaluation");
 
-                    return View();
+                    return View(evaluation);
                 }
 
                 RgDbContext.EvaluationUsers.Add(new EvaluationUser { UserId = user.Id, EvaluationId = evaluation.Id });
@@ -363,23 +363,23 @@ namespace RequirementGathering.Controllers
 
                 if (result.Succeeded)
                 {
-                    RgDbContext.EvaluationUsers.Add(new EvaluationUser { UserId = user.Id, EvaluationId = evaluation.Id });
-                    await RgDbContext.SaveChangesAsync();
-
                     await UserManager.SendEmailAsync(
                       user.Id,
                       string.Format(CultureInfo.CurrentCulture, Resources.InvitationEmailSubject, evaluation.Product.Name, evaluation.Version),
                       string.Format(CultureInfo.CurrentCulture, Resources.InvitationEmailBodyNew, Request.Url.GetLeftPart(UriPartial.Authority), Thread.CurrentThread.CurrentUICulture, password, description)
                     );
+
+                    RgDbContext.EvaluationUsers.Add(new EvaluationUser { UserId = user.Id, EvaluationId = evaluation.Id });
+                    await RgDbContext.SaveChangesAsync();
                 }
                 else
                 {
                     ModelState.AddModelError("", "Sorry the user cannot be created, try again later");
-                    return View();
+                    return View(evaluation);
                 }
             }
 
-            return RedirectToAction("Index", "Evaluations", new { Message = FlashMessageId.ChangePassword });
+            return RedirectToAction("Index", "Evaluations", new { Message = FlashMessageId.InvitationSent });
         }
 
         #region Helpers

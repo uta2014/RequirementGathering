@@ -322,16 +322,16 @@
     <comment>Validation</comment>
   </data>
   <data name="InvitationEmailBodyExisting" xml:space="preserve">
-    <value>You are invited for evaluation. Please login to {0}/{1}/Account/Login with your email address and password.&lt;br/&gt;&lt;br/&gt;{2}</value>
+    <value>You are invited for evaluation. Please login to &lt;a href="{0}/{1}/Account/Login"&gt;{0}/{1}/Account/Login&lt;/a&gt; with your email address and password.&lt;br/&gt;&lt;br/&gt;{2}</value>
     <comment>Evaluation</comment>
   </data>
   <data name="InvitationEmailBodyNew" xml:space="preserve">
-    <value>You are invited for evaluation. Please login to {0}/{1}/Account/Login with your email address and password: &lt;b&gt;{2}&lt;/b&gt;.&lt;br/&gt;&lt;br/&gt;{3}</value>
-    <comment>Evaluation</comment>
+    <value>You are invited for evaluation. Please login to &lt;a href="{0}/{1}/Account/Login"&gt;{0}/{1}/Account/Login&lt;/a&gt; with your email address and password: &lt;b&gt;{2}&lt;/b&gt;.&lt;br/&gt;&lt;br/&gt;{3}</value>
+    <comment>Invitation Email</comment>
   </data>
   <data name="InvitationEmailSubject" xml:space="preserve">
     <value>Invitation for Evaluation: {0} {1}</value>
-    <comment>Evaluation</comment>
+    <comment>Invitation Email</comment>
   </data>
   <data name="InvitationSent" xml:space="preserve">
     <value>Invitation sent successfully.</value>
@@ -525,20 +525,48 @@
     <value>Change password</value>
     <comment>Change Password View</comment>
   </data>
-  <data name="ChangePasswordValidation" xml:space="preserve">
-    <value>The new password and confirmation password do not match.</value>
-    <comment>Validation</comment>
-  </data>
   <data name="ConfirmNewPassword" xml:space="preserve">
     <value>Confirm New Password</value>
     <comment>Change Password View</comment>
+  </data>
+  <data name="ConfirmPasswordValidation" xml:space="preserve">
+    <value>The new password and confirmation password do not match.</value>
+    <comment>Validation</comment>
   </data>
   <data name="CurrentPassword" xml:space="preserve">
     <value>Current Password</value>
     <comment>Change Password View</comment>
   </data>
+  <data name="InvalidToken" xml:space="preserve">
+    <value>Invalid token.</value>
+    <comment>Reset Password View</comment>
+  </data>
   <data name="NewPassword" xml:space="preserve">
     <value>New Password</value>
     <comment>Change Password View</comment>
+  </data>
+  <data name="PasswordConfirmationMessage" xml:space="preserve">
+    <value>Your password has been reset. Please &lt;a id="loginLink" href="/{0}/Account/Login"&gt;click here to log in&lt;/a&gt;</value>
+    <comment>Reset Password Confirmation View</comment>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>Reset</value>
+    <comment>Reset Password View</comment>
+  </data>
+  <data name="ResetPassword" xml:space="preserve">
+    <value>Reset Password</value>
+    <comment>Reset Password Email</comment>
+  </data>
+  <data name="ResetPasswordConfirmation" xml:space="preserve">
+    <value>Reset Password Confirmation</value>
+    <comment>Reset Password Confirmation View</comment>
+  </data>
+  <data name="ResetPasswordMessage" xml:space="preserve">
+    <value>Please reset your password by clicking &lt;a href="{0}"&gt;here&lt;/a&gt;</value>
+    <comment>Reset Password Email</comment>
+  </data>
+  <data name="ResetPasswordSubheading" xml:space="preserve">
+    <value>Reset your password.</value>
+    <comment>Reset Password View</comment>
   </data>
 </root>

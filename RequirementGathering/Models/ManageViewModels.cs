@@ -56,7 +56,7 @@ namespace RequirementGathering.Models
 
         [DataType(DataType.Password)]
         [Display(Name = "ConfirmNewPassword", ResourceType = typeof(Resources))]
-        [Compare("NewPassword", ErrorMessageResourceType = typeof(Resources), ErrorMessageResourceName = "ChangePasswordValidation")]
+        [Compare("NewPassword", ErrorMessageResourceType = typeof(Resources), ErrorMessageResourceName = "ConfirmPasswordValidation")]
         public string ConfirmPassword { get; set; }
     }
 

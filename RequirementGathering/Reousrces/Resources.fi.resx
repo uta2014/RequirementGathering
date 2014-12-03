@@ -310,12 +310,12 @@
     <comment>Validation</comment>
   </data>
   <data name="InvitationEmailBodyExisting" xml:space="preserve">
-    <value>Olet tervetullut arvioitavaksi. Kirjaudu {0}/{1}/Account/Login sähköpostiosoite ja salasana.&lt;br/&gt;&lt;br/&gt;{2}</value>
-    <comment>Evaluation</comment>
+    <value>Olet tervetullut arvioitavaksi. Kirjaudu &lt;a href="{0}/{1}/Account/Login"&gt;{0}/{1}/Account/Login&lt;/a&gt; sähköpostiosoite ja salasana.&lt;br/&gt;&lt;br/&gt;{2}</value>
+    <comment>Invitation Email</comment>
   </data>
   <data name="InvitationEmailBodyNew" xml:space="preserve">
-    <value>Olet tervetullut arvioitavaksi. Kirjaudu sisään {0}/{1}/Account/Login sähköpostiosoite ja salasana: &lt;b&gt;(2)&lt;/b&gt;.&lt;br/&gt;&lt;br/&gt;{3}</value>
-    <comment>Evaluation</comment>
+    <value>Olet tervetullut arvioitavaksi. Kirjaudu sisään &lt;a href="{0}/{1}/Account/Login"&gt;{0}/{1}/Account/Login&lt;/a&gt; sähköpostiosoite ja salasana: &lt;b&gt;(2)&lt;/b&gt;.&lt;br/&gt;&lt;br/&gt;{3}</value>
+    <comment>Invitation Email</comment>
   </data>
   <data name="InvitationEmailSubject" xml:space="preserve">
     <value>Kutsu arviointia varten: {0} {1}</value>
@@ -525,20 +525,48 @@
     <value>Vaihda Salasana</value>
     <comment>Change Password View</comment>
   </data>
-  <data name="ChangePasswordValidation" xml:space="preserve">
-    <value>Uusi salasana ja salasanan vahvistus eivät täsmää.</value>
-    <comment>Validation</comment>
-  </data>
   <data name="ConfirmNewPassword" xml:space="preserve">
     <value>Vahvista Uusi Salasana</value>
     <comment>Change Password View</comment>
+  </data>
+  <data name="ConfirmPasswordValidation" xml:space="preserve">
+    <value>Uusi salasana ja salasanan vahvistus eivät täsmää.</value>
+    <comment>Validation</comment>
   </data>
   <data name="CurrentPassword" xml:space="preserve">
     <value>Nykyinen Salasana</value>
     <comment>Change Password View</comment>
   </data>
+  <data name="InvalidToken" xml:space="preserve">
+    <value>Virheellinen tunnussanoma.</value>
+    <comment>Reset Password View</comment>
+  </data>
   <data name="NewPassword" xml:space="preserve">
     <value>Uusi Salasana</value>
     <comment>Change Password View</comment>
+  </data>
+  <data name="PasswordConfirmationMessage" xml:space="preserve">
+    <value>Salasanasi on vaihdettu. Klikkaa &lt;a id="loginLink" href="/{0}/Account/Login"&gt;tästä kirjautua sisään&lt;/a&gt;</value>
+    <comment>Reset Password Confirmation View</comment>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>Palauta</value>
+    <comment>Reset Password View</comment>
+  </data>
+  <data name="ResetPassword" xml:space="preserve">
+    <value>Vaihda Salasana</value>
+    <comment>Reset Password Email</comment>
+  </data>
+  <data name="ResetPasswordConfirmation" xml:space="preserve">
+    <value>Palauttaa Salasanan Vahvistus</value>
+    <comment>Reset Password Confirmation View</comment>
+  </data>
+  <data name="ResetPasswordMessage" xml:space="preserve">
+    <value>Vaihda salasanasi napsauttamalla &lt;a href="{0}"&gt;täällä&lt;/a&gt;.</value>
+    <comment>Reset Password Email</comment>
+  </data>
+  <data name="ResetPasswordSubheading" xml:space="preserve">
+    <value>Nollata salasanan.</value>
+    <comment>Reset Password View</comment>
   </data>
 </root>

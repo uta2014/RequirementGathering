@@ -20,15 +20,15 @@ namespace RequirementGathering.Views.Helpers
             StringBuilder breadcrumb = new StringBuilder("<div class=\"breadcrumb\"><li>").Append(helper.ActionLink(Resources.Home, "Index", "Home").ToHtmlString()).Append("</li>");
 
             var controllerName = helper.ViewContext.RouteData.Values["controller"].ToString();
-            var controllerNameLocalized = Resources.ResourceManager.GetString(controllerName);
+            var controllerNameLocalized = Resources.ResourceManager.GetString(controllerName.Titleize());
             var actionName = helper.ViewContext.RouteData.Values["action"].ToString();
-            var actionNameLocalized = Resources.ResourceManager.GetString(actionName);
+            var actionNameLocalized = Resources.ResourceManager.GetString(actionName.Titleize());
 
             breadcrumb.Append("<li>");
             breadcrumb.Append(helper.ActionLink(controllerNameLocalized.Titleize(), "Index", controllerName));
             breadcrumb.Append("</li>");
 
-            if (actionName != "Index")
+            if (actionNameLocalized != null && actionName != "Index")
             {
                 breadcrumb.Append("<li>");
                 breadcrumb.Append(helper.ActionLink(actionNameLocalized.Titleize(), actionName, controllerName));

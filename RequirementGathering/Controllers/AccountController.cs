@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Globalization;
 using System.Linq;
 using System.Net;
+using System.Net.Mail;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
@@ -263,10 +264,18 @@ namespace RequirementGathering.Controllers
             }
             else
             {
-                var user = new User { Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, UserName = model.Email };
+                var user = new User
+                {
+                    Email = model.Email,
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    UserName = model.Email,
+                    EmailConfirmed = true
+                };
+
                 model.Password = model.ConfirmPassword = PasswordHelper.GeneratePassword();
 
-                IdentityResult resultIdentity = GetIdentityResult(await UserManager.UserValidator.ValidateAsync(user));
+                IdentityResult resultIdentity = GetLocalizedIdentityResult(await UserManager.UserValidator.ValidateAsync(user));
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -335,10 +344,14 @@ namespace RequirementGathering.Controllers
 
                 // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                 // Send an email with this link
-                // string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
-                // var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);		
-                // await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
-                // return RedirectToAction("ForgotPasswordConfirmation", "Account");
+                string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
+                var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                try
+                {
+                    await UserManager.SendEmailAsync(user.Id, Resources.ResetPassword, string.Format(Resources.ResetPasswordMessage, callbackUrl));
+                }
+                catch (SmtpException) { }
+                return RedirectToAction("ForgotPasswordConfirmation", "Account");
             }
 
             // If we got this far, something failed, redisplay form
@@ -372,18 +385,24 @@ namespace RequirementGathering.Controllers
             {
                 return View(model);
             }
+
             var user = await UserManager.FindByNameAsync(model.Email);
+
             if (user == null)
             {
                 // Don't reveal that the user does not exist
                 return RedirectToAction("ResetPasswordConfirmation", "Account");
             }
+
             var result = await UserManager.ResetPasswordAsync(user.Id, model.Code, model.Password);
+
             if (result.Succeeded)
             {
                 return RedirectToAction("ResetPasswordConfirmation", "Account");
             }
-            AddErrors(result);
+
+            AddErrors(GetLocalizedIdentityResult(result));
+
             return View();
         }
 
@@ -590,7 +609,7 @@ namespace RequirementGathering.Controllers
             }
         }
 
-        private IdentityResult GetIdentityResult(IdentityResult result)
+        private IdentityResult GetLocalizedIdentityResult(IdentityResult result)
         {
             List<string> errors = new List<string>();
 
@@ -601,6 +620,12 @@ namespace RequirementGathering.Controllers
 
             foreach (var error in result.Errors)
             {
+                if (error.IndexOf("Invalid token", StringComparison.InvariantCultureIgnoreCase) != -1)
+                {
+                    errors.Add(Resources.InvalidToken);
+                    continue;
+                }
+
                 if (!error.EndsWith("already taken.", StringComparison.InvariantCultureIgnoreCase))
                 {
                     errors.Add(error);

@@ -160,15 +160,6 @@ namespace RequirementGathering.Reousrces {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The new password and confirmation password do not match..
-        /// </summary>
-        public static string ChangePasswordValidation {
-            get {
-                return ResourceManager.GetString("ChangePasswordValidation", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Choose File.
         /// </summary>
         public static string ChooseFile {
@@ -210,6 +201,15 @@ namespace RequirementGathering.Reousrces {
         public static string ConfirmPasswordDisplay {
             get {
                 return ResourceManager.GetString("ConfirmPasswordDisplay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The new password and confirmation password do not match..
+        /// </summary>
+        public static string ConfirmPasswordValidation {
+            get {
+                return ResourceManager.GetString("ConfirmPasswordValidation", resourceCulture);
             }
         }
         
@@ -583,7 +583,16 @@ namespace RequirementGathering.Reousrces {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You are invited for evaluation. Please login to {0}/{1}/Account/Login with your email address and password.&lt;br/&gt;&lt;br/&gt;{2}.
+        ///   Looks up a localized string similar to Invalid token..
+        /// </summary>
+        public static string InvalidToken {
+            get {
+                return ResourceManager.GetString("InvalidToken", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You are invited for evaluation. Please login to &lt;a href=&quot;{0}/{1}/Account/Login&quot;&gt;{0}/{1}/Account/Login&lt;/a&gt; with your email address and password.&lt;br/&gt;&lt;br/&gt;{2}.
         /// </summary>
         public static string InvitationEmailBodyExisting {
             get {
@@ -592,7 +601,7 @@ namespace RequirementGathering.Reousrces {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You are invited for evaluation. Please login to {0}/{1}/Account/Login with your email address and password: &lt;b&gt;{2}&lt;/b&gt;.&lt;br/&gt;&lt;br/&gt;{3}.
+        ///   Looks up a localized string similar to You are invited for evaluation. Please login to &lt;a href=&quot;{0}/{1}/Account/Login&quot;&gt;{0}/{1}/Account/Login&lt;/a&gt; with your email address and password: &lt;b&gt;{2}&lt;/b&gt;.&lt;br/&gt;&lt;br/&gt;{3}.
         /// </summary>
         public static string InvitationEmailBodyNew {
             get {
@@ -790,6 +799,15 @@ namespace RequirementGathering.Reousrces {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Your password has been reset. Please &lt;a id=&quot;loginLink&quot; href=&quot;/{0}/Account/Login&quot;&gt;click here to log in&lt;/a&gt;.
+        /// </summary>
+        public static string PasswordConfirmationMessage {
+            get {
+                return ResourceManager.GetString("PasswordConfirmationMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Password.
         /// </summary>
         public static string PasswordDisplay {
@@ -894,6 +912,51 @@ namespace RequirementGathering.Reousrces {
         public static string Reports {
             get {
                 return ResourceManager.GetString("Reports", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reset.
+        /// </summary>
+        public static string Reset {
+            get {
+                return ResourceManager.GetString("Reset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reset Password.
+        /// </summary>
+        public static string ResetPassword {
+            get {
+                return ResourceManager.GetString("ResetPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reset Password Confirmation.
+        /// </summary>
+        public static string ResetPasswordConfirmation {
+            get {
+                return ResourceManager.GetString("ResetPasswordConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please reset your password by clicking &lt;a href=&quot;{0}&quot;&gt;here&lt;/a&gt;.
+        /// </summary>
+        public static string ResetPasswordMessage {
+            get {
+                return ResourceManager.GetString("ResetPasswordMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reset your password..
+        /// </summary>
+        public static string ResetPasswordSubheading {
+            get {
+                return ResourceManager.GetString("ResetPasswordSubheading", resourceCulture);
             }
         }
         

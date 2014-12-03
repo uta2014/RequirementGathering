@@ -18,10 +18,10 @@ namespace RequirementGathering
         {
             MailMessage email = new MailMessage("Requirement Gathering Tool Admin <admin@uta.fi>", message.Destination);
             email.Subject = message.Subject;
-            email.Body = message.Body;
+            email.Body = message.Body.Replace(Environment.NewLine, "<br />");
             email.IsBodyHtml = true;
 
-            return new SmtpClient { DeliveryMethod = SmtpDeliveryMethod.PickupDirectoryFromIis }
+            return new SmtpClient() { EnableSsl = true }
                       .SendMailAsync(email);
         }
     }

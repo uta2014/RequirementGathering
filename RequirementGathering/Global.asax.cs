@@ -36,6 +36,12 @@ namespace RequirementGathering
         {
             base.OnActionExecuting(filterContext);
 
+            if (filterContext.RouteData.Values["controller"].ToString()
+               .Equals("Error", StringComparison.InvariantCultureIgnoreCase))
+            {
+                return;
+            }
+
             var response = filterContext.RequestContext.HttpContext.Response;
             var culture = filterContext.RouteData.Values["culture"].ToString();
 
