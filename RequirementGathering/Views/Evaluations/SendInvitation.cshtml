@@ -47,53 +47,62 @@
     </dl>
 </div>
 
-@using (Html.BeginForm("SendInvitation", "Evaluations", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+@if (!Model.IsActive)
 {
-    @Html.AntiForgeryToken()
-    <div class="form-horizontal">
-        <h4>@Resources.User</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.Id)
-
-        <div class="form-group">
-            <label class="col-md-2 control-label" for="firstName">@Resources.FirstNameDisplay</label>
-            <div class="col-md-10">
-                <input name="firstName" class="form-control" id="firstName" type="text" value="" data-val-required="@string.Format(ViewBag.CurrentCulture, Resources.FieldRequired, Resources.FirstNameDisplay)" data-val="true">
-                <span class="field-validation-valid text-danger" data-valmsg-replace="true" data-valmsg-for="firstName"></span>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label class="col-md-2 control-label" for="lastName">@Resources.LastNameDisplay</label>
-            <div class="col-md-10">
-                <input name="lastName" class="form-control" id="lastName" type="text" value="">
-                <span class="field-validation-valid text-danger" data-valmsg-replace="true" data-valmsg-for="lastName"></span>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label class="col-md-2 control-label" for="email">@Resources.EmailDisplay</label>
-            <div class="col-md-10">
-                <input name="email" class="form-control" id="email" type="email" value="" data-val-required="@string.Format(ViewBag.CurrentCulture, Resources.FieldRequired, Resources.EmailDisplay)" data-val-email="@Resources.EmailInvalid" data-val="true">
-                <span class="field-validation-valid text-danger" data-valmsg-replace="true" data-valmsg-for="email"></span>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label class="col-md-2 control-label" for="description">@Resources.DescriptionDisplay</label>
-            <div class="col-md-10">
-                <textarea name="Description" class="form-control text-box multi-line" id="Description" value=""></textarea>
-                <span class="field-validation-valid text-danger" data-valmsg-replace="true" data-valmsg-for="description"></span>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="@Resources.Save" class="btn btn-default" />
-            </div>
-        </div>
+    <div>
+        @Resources.EvaluationInactive
     </div>
+}
+else
+{
+    using (Html.BeginForm("SendInvitation", "Evaluations", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-horizontal">
+            <h4>@Resources.User</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.Id)
+
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="firstName">@Resources.FirstNameDisplay</label>
+                <div class="col-md-10">
+                    <input name="firstName" class="form-control" id="firstName" type="text" value="" data-val-required="@string.Format(ViewBag.CurrentCulture, Resources.FieldRequired, Resources.FirstNameDisplay)" data-val="true">
+                    <span class="field-validation-valid text-danger" data-valmsg-replace="true" data-valmsg-for="firstName"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="lastName">@Resources.LastNameDisplay</label>
+                <div class="col-md-10">
+                    <input name="lastName" class="form-control" id="lastName" type="text" value="">
+                    <span class="field-validation-valid text-danger" data-valmsg-replace="true" data-valmsg-for="lastName"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="email">@Resources.EmailDisplay</label>
+                <div class="col-md-10">
+                    <input name="email" class="form-control" id="email" type="email" value="" data-val-required="@string.Format(ViewBag.CurrentCulture, Resources.FieldRequired, Resources.EmailDisplay)" data-val-email="@Resources.EmailInvalid" data-val="true">
+                    <span class="field-validation-valid text-danger" data-valmsg-replace="true" data-valmsg-for="email"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="description">@Resources.DescriptionDisplay</label>
+                <div class="col-md-10">
+                    <textarea name="Description" class="form-control text-box multi-line" id="Description" value=""></textarea>
+                    <span class="field-validation-valid text-danger" data-valmsg-replace="true" data-valmsg-for="description"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="@Resources.Save" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
 }
 
 <div>

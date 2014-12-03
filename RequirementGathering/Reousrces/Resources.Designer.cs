@@ -421,6 +421,33 @@ namespace RequirementGathering.Reousrces {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Evaluation Id cannot be null..
+        /// </summary>
+        public static string EvaluationIdNull {
+            get {
+                return ResourceManager.GetString("EvaluationIdNull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This evaluation is inactive..
+        /// </summary>
+        public static string EvaluationInactive {
+            get {
+                return ResourceManager.GetString("EvaluationInactive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Evaluation not found..
+        /// </summary>
+        public static string EvaluationNotFound {
+            get {
+                return ResourceManager.GetString("EvaluationNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Evaluations.
         /// </summary>
         public static string Evaluations {
@@ -1038,6 +1065,33 @@ namespace RequirementGathering.Reousrces {
         public static string User {
             get {
                 return ResourceManager.GetString("User", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User was invited previously to this evaluation..
+        /// </summary>
+        public static string UserAlreadyInvited {
+            get {
+                return ResourceManager.GetString("UserAlreadyInvited", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sorry the user cannot be created, try again later..
+        /// </summary>
+        public static string UserNotCreated {
+            get {
+                return ResourceManager.GetString("UserNotCreated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User has already taken this evaluation..
+        /// </summary>
+        public static string UserTakenEvaluation {
+            get {
+                return ResourceManager.GetString("UserTakenEvaluation", resourceCulture);
             }
         }
         

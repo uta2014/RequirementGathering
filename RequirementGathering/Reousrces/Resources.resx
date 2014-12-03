@@ -569,4 +569,28 @@
     <value>Reset your password.</value>
     <comment>Reset Password View</comment>
   </data>
+  <data name="EvaluationIdNull" xml:space="preserve">
+    <value>Evaluation Id cannot be null.</value>
+    <comment>Validation</comment>
+  </data>
+  <data name="EvaluationInactive" xml:space="preserve">
+    <value>This evaluation is inactive.</value>
+    <comment>Send Invitation View</comment>
+  </data>
+  <data name="EvaluationNotFound" xml:space="preserve">
+    <value>Evaluation not found.</value>
+    <comment>Validation</comment>
+  </data>
+  <data name="UserAlreadyInvited" xml:space="preserve">
+    <value>User was invited previously to this evaluation.</value>
+    <comment>Validation</comment>
+  </data>
+  <data name="UserNotCreated" xml:space="preserve">
+    <value>Sorry the user cannot be created, try again later.</value>
+    <comment>Validation</comment>
+  </data>
+  <data name="UserTakenEvaluation" xml:space="preserve">
+    <value>User has already taken this evaluation.</value>
+    <comment>Validation</comment>
+  </data>
 </root>

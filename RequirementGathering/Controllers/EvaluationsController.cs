@@ -24,7 +24,7 @@ namespace RequirementGathering.Controllers
         [Authorize(Roles = "Researcher,Administrator,Super Administrator")]
         public async Task<ActionResult> Index()
         {
-            return View(await RgDbContext.Evaluations.ToListAsync());
+            return View(await RgDbContext.Evaluations.Where(e => e.Product.IsActive).ToListAsync());
         }
 
         // GET: Evaluations/Details/5
@@ -301,11 +301,14 @@ namespace RequirementGathering.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Evaluation evaluation = await RgDbContext.Evaluations.FindAsync(id);
+
             if (evaluation == null)
             {
                 return HttpNotFound();
             }
+
             return View(evaluation);
         }
 
@@ -318,7 +321,7 @@ namespace RequirementGathering.Controllers
         {
             if (Id == null)
             {
-                ModelState.AddModelError("", "Evalution Id cannot be null");
+                ModelState.AddModelError("", Resources.EvaluationIdNull);
                 return RedirectToAction("Dashboard", "Home");
             }
 
@@ -326,7 +329,13 @@ namespace RequirementGathering.Controllers
 
             if (evaluation == null)
             {
-                ModelState.AddModelError("", "Evaluation not found");
+                ModelState.AddModelError("", Resources.EvaluationNotFound);
+                return RedirectToAction("Dashboard", "Home");
+            }
+
+            if (!evaluation.IsActive || !evaluation.Product.IsActive)
+            {
+                ModelState.AddModelError("", Resources.EvaluationInactive);
                 return RedirectToAction("Dashboard", "Home");
             }
 
@@ -339,9 +348,9 @@ namespace RequirementGathering.Controllers
                 if (evaluationUser != null)
                 {
                     if (!evaluationUser.IsActive)
-                        ModelState.AddModelError("", "User has already taken this evaluation");
+                        ModelState.AddModelError("", Resources.UserTakenEvaluation);
                     else
-                        ModelState.AddModelError("", "User was invited previously to this evaluation");
+                        ModelState.AddModelError("", Resources.UserAlreadyInvited);
 
                     return View(evaluation);
                 }
@@ -374,7 +383,7 @@ namespace RequirementGathering.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Sorry the user cannot be created, try again later");
+                    ModelState.AddModelError("", Resources.UserNotCreated);
                     return View(evaluation);
                 }
             }

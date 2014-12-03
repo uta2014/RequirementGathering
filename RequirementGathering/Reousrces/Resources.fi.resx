@@ -569,4 +569,28 @@
     <value>Nollata salasanan.</value>
     <comment>Reset Password View</comment>
   </data>
+  <data name="EvaluationIdNull" xml:space="preserve">
+    <value>Arviointi tunnus ei voi olla null.</value>
+    <comment>Validation</comment>
+  </data>
+  <data name="EvaluationInactive" xml:space="preserve">
+    <value>Arvioinnissa ei ole käytössä.</value>
+    <comment>Send Invitation View</comment>
+  </data>
+  <data name="EvaluationNotFound" xml:space="preserve">
+    <value>Arviointi ei löydy.</value>
+    <comment>Validation</comment>
+  </data>
+  <data name="UserAlreadyInvited" xml:space="preserve">
+    <value>Käyttäjän kutsuttiin aiemmin arvioinnissa.</value>
+    <comment>Validation</comment>
+  </data>
+  <data name="UserNotCreated" xml:space="preserve">
+    <value>Valitettavasti käyttäjä voi olla luotu, yritä myöhemmin uudelleen.</value>
+    <comment>Validation</comment>
+  </data>
+  <data name="UserTakenEvaluation" xml:space="preserve">
+    <value>Käyttäjä on jo ottanut arvioinnissa.</value>
+    <comment>Validation</comment>
+  </data>
 </root>

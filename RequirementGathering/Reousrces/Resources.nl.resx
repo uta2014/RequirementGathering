@@ -569,4 +569,28 @@
     <value>Uw wachtwoord opnieuw instellen.</value>
     <comment>Reset Password View</comment>
   </data>
+  <data name="EvaluationIdNull" xml:space="preserve">
+    <value>Evaluatie-Id mag niet leeg zijn.</value>
+    <comment>Validation</comment>
+  </data>
+  <data name="EvaluationInactive" xml:space="preserve">
+    <value>Deze evaluatie is niet actief.</value>
+    <comment>Send Invitation View</comment>
+  </data>
+  <data name="EvaluationNotFound" xml:space="preserve">
+    <value>Evaluatie niet gevonden.</value>
+    <comment>Validation</comment>
+  </data>
+  <data name="UserAlreadyInvited" xml:space="preserve">
+    <value>Gebruiker was eerder uitgenodigd tot deze beoordeling.</value>
+    <comment>Validation</comment>
+  </data>
+  <data name="UserNotCreated" xml:space="preserve">
+    <value>Sorry de gebruiker kan niet worden gemaakt, probeer het later opnieuw.</value>
+    <comment>Validation</comment>
+  </data>
+  <data name="UserTakenEvaluation" xml:space="preserve">
+    <value>Gebruiker was eerder uitgenodigd tot deze beoordeling.</value>
+    <comment>Validation</comment>
+  </data>
 </root>
