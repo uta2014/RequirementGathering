@@ -8,7 +8,7 @@ namespace RequirementGathering.Tests.Controllers
     public class HomeControllerTest
     {
         [TestMethod]
-        public void Index()
+        public void HomeIndex()
         {
             // Arrange
             HomeController controller = new HomeController();
@@ -21,7 +21,7 @@ namespace RequirementGathering.Tests.Controllers
         }
 
         [TestMethod]
-        public void About()
+        public void HomeAbout()
         {
             // Arrange
             HomeController controller = new HomeController();
@@ -34,7 +34,7 @@ namespace RequirementGathering.Tests.Controllers
         }
 
         [TestMethod]
-        public void Contact()
+        public void HomeContact()
         {
             // Arrange
             HomeController controller = new HomeController();
