@@ -270,7 +270,7 @@
     <comment>Validation</comment>
   </data>
   <data name="FieldRangeMinMax" xml:space="preserve">
-    <value>The {0} must be at least {2} and at most {1}.</value>
+    <value>The {0} must be at least {1} and at most {2}.</value>
     <comment>Validation</comment>
   </data>
   <data name="FieldRequired" xml:space="preserve">
@@ -592,5 +592,21 @@
   <data name="UserTakenEvaluation" xml:space="preserve">
     <value>User has already taken this evaluation.</value>
     <comment>Validation</comment>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Close</value>
+    <comment>Button</comment>
+  </data>
+  <data name="RatingsSubmitted" xml:space="preserve">
+    <value>Ratings successfully submitted.&lt;br /&gt;Please provide your background information.</value>
+    <comment>After submitting Ratings</comment>
+  </data>
+  <data name="Submit" xml:space="preserve">
+    <value>Submit</value>
+    <comment>Button</comment>
+  </data>
+  <data name="Summary" xml:space="preserve">
+    <value>Summary</value>
+    <comment>Button</comment>
   </data>
 </root>

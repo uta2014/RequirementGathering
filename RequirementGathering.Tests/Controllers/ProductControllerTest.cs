@@ -1,18 +1,9 @@
-﻿using System.Threading.Tasks;
-using System.Web;
+﻿using System;
+using System.Threading.Tasks;
 using System.Web.Mvc;
-using Microsoft.AspNet.Identity.Owin;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RequirementGathering.Controllers;
-using System.Web.Routing;
-using System.IO;
-using System.Security.Principal;
 using RequirementGathering.Models;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
-using System.Collections.Specialized;
-using System.Collections;
-using System;
 
 namespace RequirementGathering.Tests.Controllers
 {
@@ -27,7 +18,7 @@ namespace RequirementGathering.Tests.Controllers
             ActionResult result = await pc.Index();
             // Assert
             Assert.IsNotNull(result);
-            
+
         }
 
         [TestMethod]
@@ -49,13 +40,13 @@ namespace RequirementGathering.Tests.Controllers
         [TestMethod]
         public async Task ProductCreate()
         {
-            Random ran=new Random();
-            int RandKey=ran.Next(10000000,99999999);
-            Product p=new Product();
-            p.Id=RandKey;
-            p.Name="TestProd";
-            p.Description="TestProd";
-            p.IsActive=true;
+            Random ran = new Random();
+            int RandKey = ran.Next(10000000, 99999999);
+            Product p = new Product();
+            p.Id = RandKey;
+            p.Name = "TestProd";
+            p.Description = "TestProd";
+            p.IsActive = true;
 
             ProductsController pc = new ProductsController();
             // Act

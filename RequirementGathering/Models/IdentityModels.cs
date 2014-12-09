@@ -65,7 +65,6 @@ namespace RequirementGathering.Models
 
         #region Navigation Fields
 
-        public virtual ICollection<Rating> Ratings { get; set; }
         public virtual ICollection<EvaluationUser> EvaluationUsers { get; set; }
 
         public virtual ICollection<Product> Products { get; set; }
@@ -75,9 +74,8 @@ namespace RequirementGathering.Models
 
         public ICollection<Evaluation> InvitedEvaluations()
         {
-            return EvaluationUsers.Select(eu => eu.Evaluation)
-                                  .Where(eu => eu.IsActive)
-                                  .ToList();
+            return EvaluationUsers.Where(eu => eu.IsActive && eu.Evaluation.IsActive && eu.Evaluation.Product.IsActive)
+                                  .Select(eu => eu.Evaluation).ToList();
         }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)

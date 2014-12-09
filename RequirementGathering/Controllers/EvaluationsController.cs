@@ -219,22 +219,21 @@ namespace RequirementGathering.Controllers
             return View(evaluation);
         }
 
-        [Authorize]
         public async Task<ActionResult> MyEvaluations()
         {
             var currentUser = await GetCurrentUser();
             return View(currentUser.InvitedEvaluations());
         }
 
-        [Authorize]
         public async Task<ActionResult> EvaluationDescription(int? id)
         {
             var currentUser = await GetCurrentUser();
-
-            if (id == null ||
-               !await RgDbContext.EvaluationUsers.AnyAsync(eu => eu.EvaluationId == id &&
-                                                                 eu.UserId == currentUser.Id &&
-                                                                 eu.Evaluation.IsActive))
+            var evaluationUser = RgDbContext.EvaluationUsers.FirstOrDefault(eu => eu.IsActive &&
+                                                                            eu.EvaluationId == id &&
+                                                                            eu.UserId == currentUser.Id &&
+                                                                            eu.Evaluation.IsActive &&
+                                                                            eu.Evaluation.Product.IsActive);
+            if (id == null || evaluationUser == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -246,42 +245,44 @@ namespace RequirementGathering.Controllers
                 return RedirectToAction("MyEvaluations", "Evaluations");
             }
 
+            ViewBag.EvaluationUserId = evaluationUser.Id;
+
             return View(evaluation);
         }
 
-        [Authorize]
+        //
+        // POST: /Account/Ratings
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Ratings(IEnumerable<Rating> ratings)
+        {
+            if (!ratings.Any() || ratings.Any(r => r.Value1 > 5 || r.Value1 < 0 || r.Value2 > 5 || r.Value2 < 0))
+            {
+                return RedirectToAction("MyEvaluations");
+            }
+
+            foreach (var rating in ratings)
+            {
+                RgDbContext.Ratings.Add(rating);
+            }
+
+            var evaluationUser = RgDbContext.EvaluationUsers.Find(ratings.First().EvaluationUserId);
+
+            evaluationUser.IsActive = false;
+            evaluationUser.EvaluationLanguage = CultureInfo.CurrentCulture.EnglishName;
+            evaluationUser.DateModified = DateTime.UtcNow;
+
+            RgDbContext.Entry(evaluationUser).State = EntityState.Modified;
+
+            await RgDbContext.SaveChangesAsync();
+
+            return RedirectToAction("EditProfile", "Manage", new { Message = FlashMessageId.RatingsSubmitted });
+        }
+
         public ActionResult Reports()
         {
             return View();
         }
-
-        // GET: Evaluations/Delete/5
-        //[Authorize(Roles = "Researcher,Administrator,Super Administrator")]
-        //public async Task<ActionResult> Delete(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    Evaluation evaluation = await RgDbContext.Evaluations.FindAsync(id);
-        //    if (evaluation == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(evaluation);
-        //}
-
-        // POST: Evaluations/Delete/5
-        //[HttpPost, ActionName("Delete")]
-        //[ValidateAntiForgeryToken]
-        //[Authorize(Roles = "Researcher,Administrator,Super Administrator")]
-        //public async Task<ActionResult> DeleteConfirmed(int id)
-        //{
-        //    Evaluation evaluation = await RgDbContext.Evaluations.FindAsync(id);
-        //    RgDbContext.Evaluations.Remove(evaluation);
-        //    await RgDbContext.SaveChangesAsync();
-        //    return RedirectToAction("Index");
-        //}
 
         protected override void Dispose(bool disposing)
         {
@@ -355,7 +356,7 @@ namespace RequirementGathering.Controllers
                     return View(evaluation);
                 }
 
-                RgDbContext.EvaluationUsers.Add(new EvaluationUser { UserId = user.Id, EvaluationId = evaluation.Id });
+                RgDbContext.EvaluationUsers.Add(new EvaluationUser { UserId = user.Id, EvaluationId = evaluation.Id, DateCreated = DateTime.UtcNow, DateModified = DateTime.UtcNow });
                 await RgDbContext.SaveChangesAsync();
 
                 await UserManager.SendEmailAsync(

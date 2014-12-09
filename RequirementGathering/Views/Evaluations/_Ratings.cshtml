@@ -1,0 +1,62 @@
+﻿@model Evaluation
+
+@using (Html.BeginForm("Ratings", "Evaluations", FormMethod.Post, new { @class = "rating-form" }))
+{
+    @Html.AntiForgeryToken()
+    <input type="hidden" id="EvaluationId" value="@ViewBag.EvaluationUserId" />
+    <div style="display:none" class="rating modal-backdrop">
+        <div class="rating-header">
+            <div class="activeItem" style="display:none"></div>
+            <span class="progress progress-bar">
+                <span class="counter">0%</span>
+            </span>
+        </div>
+        <div class="rating-content">
+            @foreach (var attribute in Model.Attributes)
+            {
+                var attributeName = Resource.GetPropertyValue<RequirementGathering.Models.Attribute>(attribute.Id.Value, "Name");
+                <div class="bubble unset" id="@attribute.Id">
+                    <div class="shape">
+                        <div class="info" title="@attributeName">@attributeName</div>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="rating-footer">
+            <button class="btn btn-success details" type="button">@Resources.Summary</button>
+            <button class="btn btn-success" type="submit" disabled>@Resources.Submit</button>
+        </div>
+
+
+        <div class="details-content" style="display:none">
+            <div class="details-header pull-right">
+                <button type="button" class="btn btn-success" data-dismiss="modal">@Resources.Close</button>
+            </div>
+            <div class="details-body">
+                @foreach (var attribute in Model.Attributes)
+                {
+                    var attributeName = Resource.GetPropertyValue<RequirementGathering.Models.Attribute>(attribute.Id.Value, "Name");
+                    <div class="details-box" data-id="@attribute.Id">
+                        <div class="info">@attributeName</div>
+                        <ul>
+                            @foreach (var relationalAttribute in Model.Attributes)
+                            {
+                                if (relationalAttribute == attribute)
+                                {
+                                    continue;
+                                }
+                                var relationalAttributeName = Resource.GetPropertyValue<RequirementGathering.Models.Attribute>(relationalAttribute.Id.Value, "Name");
+
+                                <li data-id="@relationalAttribute.Id">
+                                    <span></span>
+                                    <span>@relationalAttributeName</span>
+                                </li>
+                            }
+                        </ul>
+
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+}

@@ -266,7 +266,7 @@
     <comment>Validation</comment>
   </data>
   <data name="FieldRangeMinMax" xml:space="preserve">
-    <value>De {0} moet ten minste {2} en hoogstens {1}.</value>
+    <value>De {0} moet ten minste {1} en hoogstens {2}.</value>
     <comment>Validation</comment>
   </data>
   <data name="FieldRequired" xml:space="preserve">
@@ -592,5 +592,21 @@
   <data name="UserTakenEvaluation" xml:space="preserve">
     <value>Gebruiker was eerder uitgenodigd tot deze beoordeling.</value>
     <comment>Validation</comment>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Sluiten</value>
+    <comment>Button</comment>
+  </data>
+  <data name="RatingsSubmitted" xml:space="preserve">
+    <value>Ratings met succes is ingediend.&lt;br /&gt;Gelieve uw achtergrondinformatie te verstrekken.</value>
+    <comment>After submitting Ratings</comment>
+  </data>
+  <data name="Submit" xml:space="preserve">
+    <value>Opslaan</value>
+    <comment>Button</comment>
+  </data>
+  <data name="Summary" xml:space="preserve">
+    <value>Samenvatting</value>
+    <comment>Button</comment>
   </data>
 </root>

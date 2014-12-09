@@ -13,7 +13,9 @@
         var parent = $(this).closest('.form-group');
         var count = parent.siblings().length;
 
-        while (document.getElementById('Attributes_' + count + '__Name')) count++;
+        while (document.getElementById('Attributes_' + count + '__Name')) {
+            count++;
+        }
 
         var markup = '\
             <div class="form-group">\
@@ -39,10 +41,11 @@
         var parent = $(this).closest('.form-group');
         var count = parent.siblings().length;
 
-        if (count > 0)
+        if (count > 0) {
             parent.remove();
-        else
+        } else {
             parent.fadeTo(500, 0.3, function() { parent.fadeTo(800, 1); });
+        }
     });
 
     $('.evaluation-form').submit(function() {

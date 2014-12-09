@@ -127,6 +127,7 @@ namespace RequirementGathering.Controllers
                     : message == FlashMessageId.UpdateProduct ? Resources.UpdateProduct
                     : message == FlashMessageId.AddRating ? Resources.AddRating
                     : message == FlashMessageId.InvitationSent ? Resources.InvitationSent
+                    : message == FlashMessageId.RatingsSubmitted ? Resources.RatingsSubmitted
                     : "";
         }
 
@@ -141,7 +142,8 @@ namespace RequirementGathering.Controllers
             UpdateProduct,
             UpdateProfile,
             AddRating,
-            InvitationSent
+            InvitationSent,
+            RatingsSubmitted
         }
     }
 }
