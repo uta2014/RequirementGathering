@@ -192,7 +192,11 @@
             countAttempts += Object.keys(valuesHash[key]).length;
         }
 
-        setProgress(Math.round(100 - (100 * (combinations - countAttempts) / combinations)));
+        var calculatedProgress = Math.round(100 - (100 * (combinations - countAttempts) / combinations));
+
+        setProgress(calculatedProgress);
+
+        return calculatedProgress;
     }
 
     function factorial(num) {
@@ -213,6 +217,10 @@
     }
 
     $('.rating-form').submit(function() {
+        if (updateProgress() < 50) {
+            return false;
+        }
+
         var i = 0;
         var evaluationId = $("#EvaluationId").val();
         var fieldset = "";
