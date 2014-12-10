@@ -86,7 +86,7 @@
             $(this).attr('name', 'Attributes[' + i + '].Id');
         });
         $('[type="hidden"][name="Attributes[].Order"]').each(function(i) {
-            $(this).attr('name', 'Attributes[' + i + '].Order').attr('name', i);
+            $(this).attr('name', 'Attributes[' + i + '].Order').attr('value', i);
         });
     });
 });
