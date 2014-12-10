@@ -17,6 +17,7 @@
             count++;
         }
 
+        /*jshint multistr: true */
         var markup = '\
             <div class="form-group">\
                 <label class="control-label col-md-2" for="Attributes_'+ count + '__Name"> </label>\
@@ -58,7 +59,7 @@
         var current = $(this).parents('.form-group');
         var previous = current.prev();
 
-        if (previous.length == 0) {
+        if (previous.length === 0) {
             return;
         }
 
@@ -69,7 +70,7 @@
         var current = $(this).parents('.form-group');
         var next = current.next();
 
-        if (next.length == 0) {
+        if (next.length === 0) {
             return;
         }
 
