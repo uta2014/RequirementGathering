@@ -1033,6 +1033,24 @@ namespace RequirementGathering.Reousrces {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Evaluation Steps.
+        /// </summary>
+        public static string StepDisplay {
+            get {
+                return ResourceManager.GetString("StepDisplay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to steps.
+        /// </summary>
+        public static string Steps {
+            get {
+                return ResourceManager.GetString("Steps", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Street.
         /// </summary>
         public static string StreetDisplay {

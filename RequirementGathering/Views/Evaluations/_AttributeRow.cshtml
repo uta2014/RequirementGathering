@@ -20,13 +20,20 @@
     </div>
     @if (!ViewBag.EvaluationIsFreezed)
     {
-        <div class="col-md-2">
+        <div class="col-md-3">
             <button type="button" class="add btn btn-primary">
                 <i class="glyphicon-plus glyphicon"></i>
             </button>
             <button type="button" class="remove btn btn-primary">
                 <i class="glyphicon-minus glyphicon"></i>
+            </button>&nbsp;&nbsp;
+            <button type="button" class="up btn btn-primary">
+                <i class="glyphicon glyphicon-arrow-up glyphicon"></i>
             </button>
+            <button type="button" class="down btn btn-primary">
+                <i class="glyphicon glyphicon-arrow-down glyphicon"></i>
+            </button>
+            <input type="hidden" name="Attributes[].Order" />
         </div>
     }
 </div>

@@ -609,4 +609,12 @@
     <value>Summary</value>
     <comment>Button</comment>
   </data>
+  <data name="StepDisplay" xml:space="preserve">
+    <value>Evaluation Steps</value>
+    <comment>Display Name</comment>
+  </data>
+  <data name="Steps" xml:space="preserve">
+    <value>steps</value>
+    <comment>View</comment>
+  </data>
 </root>

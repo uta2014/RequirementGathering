@@ -609,4 +609,12 @@
     <value>Samenvatting</value>
     <comment>Button</comment>
   </data>
+  <data name="StepDisplay" xml:space="preserve">
+    <value>Evaluatie stappen</value>
+    <comment>Display Name</comment>
+  </data>
+  <data name="Steps" xml:space="preserve">
+    <value>stappen</value>
+    <comment>View</comment>
+  </data>
 </root>

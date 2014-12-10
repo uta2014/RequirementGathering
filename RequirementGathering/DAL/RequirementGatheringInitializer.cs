@@ -82,12 +82,12 @@ namespace RequirementGathering.DAL
             // Seed Evaluations
             var evaluations = new List<Evaluation>
             {
-                new Evaluation{Product = xPhone, Version = "1.0.0", Owner = eija},
-                new Evaluation{Product = yPhone, Version = "1.0.0", Owner = eija},
-                new Evaluation{Product = zPhone, Version = "1.0.0", Owner = eija},
-                new Evaluation{Product = xPhone, Version = "2.0.0", Owner = eija},
-                new Evaluation{Product = yPhone, Version = "1.1.0", Owner = eija},
-                new Evaluation{Product = zPhone, Version = "1.0.1", Owner = eija}
+                new Evaluation{Product = xPhone, Version = "1.0.0", Steps= 5, Owner = eija},
+                new Evaluation{Product = yPhone, Version = "1.0.0", Steps= 3, Owner = eija},
+                new Evaluation{Product = zPhone, Version = "1.0.0", Steps= 5, Owner = eija},
+                new Evaluation{Product = xPhone, Version = "2.0.0", Steps= 3, Owner = eija},
+                new Evaluation{Product = yPhone, Version = "1.1.0", Steps= 5, Owner = eija},
+                new Evaluation{Product = zPhone, Version = "1.0.1", Steps= 3, Owner = eija}
             };
 
             evaluations.ForEach(r => context.Evaluations.Add(r));
@@ -101,9 +101,17 @@ namespace RequirementGathering.DAL
             var attributes = new List<Attribute>();
             System.Random random = new System.Random();
 
-            for (int i = 0; i < 100; i++)
+            foreach (var evaluation in evaluations)
             {
-                attributes.Add(new Attribute { Name = names[random.Next(names.Count - 1)], Evaluation = evaluations[random.Next(evaluations.Count - 1)] });
+                for (int i = 0; i < 12; i++)
+                {
+                    attributes.Add(new Attribute { Name = names[random.Next(names.Count - 1)], Evaluation = evaluation, Order = i });
+
+                    if (i > 3 && random.Next(100) < 50)
+                    {
+                        break;
+                    }
+                }
             }
 
             attributes.ForEach(s => context.Attributes.Add(s));

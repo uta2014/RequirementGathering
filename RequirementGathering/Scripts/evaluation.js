@@ -24,12 +24,18 @@
                     <input class="form-control text-box single-line" id="Attributes_' + count + '__Name" name="Attributes[].Name" type="text" value="" />\
                     <span class="field-validation-valid text-danger" data-valmsg-for="Attributes[]" data-valmsg-replace="true"></span>\
                 </div>\
-                <div class="col-md-2">\
+                <div class="col-md-3">\
                     <button type="button" class="add btn btn-primary">\
                         <i class="glyphicon-plus glyphicon"></i>\
                     </button>\
                     <button type="button" class="remove btn btn-primary">\
                         <i class="glyphicon-minus glyphicon"></i>\
+                    </button>&nbsp;&nbsp;\
+                    <button type="button" class="up btn btn-primary">\
+                        <i class="glyphicon-arrow-up glyphicon"></i>\
+                    </button>\
+                    <button type="button" class="down btn btn-primary">\
+                        <i class="glyphicon-arrow-down glyphicon"></i>\
                     </button>\
                 </div>\
             </div>';
@@ -48,6 +54,28 @@
         }
     });
 
+    $(document).on('click', '.up.btn', function() {
+        var current = $(this).parents('.form-group');
+        var previous = current.prev();
+
+        if (previous.length == 0) {
+            return;
+        }
+
+        current.insertBefore(previous);
+    });
+
+    $(document).on('click', '.down.btn', function() {
+        var current = $(this).parents('.form-group');
+        var next = current.next();
+
+        if (next.length == 0) {
+            return;
+        }
+
+        current.insertAfter(next);
+    });
+
     $('.evaluation-form').submit(function() {
         $('[type="text"][name="Attributes[].Name"]').each(function(i) {
             $(this).attr('name', 'Attributes[' + i + '].Name');
@@ -55,6 +83,9 @@
         });
         $('[type="hidden"][name="Attributes[].Id"]').each(function(i) {
             $(this).attr('name', 'Attributes[' + i + '].Id');
+        });
+        $('[type="hidden"][name="Attributes[].Order"]').each(function(i) {
+            $(this).attr('name', 'Attributes[' + i + '].Order').attr('name', i);
         });
     });
 });

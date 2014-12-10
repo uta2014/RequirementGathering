@@ -52,6 +52,10 @@ namespace RequirementGathering.Controllers
         {
             ViewBag.EvaluationIsFreezed = false;
             ViewBag.ProductId = new SelectList(RgDbContext.Products.Where(p => p.IsActive), "Id", "CulturedName");
+            ViewBag.Steps = new SelectList(new dynamic[] {
+                new {name = "3 " + Resources.Steps, value = 3},
+                new {name = "5 " + Resources.Steps, value = 5}
+            }, "value", "name");
             return View(new Evaluation() { Owner = await GetCurrentUser(), Attributes = new List<Attribute> { new Attribute() } });
         }
 
@@ -95,6 +99,10 @@ namespace RequirementGathering.Controllers
 
             ViewBag.EvaluationIsFreezed = !CanUpdateAttributes(evaluation);
             ViewBag.ProductId = new SelectList(RgDbContext.Products.Where(p => p.IsActive), "Id", "CulturedName", evaluation.ProductId);
+            ViewBag.Steps = new SelectList(new dynamic[] {
+                new {name = "3 " + Resources.Steps, value = 3},
+                new {name = "5 " + Resources.Steps, value = 5}
+            }, "value", "name", evaluation.Steps);
             return View(evaluation);
         }
 
@@ -121,6 +129,10 @@ namespace RequirementGathering.Controllers
 
             ViewBag.EvaluationIsFreezed = !CanUpdateAttributes(evaluation);
             ViewBag.ProductId = new SelectList(RgDbContext.Products.Where(p => p.IsActive), "Id", "CulturedName", evaluation.ProductId);
+            ViewBag.Steps = new SelectList(new dynamic[] {
+                new {name = "3 " + Resources.Steps, value = 3},
+                new {name = "5 " + Resources.Steps, value = 5}
+            }, "value", "name", evaluation.Steps);
             return View(evaluation);
         }
 
@@ -216,6 +228,10 @@ namespace RequirementGathering.Controllers
 
             ViewBag.EvaluationIsFreezed = !CanUpdateAttributes(evaluation);
             ViewBag.ProductId = new SelectList(RgDbContext.Products.Where(p => p.IsActive), "Id", "CulturedName", evaluation.ProductId);
+            ViewBag.Steps = new SelectList(new dynamic[] {
+                new {name = "3 " + Resources.Steps, value = 3},
+                new {name = "5 " + Resources.Steps, value = 5}
+            }, "value", "name", evaluation.Steps);
             return View(evaluation);
         }
 

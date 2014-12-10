@@ -21,19 +21,27 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(_ => descriptionValue)
-        </dd>
-
-        <dt>
             @Resources.ProductName
         </dt>
 
         <dd>
             @Html.DisplayFor(_ => productNameValue)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Steps)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(m => m.Steps) @Resources.Steps
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(_ => descriptionValue)
         </dd>
 
         <dt>

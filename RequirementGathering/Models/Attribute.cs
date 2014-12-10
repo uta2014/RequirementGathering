@@ -13,6 +13,8 @@ namespace RequirementGathering.Models
         [Translatable]
         public string Name { get; set; }
 
+        public int Order { get; set; }
+
         #region Navigation Fields
 
         [Required(ErrorMessageResourceType = typeof(Resources), ErrorMessageResourceName = "FieldRequired")]
