@@ -178,6 +178,15 @@ namespace RequirementGathering.Reousrces {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Close.
+        /// </summary>
+        public static string Close {
+            get {
+                return ResourceManager.GetString("Close", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Company Name.
         /// </summary>
         public static string CompanyNameDisplay {
@@ -475,7 +484,7 @@ namespace RequirementGathering.Reousrces {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The {0} must be at least {2} and at most {1}..
+        ///   Looks up a localized string similar to The {0} must be at least {1} and at most {2}..
         /// </summary>
         public static string FieldRangeMinMax {
             get {
@@ -925,6 +934,15 @@ namespace RequirementGathering.Reousrces {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ratings successfully submitted.&lt;br /&gt;Please provide your background information..
+        /// </summary>
+        public static string RatingsSubmitted {
+            get {
+                return ResourceManager.GetString("RatingsSubmitted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Remember Me?.
         /// </summary>
         public static string RememberDisplay {
@@ -1015,11 +1033,47 @@ namespace RequirementGathering.Reousrces {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Evaluation Steps.
+        /// </summary>
+        public static string StepDisplay {
+            get {
+                return ResourceManager.GetString("StepDisplay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to steps.
+        /// </summary>
+        public static string Steps {
+            get {
+                return ResourceManager.GetString("Steps", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Street.
         /// </summary>
         public static string StreetDisplay {
             get {
                 return ResourceManager.GetString("StreetDisplay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Submit.
+        /// </summary>
+        public static string Submit {
+            get {
+                return ResourceManager.GetString("Submit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Summary.
+        /// </summary>
+        public static string Summary {
+            get {
+                return ResourceManager.GetString("Summary", resourceCulture);
             }
         }
         

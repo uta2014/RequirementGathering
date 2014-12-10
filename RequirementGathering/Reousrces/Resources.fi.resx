@@ -266,7 +266,7 @@
     <comment>Validation</comment>
   </data>
   <data name="FieldRangeMinMax" xml:space="preserve">
-    <value>{0} on oltava vähintään (2) ja enintään {1}.</value>
+    <value>{0} on oltava vähintään {1} ja enintään {2}.</value>
     <comment>Validation</comment>
   </data>
   <data name="FieldRequired" xml:space="preserve">
@@ -592,5 +592,29 @@
   <data name="UserTakenEvaluation" xml:space="preserve">
     <value>Käyttäjä on jo ottanut arvioinnissa.</value>
     <comment>Validation</comment>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Sulje</value>
+    <comment>Button</comment>
+  </data>
+  <data name="RatingsSubmitted" xml:space="preserve">
+    <value>Lähetettyjen luokitusten onnistuneesti.&lt;br /&gt;Anna taustatietoa.</value>
+    <comment>After submitting Ratings</comment>
+  </data>
+  <data name="Submit" xml:space="preserve">
+    <value>Lähetä</value>
+    <comment>Button</comment>
+  </data>
+  <data name="Summary" xml:space="preserve">
+    <value>Yhteenveto</value>
+    <comment>Button</comment>
+  </data>
+  <data name="StepDisplay" xml:space="preserve">
+    <value>Arvioinnin vaiheet</value>
+    <comment>Display Name</comment>
+  </data>
+  <data name="Steps" xml:space="preserve">
+    <value>vaiheet</value>
+    <comment>View</comment>
   </data>
 </root>

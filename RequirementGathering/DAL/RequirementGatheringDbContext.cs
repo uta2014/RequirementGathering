@@ -4,7 +4,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Data.Entity.Core.Objects;
 using System.Data.Entity.Infrastructure;
-using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -158,10 +157,13 @@ namespace RequirementGathering.DAL
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<EvaluationUser>().Property(m => m.Id)
                         .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
-            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
             modelBuilder.Entity<Rating>()
                         .HasRequired(c => c.Attribute1)
                         .WithMany()
+                        .WillCascadeOnDelete(false);
+            modelBuilder.Entity<Rating>()
+                        .HasRequired(c => c.EvaluationUser)
+                        .WithMany(c => c.Ratings)
                         .WillCascadeOnDelete(false);
         }
 

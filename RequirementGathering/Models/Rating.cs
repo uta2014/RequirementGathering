@@ -27,8 +27,8 @@ namespace RequirementGathering.Models
         [ForeignKey("AttributeId2")]
         public virtual Attribute Attribute2 { get; set; }
 
-        public string UserId { get; set; }
-        public virtual User User { get; set; }
+        public int EvaluationUserId { get; set; }
+        public virtual EvaluationUser EvaluationUser { get; set; }
 
         #endregion
     }

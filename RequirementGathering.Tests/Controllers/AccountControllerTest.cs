@@ -1,17 +1,7 @@
 ﻿using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
-using Microsoft.AspNet.Identity.Owin;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RequirementGathering.Controllers;
-using System.Web.Routing;
-using System.IO;
-using System.Security.Principal;
-using RequirementGathering.Models;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
-using System.Collections.Specialized;
-using System.Collections;
 
 namespace RequirementGathering.Tests.Controllers
 {
@@ -65,6 +55,6 @@ namespace RequirementGathering.Tests.Controllers
 
         }
 
-        
+
     }
 }
