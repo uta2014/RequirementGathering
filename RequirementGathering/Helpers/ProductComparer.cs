@@ -19,6 +19,18 @@ namespace RequirementGathering.Helpers
 
         public int Compare(Product x, Product y)
         {
+            if (sortName.Equals("IsActive"))
+            {
+
+                if (isAsc)
+                {
+                    return (x.IsActive.CompareTo(y.IsActive));
+                }
+                else
+                {
+                    return (y.IsActive.CompareTo(x.IsActive));
+                }
+            }
 
             if (sortName.Equals("Name"))
             {
