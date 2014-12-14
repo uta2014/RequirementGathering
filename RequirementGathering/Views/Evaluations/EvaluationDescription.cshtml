@@ -43,5 +43,8 @@
 @Html.Partial("_Ratings")
 
 @section Scripts {
+    <script>
+        var scale = @Model.Steps;
+    </script>
     @Scripts.Render("~/bundles/app")
 }
