@@ -1042,6 +1042,15 @@ namespace RequirementGathering.Reousrces {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sort by.
+        /// </summary>
+        public static string SortBy {
+            get {
+                return ResourceManager.GetString("SortBy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to steps.
         /// </summary>
         public static string Steps {
