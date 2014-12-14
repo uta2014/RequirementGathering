@@ -27,6 +27,27 @@ namespace RequirementGathering.Controllers
             return View(await RgDbContext.Evaluations.Where(e => e.Product.IsActive).ToListAsync());
         }
 
+        // GET: Sort Evaluations
+        [Authorize(Roles = "Researcher,Administrator,Super Administrator")]
+        public async Task<ActionResult> SortedIndex(string sortname, string sorttype, int? sortSelectedIndex)
+        {
+
+            List<Evaluation> lp = await RgDbContext.Evaluations.Where(e => e.Product.IsActive).ToListAsync();
+            if (sortname != null && sortname != "" && sorttype != null && sorttype != "")
+            {
+                lp.Sort(new EvaluationComparer(sortname, (sorttype.Equals("asc") ? true : false)));
+                ViewData["sortSelectedIndex"] = sortSelectedIndex;
+            }
+            else
+            {
+                lp.Sort(new EvaluationComparer("ProductName", true));
+                ViewData["sortSelectedIndex"] = 0;
+            }
+
+            
+            return View("Index", lp);
+        }
+
         // GET: Evaluations/Details/5
         [Authorize(Roles = "Researcher,Administrator,Super Administrator")]
         public async Task<ActionResult> Details(int? id)

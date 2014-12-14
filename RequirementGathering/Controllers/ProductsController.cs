@@ -3,18 +3,48 @@ using System.Net;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using RequirementGathering.Models;
+using System.Collections.Generic;
+using RequirementGathering.Helpers;
 
 namespace RequirementGathering.Controllers
 {
     [Authorize]
     public class ProductsController : BaseController
     {
+
+
+        
+
+
+        
         // GET: Products
         [Authorize(Roles = "Researcher,Administrator,Super Administrator")]
         public async Task<ActionResult> Index()
         {
             var products = RgDbContext.Products.Include(p => p.Owner);
             return View(await products.ToListAsync());
+        }
+
+
+        // GET: Products
+        [Authorize(Roles = "Researcher,Administrator,Super Administrator")]
+        public async Task<ActionResult> SortedIndex(string sortname, string sorttype, int? sortSelectedIndex)
+        {
+            var products = RgDbContext.Products.Include(p => p.Owner);
+            List<Product> lp = await products.ToListAsync();
+            if (sortname != null && sortname != "" && sorttype != null && sorttype != "")
+            {
+                lp.Sort(new ProductComparer(sortname, (sorttype.Equals("asc") ? true : false)));
+                ViewData["sortSelectedIndex"] = sortSelectedIndex;
+            }
+            else
+            {
+                lp.Sort(new ProductComparer("Name", true));
+                ViewData["sortSelectedIndex"] = 0;
+            }
+
+            
+            return View("Index",lp);
         }
 
         // GET: Products/Details/5
