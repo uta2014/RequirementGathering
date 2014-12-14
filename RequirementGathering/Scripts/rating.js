@@ -47,6 +47,7 @@
 
         $('.shape > .info').hide();
         $('.bubble').removeClass('unset active-bubble bubble-bottom bubble-top bubble-right bubble-left');
+
         $('.rangeSlider').fadeOut('slow', function() {
             $(this).remove();
         });
@@ -113,7 +114,7 @@
     function generateSliders(bubbles, currentId) {
         bubbles.each(function(i) {
             var thisId = bubbles[i].id;
-            $('<input class="rangeSlider" style="display:none" type="range" value="' + getValueFromHash(thisId, currentId) + '" id="' + thisId + '" step="1" min="0" max="5" />').appendTo($('.bubble.active-bubble'));
+            $('<input class="rangeSlider" style="display:none" type="range" value="' + getValueFromHash(thisId, currentId) + '" id="' + thisId + '" step="1" min="0" max="' + scale + '" />').appendTo($('.bubble.active-bubble'));
         });
     }
 
@@ -124,7 +125,7 @@
         if (parentId in valuesHash && (!valuesHash[thisId] || !(parentId in valuesHash[thisId]))) {
             valuesHash[parentId][thisId] = $(this).val();
         } else if (thisId in valuesHash && (!valuesHash[parentId] || !(thisId in valuesHash[parentId]))) {
-            valuesHash[thisId][parentId] = 5 - $(this).val();
+            valuesHash[thisId][parentId] = scale - $(this).val();
         } else {
             valuesHash[parentId] = {};
             valuesHash[parentId][thisId] = $(this).val();
@@ -137,7 +138,7 @@
         if (currentId in valuesHash && instanceId in valuesHash[currentId]) {
             return valuesHash[currentId][instanceId];
         } else if (instanceId in valuesHash && currentId in valuesHash[instanceId]) {
-            return 5 - valuesHash[instanceId][currentId];
+            return scale - valuesHash[instanceId][currentId];
         }
 
         return 0;
