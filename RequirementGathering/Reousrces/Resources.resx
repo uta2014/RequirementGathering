@@ -617,4 +617,8 @@
     <value>steps</value>
     <comment>View</comment>
   </data>
+  <data name="SortBy" xml:space="preserve">
+    <value>Sort by</value>
+    <comment>Sort by</comment>
+  </data>
 </root>
