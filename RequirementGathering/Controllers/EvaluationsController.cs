@@ -14,6 +14,8 @@ using RequirementGathering.Helpers;
 using RequirementGathering.Models;
 using RequirementGathering.Reousrces;
 using Attribute = RequirementGathering.Models.Attribute;
+using System.Web.UI.WebControls;
+using System.Web.UI;
 
 namespace RequirementGathering.Controllers
 {
@@ -295,10 +297,40 @@ namespace RequirementGathering.Controllers
             return RedirectToAction("EditProfile", "Manage", new { Message = FlashMessageId.RatingsSubmitted });
         }
 
-        public ActionResult Reports()
+        public async Task<ActionResult> Reports()
         {
-            return View();
+            var currentUser = await GetCurrentUser();
+            return View(currentUser.InvitedEvaluations());
         }
+
+
+
+        public async Task<ActionResult> Reporting(int? id)
+        {
+            var currentUser = await GetCurrentUser();
+            var evaluationUser = RgDbContext.EvaluationUsers.FirstOrDefault(eu => eu.IsActive &&
+                                                                            eu.EvaluationId == id &&
+                                                                            eu.UserId == currentUser.Id &&
+                                                                            eu.Evaluation.IsActive &&
+                                                                            eu.Evaluation.Product.IsActive);
+            if (id == null || evaluationUser == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var evaluation = await RgDbContext.Evaluations.FindAsync(id);
+
+            if (evaluation == null)
+            {
+                return RedirectToAction("MyEvaluations", "Evaluations");
+            }
+
+            ViewBag.EvaluationUserId = evaluationUser.Id;
+
+            return View(evaluation);
+        }
+
+
 
         protected override void Dispose(bool disposing)
         {
@@ -407,6 +439,80 @@ namespace RequirementGathering.Controllers
 
             return RedirectToAction("Index", "Evaluations", new { Message = FlashMessageId.InvitationSent });
         }
+
+
+
+
+        //
+        // GET: /Account/Export
+        [Authorize(Roles = "Administrator,Super Administrator,Researcher")]
+        public async Task<ActionResult> Export(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            Evaluation evaluation = await RgDbContext.Evaluations.FindAsync(id);
+
+            if (evaluation == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(evaluation);
+
+        }
+
+        // POST: /Account/Export
+        [HttpPost]
+        [Authorize(Roles = "Administrator,Super Administrator,Researcher")]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Export(int? id, User Cur)
+        {
+             if (id == null)
+            {
+                ModelState.AddModelError("", Resources.EvaluationIdNull);
+                return RedirectToAction("Dashboard", "Home");
+            }
+
+            Evaluation evaluation = await RgDbContext.Evaluations.FindAsync(id);
+
+            if (evaluation == null)
+            {
+                ModelState.AddModelError("", Resources.EvaluationNotFound);
+                return RedirectToAction("Dashboard", "Home");
+            }
+
+            if (!evaluation.IsActive || !evaluation.Product.IsActive)
+            {
+                ModelState.AddModelError("", Resources.EvaluationInactive);
+                return RedirectToAction("Dashboard", "Home");
+            }
+               
+            
+            else
+            {
+                User currentUser = await GetCurrentUser();               
+                GridView grid1 = new GridView();
+                grid1.DataSource = RgDbContext.Ratings.ToList();
+                grid1.DataBind();
+                Response.ClearContent();
+                Response.Buffer = true;
+                Response.AddHeader("content-disposition", "attachment; filename=Marklist.xls");
+                Response.ContentType = "application/ms-excel";
+                Response.Charset = "";
+                StringWriter sw = new StringWriter();
+                HtmlTextWriter htw = new HtmlTextWriter(sw);
+                grid1.RenderControl(htw);
+                Response.Output.Write(sw.ToString());
+                Response.Flush();
+                Response.End();
+
+                return View();
+            }
+        }
+
 
         #region Helpers
         private string UploadImage()

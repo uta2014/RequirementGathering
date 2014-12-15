@@ -216,6 +216,7 @@
     <Content Include="500.html" />
     <Content Include="404.html" />
     <Content Include="Views\Evaluations\_Ratings.cshtml" />
+    <Content Include="Views\Evaluations\Reporting.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -327,7 +328,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>62309</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
