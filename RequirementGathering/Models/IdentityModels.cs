@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Globalization;
 using System.Linq;
@@ -23,33 +24,13 @@ namespace RequirementGathering.Models
         [Display(Name = "LastNameDisplay", ResourceType = typeof(Resources))]
         public string LastName { get; set; }
 
-        [Range(18, 100, ErrorMessageResourceType = typeof(Resources), ErrorMessageResourceName = "FieldRangeMinMax")]
-        [Display(Name = "AgeDisplay", ResourceType = typeof(Resources))]
-        public int? Age { get; set; }
-
-        [Display(Name = "OrganizationNameDisplay", ResourceType = typeof(Resources))]
-        public string OrganizationName { get; set; }
+        //[Range(18, 100, ErrorMessageResourceType = typeof(Resources), ErrorMessageResourceName = "FieldRangeMinMax")]
+        //[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd.MM.yyyy}")]
+        [Display(Name = "DateOfBirthDisplay", ResourceType = typeof(Resources))]
+        public DateTime DateOfBirth { get; set; }
 
         [Display(Name = "DesignationDisplay", ResourceType = typeof(Resources))]
         public string Designation { get; set; }
-
-        [Display(Name = "CompanyNameDisplay", ResourceType = typeof(Resources))]
-        public string CompanyName { get; set; }
-
-        [Display(Name = "PostalCodeDisplay", ResourceType = typeof(Resources))]
-        public string PostalCode { get; set; }
-
-        [Display(Name = "StreetDisplay", ResourceType = typeof(Resources))]
-        public string Street { get; set; }
-
-        [Display(Name = "DistrictDisplay", ResourceType = typeof(Resources))]
-        public string District { get; set; }
-
-        [Display(Name = "CityDisplay", ResourceType = typeof(Resources))]
-        public string City { get; set; }
-
-        [Display(Name = "ProvinceDisplay", ResourceType = typeof(Resources))]
-        public string Province { get; set; }
 
         [Display(Name = "CountryDisplay", ResourceType = typeof(Resources))]
         public string Country { get; set; }
@@ -85,5 +66,16 @@ namespace RequirementGathering.Models
             // Add custom user claims here
             return userIdentity;
         }
+
+        public int Age
+        {
+            get { return (int)((double)(DateTime.UtcNow - DateOfBirth).Days / 365.2425) + 1; }
+        }
+    }
+
+    public class EditProfileViewModel
+    {
+        public ChangePasswordViewModel ChangePassword { get; set; }
+        public User User { get; set; }
     }
 }

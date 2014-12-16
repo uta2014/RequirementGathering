@@ -22,7 +22,7 @@ namespace RequirementGathering.Models
 
         public string ImageUrl { get; set; }
 
-        [Display(Name = "SetpDisplay", ResourceType = typeof(Resources))]
+        [Display(Name = "StepsDisplay", ResourceType = typeof(Resources))]
         public int Steps { get; set; }
 
         [Display(Name = "IsActiveDisplay", ResourceType = typeof(Resources))]

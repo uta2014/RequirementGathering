@@ -88,15 +88,6 @@ namespace RequirementGathering.Reousrces {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Age.
-        /// </summary>
-        public static string AgeDisplay {
-            get {
-                return ResourceManager.GetString("AgeDisplay", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Attributes.
         /// </summary>
         public static string Attributes {
@@ -309,6 +300,15 @@ namespace RequirementGathering.Reousrces {
         public static string Dashboard {
             get {
                 return ResourceManager.GetString("Dashboard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Date of Birth.
+        /// </summary>
+        public static string DateOfBirthDisplay {
+            get {
+                return ResourceManager.GetString("DateOfBirthDisplay", resourceCulture);
             }
         }
         
@@ -1042,20 +1042,20 @@ namespace RequirementGathering.Reousrces {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Evaluation Steps.
-        /// </summary>
-        public static string StepDisplay {
-            get {
-                return ResourceManager.GetString("StepDisplay", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to steps.
         /// </summary>
         public static string Steps {
             get {
                 return ResourceManager.GetString("Steps", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Evaluation Steps.
+        /// </summary>
+        public static string StepsDisplay {
+            get {
+                return ResourceManager.GetString("StepsDisplay", resourceCulture);
             }
         }
         

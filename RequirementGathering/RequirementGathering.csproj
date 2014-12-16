@@ -204,9 +204,12 @@
     <Compile Include="Views\Helpers\ApplicationHelpers.cs" />
     <Content Include="Content\Rating.css" />
     <Content Include="Content\jquery-ui.css" />
+    <Content Include="Scripts\jquery-ui.datepicker-nl.js" />
     <Content Include="Scripts\jquery-ui.js" />
+    <Content Include="Scripts\manage.js" />
     <Content Include="Scripts\rating.js" />
     <Content Include="Views\Manage\EditProfile.cshtml" />
+    <Content Include="Scripts\jquery-ui.datepicker-fi.js" />
     <None Include="Views\Evaluations\EditorTemplates\Attribute.cshtml" />
     <Content Include="Views\Evaluations\MyEvaluations.cshtml" />
     <Content Include="Views\Evaluations\Reports.cshtml" />
@@ -266,7 +269,6 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\ResetPassword.cshtml" />
     <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
-    <Content Include="Views\Manage\ChangePassword.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Evaluations\Create.cshtml" />

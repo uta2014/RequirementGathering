@@ -1,9 +1,12 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 using RequirementGathering.Models;
+using RequirementGathering.Reousrces;
 
 namespace RequirementGathering.Controllers
 {
@@ -28,75 +31,69 @@ namespace RequirementGathering.Controllers
         // GET: /Manage/EditProfile
         public async Task<ActionResult> EditProfile()
         {
-            return View(await GetCurrentUser());
+            return View(new EditProfileViewModel { User = await GetCurrentUser() });
         }
 
         //
         // POST: /Manage/EditProfile
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> EditProfile(User user)
+        public async Task<ActionResult> EditProfile(EditProfileViewModel profile)
         {
-            if (ModelState.IsValid)
+            DateTime time;
+            if (DateTime.TryParse(Request.Params["User.DateOfBirth"], out time))
+            {
+                profile.User.DateOfBirth = time;
+
+                if (profile.User.Age < 18 || profile.User.Age > 100)
+                {
+                    ModelState.AddModelError("User.DateOfBirth", string.Format(Resources.FieldRangeMinMax, Resources.DateOfBirthDisplay, 18, 100));
+                }
+            }
+            else
+            {
+                ModelState.AddModelError("User.DateOfBirth", Resources.FieldRangeMinMax);
+            }
+
+            if (ModelState.Where(e => !e.Key.StartsWith("ChangePassword.", StringComparison.InvariantCulture)).All(e => !e.Value.Errors.Any()))
             {
                 var actualUser = await GetCurrentUser();
 
-                actualUser.Age = user.Age;
-                actualUser.City = user.City;
-                actualUser.CompanyName = user.CompanyName;
-                actualUser.Country = user.Country;
-                actualUser.Designation = user.Designation;
-                actualUser.District = user.District;
-                actualUser.FirstName = user.FirstName;
-                actualUser.LastName = user.LastName;
-                actualUser.OrganizationName = user.OrganizationName;
-                actualUser.PhoneNumber = user.PhoneNumber;
-                actualUser.PostalCode = user.PostalCode;
-                actualUser.Province = user.Province;
-                actualUser.Street = user.Street;
+                actualUser.DateOfBirth = profile.User.DateOfBirth;
+                actualUser.Country = profile.User.Country;
+                actualUser.Designation = profile.User.Designation;
+                actualUser.FirstName = profile.User.FirstName;
+                actualUser.LastName = profile.User.LastName;
 
                 var result = await UserManager.UpdateAsync(actualUser);
 
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Dashboard", "Home", new { Message = FlashMessageId.UpdateProfile });
+                    if (Request.Params["hasChangedPassword"] == "false")
+                    {
+                        return RedirectToAction("Dashboard", "Home", new { Message = FlashMessageId.UpdateProfile });
+                    }
+                    else
+                    {
+                        result = await UserManager.ChangePasswordAsync(User.Identity.GetUserId(), profile.ChangePassword.OldPassword, profile.ChangePassword.NewPassword);
+
+                        if (result.Succeeded)
+                        {
+                            var user = await GetCurrentUser();
+                            if (user != null)
+                            {
+                                await SignInAsync(user, isPersistent: false);
+                            }
+
+                            return RedirectToAction("Dashboard", "Home", new { Message = FlashMessageId.UpdateProfile });
+                        }
+                    }
                 }
 
                 AddErrors(result);
             }
 
-            return View(user);
-        }
-
-        //
-        // GET: /Manage/ChangePassword
-        public ActionResult ChangePassword()
-        {
-            return View();
-        }
-
-        //
-        // POST: /Manage/ChangePassword
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> ChangePassword(ChangePasswordViewModel model)
-        {
-            if (!ModelState.IsValid)
-            {
-                return View(model);
-            }
-            var result = await UserManager.ChangePasswordAsync(User.Identity.GetUserId(), model.OldPassword, model.NewPassword);
-            if (result.Succeeded)
-            {
-                var user = await GetCurrentUser();
-                if (user != null)
-                {
-                    await SignInAsync(user, isPersistent: false);
-                }
-                return RedirectToAction("ChangePassword", new { Message = FlashMessageId.ChangePassword });
-            }
-            AddErrors(result);
-            return View(model);
+            return View(profile);
         }
 
         #region Helpers
