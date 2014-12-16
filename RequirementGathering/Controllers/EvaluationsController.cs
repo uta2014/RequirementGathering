@@ -9,13 +9,13 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI;
+using System.Web.UI.WebControls;
 using Microsoft.AspNet.Identity;
 using RequirementGathering.Helpers;
 using RequirementGathering.Models;
 using RequirementGathering.Reousrces;
 using Attribute = RequirementGathering.Models.Attribute;
-using System.Web.UI.WebControls;
-using System.Web.UI;
 
 namespace RequirementGathering.Controllers
 {
@@ -470,7 +470,7 @@ namespace RequirementGathering.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Export(int? id, User Cur)
         {
-             if (id == null)
+            if (id == null)
             {
                 ModelState.AddModelError("", Resources.EvaluationIdNull);
                 return RedirectToAction("Dashboard", "Home");
@@ -489,11 +489,11 @@ namespace RequirementGathering.Controllers
                 ModelState.AddModelError("", Resources.EvaluationInactive);
                 return RedirectToAction("Dashboard", "Home");
             }
-               
-            
+
+
             else
             {
-                User currentUser = await GetCurrentUser();               
+                User currentUser = await GetCurrentUser();
                 GridView grid1 = new GridView();
                 grid1.DataSource = RgDbContext.Ratings.ToList();
                 grid1.DataBind();

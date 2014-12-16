@@ -129,8 +129,8 @@
     <value>Ratings successfully submitted.</value>
     <comment>Flash Message</comment>
   </data>
-  <data name="AgeDisplay" xml:space="preserve">
-    <value>Age</value>
+  <data name="DateOfBirthDisplay" xml:space="preserve">
+    <value>Date of Birth</value>
     <comment>Display Name</comment>
   </data>
   <data name="AttributesCountValidation" xml:space="preserve">
@@ -609,7 +609,7 @@
     <value>Summary</value>
     <comment>Button</comment>
   </data>
-  <data name="StepDisplay" xml:space="preserve">
+  <data name="StepsDisplay" xml:space="preserve">
     <value>Evaluation Steps</value>
     <comment>Display Name</comment>
   </data>

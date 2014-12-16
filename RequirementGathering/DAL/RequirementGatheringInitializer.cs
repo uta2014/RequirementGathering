@@ -29,14 +29,16 @@ namespace RequirementGathering.DAL
             context.Roles.Add(evaluatorRole);
 
             // Seed Users
-            var adeel = new User { FirstName = "Adeel", Email = "adeel@uta.fi", UserName = "adeel" };
-            var cong = new User { FirstName = "Zhang", Email = "cong@uta.fi", UserName = "cong" };
-            var eija = new User { FirstName = "Eija", Email = "eija@uta.fi", UserName = "eija" };
-            var ghassan = new User { FirstName = "Ghassan", Email = "ghassan@uta.fi", UserName = "ghassan" };
-            var juho = new User { FirstName = "Juho", Email = "juho@uta.fi", UserName = "juho" };
-            var liu = new User { FirstName = "Hui", Email = "liu@uta.fi", UserName = "Liu" };
-            var teemu = new User { FirstName = "Teemu", Email = "teemu@uta.fi", UserName = "teemu" };
-            var toan = new User { FirstName = "Toan", Email = "toan@uta.fi", UserName = "toan" };
+            var dateOfBirth = DateTime.UtcNow.AddYears(-18);
+
+            var adeel = new User { FirstName = "Adeel", Email = "adeel@uta.fi", UserName = "adeel", DateOfBirth = dateOfBirth };
+            var cong = new User { FirstName = "Zhang", Email = "cong@uta.fi", UserName = "cong", DateOfBirth = dateOfBirth };
+            var eija = new User { FirstName = "Eija", Email = "eija@uta.fi", UserName = "eija", DateOfBirth = dateOfBirth };
+            var ghassan = new User { FirstName = "Ghassan", Email = "ghassan@uta.fi", UserName = "ghassan", DateOfBirth = dateOfBirth };
+            var juho = new User { FirstName = "Juho", Email = "juho@uta.fi", UserName = "juho", DateOfBirth = dateOfBirth };
+            var liu = new User { FirstName = "Hui", Email = "liu@uta.fi", UserName = "Liu", DateOfBirth = dateOfBirth };
+            var teemu = new User { FirstName = "Teemu", Email = "teemu@uta.fi", UserName = "teemu", DateOfBirth = dateOfBirth };
+            var toan = new User { FirstName = "Toan", Email = "toan@uta.fi", UserName = "toan", DateOfBirth = dateOfBirth };
 
             var users = new List<User>
             {
