@@ -1,7 +1,4 @@
-﻿using System.Threading.Tasks;
-using System.Web.Mvc;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using RequirementGathering.Controllers;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace RequirementGathering.Tests.Controllers
 {

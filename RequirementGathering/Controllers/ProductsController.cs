@@ -1,50 +1,37 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
+using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using System.Web.Mvc;
-using RequirementGathering.Models;
-using System.Collections.Generic;
 using RequirementGathering.Helpers;
+using RequirementGathering.Models;
+using RequirementGathering.Reousrces;
 
 namespace RequirementGathering.Controllers
 {
     [Authorize]
     public class ProductsController : BaseController
     {
-
-
-        
-
-
-        
         // GET: Products
         [Authorize(Roles = "Researcher,Administrator,Super Administrator")]
-        public async Task<ActionResult> Index()
+        public async Task<ActionResult> Index(string sort)
         {
-            var products = RgDbContext.Products.Include(p => p.Owner);
-            return View(await products.ToListAsync());
-        }
+            var products = await RgDbContext.Products.Include(p => p.Owner).ToListAsync();
 
-
-        // GET: Products
-        [Authorize(Roles = "Researcher,Administrator,Super Administrator")]
-        public async Task<ActionResult> SortedIndex(string sortname, string sorttype, int? sortSelectedIndex)
-        {
-            var products = RgDbContext.Products.Include(p => p.Owner);
-            List<Product> lp = await products.ToListAsync();
-            if (sortname != null && sortname != "" && sorttype != null && sorttype != "")
+            if (!string.IsNullOrEmpty(sort) && sort.Any(s => s == '_'))
             {
-                lp.Sort(new ProductComparer(sortname, (sorttype.Equals("asc") ? true : false)));
-                ViewData["sortSelectedIndex"] = sortSelectedIndex;
+                var sortOptions = sort.Split('_');
+                products.Sort(new ProductComparer(sortOptions[0], (sortOptions[1].Equals("asc", StringComparison.InvariantCultureIgnoreCase))));
+                ProduceSortingOptions(sort);
             }
             else
             {
-                lp.Sort(new ProductComparer("Name", true));
-                ViewData["sortSelectedIndex"] = 0;
+                products.Sort(new ProductComparer("Name"));
+                ProduceSortingOptions();
             }
 
-            
-            return View("Index",lp);
+            return View(products);
         }
 
         // GET: Products/Details/5
@@ -87,7 +74,6 @@ namespace RequirementGathering.Controllers
                 await RgDbContext.SaveChangesAsync();
                 return RedirectToAction("Index", new { Message = FlashMessageId.CreateProduct });
             }
-
 
             return View(product);
         }
@@ -164,5 +150,17 @@ namespace RequirementGathering.Controllers
             }
             base.Dispose(disposing);
         }
+
+        #region Helpers
+        private void ProduceSortingOptions(object selected = null)
+        {
+            ViewBag.SortOptions = new SelectList(new[] {
+                    new {Id = "Name_asc", Name=Resources.NameDisplay +" Asc"},
+                    new {Id = "Name_dec", Name=Resources.NameDisplay + " Dec"},
+                    new {Id = "IsActive_asc", Name=Resources.IsActiveDisplay + " Asc"},
+                    new {Id = "IsActive_dec", Name=Resources.IsActiveDisplay + " Dec"}
+                }, "Id", "Name", selected);
+        }
+        #endregion
     }
 }

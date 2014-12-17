@@ -24,9 +24,23 @@ namespace RequirementGathering.Controllers
     {
         // GET: Evaluations
         [Authorize(Roles = "Researcher,Administrator,Super Administrator")]
-        public async Task<ActionResult> Index()
+        public async Task<ActionResult> Index(string sort)
         {
-            return View(await RgDbContext.Evaluations.Where(e => e.Product.IsActive).ToListAsync());
+            var evaluations = await RgDbContext.Evaluations.Where(e => e.Product.IsActive).ToListAsync();
+
+            if (!string.IsNullOrEmpty(sort) && sort.Any(s => s == '_'))
+            {
+                var sortOptions = sort.Split('_');
+                evaluations.Sort(new EvaluationComparer(sortOptions[0], (sortOptions[1].Equals("asc", StringComparison.InvariantCultureIgnoreCase))));
+                ProduceSortingOptions(sort);
+            }
+            else
+            {
+                evaluations.Sort(new EvaluationComparer("Name"));
+                ProduceSortingOptions();
+            }
+
+            return View(evaluations);
         }
 
         // GET: Sort Evaluations
@@ -46,7 +60,7 @@ namespace RequirementGathering.Controllers
                 ViewData["sortSelectedIndex"] = 0;
             }
 
-            
+
             return View("Index", lp);
         }
 
@@ -436,19 +450,20 @@ namespace RequirementGathering.Controllers
             }
             else
             {
-                user = new User { FirstName = firstName, LastName = lastName, Email = email, UserName = email };
+                user = new User { FirstName = firstName, LastName = lastName, Email = email, UserName = email, DateOfBirth = DateTime.UtcNow.AddYears(-18) };
                 string password = PasswordHelper.GeneratePassword();
                 IdentityResult result = await UserManager.CreateAsync(user, password);
 
                 if (result.Succeeded)
                 {
+                    UserManager.AddToRole(user.Id, "Evaluator");
                     await UserManager.SendEmailAsync(
                       user.Id,
                       string.Format(CultureInfo.CurrentCulture, Resources.InvitationEmailSubject, evaluation.Product.Name, evaluation.Version),
                       string.Format(CultureInfo.CurrentCulture, Resources.InvitationEmailBodyNew, Request.Url.GetLeftPart(UriPartial.Authority), Thread.CurrentThread.CurrentUICulture, password, description)
                     );
 
-                    RgDbContext.EvaluationUsers.Add(new EvaluationUser { UserId = user.Id, EvaluationId = evaluation.Id });
+                    RgDbContext.EvaluationUsers.Add(new EvaluationUser { UserId = user.Id, EvaluationId = evaluation.Id, DateCreated = DateTime.UtcNow, DateModified = DateTime.UtcNow });
                     await RgDbContext.SaveChangesAsync();
                 }
                 else
@@ -586,6 +601,16 @@ namespace RequirementGathering.Controllers
             return (evaluation.EvaluationUsers == null ||
                    !evaluation.EvaluationUsers.Any()) &&
                    !RgDbContext.Attributes.Any(a => a.EvaluationId == evaluation.Id && a.Ratings.Any());
+        }
+
+        private void ProduceSortingOptions(object selected = null)
+        {
+            ViewBag.SortOptions = new SelectList(new[] {
+                    new {Id = "ProductName_asc", Name=Resources.NameDisplay +" Asc"},
+                    new {Id = "ProductName_dec", Name=Resources.NameDisplay + " Dec"},
+                    new {Id = "IsActive_asc", Name=Resources.IsActiveDisplay + " Asc"},
+                    new {Id = "IsActive_dec", Name=Resources.IsActiveDisplay + " Dec"}
+                }, "Id", "Name", selected);
         }
         #endregion
 

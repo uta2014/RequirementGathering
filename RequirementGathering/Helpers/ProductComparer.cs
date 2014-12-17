@@ -1,8 +1,5 @@
-﻿using RequirementGathering.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
+using RequirementGathering.Models;
 
 namespace RequirementGathering.Helpers
 {
@@ -10,6 +7,10 @@ namespace RequirementGathering.Helpers
     {
         protected string sortName;
         protected bool isAsc;
+
+        public ProductComparer(string sortName)
+            : this(sortName, true)
+        { }
 
         public ProductComparer(string sortName, bool isAsc)
         {
@@ -52,7 +53,6 @@ namespace RequirementGathering.Helpers
                     return (y.Name.CompareTo(x.Name));
                 }
             }
-
 
             return (x.ToString().CompareTo(y.ToString()));
         }
