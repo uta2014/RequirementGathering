@@ -8,6 +8,7 @@ namespace RequirementGathering.Tests.Controllers
     [TestClass]
     public class AccountControllerTest
     {
+        /*
         [TestMethod]
         public async Task AccountIndex()
         {
@@ -19,7 +20,7 @@ namespace RequirementGathering.Tests.Controllers
             Assert.IsNotNull(result);
         }
 
-        /*
+        
         [TestMethod]
         public async Task AccountLogin()
         {
@@ -42,7 +43,7 @@ namespace RequirementGathering.Tests.Controllers
             Assert.IsNotNull(result);
             
         }
-        */
+        
 
         [TestMethod]
         public async Task AccountEdit()
@@ -54,7 +55,7 @@ namespace RequirementGathering.Tests.Controllers
             Assert.IsNotNull(result);
 
         }
-
+        */
 
     }
 }

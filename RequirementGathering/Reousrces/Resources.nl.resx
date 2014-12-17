@@ -617,4 +617,8 @@
     <value>stappen</value>
     <comment>View</comment>
   </data>
+  <data name="SortBy" xml:space="preserve">
+    <value>Sorteren op</value>
+    <comment>Sort by</comment>
+  </data>
 </root>

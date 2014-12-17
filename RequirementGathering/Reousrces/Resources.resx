@@ -621,4 +621,8 @@
     <value>Export</value>
     <comment>Action Name</comment>
   </data>
+  <data name="SortBy" xml:space="preserve">
+    <value>Sort by</value>
+    <comment>Sort by</comment>
+  </data>
 </root>

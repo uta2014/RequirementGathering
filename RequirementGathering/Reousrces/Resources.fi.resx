@@ -617,4 +617,8 @@
     <value>vaiheet</value>
     <comment>View</comment>
   </data>
+  <data name="SortBy" xml:space="preserve">
+    <value>Järjestä</value>
+    <comment>Sort by</comment>
+  </data>
 </root>

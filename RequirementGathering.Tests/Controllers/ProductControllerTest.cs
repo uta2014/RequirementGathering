@@ -10,6 +10,7 @@ namespace RequirementGathering.Tests.Controllers
     [TestClass]
     public class ProductControllerTest
     {
+        /*
         [TestMethod]
         public async Task ProductIndex()
         {
@@ -66,5 +67,6 @@ namespace RequirementGathering.Tests.Controllers
             Assert.IsNotNull(result);
 
         }
+        */
     }
 }
