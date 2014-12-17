@@ -1,9 +1,7 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RequirementGathering.Controllers;
-using RequirementGathering.Models;
 
 namespace RequirementGathering.Tests.Controllers
 {
@@ -30,7 +28,7 @@ namespace RequirementGathering.Tests.Controllers
             ActionResult result = await ec.Details(null);
             // Assert
             Assert.IsNotNull(result);
-            
+
         }
 
         [TestMethod]
@@ -56,11 +54,11 @@ namespace RequirementGathering.Tests.Controllers
             Assert.IsNotNull(result);
 
             // Act
-            result = await ec.SendInvitation(i,"","","","");
+            result = await ec.SendInvitation(i, "", "", "", "");
             // Assert
             Assert.IsNotNull(result);
 
         }
-        
+
     }
 }

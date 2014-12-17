@@ -28,7 +28,9 @@ namespace RequirementGathering.Controllers
         [Authorize(Roles = "Administrator,Super Administrator")]
         public async Task<ActionResult> Index()
         {
+            var rolesFiler = new[] { "Administrator", "Super Administrator", "Researcher" };
             var usersList = await (RgDbContext.Users as DbSet<User>).ToListAsync();
+            usersList = usersList.Where(u => rolesFiler.Any(f => UserManager.IsInRole(u.Id, f))).ToList();
 
             usersList.ForEach(u => u.UserRoles = string.Join(", ", UserManager.GetRoles(u.Id)));
 
@@ -270,6 +272,7 @@ namespace RequirementGathering.Controllers
                     FirstName = model.FirstName,
                     LastName = model.LastName,
                     UserName = model.Email,
+                    DateOfBirth = DateTime.UtcNow.AddYears(-18),
                     EmailConfirmed = true
                 };
 

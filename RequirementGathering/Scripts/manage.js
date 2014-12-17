@@ -1,4 +1,8 @@
 ﻿$(function() {
+    $('input[type=date]').each(function() {
+        this.type="text";
+    });
+
     var formats = { 'en-us': 'mm/dd/yy', 'fi-fi': 'dd.mm.yy', 'nl-nl': 'dd-mm-yy' };
 
     $('#User_DateOfBirth').removeAttr("data-val-date").removeAttr('data-val-required').datepicker({

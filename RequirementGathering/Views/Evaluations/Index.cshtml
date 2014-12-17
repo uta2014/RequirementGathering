@@ -7,18 +7,13 @@
 <h2>@ViewBag.Title</h2>
 
 <p>
-    
+
     <span style='float:left;'>
         @Html.ActionLink(Resources.CreateNew, "Create")
     </span>
     <span style='float:right;'>
         @Resources.SortBy
-        <select id="sortSelect" onchange="selectSort()">
-            <option value="ProductName_asc">@Resources.NameDisplay Asc</option>
-            <option value="ProductName_dec">@Resources.NameDisplay Dec</option>
-            <option value="IsActive_asc">@Resources.IsActiveDisplay Asc</option>
-            <option value="IsActive_dec">@Resources.IsActiveDisplay Dec</option>
-        </select>
+        @Html.DropDownList("SortOptions", null, htmlAttributes: new { @class = "form-control", onchange = "location.href = '?sort=' + this.value" })
     </span>
 </p>
 <table class="table">
@@ -77,35 +72,3 @@
     }
 
 </table>
-
-<script>
-
-    (function () {
-        try {
-            var sortSelect = document.getElementById("sortSelect");
-            var sortSelectedIndex = '@ViewData["sortSelectedIndex"]';
-            if (sortSelect != null) {
-                if (sortSelectedIndex != '' && sortSelectedIndex.length > 0) {
-                    if (parseInt(sortSelectedIndex) >= 0) {
-                        sortSelect.selectedIndex = parseInt(sortSelectedIndex);
-                    }
-                }
-            }
-        } catch (error) {
-
-        }
-
-    })()
-
-    function selectSort() {
-
-        var sortSelect = document.getElementById("sortSelect");
-        var sortstr = sortSelect.value;
-        if (sortstr == "") {
-            return;
-        }
-        var sortp = sortstr.split("_");
-        location.href = "/@ViewBag.CurrentCulture/Evaluations/SortedIndex?sortname=" + sortp[0] + "&sorttype=" + sortp[1] + "&sortSelectedIndex=" + sortSelect.selectedIndex;
-
-    }
-</script>
