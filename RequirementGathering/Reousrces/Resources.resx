@@ -625,4 +625,16 @@
     <value>Sort by</value>
     <comment>Sort by</comment>
   </data>
+  <data name="DateTaken" xml:space="preserve">
+    <value>Date taken</value>
+    <comment>Reports</comment>
+  </data>
+  <data name="Evaluator" xml:space="preserve">
+    <value>Evaluator</value>
+    <comment>Reports</comment>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Language</value>
+    <comment>Reports</comment>
+  </data>
 </root>

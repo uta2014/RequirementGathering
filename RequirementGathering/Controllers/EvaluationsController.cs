@@ -9,8 +9,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using Microsoft.AspNet.Identity;
 using RequirementGathering.Helpers;
 using RequirementGathering.Models;
@@ -309,7 +307,7 @@ namespace RequirementGathering.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Ratings(IEnumerable<Rating> ratings)
         {
-            if (!ratings.Any() || ratings.Any(r => r.Value1 > 5 || r.Value1 < 0 || r.Value2 > 5 || r.Value2 < 0))
+            if (!ratings.Any() || ratings.Any(r => r.Value > 5 || r.Value < 0))
             {
                 return RedirectToAction("MyEvaluations");
             }
@@ -324,56 +322,13 @@ namespace RequirementGathering.Controllers
             evaluationUser.IsActive = false;
             evaluationUser.EvaluationLanguage = CultureInfo.CurrentCulture.EnglishName;
             evaluationUser.DateModified = DateTime.UtcNow;
+            evaluationUser.ViewName = Request.Params["ViewName"];
 
             RgDbContext.Entry(evaluationUser).State = EntityState.Modified;
 
             await RgDbContext.SaveChangesAsync();
 
             return RedirectToAction("EditProfile", "Manage", new { Message = FlashMessageId.RatingsSubmitted });
-        }
-
-        public async Task<ActionResult> Reports()
-        {
-            var currentUser = await GetCurrentUser();
-            return View(currentUser.InvitedEvaluations());
-        }
-
-
-
-        public async Task<ActionResult> Reporting(int? id)
-        {
-            var currentUser = await GetCurrentUser();
-            var evaluationUser = RgDbContext.EvaluationUsers.FirstOrDefault(eu => eu.IsActive &&
-                                                                            eu.EvaluationId == id &&
-                                                                            eu.UserId == currentUser.Id &&
-                                                                            eu.Evaluation.IsActive &&
-                                                                            eu.Evaluation.Product.IsActive);
-            if (id == null || evaluationUser == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-
-            var evaluation = await RgDbContext.Evaluations.FindAsync(id);
-
-            if (evaluation == null)
-            {
-                return RedirectToAction("MyEvaluations", "Evaluations");
-            }
-
-            ViewBag.EvaluationUserId = evaluationUser.Id;
-
-            return View(evaluation);
-        }
-
-
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                RgDbContext.Dispose();
-            }
-            base.Dispose(disposing);
         }
 
         //
@@ -476,79 +431,14 @@ namespace RequirementGathering.Controllers
             return RedirectToAction("Index", "Evaluations", new { Message = FlashMessageId.InvitationSent });
         }
 
-
-
-
-        //
-        // GET: /Account/Export
-        [Authorize(Roles = "Administrator,Super Administrator,Researcher")]
-        public async Task<ActionResult> Export(int? id)
+        protected override void Dispose(bool disposing)
         {
-            if (id == null)
+            if (disposing)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                RgDbContext.Dispose();
             }
-
-            Evaluation evaluation = await RgDbContext.Evaluations.FindAsync(id);
-
-            if (evaluation == null)
-            {
-                return HttpNotFound();
-            }
-
-            return View(evaluation);
-
+            base.Dispose(disposing);
         }
-
-        // POST: /Account/Export
-        [HttpPost]
-        [Authorize(Roles = "Administrator,Super Administrator,Researcher")]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Export(int? id, User Cur)
-        {
-            if (id == null)
-            {
-                ModelState.AddModelError("", Resources.EvaluationIdNull);
-                return RedirectToAction("Dashboard", "Home");
-            }
-
-            Evaluation evaluation = await RgDbContext.Evaluations.FindAsync(id);
-
-            if (evaluation == null)
-            {
-                ModelState.AddModelError("", Resources.EvaluationNotFound);
-                return RedirectToAction("Dashboard", "Home");
-            }
-
-            if (!evaluation.IsActive || !evaluation.Product.IsActive)
-            {
-                ModelState.AddModelError("", Resources.EvaluationInactive);
-                return RedirectToAction("Dashboard", "Home");
-            }
-
-
-            else
-            {
-                User currentUser = await GetCurrentUser();
-                GridView grid1 = new GridView();
-                grid1.DataSource = RgDbContext.Ratings.ToList();
-                grid1.DataBind();
-                Response.ClearContent();
-                Response.Buffer = true;
-                Response.AddHeader("content-disposition", "attachment; filename=Marklist.xls");
-                Response.ContentType = "application/ms-excel";
-                Response.Charset = "";
-                StringWriter sw = new StringWriter();
-                HtmlTextWriter htw = new HtmlTextWriter(sw);
-                grid1.RenderControl(htw);
-                Response.Output.Write(sw.ToString());
-                Response.Flush();
-                Response.End();
-
-                return View();
-            }
-        }
-
 
         #region Helpers
         private string UploadImage()

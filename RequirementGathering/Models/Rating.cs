@@ -9,13 +9,9 @@ namespace RequirementGathering.Models
     {
         public int Id { get; set; }
 
-        [Range(1, 5, ErrorMessageResourceType = typeof(Resources), ErrorMessageResourceName = "FieldRangeMinMax")]
-        [DefaultValue(1)]
-        public int Value1 { get; set; }
-
-        [Range(1, 5, ErrorMessageResourceType = typeof(Resources), ErrorMessageResourceName = "FieldRangeMinMax")]
-        [DefaultValue(1)]
-        public int Value2 { get; set; }
+        [Range(0, 5, ErrorMessageResourceType = typeof(Resources), ErrorMessageResourceName = "FieldRangeMinMax")]
+        [DefaultValue(0)]
+        public int Value { get; set; }
 
         #region Navigation Fields
 

@@ -13,6 +13,9 @@
         .rating .rating-header .progress {
             border-radius: 0;
             background-color: #555;
+            height: 49px;
+            position: absolute;
+            z-index: 1;
         }
 
         .rating .rating-header .counter {
@@ -216,6 +219,8 @@
     font-size: 16px;
     BACKGROUND-COLOR: rgb(164, 137, 178);
     padding-left: 51px;
+    position: relative;
+    z-index: 2;
 }
 
     .activeItem:before {

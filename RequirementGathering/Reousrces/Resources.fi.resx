@@ -621,4 +621,16 @@
     <value>Järjestä</value>
     <comment>Sort by</comment>
   </data>
+  <data name="DateTaken" xml:space="preserve">
+    <value>Kuvauspäivä</value>
+    <comment>Reports</comment>
+  </data>
+  <data name="Evaluator" xml:space="preserve">
+    <value>Arvioija</value>
+    <comment>Reports</comment>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Kieli</value>
+    <comment>Reports</comment>
+  </data>
 </root>

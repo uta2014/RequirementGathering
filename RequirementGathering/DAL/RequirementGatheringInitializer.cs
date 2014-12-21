@@ -165,8 +165,7 @@ namespace RequirementGathering.DAL
                         EvaluationUserId = evaluationUser.Id,
                         AttributeId1 = attribute1.Id.Value,
                         AttributeId2 = attribute2.Id.Value,
-                        Value1 = random.Next(1, 5),
-                        Value2 = random.Next(1, 5)
+                        Value = random.Next(1, 5)
                     });
             };
 
