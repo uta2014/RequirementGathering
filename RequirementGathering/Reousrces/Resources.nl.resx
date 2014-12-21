@@ -621,4 +621,16 @@
     <value>Sorteren op</value>
     <comment>Sort by</comment>
   </data>
+  <data name="DateTaken" xml:space="preserve">
+    <value>Opnamedatum</value>
+    <comment>Reports</comment>
+  </data>
+  <data name="Evaluator" xml:space="preserve">
+    <value>Beoordelaar</value>
+    <comment>Reports</comment>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Taal</value>
+    <comment>Reports</comment>
+  </data>
 </root>

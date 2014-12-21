@@ -37,8 +37,12 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EPPlus">
+      <HintPath>..\packages\EPPlus.4.0.1.1\lib\net20\EPPlus.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -214,14 +218,12 @@
     <Content Include="Scripts\jquery-ui.datepicker-fi.js" />
     <None Include="Views\Evaluations\EditorTemplates\Attribute.cshtml" />
     <Content Include="Views\Evaluations\MyEvaluations.cshtml" />
-    <Content Include="Views\Evaluations\Reports.cshtml" />
     <Content Include="Views\Evaluations\_AttributeRow.cshtml" />
     <Content Include="Views\Evaluations\EvaluationDescription.cshtml" />
     <Content Include="403.html" />
     <Content Include="500.html" />
     <Content Include="404.html" />
     <Content Include="Views\Evaluations\_Ratings.cshtml" />
-    <Content Include="Views\Evaluations\Reporting.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />

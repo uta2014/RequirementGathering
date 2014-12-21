@@ -30,9 +30,7 @@
         <th>
             @Html.DisplayNameFor(model => model.IsActive)
         </th>
-        <th></th>
-        <th></th>
-        <th></th>
+        <th colspan="4"></th>
     </tr>
 
     @foreach (var item in Model)
@@ -67,6 +65,16 @@
                 <a href="/@ViewBag.CurrentCulture/Evaluations/SendInvitation/@item.Id">
                     <span class="glyphicon glyphicon-envelope"></span>&nbsp;@Resources.SendInvitation
                 </a>
+            </td>
+            <td>
+                @using (Html.BeginForm("Export", "Manage", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    <a title="@Resources.Export" onclick="$(this).parent().submit(); return false;" href="#">
+                        <span class="glyphicon glyphicon-export"></span>&nbsp;@Resources.Export @Resources.Reports
+                    </a>
+                    <input type="hidden" name="id" value="@item.Id" />
+                }
             </td>
         </tr>
     }

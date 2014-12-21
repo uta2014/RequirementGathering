@@ -7,13 +7,15 @@ namespace RequirementGathering.Models
     {
         public int Id { get; set; }
 
+        public string EvaluationLanguage { get; set; }
+
+        public string ViewName { get; set; }
+
         public int EvaluationId { get; set; }
         public virtual Evaluation Evaluation { get; set; }
 
         public string UserId { get; set; }
         public virtual User User { get; set; }
-
-        public string EvaluationLanguage { get; set; }
 
         public DateTime DateCreated { get; set; }
         public DateTime DateModified { get; set; }

@@ -224,13 +224,14 @@
 
         var i = 0;
         var evaluationId = $("#EvaluationId").val();
-        var fieldset = "";
+        var fieldset = '<input name="ViewName" value="Bubbles" type="hidden" />';
 
         for (var key1 in valuesHash) {
             for (var key2 in valuesHash[key1]) {
+                var value = valuesHash[key1][key2];
+
                 fieldset +=
-                 '<input name="[' + i + '].Value1" value="' + valuesHash[key1][key2] + '" type="hidden" /> \
-                  <input name="[' + i + '].Value2" value="' + valuesHash[key1][key2] + '" type="hidden" /> \
+                 '<input name="[' + i + '].Value" value="' + value + '" type="hidden" /> \
                   <input name="[' + i + '].AttributeId1" value="' + key1 + '" type="hidden" /> \
                   <input name="[' + i + '].AttributeId2" value="' + key2 + '" type="hidden" /> \
                   <input name="[' + i + '].EvaluationUserId" value="' + evaluationId + '" type="hidden" />';
