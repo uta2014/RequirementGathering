@@ -78,6 +78,8 @@ namespace RequirementGathering.Controllers
                 return HttpNotFound();
             }
 
+            evaluation.Attributes = evaluation.Attributes.OrderBy(a => a.Order).ToList();
+
             return View(evaluation);
         }
 
@@ -160,6 +162,10 @@ namespace RequirementGathering.Controllers
             if (evaluation.Attributes == null || !evaluation.Attributes.Any())
             {
                 evaluation.Attributes = new List<Attribute> { new Attribute() };
+            }
+            else
+            {
+                evaluation.Attributes = evaluation.Attributes.OrderBy(a => a.Order).ToList();
             }
 
             ViewBag.EvaluationIsFreezed = !CanUpdateAttributes(evaluation);
