@@ -27,7 +27,7 @@ namespace RequirementGathering.Models
 
         public Product()
         {
-            IsActive = true;
+            IsActive = false;
         }
 
         #region Navigation Fields

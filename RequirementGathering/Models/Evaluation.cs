@@ -30,7 +30,7 @@ namespace RequirementGathering.Models
 
         public Evaluation()
         {
-            IsActive = true;
+            IsActive = false;
         }
 
         #region Navigation Fields

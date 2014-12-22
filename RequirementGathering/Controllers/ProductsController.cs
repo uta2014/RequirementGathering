@@ -155,10 +155,10 @@ namespace RequirementGathering.Controllers
         private void ProduceSortingOptions(object selected = null)
         {
             ViewBag.SortOptions = new SelectList(new[] {
-                    new {Id = "Name_asc", Name=Resources.NameDisplay +" Asc"},
-                    new {Id = "Name_dec", Name=Resources.NameDisplay + " Dec"},
-                    new {Id = "IsActive_asc", Name=Resources.IsActiveDisplay + " Asc"},
-                    new {Id = "IsActive_dec", Name=Resources.IsActiveDisplay + " Dec"}
+                    new {Id = "Name_asc", Name = string.Format("{0} {1}", Resources.NameDisplay, "A-Z")},
+                    new {Id = "Name_dec", Name = string.Format("{0} {1}", Resources.NameDisplay, "Z-A")},
+                    new {Id = "IsActive_asc", Name = string.Format("{0} {1}", Resources.IsActiveDisplay, "A-Z")},
+                    new {Id = "IsActive_dec", Name = string.Format("{0} {1}", Resources.IsActiveDisplay, "Z-A")}
                 }, "Id", "Name", selected);
         }
         #endregion
