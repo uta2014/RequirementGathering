@@ -70,7 +70,7 @@
                 @using (Html.BeginForm("Export", "Manage", FormMethod.Post))
                 {
                     @Html.AntiForgeryToken()
-                    <a title="@Resources.Export" onclick="$(this).parent().submit(); return false;" href="#">
+                    <a title="@Resources.Export" class="export" href="#">
                         <span class="glyphicon glyphicon-export"></span>&nbsp;@Resources.Export @Resources.Reports
                     </a>
                     <input type="hidden" name="id" value="@item.Id" />
@@ -80,3 +80,7 @@
     }
 
 </table>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/app")
+}

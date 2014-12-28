@@ -633,4 +633,52 @@
     <value>Taal</value>
     <comment>Reports</comment>
   </data>
+  <data name="AgeDisplay" xml:space="preserve">
+    <value>Leeftijd</value>
+    <comment>View</comment>
+  </data>
+  <data name="EducationDisplay" xml:space="preserve">
+    <value>Onderwijs</value>
+    <comment>View</comment>
+  </data>
+  <data name="Female" xml:space="preserve">
+    <value>Vrouw</value>
+    <comment>View</comment>
+  </data>
+  <data name="Male" xml:space="preserve">
+    <value>Man</value>
+    <comment>View</comment>
+  </data>
+  <data name="OccupationDisplay" xml:space="preserve">
+    <value>Bezetting</value>
+    <comment>View</comment>
+  </data>
+  <data name="Other" xml:space="preserve">
+    <value>Andere</value>
+    <comment>View</comment>
+  </data>
+  <data name="PleaseSelect" xml:space="preserve">
+    <value>-- Selecteer Alstublieft --</value>
+    <comment>View</comment>
+  </data>
+  <data name="SexDisplay" xml:space="preserve">
+    <value>Geslacht</value>
+    <comment>View</comment>
+  </data>
+  <data name="EducationBachelorLevel" xml:space="preserve">
+    <value>Bachelor niveau</value>
+    <comment>Views</comment>
+  </data>
+  <data name="EducationBasicLevel" xml:space="preserve">
+    <value>Basisniveau</value>
+    <comment>Views</comment>
+  </data>
+  <data name="EducationMasterLevel" xml:space="preserve">
+    <value>Master's niveau</value>
+    <comment>Views</comment>
+  </data>
+  <data name="EducationUpperSecondaryLevel" xml:space="preserve">
+    <value>Hoger middelbaar</value>
+    <comment>Views</comment>
+  </data>
 </root>

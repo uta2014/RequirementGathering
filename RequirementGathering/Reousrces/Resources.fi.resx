@@ -633,4 +633,52 @@
     <value>Kieli</value>
     <comment>Reports</comment>
   </data>
+  <data name="AgeDisplay" xml:space="preserve">
+    <value>Ikä</value>
+    <comment>View</comment>
+  </data>
+  <data name="EducationDisplay" xml:space="preserve">
+    <value>Koulutus</value>
+    <comment>View</comment>
+  </data>
+  <data name="Female" xml:space="preserve">
+    <value>Nainen</value>
+    <comment>View</comment>
+  </data>
+  <data name="Male" xml:space="preserve">
+    <value>Mies</value>
+    <comment>View</comment>
+  </data>
+  <data name="OccupationDisplay" xml:space="preserve">
+    <value>Ammatti</value>
+    <comment>View</comment>
+  </data>
+  <data name="Other" xml:space="preserve">
+    <value>Muut</value>
+    <comment>View</comment>
+  </data>
+  <data name="PleaseSelect" xml:space="preserve">
+    <value>-- Valitse --</value>
+    <comment>View</comment>
+  </data>
+  <data name="SexDisplay" xml:space="preserve">
+    <value>Seksi</value>
+    <comment>View</comment>
+  </data>
+  <data name="EducationBachelorLevel" xml:space="preserve">
+    <value>Alempi Korkeakouluaste</value>
+    <comment>Views</comment>
+  </data>
+  <data name="EducationBasicLevel" xml:space="preserve">
+    <value>Perusaste</value>
+    <comment>Views</comment>
+  </data>
+  <data name="EducationMasterLevel" xml:space="preserve">
+    <value>Ylempi Korkeakouluaste</value>
+    <comment>Views</comment>
+  </data>
+  <data name="EducationUpperSecondaryLevel" xml:space="preserve">
+    <value>Toinen Aste</value>
+    <comment>Views</comment>
+  </data>
 </root>
