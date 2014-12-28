@@ -1,0 +1,45 @@
+﻿@{
+    var actionController = Request.RequestContext.RouteData.Values["action"].ToString();
+    var currentController = Request.RequestContext.RouteData.Values["controller"].ToString();
+}
+
+<ul class="nav navbar-nav">
+    @if (currentController.Equals("Home", StringComparison.InvariantCultureIgnoreCase) && actionController.Equals("Index", StringComparison.InvariantCultureIgnoreCase))
+    {
+        <li class="active">@Html.ActionLink(Resources.Home, "Index", "Home")</li>
+    }
+    else
+    {
+        <li>@Html.ActionLink(Resources.Home, "Index", "Home")</li>
+    }
+
+    @if (User.Identity.IsAuthenticated)
+    {
+        if (currentController.Equals("Home", StringComparison.InvariantCultureIgnoreCase) && actionController.Equals("Dashboard", StringComparison.InvariantCultureIgnoreCase))
+        {
+            <li class="active">@Html.ActionLink(Resources.Dashboard, "Dashboard", "Home")</li>
+        }
+        else
+        {
+            <li>@Html.ActionLink(Resources.Dashboard, "Dashboard", "Home")</li>
+        }
+    }
+
+    @if (currentController.Equals("Home", StringComparison.InvariantCultureIgnoreCase) && actionController.Equals("About", StringComparison.InvariantCultureIgnoreCase))
+    {
+        <li class="active">@Html.ActionLink(Resources.About, "About", "Home")</li>
+    }
+    else
+    {
+        <li>@Html.ActionLink(Resources.About, "About", "Home")</li>
+    }
+
+    @if (currentController.Equals("Home", StringComparison.InvariantCultureIgnoreCase) && actionController.Equals("Contact", StringComparison.InvariantCultureIgnoreCase))
+    {
+        <li class="active">@Html.ActionLink(Resources.Contact, "Contact", "Home")</li>
+    }
+    else
+    {
+        <li>@Html.ActionLink(Resources.Contact, "Contact", "Home")</li>
+    }
+</ul>
