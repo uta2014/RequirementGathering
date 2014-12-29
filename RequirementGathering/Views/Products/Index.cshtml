@@ -7,13 +7,14 @@
 <h2>@ViewBag.Title</h2>
 
 <p>
-    <span style='float:left;'>
+    <div class="pull-left">
         @Html.ActionLink(Resources.CreateNew, "Create")
-    </span>
-    <span style='float:right;'>
-        @Resources.SortBy
+    </div>
+    <div class="pull-right">
+        <h5>@Resources.SortBy</h5>
         @Html.DropDownList("SortOptions", null, htmlAttributes: new { @class = "form-control", onchange = "location.href = '?sort=' + this.value" })
-    </span>
+        <br />
+    </div>
 </p>
 <table class="table">
     <tr>
