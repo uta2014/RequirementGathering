@@ -130,7 +130,7 @@ namespace RequirementGathering.Controllers
                 return RedirectToAction("Dashboard", "Home");
             }
 
-            if (!evaluation.IsActive || !evaluation.Product.IsActive)
+            if (!evaluation.Product.IsActive)
             {
                 ModelState.AddModelError("", Resources.EvaluationInactive);
                 return RedirectToAction("Dashboard", "Home");
