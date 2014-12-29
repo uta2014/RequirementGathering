@@ -36,7 +36,12 @@ namespace RequirementGathering.Controllers
         // GET: /Manage/EditProfile
         public async Task<ActionResult> EditProfile()
         {
-            return View(new EditProfileViewModel { User = await GetCurrentUser() });
+            var user = await GetCurrentUser();
+            var profileViewModel = new EditProfileViewModel { User = user };
+
+            GetLists(user);
+
+            return View(profileViewModel);
         }
 
         //
@@ -69,6 +74,9 @@ namespace RequirementGathering.Controllers
                 actualUser.Designation = profile.User.Designation;
                 actualUser.FirstName = profile.User.FirstName;
                 actualUser.LastName = profile.User.LastName;
+                actualUser.Occupation = profile.User.Occupation;
+                actualUser.Sex = profile.User.Sex;
+                actualUser.Education = profile.User.Education;
 
                 var result = await UserManager.UpdateAsync(actualUser);
 
@@ -98,6 +106,7 @@ namespace RequirementGathering.Controllers
                 AddErrors(result);
             }
 
+            GetLists(profile.User);
             return View(profile);
         }
 
@@ -210,11 +219,11 @@ namespace RequirementGathering.Controllers
             range2.Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
             range2.Style.VerticalAlignment = ExcelVerticalAlignment.Center;
 
-            var range2a = worksheet.Cells["A15:B21"];
+            var range2a = worksheet.Cells["A15:B23"];
             range2a.Style.Border.BorderAround(ExcelBorderStyle.Thick);
 
             worksheet.Cells["B17"].Style.Numberformat.Format = CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern;
-            worksheet.Cells["B21"].Style.Numberformat.Format = CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern;
+            worksheet.Cells["B23"].Style.Numberformat.Format = CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern;
         }
 
         private void PopulateMeta(EvaluationUser evaluationUser, ExcelWorksheet worksheet)
@@ -236,14 +245,18 @@ namespace RequirementGathering.Controllers
             worksheet.Cells["B16"].Value = evaluationUser.User.FullName;
             worksheet.Cells["A17"].Value = Resources.DateOfBirthDisplay;
             worksheet.Cells["B17"].Value = evaluationUser.User.DateOfBirth;
-            worksheet.Cells["A18"].Value = Resources.PhoneNumberDisplay;
-            worksheet.Cells["B18"].Value = evaluationUser.User.PhoneNumber;
-            worksheet.Cells["A19"].Value = Resources.DesignationDisplay;
-            worksheet.Cells["B19"].Value = evaluationUser.User.Designation;
-            worksheet.Cells["A20"].Value = Resources.CountryDisplay;
-            worksheet.Cells["B20"].Value = evaluationUser.User.Country;
-            worksheet.Cells["A21"].Value = Resources.DateTaken;
-            worksheet.Cells["B21"].Value = evaluationUser.DateModified;
+            worksheet.Cells["A18"].Value = Resources.SexDisplay;
+            worksheet.Cells["B18"].Value = string.IsNullOrEmpty(evaluationUser.User.Sex) ? string.Empty : Resources.ResourceManager.GetString(evaluationUser.User.Sex);
+            worksheet.Cells["A19"].Value = Resources.PhoneNumberDisplay;
+            worksheet.Cells["B19"].Value = evaluationUser.User.PhoneNumber;
+            worksheet.Cells["A20"].Value = Resources.DesignationDisplay;
+            worksheet.Cells["B20"].Value = evaluationUser.User.Designation;
+            worksheet.Cells["A21"].Value = Resources.OccupationDisplay;
+            worksheet.Cells["B21"].Value = string.IsNullOrEmpty(evaluationUser.User.Occupation) ? string.Empty : Resources.ResourceManager.GetString(evaluationUser.User.Occupation);
+            worksheet.Cells["A22"].Value = Resources.CountryDisplay;
+            worksheet.Cells["B22"].Value = evaluationUser.User.Country;
+            worksheet.Cells["A23"].Value = Resources.DateTaken;
+            worksheet.Cells["B23"].Value = evaluationUser.DateModified;
         }
 
         private void PopulateRatings(EvaluationUser evaluationUser, ExcelWorksheet worksheet)
@@ -312,6 +325,28 @@ namespace RequirementGathering.Controllers
                     worksheet.Cells[currentRow, currentColumn].Style.Border.BorderAround(ExcelBorderStyle.Thin);
                 }
             }
+        }
+
+
+        private class Country
+        {
+            public string ID { get; set; }
+            public string Name { get; set; }
+        }
+
+        private void GetLists(User user)
+        {
+            ViewData["User.Sex"] = new SelectList(new dynamic[] {
+                new {name = Resources.Male, value = "Male"},
+                new {name = Resources.Female, value = "Female"},
+                new {name = Resources.Other, value = "Other"}
+            }, "value", "name", user.Sex);
+            ViewData["User.Education"] = new SelectList(new dynamic[] {
+                new {name = Resources.EducationBasicLevel, value = "EducationBasicLevel"},
+                new {name = Resources.EducationUpperSecondaryLevel, value = "EducationUpperSecondaryLevel"},
+                new {name = Resources.EducationBachelorLevel, value = "EducationBachelorLevel"},
+                new {name = Resources.EducationMasterLevel, value = "EducationMasterLevel"}
+            }, "value", "name", user.Education);
         }
         #endregion
     }

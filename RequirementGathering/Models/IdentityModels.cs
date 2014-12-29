@@ -32,6 +32,15 @@ namespace RequirementGathering.Models
         [Display(Name = "DesignationDisplay", ResourceType = typeof(Resources))]
         public string Designation { get; set; }
 
+        [Display(Name = "SexDisplay", ResourceType = typeof(Resources))]
+        public string Sex { get; set; }
+
+        [Display(Name = "OccupationDisplay", ResourceType = typeof(Resources))]
+        public string Occupation { get; set; }
+
+        [Display(Name = "EducationDisplay", ResourceType = typeof(Resources))]
+        public string Education { get; set; }
+
         [Display(Name = "CountryDisplay", ResourceType = typeof(Resources))]
         public string Country { get; set; }
 

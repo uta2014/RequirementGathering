@@ -5,6 +5,11 @@
         $('#fileRemoved').val('yes');
     });
 
+    $(document).on('click', 'a.export', function () {
+        $(this).parent().submit();
+        return false;
+    });
+
     $(document).on('change', '#productVersionImage', function() {
         $("#upload-file-info").html($(this).val());
     });
