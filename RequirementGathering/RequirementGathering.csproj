@@ -177,7 +177,6 @@
     <Compile Include="Helpers\AttributesIgnoreCaseComparer.cs" />
     <Compile Include="Helpers\CultureHelper.cs" />
     <Compile Include="Helpers\EvaluationComparer.cs" />
-    <Compile Include="Helpers\PasswordHelper.cs" />
     <Compile Include="Helpers\ProductComparer.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Evaluation.cs" />
@@ -332,7 +331,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reousrces\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>

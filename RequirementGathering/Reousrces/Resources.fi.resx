@@ -310,11 +310,11 @@
     <comment>Validation</comment>
   </data>
   <data name="InvitationEmailBodyExisting" xml:space="preserve">
-    <value>Olet tervetullut arvioitavaksi. Kirjaudu &lt;a href="{0}/{1}/Account/Login"&gt;{0}/{1}/Account/Login&lt;/a&gt; sähköpostiosoite ja salasana.&lt;br/&gt;&lt;br/&gt;{2}</value>
+    <value>Olet tervetullut arvioitavaksi. Kirjaudu &lt;a href="{0}/{1}/Account/Login?ReturnUrl=/{1}/Evaluations/EvaluationDescription/{3}"&gt;{0}/{1}/Account/Login?ReturnUrl=/{1}/Evaluations/EvaluationDescription/{3}&lt;/a&gt; sähköpostiosoite ja salasana.&lt;br/&gt;&lt;br/&gt;{2}</value>
     <comment>Invitation Email</comment>
   </data>
   <data name="InvitationEmailBodyNew" xml:space="preserve">
-    <value>Olet tervetullut arvioitavaksi. Kirjaudu sisään &lt;a href="{0}/{1}/Account/Login"&gt;{0}/{1}/Account/Login&lt;/a&gt; sähköpostiosoite ja salasana: &lt;b&gt;(2)&lt;/b&gt;.&lt;br/&gt;&lt;br/&gt;{3}</value>
+    <value>Olet tervetullut arvioitavaksi. Kirjaudu sisään &lt;a href="{0}/{1}/Account/Login?ReturnUrl=/{1}/Evaluations/EvaluationDescription/{4}"&gt;{0}/{1}/Account/Login?ReturnUrl=/{1}/Evaluations/EvaluationDescription/{4}&lt;/a&gt; sähköpostiosoite ja salasana: &lt;b&gt;(2)&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;{3}</value>
     <comment>Invitation Email</comment>
   </data>
   <data name="InvitationEmailSubject" xml:space="preserve">

@@ -406,13 +406,21 @@ namespace RequirementGathering.Controllers
                 await UserManager.SendEmailAsync(
                       user.Id,
                       string.Format(CultureInfo.CurrentCulture, Resources.InvitationEmailSubject, evaluation.Product.Name, evaluation.Version),
-                      string.Format(CultureInfo.CurrentCulture, Resources.InvitationEmailBodyExisting, Request.Url.GetLeftPart(UriPartial.Authority), Thread.CurrentThread.CurrentUICulture, description)
+                      string.Format(CultureInfo.CurrentCulture, Resources.InvitationEmailBodyExisting, Request.Url.GetLeftPart(UriPartial.Authority), Thread.CurrentThread.CurrentUICulture, description, evaluation.Id)
                 );
             }
             else
             {
                 user = new User { FirstName = firstName, LastName = lastName, Email = email, UserName = email, DateOfBirth = DateTime.UtcNow.AddYears(-18) };
-                string password = PasswordHelper.GeneratePassword();
+
+                var userResult = await UserManager.UserValidator.ValidateAsync(user);
+
+                if (!userResult.Succeeded)
+                {
+                    return View(evaluation);
+                }
+
+                string password = Guid.NewGuid().ToString().Replace("-", "").Substring(0, 6);
                 IdentityResult result = await UserManager.CreateAsync(user, password);
 
                 if (result.Succeeded)
@@ -421,7 +429,7 @@ namespace RequirementGathering.Controllers
                     await UserManager.SendEmailAsync(
                       user.Id,
                       string.Format(CultureInfo.CurrentCulture, Resources.InvitationEmailSubject, evaluation.Product.Name, evaluation.Version),
-                      string.Format(CultureInfo.CurrentCulture, Resources.InvitationEmailBodyNew, Request.Url.GetLeftPart(UriPartial.Authority), Thread.CurrentThread.CurrentUICulture, password, description)
+                      string.Format(CultureInfo.CurrentCulture, Resources.InvitationEmailBodyNew, Request.Url.GetLeftPart(UriPartial.Authority), Thread.CurrentThread.CurrentUICulture, password, description, evaluation.Id)
                     );
 
                     RgDbContext.EvaluationUsers.Add(new EvaluationUser { UserId = user.Id, EvaluationId = evaluation.Id, DateCreated = DateTime.UtcNow, DateModified = DateTime.UtcNow });

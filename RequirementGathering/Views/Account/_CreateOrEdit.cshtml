@@ -24,6 +24,25 @@
     </div>
 </div>
 
+@if (ViewContext.RouteData.Values["action"].ToString().Equals("Register", StringComparison.InvariantCultureIgnoreCase))
+{
+    <div class="form-group">
+        @Html.Label(Resources.PasswordDisplay, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.Label(Resources.ConfirmNewPassword, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+        </div>
+    </div>
+}
+
 <div class="form-group">
     @Html.LabelFor(model => model.Roles, htmlAttributes: new { @class = "control-label col-md-2" })
     <div class="col-md-10">
