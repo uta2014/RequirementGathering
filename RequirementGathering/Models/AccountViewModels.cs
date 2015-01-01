@@ -85,7 +85,7 @@ namespace RequirementGathering.Models
         public string LastName { get; set; }
 
         [Required(ErrorMessageResourceType = typeof(Resources), ErrorMessageResourceName = "FieldRequired")]
-        [MinLength(6, ErrorMessageResourceType = typeof(Resources), ErrorMessageResourceName = "FieldLengthMin")]
+        [MinLength(4, ErrorMessageResourceType = typeof(Resources), ErrorMessageResourceName = "FieldLengthMin")]
         [MaxLength(50, ErrorMessageResourceType = typeof(Resources), ErrorMessageResourceName = "FieldLengthMax")]
         [DataType(DataType.Password)]
         [Display(Name = "PasswordDisplay", ResourceType = typeof(Resources))]
@@ -98,7 +98,6 @@ namespace RequirementGathering.Models
 
         private List<string> _roles;
         [Display(Name = "RolesDisplay", ResourceType = typeof(Resources))]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public List<string> Roles
         {
             get
@@ -117,7 +116,7 @@ namespace RequirementGathering.Models
         public string Email { get; set; }
 
         [Required(ErrorMessageResourceType = typeof(Resources), ErrorMessageResourceName = "FieldRequired")]
-        [MinLength(6, ErrorMessageResourceType = typeof(Resources), ErrorMessageResourceName = "FieldLengthMin")]
+        [MinLength(4, ErrorMessageResourceType = typeof(Resources), ErrorMessageResourceName = "FieldLengthMin")]
         [MaxLength(50, ErrorMessageResourceType = typeof(Resources), ErrorMessageResourceName = "FieldLengthMax")]
         [Display(Name = "PasswordDisplay", ResourceType = typeof(Resources))]
         [DataType(DataType.Password)]

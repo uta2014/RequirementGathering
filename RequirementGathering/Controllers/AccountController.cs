@@ -12,7 +12,6 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using RequirementGathering.Helpers;
 using RequirementGathering.Models;
 using RequirementGathering.Reousrces;
 
@@ -245,7 +244,7 @@ namespace RequirementGathering.Controllers
         [HttpPost]
         [Authorize(Roles = "Administrator,Super Administrator")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register([Bind(Include = "UserName,Email,FirstName,LastName,Roles")] RegisterViewModel model)
+        public async Task<ActionResult> Register([Bind(Include = "UserName,Email,FirstName,LastName,Roles,Password,ConfirmPassword")] RegisterViewModel model)
         {
             ModelState["Password"].Errors.Clear();
             ModelState["Roles"].Errors.Clear();
@@ -264,7 +263,7 @@ namespace RequirementGathering.Controllers
             {
                 ModelState.AddModelError("", Resources.MinRoleAssignment);
             }
-            else
+            else if(ModelState.IsValid)
             {
                 var user = new User
                 {
@@ -273,10 +272,10 @@ namespace RequirementGathering.Controllers
                     LastName = model.LastName,
                     UserName = model.Email,
                     DateOfBirth = DateTime.UtcNow.AddYears(-18),
-                    EmailConfirmed = true
+                    EmailConfirmed = true,
                 };
 
-                model.Password = model.ConfirmPassword = PasswordHelper.GeneratePassword();
+                //model.Password = model.ConfirmPassword = Guid.NewGuid().ToString().Replace("-", "").Substring(0, 6);
 
                 IdentityResult resultIdentity = GetLocalizedIdentityResult(await UserManager.UserValidator.ValidateAsync(user));
                 var result = await UserManager.CreateAsync(user, model.Password);
