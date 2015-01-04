@@ -1,0 +1,391 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Comment CommentText="CONTROLLERS">
+    <Position X="9.092" Y="1.291" Height="0.342" Width="1.025" />
+  </Comment>
+  <Comment CommentText="MODELS">
+    <Position X="9.16" Y="5.48" Height="0.342" Width="0.7" />
+  </Comment>
+  <Comment CommentText="VIEW MODELS">
+    <Position X="8.975" Y="9.399" Height="0.342" Width="1.027" />
+  </Comment>
+  <Comment CommentText="CONFIGURATIONS">
+    <Position X="23.94" Y="1.504" Height="0.342" Width="1.311" />
+  </Comment>
+  <Comment CommentText="HELPERS">
+    <Position X="23.845" Y="9.091" Height="0.342" Width="0.7" />
+  </Comment>
+  <Comment CommentText="DATA ACCESS LAYER">
+    <Position X="23.669" Y="5.406" Height="0.342" Width="1.416" />
+  </Comment>
+  <Class Name="RequirementGathering.BundleConfig" Collapsed="true">
+    <Position X="24.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\BundleConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RequirementGathering.FilterConfig" Collapsed="true">
+    <Position X="28.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\FilterConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RequirementGathering.EmailService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="26.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\IdentityConfig.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="RequirementGathering.SmsService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="23.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\IdentityConfig.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="RequirementGathering.ApplicationUserManager" Collapsed="true">
+    <Position X="21.75" Y="2.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\IdentityConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RequirementGathering.ApplicationSignInManager" Collapsed="true">
+    <Position X="19.25" Y="2.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\IdentityConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RequirementGathering.RouteConfig" Collapsed="true">
+    <Position X="21.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\RouteConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RequirementGathering.Startup" Collapsed="true">
+    <Position X="25.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAgAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\Startup.Auth.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RequirementGathering.MvcApplication" Collapsed="true">
+    <Position X="18.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>Global.asax.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RequirementGathering.SetCultureActionFilterAttribute" Collapsed="true">
+    <Position X="28" Y="6.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Global.asax.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RequirementGathering.Attributes.TranslatableAttribute" Collapsed="true">
+    <Position X="23.5" Y="7.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Attributes\Translatable.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RequirementGathering.Controllers.AccountController" Collapsed="true">
+    <Position X="6.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAhAAAAAAAAAAFgEgAABAABMqICAAMRAAQgAAA=</HashCode>
+      <FileName>Controllers\AccountController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RequirementGathering.Controllers.BaseController" Collapsed="true">
+    <Position X="8.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAgABACAAAAAACAAAAAAAAAAAAAAAAAgAAAAAAAAAAE=</HashCode>
+      <FileName>Controllers\BaseController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RequirementGathering.Controllers.EvaluationsController" Collapsed="true">
+    <Position X="8.75" Y="3.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABECABCAAAAhAAAAgAAAAAAEACAQEAAACAAQA=</HashCode>
+      <FileName>Controllers\EvaluationsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RequirementGathering.Controllers.HomeController" Collapsed="true">
+    <Position X="11" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEAEACAAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\HomeController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RequirementGathering.Controllers.ManageController" Collapsed="true">
+    <Position X="13.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAgAAAAAAAAAABAEIAAAAIgIQAAEAAAAgAAA=</HashCode>
+      <FileName>Controllers\ManageController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RequirementGathering.Controllers.ProductsController" Collapsed="true">
+    <Position X="4.25" Y="3.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACABAAAAAAAAAAAAAAAAAEACAAEAAACAAAA=</HashCode>
+      <FileName>Controllers\ProductsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RequirementGathering.DAL.RequirementGatheringDbContext" Collapsed="true">
+    <Position X="20.25" Y="6.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAgIAAAAEAAAgAAACAQEAAAAEAABAAAAAAAAAQ=</HashCode>
+      <FileName>DAL\RequirementGatheringDbContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RequirementGathering.DAL.RequirementGatheringInitializer" Collapsed="true">
+    <Position X="23.25" Y="6.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DAL\RequirementGatheringInitializer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RequirementGathering.DAL.DistinctVersionUserComparer" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="25.5" Y="10" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgAAAAAAAAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>DAL\RequirementGatheringInitializer.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="RequirementGathering.Extensions.StringExtensions" Collapsed="true">
+    <Position X="25.75" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Extensions\StringExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RequirementGathering.Helpers.AttributesIgnoreCaseComparer" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="20.5" Y="10" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgAAAAAAAAAAABIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Helpers\AttributesIgnoreCaseComparer.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="RequirementGathering.Helpers.CultureHelper" Collapsed="true">
+    <Position X="23.5" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAACQIAAAAAgAAAAAAAAAAAAAAIAAIAAAIAgAAAA=</HashCode>
+      <FileName>Helpers\CultureHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RequirementGathering.Helpers.EvaluationComparer" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="28" Y="10" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAQAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>Helpers\EvaluationComparer.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="RequirementGathering.Helpers.ProductComparer" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="23.5" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAQAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>Helpers\ProductComparer.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="RequirementGathering.Models.ExternalLoginConfirmationViewModel" Collapsed="true">
+    <Position X="13.5" Y="10.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\AccountViewModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RequirementGathering.Models.ExternalLoginListViewModel" Collapsed="true">
+    <Position X="3.25" Y="11.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAA=</HashCode>
+      <FileName>Models\AccountViewModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RequirementGathering.Models.SendCodeViewModel" Collapsed="true">
+    <Position X="12.75" Y="12.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAAIAAAAAAAAAAAAAAAAAAIAAAAgAAA=</HashCode>
+      <FileName>Models\AccountViewModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RequirementGathering.Models.VerifyCodeViewModel" Collapsed="true">
+    <Position X="8.25" Y="13.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAEAAAAAAAgAAAAAAAAAAAAAAIAAAAgAAA=</HashCode>
+      <FileName>Models\AccountViewModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RequirementGathering.Models.ForgotViewModel" Collapsed="true">
+    <Position X="11" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\AccountViewModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RequirementGathering.Models.LoginViewModel" Collapsed="true">
+    <Position X="3.25" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAACAAAAAAAgAAA=</HashCode>
+      <FileName>Models\AccountViewModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RequirementGathering.Models.RegisterViewModel" Collapsed="true">
+    <Position X="8" Y="12.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAACAEAAACAAAAAAAAAAAAAAAgAAAAACAAABAAAAIAg=</HashCode>
+      <FileName>Models\AccountViewModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RequirementGathering.Models.ResetPasswordViewModel" Collapsed="true">
+    <Position X="10.25" Y="12.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAgAAAAAAAAAAACAAAAAAAAIAA=</HashCode>
+      <FileName>Models\AccountViewModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RequirementGathering.Models.ForgotPasswordViewModel" Collapsed="true">
+    <Position X="8.25" Y="11.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\AccountViewModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RequirementGathering.Models.Attribute" Collapsed="true">
+    <Position X="4.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAECgAAAAAAAAAAAAgAAAAQQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Attribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RequirementGathering.Models.Evaluation" Collapsed="true">
+    <Position X="6.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>MAADQCCIAAAgAAAAEAAAACAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Evaluation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RequirementGathering.Models.EvaluationUser" Collapsed="true">
+    <Position X="8.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAADgAAQAAAAAAAAEgEAAAwQAAAAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>Models\EvaluationUser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RequirementGathering.Models.User" Collapsed="true">
+    <Position X="10" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAACAAABIAAAEAAACAAQAIQAggABQAgAAAAAAw=</HashCode>
+      <FileName>Models\IdentityModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RequirementGathering.Models.EditProfileViewModel" Collapsed="true">
+    <Position X="11.25" Y="10.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\IdentityModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RequirementGathering.Models.IndexViewModel" Collapsed="true">
+    <Position X="13.25" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAQAAAAAAAAAAAAAAQAAAEAEA=</HashCode>
+      <FileName>Models\ManageViewModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RequirementGathering.Models.ManageLoginsViewModel" Collapsed="true">
+    <Position X="5.5" Y="12.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>Models\ManageViewModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RequirementGathering.Models.FactorViewModel" Collapsed="true">
+    <Position X="6.25" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Models\ManageViewModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RequirementGathering.Models.SetPasswordViewModel" Collapsed="true">
+    <Position X="5.75" Y="13.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>Models\ManageViewModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RequirementGathering.Models.ChangePasswordViewModel" Collapsed="true">
+    <Position X="5.5" Y="10.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAABAAAAAAAEAAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>Models\ManageViewModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RequirementGathering.Models.AddPhoneNumberViewModel" Collapsed="true">
+    <Position X="2.75" Y="10.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ManageViewModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RequirementGathering.Models.VerifyPhoneNumberViewModel" Collapsed="true">
+    <Position X="10.5" Y="13.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAgQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ManageViewModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RequirementGathering.Models.ConfigureTwoFactorViewModel" Collapsed="true">
+    <Position X="8.25" Y="10.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ManageViewModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RequirementGathering.Models.Product" Collapsed="true">
+    <Position X="11" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAACIAAAgAAAAEAAAAAQABAAAAAEABAAAAAAAAAA=</HashCode>
+      <FileName>Models\Product.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RequirementGathering.Models.Rating" Collapsed="true">
+    <Position X="13.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAIAAYAAAAAAEACAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Models\Rating.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RequirementGathering.Models.Resource" Collapsed="true">
+    <Position X="7.75" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAAAAAAAAAQAAQAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Models\Resource.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RequirementGathering.Reousrces.Resources" Collapsed="true">
+    <Position X="26" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ZgHbqPBlX5BRlAGj3nABHgCxBTQAoFAntJcHCT64HdQ=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RequirementGathering.Views.Helpers.ApplicationHelpers" Collapsed="true">
+    <Position X="18.5" Y="10" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAA=</HashCode>
+      <FileName>Views\Helpers\ApplicationHelpers.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
