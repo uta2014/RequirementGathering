@@ -31,18 +31,11 @@ namespace RequirementGathering.DAL
             // Seed Users
             var dateOfBirth = DateTime.UtcNow.AddYears(-18);
 
-            var adeel = new User { FirstName = "Adeel", Email = "adeel@uta.fi", UserName = "adeel", DateOfBirth = dateOfBirth };
-            var cong = new User { FirstName = "Zhang", Email = "cong@uta.fi", UserName = "cong", DateOfBirth = dateOfBirth };
-            var eija = new User { FirstName = "Eija", Email = "eija@uta.fi", UserName = "eija", DateOfBirth = dateOfBirth };
-            var ghassan = new User { FirstName = "Ghassan", Email = "ghassan@uta.fi", UserName = "ghassan", DateOfBirth = dateOfBirth };
-            var juho = new User { FirstName = "Juho", Email = "juho@uta.fi", UserName = "juho", DateOfBirth = dateOfBirth };
-            var liu = new User { FirstName = "Hui", Email = "liu@uta.fi", UserName = "Liu", DateOfBirth = dateOfBirth };
-            var teemu = new User { FirstName = "Teemu", Email = "teemu@uta.fi", UserName = "teemu", DateOfBirth = dateOfBirth };
-            var toan = new User { FirstName = "Toan", Email = "toan@uta.fi", UserName = "toan", DateOfBirth = dateOfBirth };
+            var admin = new User { FirstName = "Admin", Email = "admin@uta.fi", UserName = "admin", DateOfBirth = dateOfBirth };
 
             var users = new List<User>
             {
-                adeel, cong, eija, ghassan, juho, liu, teemu, toan
+                admin
             };
 
             var hasher = new PasswordHasher();
@@ -55,8 +48,7 @@ namespace RequirementGathering.DAL
                 user.Roles.Add(new IdentityUserRole { RoleId = researcherRole.Id, UserId = user.Id });
             }
 
-            eija.Roles.Add(new IdentityUserRole { RoleId = suRole.Id, UserId = eija.Id });
-            teemu.Roles.Add(new IdentityUserRole { RoleId = adminRole.Id, UserId = teemu.Id });
+            admin.Roles.Add(new IdentityUserRole { RoleId = suRole.Id, UserId = admin.Id });
 
             foreach (var user in users)
             {
@@ -65,11 +57,19 @@ namespace RequirementGathering.DAL
 
             result = context.SaveChangesAsync().Result;
 
+            
+            
+            // Disabling seeding for production.
+            return;
+
+
+
+
             // Seed Evaluations
 
-            var xPhone = new Product { Name = "XPhone", Description = "This is the description for xPhone", OwnerId = eija.Id };
-            var yPhone = new Product { Name = "YPhone", Description = "This is the description for yPhone", OwnerId = eija.Id };
-            var zPhone = new Product { Name = "ZPhone", Description = "This is the description for zPhone", OwnerId = eija.Id };
+            var xPhone = new Product { Name = "XPhone", Description = "This is the description for xPhone", OwnerId = admin.Id };
+            var yPhone = new Product { Name = "YPhone", Description = "This is the description for yPhone", OwnerId = admin.Id };
+            var zPhone = new Product { Name = "ZPhone", Description = "This is the description for zPhone", OwnerId = admin.Id };
 
             var products = new List<Product>
             {
@@ -84,12 +84,12 @@ namespace RequirementGathering.DAL
             // Seed Evaluations
             var evaluations = new List<Evaluation>
             {
-                new Evaluation{Product = xPhone, Version = "1.0.0", Steps= 5, Owner = eija},
-                new Evaluation{Product = yPhone, Version = "1.0.0", Steps= 3, Owner = eija},
-                new Evaluation{Product = zPhone, Version = "1.0.0", Steps= 5, Owner = eija},
-                new Evaluation{Product = xPhone, Version = "2.0.0", Steps= 3, Owner = eija},
-                new Evaluation{Product = yPhone, Version = "1.1.0", Steps= 5, Owner = eija},
-                new Evaluation{Product = zPhone, Version = "1.0.1", Steps= 3, Owner = eija}
+                new Evaluation{Product = xPhone, Version = "1.0.0", Steps= 5, Owner = admin},
+                new Evaluation{Product = yPhone, Version = "1.0.0", Steps= 3, Owner = admin},
+                new Evaluation{Product = zPhone, Version = "1.0.0", Steps= 5, Owner = admin},
+                new Evaluation{Product = xPhone, Version = "2.0.0", Steps= 3, Owner = admin},
+                new Evaluation{Product = yPhone, Version = "1.1.0", Steps= 5, Owner = admin},
+                new Evaluation{Product = zPhone, Version = "1.0.1", Steps= 3, Owner = admin}
             };
 
             evaluations.ForEach(r => context.Evaluations.Add(r));
