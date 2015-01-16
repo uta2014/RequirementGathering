@@ -10,7 +10,7 @@
     });
 
     $(document).on('click', '.launch-btn', function() {
-        $('.rating').fadeIn();
+        $('.rating').fadeIn(function() { $('.product-image').hide(); });
     });
 
     var valuesHash = {};
